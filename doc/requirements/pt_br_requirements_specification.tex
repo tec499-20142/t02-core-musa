@@ -44,6 +44,8 @@
           \item Inclusão das dependências [D4];
         \end{itemize}
       \end{small} & \small bezourokq, di3goleite, fmbboaventura, gordinh, jadsonfirmo, KelCarmo, mtcastro e wsbittencourt \\ \hline 
+      \small 30/09/2014 & \small Inclusão dos requisitos não funcionais & \small gordinh, Figueiredovr \\ \hline
+      \small 30/09/2014 & \small Revisão do documento & \small gordinh \\ \hline
     \end{tabular}
   \end{table}
 
@@ -154,58 +156,111 @@
       {Instrução DIV}
       {O processador deve ser capaz de realizar a divisão de dois valores.}
       {Essencial}
+      
+     
+      
     \end{functional}
 
   \subsection{Instruções Lógicas}
   
     \begin{functional}
-      \requirement{Instrução AND}{O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.}{Essencial}
+      \requirement
+      {Instrução AND}
+      {O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.}
+      {Essencial}
 
-      \requirement{Instrução OR}{O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.}{Essencial}
+      \requirement
+      {Instrução OR}
+      {O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.}
+      {Essencial}
       
-      \requirement{Instrução NOT}{O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.}{Essencial}
+      \requirement
+      {Instrução NOT}
+      {O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.}
+      {Essencial}
 
     \end{functional}    
     
     \subsection{Instruções de Desvio}
   
     \begin{functional}
-      \requirement{Instrução JR}{O processador deve ser capaz de desviar um programa em execução para um endereço de destino.}{Essencial}
+      \requirement
+      {Instrução JR}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino.}
+      {Essencial}
 
-      \requirement{Instrução JPC}{O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.}{Essencial}
+      \requirement
+      {Instrução JPC}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.}
+      {Essencial}
       
-      \requirement{Instrução BRFL}{O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.}{Essencial}
+      \requirement
+      {Instrução BRFL}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.}
+      {Essencial}
       
-      \requirement{Instrução CALL}{O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.}{Essencial}
+      \requirement
+      {Instrução CALL}
+      {O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.}
+      {Essencial}
       
-      \requirement{Instrução RET}{O processador deve ser capaz retornar de uma sub-rotina.}{Essencial}
+      \requirement
+      {Instrução RET}
+      {O processador deve ser capaz retornar de uma sub-rotina.}
+      {Essencial}
 
     \end{functional}
     
     \subsection{Outras Instruções}
   
     \begin{functional}
-      \requirement{Instrução CMP}{O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.}{Essencial}
+      \requirement
+      {Instrução CMP}
+      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.}
+      {Essencial}
 
-      \requirement{Instrução NOP}{Não realiza operação.}{Essencial}
+      \requirement
+      {Instrução NOP}
+      {Não realiza operação.}
+      {Essencial}
       
-      \requirement{Instrução HALT}{O processador deve ser capaz de parar a execução de um programa.}{Essencial}
+      \requirement
+      {Instrução HALT}
+      {O processador deve ser capaz de parar a execução de um programa.}
+      {Essencial}
 
     \end{functional}
+    
+    \subsection{Flags}
+    
+    \begin{functional}
+    
+      \requirement{Overflow}
+      {O processador deve ser capaz de avisar que houve um erro na operação aritimetica através da flag de overflow.}
+      {Importante}
+      
+      \requirement
+      {Palavras Iguais}
+      {Este Flag deve ser utilizado como resultado da instrução CMP, deve constar verdadeiro quando as palavras forem iguais.}
+      {Importante}
+    
+     \end{functional}
  
 \section{Requisitos não Funcionais}
 % Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
 
   \begin{nonfunctional}
+    
     \requirement
-    {Nome do Requisito}
-    {Descrição breve e objetiva.}
-    {Importante}
-
+    {Ferramenta para simulação de testes}
+    {Será utilizado o programa ModelSim®-Altera Web Edition, para fazer a simulação dos módulos e testes dos mesmos.}
+    {Importante}   
+    
     \requirement
-    {Nome do Requisito}
-    {Descrição breve e objetiva.}
+    {Ferramenta para programar o processador}
+    {Será utilizado o software Quartus para descarregar os programas para ser executado no processador.}
     {Importante}
+    
   \end{nonfunctional}
 
 \section{Dependências}
