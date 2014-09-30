@@ -1,0 +1,224 @@
+%
+% Portuguese-BR vertion
+% 
+\documentclass{article}
+
+\usepackage{ipprocess}
+% Use longtable if you want big tables to split over multiple pages.
+% \usepackage{longtable}
+\usepackage[utf8]{inputenc} 
+\usepackage[brazil]{babel} % Uncomment for portuguese
+
+\sloppy
+
+\graphicspath{{./pictures/}} % Pictures dir
+\makeindex
+\begin{document}
+
+\DocumentTitle{Especificação de Requisitos}
+\Project{Core-MUSA}
+\Organization{Universidade Estadual de Feira de Santana}
+\Version{Build 0.1a}
+
+\capa
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Revision History
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\center Histórico de Revisões}
+  \vspace*{1cm}
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}[pos]{|m{2cm} | m{7.2cm} | m{3.8cm}|} 
+      \hline
+      \cellcolor[gray]{0.9}
+      \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\ \hline
+      \hline
+      \small 27/09/2014 & \small Concepção do Documento & \small <Filipe Boaventura> \\ \hline      
+      \small xx/xx/xxxx &
+      \begin{small}
+        \begin{itemize}
+          \item Exemplo de;
+          \item Revisões em lista;
+        \end{itemize}
+      \end{small} & \small <Autor(es)> \\ \hline 
+    \end{tabular}
+  \end{table}
+
+\newpage
+
+% TOC instantiation
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document main content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução}
+
+\subsection{Visão Geral do Documento}
+  \begin{itemize}
+   \item \textbf{Requisitos funcionais -} lista de todos os requisitos funcionais.
+   \item \textbf{Requisitos não funcionais -} lista de todos os requisitos não funcionais.
+   \item \textbf{Dependências -} conjunto de dependências de IP-cores previstos.
+   \item \textbf{Notas -} apresenta a lista de notas apresentadas ao longo do documento.
+   \item \textbf{Referências -} lista de todos os textos referenciados nesse documento.
+  \end{itemize}
+
+  % inicio das definições do documento
+  \subsection{Definições}
+    \FloatBarrier
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}[pos]{|m{5cm} | m{9cm}|} 
+          \hline
+          \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
+          Requisitos Funcionais & Requisitos de hardware que compõem os módulos, descrevendo as ações que o mesmo deve estar apto a executar. Estas informações são capturadas a partir do desenvolvimento dos casos de uso, que documentam as entradas, os processos e as saídas geradas.  \\ \hline
+          Requisitos Não Funcionais & Requisitos de hardware que compõem os módulos, representando as características que o mesmo deve ter, ou restrições que o mesmo deve operar. Estas características referem-se técnicas, algoritmos, tecnologias e especificidades do Sistema como um todo.  \\ \hline
+          Dependências & Requisitos de reuso de IP-cores, descrevendo as funções que cada um deve exercer. \\ \hline
+        \end{tabular}
+      \end{center}
+    \end{table}  
+  % fim
+
+  % inicio da tabela de acronimos e abreviacoes do documento
+  \subsection{Acrônimos e Abreviações}
+    \FloatBarrier
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}[pos]{|m{2cm} | m{12cm}|} 
+          \hline
+          \cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
+          FR      & Requisito Funcional  \\ \hline
+          NFR     & Requisito Não Funcional  \\ \hline
+          D       & Dependência  \\ \hline
+          PC       & Program Counter (Contador de Programa)  \\ \hline
+        \end{tabular}
+      \end{center}
+    \end{table}  
+  % fim
+
+  % inicio da descriao de prioridades de requisitos
+  \subsection{Prioridades dos Requisitos}
+    \FloatBarrier
+    \begin{table}[H]
+      \begin{center}
+        \begin{tabular}[pos]{|m{2cm} | m{12cm}|} 
+          \hline
+          \cellcolor[gray]{0.9}\textbf{Prioridade} & \cellcolor[gray]{0.9}\textbf{Característica} \\ \hline
+          Importante      & Requisito sem o qual o sistema funciona, porém não como deveria.  \\ \hline
+          Essencial       & Requisito que deve ser implementado para que o sistema funcione.  \\ \hline
+          Desejável       & Requisito que não compromete o funcionamento do sistema.  \\ \hline
+        \end{tabular}
+      \end{center}
+    \end{table}  
+  % fim
+
+  % inicio dos requisitos funcionais
+  \section{Requisitos Funcionais}
+  \subsection{Instruções de Movimentação de Dados}
+    \begin{functional}
+     % \requirement{name}{description}{priority}
+     \requirement
+      {Instrução LW}
+      {O processador deve ser capaz de ler valores da memória de dados.}
+      {Essencial}
+    
+     \requirement
+      {Instrução SW}
+      {O processador deve ser capaz de inserir valores da memória de dados.}
+      {Essencial}
+    \end{functional}
+    
+    \subsection{Instruções Aritméticas}
+    \begin{functional}
+    
+     \requirement
+      {Instrução ADD}
+      {O processador deve ser capaz de realizar a soma de dois valores.}
+      {Essencial}
+    
+     \requirement
+      {Instrução SUB}
+      {O processador deve ser capaz de realizar a subtração de dois valores.}
+      {Essencial}
+      
+      \requirement
+      {Instrução MUL}
+      {O processador deve ser capaz de realizar a multiplicação de dois valores.}
+      {Essencial}
+      
+       \requirement
+      {Instrução DIV}
+      {O processador deve ser capaz de realizar a divisão de dois valores.}
+      {Essencial}
+    \end{functional}
+
+  \subsection{Instruções Lógicas}
+  
+    \begin{functional}
+      \requirement{Instrução AND}{O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.}{Essencial}
+
+      \requirement{Instrução OR}{O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.}{Essencial}
+      
+      \requirement{Instrução NOT}{O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.}{Essencial}
+
+    \end{functional}    
+    
+    \subsection{Instruções de Desvio}
+  
+    \begin{functional}
+      \requirement{Instrução JR}{O processador deve ser capaz de desviar um programa em execução para um endereço de destino.}{Essencial}
+
+      \requirement{Instrução JPC}{O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.}{Essencial}
+      
+      \requirement{Instrução BRFL}{O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.}{Essencial}
+      
+      \requirement{Instrução CALL}{O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.}{Essencial}
+      
+      \requirement{Instrução RET}{O processador deve ser capaz retornar de uma sub-rotina.}{Essencial}
+
+    \end{functional}
+    
+    \subsection{Outras Instruções}
+  
+    \begin{functional}
+      \requirement{Instrução CMP}{O processador deve ser capaz de comparar dois registradores e ativar flags...}{Essencial}
+
+      \requirement{Instrução NOP}{...}{Essencial}
+      
+      \requirement{Instrução HALT}{O processador deve ser capaz de parar a execução de um programa.}{Essencial}
+
+    \end{functional}
+ 
+\section{Requisitos não Funcionais}
+% Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
+
+  \begin{nonfunctional}
+    \requirement
+    {Nome do Requisito}
+    {Descrição breve e objetiva.}
+    {Importante}
+
+    \requirement
+    {Nome do Requisito}
+    {Descrição breve e objetiva.}
+    {Importante}
+  \end{nonfunctional}
+
+\section{Dependências}
+  % Esta seção apresenta uma lista dos IP-cores disponíveis % para reuso e que devem ser adotados no desenvolvimento % deste projeto.
+
+  \begin{dependencies}
+    \dependency{Nome do IP-\textit{core}}{Descrição breve e objetiva do IP-\textit{core} e referência à documentação.}
+
+    \dependency{Nome do IP-\textit{core}}{Descrição breve e objetiva do IP-\textit{core} e referência à documentação.}
+\end{dependencies}  
+
+% Optional bibliography section
+% To use bibliograpy, first provide the ipprocess.bib file on the root folder.
+% \bibliographystyle{ieeetr}
+% \bibliography{ipprocess}
+
+\end{document}
