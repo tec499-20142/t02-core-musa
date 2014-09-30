@@ -185,9 +185,9 @@
     \subsection{Outras Instruções}
   
     \begin{functional}
-      \requirement{Instrução CMP}{O processador deve ser capaz de comparar dois registradores e ativar flags...}{Essencial}
+      \requirement{Instrução CMP}{O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.}{Essencial}
 
-      \requirement{Instrução NOP}{...}{Essencial}
+      \requirement{Instrução NOP}{Não realiza operação.}{Essencial}
       
       \requirement{Instrução HALT}{O processador deve ser capaz de parar a execução de um programa.}{Essencial}
 
@@ -212,9 +212,7 @@
   % Esta seção apresenta uma lista dos IP-cores disponíveis % para reuso e que devem ser adotados no desenvolvimento % deste projeto.
 
   \begin{dependencies}
-    \dependency{Nome do IP-\textit{core}}{Descrição breve e objetiva do IP-\textit{core} e referência à documentação.}
-
-    \dependency{Nome do IP-\textit{core}}{Descrição breve e objetiva do IP-\textit{core} e referência à documentação.}
+    \dependency{ULA}{Módulo da ULA implementado no projeto \textit{Warmup}, contando com algumas adaptações e incremento de operações.}
 \end{dependencies}  
 
 % Optional bibliography section
