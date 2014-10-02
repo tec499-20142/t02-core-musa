@@ -1,0 +1,217 @@
+\documentclass{article}
+
+\usepackage{ipprocess}
+% Use longtable if you want big tables to split over multiple pages.
+% \usepackage{longtable}
+\usepackage[utf8]{inputenc} 
+% Babel package is used to translate keywors to a specific language. 
+% The option "brazil" defines portuguese-brazil as default language.
+% Babel is also useful for hiphenation.
+\usepackage[brazil]{babel}
+\usepackage{mathtools}
+% \usepackage[LGRgreek]{mathastext}
+
+\sloppy
+
+\title{MUSA Core Processor}
+
+\graphicspath{{./pictures/}} 
+\makeindex
+\begin{document}
+\DocumentTitle{System Specification}
+\Project{MUSA Core Processor}
+\Organization{Fazemos Qualquer Neg\'ocio Inc.}
+\Version{Build 2.1}
+ \capa
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Historico de Revisoes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{\center History Review}
+    \vspace*{1cm}
+    \begin{table}[ht] 
+        \centering
+        \begin{tabular}[pos]{|m{2cm} | m{7.2cm} | m{3.8cm}|} 
+          \hline 
+          \cellcolor[gray]{0.9}
+          \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Description} & \cellcolor[gray]{0.9}\textbf{Author(s)}\\ \hline
+	        \small 09/18/2014 & \small Document conception. & \small Abdul Udongo \\ \hline
+          \small 09/30/2014 & \small Adaptation to ipPROCESS model. & \small Terseu Hunter \\ \hline
+        \end{tabular}
+        \label{tab:revisoes}
+    \end{table}
+
+\newpage
+  
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Concent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Introduction}
+  \subsection{Purpose}
+  The main purpose of this document is to define the specifications for the MUSA (\textbf{Microprocessor Unit for SoC Applications}) processing core. The following sections define the implementation parameters which composes the general MUSA core processing requirements and specification. This requirements include processor operation modes, Instruction Set Architecture (ISA) and internal registers specification.
+  
+  \subsection{Document Outline Description}
+  This document is outlined as follow:
+	
+	\begin{itemize}
+	  \item Section \color{black}{\ref{sec:design_overview}}: Presents the architecture design overview and general requirements. 
+	  \item Section \color{black}{\ref{sec:isa}}: Specifies the processor instruction set architecture.
+	  \item Section \color{black}{\ref{sec:register}}: Describes the general purpose registers.
+	\end{itemize}
+		
+  \subsection{Acronyms and Abbreviations}
+  
+  \FloatBarrier
+  \begin{table}[H]
+    \begin{center}
+      \begin{tabular}[pos]{|m{2cm} | m{9cm}|} 
+	\hline
+	\cellcolor[gray]{0.9}\textbf{Acronym} & \cellcolor[gray]{0.9}\textbf{Description} \\ \hline
+	    RISC   & Reduced Instruction Set Computer \\ \hline
+	    GPR    & General Purpose Registers \\ \hline
+	    FPGA   & Field Gate Programmable Array \\ \hline
+	    GPPU   & General Purpose Processing Unit \\ \hline
+	    SPRAM  & Single-port RAM \\ \hline	    
+	    HDL    & Hardware Description Language \\ \hline
+	    CPU    & Central Processing Unit \\ \hline
+	    ISA    & Instruction Set Architecture \\ \hline
+	    ALU    & Arithmetic and Logic Unit \\ \hline
+	    PC     & Program Counter \\ \hline
+	    RF     & Flags Register \\ \hline
+	    CST    & Constant Value \\ \hline
+      \end{tabular}
+    \end{center}
+  \end{table}
+  
+  \newpage
+  \section{Design Overview}
+  \label{sec:design_overview}
+  MUSA is a RISC GPPU, featuring a minimal instruction set through three functional groups classification and three addressing modes. The microprocessor hardware structure is intended to cover low complexity applications. MUSA is a 32-bit word-oriented system, composed by 32 GPR in one register file. MUSA is also composed by a 32-bit program counter. MUSA current state supports basic arithmetical and logical operations, including multiplication and division. Those operations, and others, are fully detailed in the following sections. 
+  
+ \subsection{Perspectives}
+    
+  The MUSA 32-bit core release targets modern FPGA devices with embedded SPRAM memory, and is intended to be deployed as a GPPU soft IP-core. Its architecture is designed under MIPS original implementation, presenting a slightly reduced ISA.
+  
+  \subsection{Main Characteristics}
+  
+  \begin{itemize}
+   \item Harvard architecture;
+   \item 32 general purpose registers;
+   \item RISC/MIPS-based Instruction Set Architecture;
+   \item Load-Store/Register-Register processor architecture;
+   \item Three instructions functional groups: (1) load and store; (2) computational; and (3) jump and branch.
+   \item Three addressing modes: (1) immediate; (2) base-shift; and (3) by register;
+   \item Architecture with five functional stages;
+   \item Five clock Cycles per Instruction (CPI);
+   \item Big-endian data organization;
+  \end{itemize}
+
+  \subsection{Non-functional Requirements}
+  
+  \begin{itemize}
+   \item The FPGA prototype should run in a Terasic ALTERA Cyclone III (EP3C25F324) Development platform;
+   \item The design must be described using Verilog-HDL;
+   \item The tests must be writen in both Verilog-HDL or SystemVerilog;
+   \item A set of test programs must be provided in order to validate the implementation;
+  \end{itemize}
+
+  
+  \newpage
+  \section{Instruction Set Architecture}
+  \label{sec:isa}
+  MUSA is built under RISC Load-Store/Register-Register processor architecture. CPU instructions are 32-bits long word and organized into the following functional groups:
+  
+  \begin{itemize}
+   \item Load and store
+   \item Computational
+   \item Jump and branch
+  \end{itemize}
+  
+  In MUSE load/store architecture, operations are performed through operands held into the register file (GPR Bank) and main memory is accessed only through load and store instructions. Signed and unsigned integers of 16-bits are supported by loads that either sign-extend or zero-extend the data loaded into the register.  
+  
+  \subsection{CPU Load and Store Instructions}
+  
+ \FloatBarrier
+  \begin{table}[H]
+    \begin{center}
+      \label{tab:load_store_instructions}
+      \begin{tabular}[pos]{| l | l | l | l |} \hline 	
+      \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Mnemonic}} &
+      \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Operands}} &  
+      \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Realization}} &
+      \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Description}} \\ \hline
+	LW  & $RD,RS1,I_{16}$ & $RD$ \textleftarrow $MEM[RS1+I_{16}]$ & Load word from data memory.	\\ \hline
+	SW  & $RS1,RS2,I_{16}$ & $MEM[RS1+I_{16}]$ \textleftarrow $RS2$ & Store word into data memory. 		\\ \hline
+      \end{tabular}
+    \end{center}
+  \end{table}  
+  
+  
+  \subsection{Computational Instructions}
+  
+  The MUSA provides 32-bit arithmetic operations. The computational instructions uses ALU two-operand instructions. These are signed versions of the following operations:
+
+  \begin{itemize}
+   \item Add
+   \item Subtract
+   \item Multiply
+   \item Divide
+  \end{itemize}
+  
+ \FloatBarrier
+  \begin{table}[H]
+    \begin{center}
+      \begin{tabular}[pos]{| l | l | l | m{5cm} |} \hline 	
+      \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Mnemonic}} &
+      \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Operands}} &
+      \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Realization}} &
+      \multicolumn{1}{m{5cm}|}{\cellcolor[gray]{0.9}\textbf{Description}} \\ \hline
+	ADD  	& $RD$, $RS1, RS2$ 	& $RD$ \textleftarrow $RS1 + RS2$ 	& Add two words. 			\\ \hline
+	SUB 	& $RD$, $RS1, RS2$ 	& $RD$ \textleftarrow $RS1 - RS2$ 	& Subtract two words. 		\\ \hline
+	MUL 	& $RD$, $RS1, RS2$ 	& $RD$ \textleftarrow $RS1 * RS2$ 	& Multiply two words.		\\ \hline
+	DIV   	& $RD$, $RS1, RS2$ 	& $RD$ \textleftarrow $RS1 / RS2$ 	& Divide two words.		\\ \hline
+	AND  	& $RD$, $RS1, RS2$ 	& $RD$ \textleftarrow $RS1 \odot RS2$ 	& Logical AND.		\\ \hline
+	OR 	    & $RD$, $RS1$ 	    & $RD$ \textleftarrow $RS1 \oplus RS2$ 	& Logical OR.	\\ \hline
+	ADDI  	& $RD$, $RS1, I_{16}$ 	& $RD$ \textleftarrow $RS1 + I_{16}$ 	& Add a stored word and an \mbox{immediate} value. \\ \hline
+	SUBI 	& $RD$, $RS1, I_{16}$ 	& $RD$ \textleftarrow $RS1 - I_{16}$ 	& Subtract a stored word and an immediate value.\\ \hline
+	ANDI 	& $RD$, $RS1, I_{16}$ 	& $RD$ \textleftarrow $RS1 \odot I_{16}$ 	& Logical AND of a stored word and an immediate value		\\ \hline
+	ORI   	& $RD$, $RS1, I_{16}$ 	& $RD$ \textleftarrow $RS1 \oplus I_{16}$ 	& Logical OR of a stored word and an immediate value.		\\ \hline	
+	CMP 	& $RD$, $RS1$ 	    & -- 					            & Compares $RD$ and $RS1$ and set the flags.\\ \hline
+	NOT 	& $RD$ 	            & $RD$ \textleftarrow $\sim RD$     & Logical NOT.	\\ \hline
+      \end{tabular}
+    \end{center}
+  \end{table} 
+  
+  \subsection{Jump/Branch Instructions}
+
+  \FloatBarrier
+    \begin{table}[H]
+      \begin{center}
+		\begin{tabular}[pos]{| l | l | l | l |} \hline 	
+	\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Mnemonic}} &
+	\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Operands}} &
+	\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Characteristic}} &
+	\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Description}} 			\\ \hline
+	  JR  	& $R$ 		& Unconditional & Jump to destination. 			\\ \hline
+	  JPC 	& $I_{28}$ 	& Unconditional & Jump to destination PC-relative. 	\\ \hline
+	  BRFL 	& $RF$, $CST$ 	& Conditional 	& Jump to destination if $RF == CST$.\\ \hline
+	  CALL   	& $R$		& Unconditional & Subroutine call.	\\ \hline
+	  RET  	& -- 		& Unconditional & Subroutine return 			\\ \hline
+	\end{tabular}
+      \end{center}
+    \end{table} 
+  
+  \subsection{No Operation Instruction}
+  The \textit{No Operation} instruction (\texttt{NOP}) is used to control the instruction flow or to insert delays (stalls) into the datapath, such as when computing the result of a jump/branch instruction. When using a NOP instruction after a branch/jump instruction it is so named a \textbf{branch delay slot}.
+  
+  \subsection{End of Opperations}
+  The HALT instruction (system stop) must be implemented as a \texttt{L: j L} (a unconditional branch to the current address)
+  
+  \section{Internal General Purpose Registers}
+  \label{sec:register}
+  The current MUSA architecture provides 32 fixed-point general purpose registers of 32 bits: $R_0$ to $R_{31}$. The $R_0$ have special use for the hardware always returning zero, no matter what software attempts to store to it.
+
+\end{document}
