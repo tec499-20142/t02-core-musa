@@ -73,10 +73,10 @@
     \centering
     \includegraphics[width=0.25\textwidth]{uc_exemple.png}
     \caption{Exemplo de Caso de Uso.}
-    \label{fig:uc_exemple}
+    \label{uc_exemple}
   \end{figure}  
   
-  A simbologia usual para representação de um Ator é apresentada na Figura \ref{fig:actor_exemple}, no entanto, para representar módulos incorporados que outrora deveriam utilizar a mesma simbologia, utiliza-se a representação ilustrada nas Figuras \ref{fig:ipcore_exemple} e \ref{fig:ipcore_single_exemple}, definida por convenção. Este elemento, em geral, está associado aos módulos do sistema, ou IP-cores que de terceiros incorporados ao mesmo. Esta simbologia ainda foi divida, tendo em vista representar instâncias únicas (Figura \ref{fig:ipcore_single_exemple}), ou múltiplas (Figura \ref{fig:ipcore_exemple}) de um determinado componente. 
+  A simbologia usual para representação de um Ator é apresentada na Figura \ref{fig:actor_exemple}, no entanto, para representar módulos incorporados que outrora deveriam utilizar a mesma simbologia, utiliza-se a representação ilustrada nas Figuras \ref{fig:ipcore_exemple} e \ref{fig:ipcore_single_exemple}, definida por convenção. Este elemento, em geral, está associado aos módulos do sistema, ou IP-cores de terceiros incorporados ao mesmo. Esta simbologia ainda foi divida, tendo em vista representar instâncias únicas (Figura \ref{fig:ipcore_single_exemple}), ou múltiplas (Figura \ref{fig:ipcore_exemple}) de um determinado componente. 
   
   \FloatBarrier
   \begin{figure}[H]
@@ -125,6 +125,34 @@
     \end{table}
 
   \section{Atores do Sistema}
+  
+\begin{figure}[htb]
+\centering
+\begin{minipage}[c]{0.19\linewidth}
+\centering
+\includegraphics[scale=0.50]{./pictures/use/atores/controlador.png}
+\end{minipage}
+\begin{minipage}[c]{0.19\linewidth}
+\centering
+\includegraphics[scale=0.50]{./pictures/use/atores/pc.png}
+\end{minipage}
+\begin{minipage}[c]{0.19\linewidth}
+\centering
+\includegraphics[scale=0.50]{./pictures/use/atores/banco_registradores.png}
+\end{minipage}
+\begin{minipage}[c]{0.19\linewidth}
+\centering
+\includegraphics[scale=0.50]{./pictures/use/atores/reistradores_flags.png}
+\end{minipage}
+\end{figure}
+
+\textbf{Controle} – Unidade que controla a execução das operações.
+
+\textbf{PC} – Registrador contador e programa, aponta para próxima instrução.
+
+\textbf{Banco de registradores} – Conjunto de registradores de uso geral.
+
+\textbf{Registradores de flags} – Registradores de uso específicos para sinalizar resultados re operações.
   
   \section{Casos de Usos}
   Esta sessão apresenta o conjunto de UC realizados para a implementação do projeto \textit{Grand Prix} (desenvolvimento de um jogo de corrida de carros em FPGA). As sessões a seguir foram divididas e nomeada utilizando a nomenclatura abreviada [UC (NÚMERO DO UC)] seguido de uma breve descrição em forma de título.
