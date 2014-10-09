@@ -48,10 +48,10 @@
       \small 30/09/2014 & \small Revisão do documento & \small gordinh \\ \hline
       \small 05/10/2014 & \small Atualização dos requisitos & \small gordinh \\ \hline
       \small 07/10/2014 & \small Atualização dos requisitos & \small gordinh, di3goleite \\ \hline
-<<<<<<< HEAD
-=======
+      \small 07/10/2014 & \small Atualização dos requisitos & \small Figueiredovr \\ \hline
+      \small 07/10/2014 & \small Atualização dos requisitos não-funcionais & \small mtcastro \\ \hline
       \small 09/10/2014 & \small Revisão do documento & \small gordinh, di3goleite \\ \hline
->>>>>>> 1bfe7b0cd8208ab0485b193c5987f7c7a0dc3109
+      \small 09/10/2014 & \small Revisão do documento & \small Figueiredovr, mtcastro, di3goleite \\ \hline
     \end{tabular}
   \end{table}
 
@@ -152,11 +152,7 @@
        \end{itemize}}
       {Essencial}
     \end{functional}
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 1bfe7b0cd8208ab0485b193c5987f7c7a0dc3109
     \subsection{Computacionais}
     \begin{functional}
 
@@ -203,20 +199,6 @@
         \item Registrador de Destino(RD) - registrador onde será armazenado o valor da divisão entre o operando1 e operando2 (RS1/RS2).
        \end{itemize}}
       {Essencial}
-<<<<<<< HEAD
-      
-     \requirement
-      {Instrução CMP}
-      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.
-      A instrução CMP está compreendida da seguinte forma:
-      \begin{itemize}
-       \item Registrador 1(RS) - registrador representando um valor que será comparado com o RD.
-       \item Registrador 2(RD) - registrador representando um valor que será comparado com o RS.
-      \end{itemize}
-
-      {Essencial}
-      
-=======
 
      \requirement
       {Instrução CMP}
@@ -229,7 +211,6 @@
 
       {Essencial}
 
->>>>>>> 1bfe7b0cd8208ab0485b193c5987f7c7a0dc3109
       \requirement
       {Instrução AND}
       {O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.
@@ -259,8 +240,7 @@
        \begin{itemize}
          \item Registrador de Destino(RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
          \end{itemize}}
-      {Essencial}      
-     
+      {Essencial}
 
       \requirement
       {Tamanho da palavra de uma instrução de 32 bits}
@@ -294,11 +274,7 @@
       A instrução BRFL está compreendida da seguinte forma:
        \begin{itemize}
          \item Registrador de Flags(RF) - registrador onde contém o valor de uma flag.
-<<<<<<< HEAD
-         \item Contante(CST) - constante a qual será comparada com RF.         
-=======
          \item Contante(CST) - constante a qual será comparada com RF.
->>>>>>> 1bfe7b0cd8208ab0485b193c5987f7c7a0dc3109
          \end{itemize}}
       {Essencial}
 
@@ -322,13 +298,8 @@
     \end{functional}
 
     \subsection{Outras Instruções}
-<<<<<<< HEAD
-  
-    \begin{functional}     
-=======
 
     \begin{functional}
->>>>>>> 1bfe7b0cd8208ab0485b193c5987f7c7a0dc3109
 
       \requirement
       {Instrução NOP}
@@ -348,14 +319,41 @@
 
       \requirement{Overflow}
       {O processador deve ser capaz de avisar que houve um erro na operação aritimetica através da flag de overflow.}
-      {Importante}
+      {Essencial}
 
-      \requirement
-      {Palavras Iguais}
-      {Este Flag deve ser utilizado como resultado da instrução CMP, deve constar verdadeiro quando as palavras forem iguais.}
-      {Importante}
+      \requirement{Equal}
+      {Este Flag deve ser utilizado como resultado da instrução CMP, deve constar verdadeiro quando as duas palavras comparadas forem iguais.}
+      {Essencial}
+      
+      \requirement{Above}
+      {}
+      {Essencial}
+      
+      \requirement{Error}
+      {Deve indicar a ocorrencia de uma operação não valida, como por exemplo divisão por zero.}
+      {Essencial}
 
      \end{functional}
+     
+     \subsection{Modos de Endereçamento}
+
+    \begin{functional}
+
+      \requirement{Imediato}
+      {O proceassador deve aceitar instruções onde o dado já é passado explicitamente na instrução.}
+      {Essencial}
+      
+          
+       \requirement{Deslocamento de Base}
+      {O processador deve aceitar instruções onde os operandos contenham o endereço da base e o valor do deslocamento.}
+      {Essencial}
+      
+      \requirement{Por Registrador}
+      {O procesasdor deve aceitar instruções onde o endereço do registrador seja passado como parâmetro.}
+      {Essencial}
+
+     \end{functional}
+
 
 \section{Requisitos não Funcionais}
 % Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
@@ -366,11 +364,35 @@
     {Ferramenta para simulação de testes}
     {Será utilizado o programa ModelSim®-Altera Web Edition, para fazer a simulação dos módulos e testes dos mesmos.}
     {Importante}
+    
+    \requirement
+    {Ferramenta para prototipação}
+    {será utilizado a Plataforma de Desenvolvimento FPGA  Terasic ALTERA Cyclone III (EP3C25F324) para a execução do protótipo.}
+    {Importante}
+    
+    \requirement
+    {Linguagem de Descrição}
+    {Tanto projeto quanto os Teste será descrito usando Verilog-HDL.}
+    {Desejavel}
+    
+    \requirement
+    {Plano de Teste}
+    {Será desenvolvido um conjunto de programa de teste para cado bloco implementado no projeto. }
+    {Desejavel}
+    
+    \requirement{Organização dos Dados}
+    {Os bytes são numerados da esquerda para a direita, Big endian.}
+    {Essencial}
 
     \requirement
     {Ferramenta para programar o processador}
     {Será utilizado o software Quartus para descarregar os programas que serão executados no processador.}
     {Importante}
+    
+    
+    \requirement{Tempo de Operação}
+      {Toda instrução deve ser executada em exatamente cinco ciclos de clock.}
+      {Essencial}
 
   \end{nonfunctional}
 
