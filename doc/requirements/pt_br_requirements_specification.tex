@@ -46,6 +46,8 @@
       \end{small} & \small bezourokq, di3goleite, fmbboaventura, gordinh, jadsonfirmo, KelCarmo, mtcastro e wsbittencourt \\ \hline 
       \small 30/09/2014 & \small Inclusão dos requisitos não funcionais & \small gordinh, Figueiredovr \\ \hline
       \small 30/09/2014 & \small Revisão do documento & \small gordinh \\ \hline
+      \small 05/10/2014 & \small Atualização dos requisitos & \small gordinh \\ \hline
+      \small 07/10/2014 & \small Atualização dos requisitos & \small gordinh, di3goleite \\ \hline
     \end{tabular}
   \end{table}
 
@@ -147,7 +149,7 @@
       {Essencial}
     \end{functional}
     
-    \subsection{Instruções Aritméticas}
+    \subsection{Computacionais}
     \begin{functional}
     
      \requirement
@@ -194,13 +196,17 @@
        \end{itemize}}
       {Essencial}
       
-     
-      
-    \end{functional}
+     \requirement
+      {Instrução CMP}
+      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.
+      A instrução CMP está compreendida da seguinte forma:
+      \begin{itemize}
+       \item Registrador 1(RS) - registrador representando um valor que será comparado com o RD.
+       \item Registrador 2(RD) - registrador representando um valor que será comparado com o RS.
+      \end{itemize}
 
-  \subsection{Instruções Lógicas}
-  
-    \begin{functional}
+      {Essencial}
+      
       \requirement
       {Instrução AND}
       {O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.      
@@ -230,7 +236,8 @@
        \begin{itemize}
          \item Registrador de Destino(RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
          \end{itemize}}
-      {Essencial}
+      {Essencial}      
+     
 
     \end{functional}    
     
@@ -239,38 +246,52 @@
     \begin{functional}
       \requirement
       {Instrução JR}
-      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino.}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino.
+      A instrução JR está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador Endereço(R) - registrador onde contém o endereço para onde o programa deverá ir.
+         \end{itemize}}
       {Essencial}
 
       \requirement
       {Instrução JPC}
-      {O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.
+      A instrução JPC está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Endereço(RD) - registrador onde contém o valor, de 28 bits, relativo ao PC, para onde o programa deverá ir.
+         \end{itemize}}
       {Essencial}
       
       \requirement
       {Instrução BRFL}
-      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.
+      A instrução BRFL está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Flags(RF) - registrador onde contém o valor de uma flag.
+         \item Contante(CST) - constante a qual será comparada com RF.         
+         \end{itemize}}
       {Essencial}
       
       \requirement
       {Instrução CALL}
-      {O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.}
+      {O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.
+      A instrução CALL está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Destino(RD) - registrador onde contém o valor para onde o programa deverá ir, o endereço atual do pc será armazenado na pilha.
+        \end{itemize}}
       {Essencial}
       
       \requirement
       {Instrução RET}
-      {O processador deve ser capaz retornar de uma sub-rotina.}
+      {O processador deve ser capaz retornar de uma sub-rotina.
+      A instrução RET está compreendida da seguinte forma: a instrução deverá acessar a pilha onde contém os endereços do PC salvos, e ir para o endereço que está no topo da pilha.
       {Essencial}
 
     \end{functional}
     
     \subsection{Outras Instruções}
   
-    \begin{functional}
-      \requirement
-      {Instrução CMP}
-      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.}
-      {Essencial}
+    \begin{functional}     
 
       \requirement
       {Instrução NOP}

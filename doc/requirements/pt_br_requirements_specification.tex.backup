@@ -147,7 +147,7 @@
       {Essencial}
     \end{functional}
     
-    \subsection{Instruções Aritméticas}
+    \subsection{Computacionais}
     \begin{functional}
     
      \requirement
@@ -163,8 +163,7 @@
     
      \requirement
       {Instrução SUB}
-      {O processador deve ser capaz de realizar a subtração de dois valores.
-      O processador deve ser capaz de realizar a subtração de dois valores com sinal.
+      {O processador deve ser capaz de realizar a subtração de dois valores com sinal.
       A instrução SUB está compreendida da seguinte forma:
        \begin{itemize}
         \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
@@ -175,8 +174,7 @@
       
       \requirement
       {Instrução MUL}
-      {O processador deve ser capaz de realizar a multiplicação de dois valores.
-      O processador deve ser capaz de realizar a multiplicação de dois valores com sinal.
+      {O processador deve ser capaz de realizar a multiplicação de dois valores com sinal.
       A instrução MUL está compreendida da seguinte forma:
        \begin{itemize}
         \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
@@ -187,8 +185,7 @@
       
        \requirement
       {Instrução DIV}
-      {O processador deve ser capaz de realizar a divisão de dois valores.
-      O processador deve ser capaz de realizar a divisão de dois valores com sinal.
+      {O processador deve ser capaz de realizar a divisão de dois valores com sinal.
       A instrução DIV está compreendida da seguinte forma:
        \begin{itemize}
         \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
@@ -197,27 +194,48 @@
        \end{itemize}}
       {Essencial}
       
-     
-      
-    \end{functional}
+     \requirement
+      {Instrução CMP}
+      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.
+      A instrução CMP está compreendida da seguinte forma:
+      \begin{itemize}
+       \item Registrador 1(RS) - registrador representando um valor que será comparado com o RD.
+       \item Registrador 2(RD) - registrador representando um valor que será comparado com o RS.
+      \end{itemize}
 
-  \subsection{Instruções Lógicas}
-  
-    \begin{functional}
+      {Essencial}
+      
       \requirement
       {Instrução AND}
-      {O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.}
+      {O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.      
+      A instrução AND está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da operação AND entre o operando1 e operando2 (RS1&&RS2).
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+       \end{itemize}}
       {Essencial}
 
       \requirement
       {Instrução OR}
-      {O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.}
+      {O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.
+      A instrução OR está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da multiplicação entre o operando1 e operando2 (RS1||RS2).
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+       \end{itemize}}
       {Essencial}
       
       \requirement
       {Instrução NOT}
-      {O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.}
-      {Essencial}
+      {O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.
+      A instrução NOT está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Destino(RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
+         \end{itemize}}
+      {Essencial}      
+     
 
     \end{functional}    
     
