@@ -1,12 +1,12 @@
 ﻿%
 % Portuguese-BR vertion
-% 
+%
 \documentclass{article}
 
 \usepackage{ipprocess}
 % Use longtable if you want big tables to split over multiple pages.
 % \usepackage{longtable}
-\usepackage[utf8]{inputenc} 
+\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel} % Uncomment for portuguese
 
 \sloppy
@@ -33,17 +33,25 @@
     \begin{tabular}[pos]{|m{2cm} | m{7.2cm} | m{3.8cm}|} 
       \hline
       \cellcolor[gray]{0.9}
-      \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\ \hline
+      \textbf{Data} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\ \hline
       \hline
-      \small 27/09/2014 & \small Concepção do Documento & \small fmbboaventura \\ \hline      
-      \small 29/09/2014 &
+      \small 27/09/2014 & \small Concepção do Documento & \small fmbboaventura \\ \hline     
+      \small 12/08/2014 &
       \begin{small}
         \begin{itemize}
           \item Inclusão dos requisitos [FR2];
           \item Inclusão dos requisitos [NFR3];
           \item Inclusão das dependências [D4];
         \end{itemize}
-      \end{small} & \small bezourokq, di3goleite, fmbboaventura, gordinh, jadsonfirmo, KelCarmo, mtcastro e wsbittencourt \\ \hline 
+      \end{small} & \small bezourokq, di3goleite, fmbboaventura, gordinh, jadsonfirmo, KelCarmo, mtcastro e wsbittencourt \\ \hline
+      \small 30/09/2014 & \small Inclusão dos requisitos não funcionais & \small gordinh, Figueiredovr \\ \hline
+      \small 30/09/2014 & \small Revisão do documento & \small gordinh \\ \hline
+      \small 05/10/2014 & \small Atualização dos requisitos & \small gordinh \\ \hline
+      \small 07/10/2014 & \small Atualização dos requisitos & \small gordinh, di3goleite \\ \hline
+      \small 07/10/2014 & \small Atualização dos requisitos & \small Figueiredovr \\ \hline
+      \small 07/10/2014 & \small Atualização dos requisitos não-funcionais & \small mtcastro \\ \hline
+      \small 09/10/2014 & \small Revisão do documento & \small gordinh, di3goleite \\ \hline
+      \small 09/10/2014 & \small Revisão do documento & \small Figueiredovr, mtcastro, di3goleite \\ \hline      
     \end{tabular}
   \end{table}
 
@@ -72,7 +80,7 @@
     \FloatBarrier
     \begin{table}[H]
       \begin{center}
-        \begin{tabular}[pos]{|m{5cm} | m{9cm}|} 
+        \begin{tabular}[pos]{|m{5cm} | m{9cm}|}
           \hline
           \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
           Requisitos Funcionais & Requisitos de hardware que compõem os módulos, descrevendo as ações que o mesmo deve estar apto a executar. Estas informações são capturadas a partir do desenvolvimento dos casos de uso, que documentam as entradas, os processos e as saídas geradas.  \\ \hline
@@ -80,7 +88,7 @@
           Dependências & Requisitos de reuso de IP-cores, descrevendo as funções que cada um deve exercer. \\ \hline
         \end{tabular}
       \end{center}
-    \end{table}  
+    \end{table}
   % fim
 
   % inicio da tabela de acronimos e abreviacoes do documento
@@ -88,7 +96,7 @@
     \FloatBarrier
     \begin{table}[H]
       \begin{center}
-        \begin{tabular}[pos]{|m{2cm} | m{12cm}|} 
+        \begin{tabular}[pos]{|m{2cm} | m{12cm}|}
           \hline
           \cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
           FR      & Requisito Funcional  \\ \hline
@@ -97,7 +105,7 @@
           PC       & Program Counter (Contador de Programa)  \\ \hline
         \end{tabular}
       \end{center}
-    \end{table}  
+    \end{table}
   % fim
 
   % inicio da descriao de prioridades de requisitos
@@ -105,7 +113,7 @@
     \FloatBarrier
     \begin{table}[H]
       \begin{center}
-        \begin{tabular}[pos]{|m{2cm} | m{12cm}|} 
+        \begin{tabular}[pos]{|m{2cm} | m{12cm}|}
           \hline
           \cellcolor[gray]{0.9}\textbf{Prioridade} & \cellcolor[gray]{0.9}\textbf{Característica} \\ \hline
           Importante      & Requisito sem o qual o sistema funciona, porém não como deveria.  \\ \hline
@@ -113,7 +121,7 @@
           Desejável       & Requisito que não compromete o funcionamento do sistema.  \\ \hline
         \end{tabular}
       \end{center}
-    \end{table}  
+    \end{table}
   % fim
 
   % inicio dos requisitos funcionais
@@ -123,89 +131,285 @@
      % \requirement{name}{description}{priority}
      \requirement
       {Instrução LW}
-      {O processador deve ser capaz de ler valores da memória de dados.}
+      {O processador deve ser capaz de ler valores da memória de dados.
+       A instrução LW está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor que será carregado da memória
+        \item Registrador Fonte(RS) - registrador fonte onde contém o dado a ser lido
+        \item Deslocamento(I16) - endereço, de 16 bits, o qual haverá o deslocamento de bits a partir do RS
+       \end{itemize}
+       }
       {Essencial}
-    
+
      \requirement
       {Instrução SW}
-      {O processador deve ser capaz de inserir valores da memória de dados.}
+      {O processador deve ser capaz de inserir valores da memória de dados.
+      A instrução SW está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte(RS) - registrador fonte onde contém o dado a ser salvo.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor proveniente do RS.
+        \item Deslocamento(I16) - endereço, de 16 bits, o qual haverá o deslocamento de bits a partir do RD.
+       \end{itemize}
+       }
       {Essencial}
     \end{functional}
-    
-    \subsection{Instruções Aritméticas}
+
+    \subsection{Computacionais}
     \begin{functional}
-    
+
      \requirement
       {Instrução ADD}
-      {O processador deve ser capaz de realizar a soma de dois valores.}
+      {O processador deve ser capaz de realizar a soma de dois valores com sinal.
+      A instrução ADD está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da soma entre o operando1 e operando2 (RS1+RS2).
+       \end{itemize}
+       }
       {Essencial}
-    
+
      \requirement
       {Instrução SUB}
-      {O processador deve ser capaz de realizar a subtração de dois valores.}
+      {O processador deve ser capaz de realizar a subtração de dois valores com sinal.
+      A instrução SUB está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da subtração entre o operando1 e operando2 (RS1-RS2).
+       \end{itemize}
+       }
       {Essencial}
-      
+
       \requirement
       {Instrução MUL}
-      {O processador deve ser capaz de realizar a multiplicação de dois valores.}
+      {O processador deve ser capaz de realizar a multiplicação de dois valores com sinal.
+      A instrução MUL está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da multiplicação entre o operando1 e operando2 (RS1*RS2).
+       \end{itemize}
+       }
       {Essencial}
-      
+
        \requirement
       {Instrução DIV}
-      {O processador deve ser capaz de realizar a divisão de dois valores.}
+      {O processador deve ser capaz de realizar a divisão de dois valores com sinal.
+      A instrução DIV está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da divisão entre o operando1 e operando2 (RS1/RS2).
+       \end{itemize}
+       }
       {Essencial}
-    \end{functional}
 
-  \subsection{Instruções Lógicas}
-  
-    \begin{functional}
-      \requirement{Instrução AND}{O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.}{Essencial}
+     \requirement
+      {Instrução CMP}
+      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.
+      A instrução CMP está compreendida da seguinte forma:
+      \begin{itemize}
+       \item Registrador 1(RS) - registrador representando um valor que será comparado com o RD.
+       \item Registrador 2(RD) - registrador representando um valor que será comparado com o RS.
+      \end{itemize}
+      }
+      {Essencial}
 
-      \requirement{Instrução OR}{O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.}{Essencial}
-      
-      \requirement{Instrução NOT}{O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.}{Essencial}
+      \requirement
+      {Instrução AND}
+      {O processador deve ser capaz de realizar a operação lógica AND bit a bit de dois valores.
+      A instrução AND está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da operação AND entre o operando1 e operando2 (RS1\&\&RS2).
+       \end{itemize}
+       }
+      {Essencial}
 
-    \end{functional}    
-    
+      \requirement
+      {Instrução OR}
+      {O processador deve ser capaz de realizar a operação lógica OR bit a bit de dois valores.
+      A instrução OR está compreendida da seguinte forma:
+       \begin{itemize}
+        \item Registrador Fonte 1(RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2(RS2) - registrador fonte representando o operando2.
+        \item Registrador de Destino(RD) - registrador onde será armazenado o valor da multiplicação entre o operando1 e operando2 (RS1||RS2).
+       \end{itemize}
+       }
+      {Essencial}
+
+      \requirement
+      {Instrução NOT}
+      {O processador deve ser capaz de realizar a operação lógica NOT de inversão bit a bit.
+      A instrução NOT está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Destino(RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
+         \end{itemize}
+         }
+      {Essencial}
+
+      \requirement
+      {Tamanho da palavra de uma instrução de 32 bits}
+      {O Tamanho de uma palavra de instrução que é compatível com o processador é de 32 bits.}
+      {Essencial}
+\end{functional}
     \subsection{Instruções de Desvio}
-  
-    \begin{functional}
-      \requirement{Instrução JR}{O processador deve ser capaz de desviar um programa em execução para um endereço de destino.}{Essencial}
 
-      \requirement{Instrução JPC}{O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.}{Essencial}
-      
-      \requirement{Instrução BRFL}{O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.}{Essencial}
-      
-      \requirement{Instrução CALL}{O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.}{Essencial}
-      
-      \requirement{Instrução RET}{O processador deve ser capaz retornar de uma sub-rotina.}{Essencial}
+    \begin{functional}
+      \requirement
+      {Instrução JR}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino.
+      A instrução JR está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador Endereço(R) - registrador onde contém o endereço para onde o programa deverá ir.
+         \end{itemize}
+         }
+      {Essencial}
+
+      \requirement
+      {Instrução JPC}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.
+      A instrução JPC está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Endereço(RD) - registrador onde contém o valor, de 28 bits, relativo ao PC, para onde o programa deverá ir.
+         \end{itemize}
+         }
+      {Essencial}
+
+      \requirement
+      {Instrução BRFL}
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.
+      A instrução BRFL está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Flags(RF) - registrador onde contém o valor de uma flag.
+         \item Contante(CST) - constante a qual será comparada com RF.
+         \end{itemize}
+         }
+      {Essencial}
+
+      \requirement
+      {Instrução CALL}
+      {O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.
+      A instrução CALL está compreendida da seguinte forma:
+       \begin{itemize}
+         \item Registrador de Destino(RD) - registrador onde contém o valor para onde o programa deverá ir, o endereço atual do pc será armazenado na pilha.
+        \end{itemize}
+        }
+      {Essencial}
+
+      \requirement
+      {Instrução RET}
+      {O processador deve ser capaz retornar de uma sub-rotina.
+      A instrução RET está compreendida da seguinte forma:
+      \begin{itemize}
+         \item A instrução deverá acessar a pilha onde contém os endereços do PC salvos, e ir para o endereço que está no topo da pilha.
+        \end{itemize}
+        }
+      {Essencial}
+
+
 
     \end{functional}
-    
+
     \subsection{Outras Instruções}
-  
-    \begin{functional}
-      \requirement{Instrução CMP}{O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.}{Essencial}
 
-      \requirement{Instrução NOP}{Não realiza operação.}{Essencial}
-      
-      \requirement{Instrução HALT}{O processador deve ser capaz de parar a execução de um programa.}{Essencial}
+    \begin{functional}
+
+      \requirement
+      {Instrução NOP}
+      {Não realiza operação.}
+      {Essencial}
+
+      \requirement
+      {Instrução HALT}
+      {O processador deve ser capaz de parar a execução de um programa.}
+      {Essencial}
 
     \end{functional}
- 
+
+    \subsection{Flags}
+
+    \begin{functional}
+
+      \requirement{Overflow}
+      {O processador deve ser capaz de avisar que houve um erro na operação aritimetica através da flag de overflow.}
+      {Essencial}
+
+      \requirement{Equal}
+      {Este Flag deve ser utilizado como resultado da instrução CMP, deve constar verdadeiro quando as duas palavras comparadas forem iguais.}
+      {Essencial}
+
+      \requirement{Above}
+      {}
+      {Essencial}
+
+      \requirement{Error}
+      {Deve indicar a ocorrencia de uma operação não valida, como por exemplo divisão por zero.}
+      {Essencial}
+
+     \end{functional}
+
+     \subsection{Modos de Endereçamento}
+
+    \begin{functional}
+
+      \requirement{Imediato}
+      {O proceassador deve aceitar instruções onde o dado já é passado explicitamente na instrução.}
+      {Essencial}
+
+
+       \requirement{Deslocamento de Base}
+      {O processador deve aceitar instruções onde os operandos contenham o endereço da base e o valor do deslocamento.}
+      {Essencial}
+
+      \requirement{Por Registrador}
+      {O procesasdor deve aceitar instruções onde o endereço do registrador seja passado como parâmetro.}
+      {Essencial}
+
+     \end{functional}
+
+
 \section{Requisitos não Funcionais}
-% Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
+Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
 
   \begin{nonfunctional}
+
     \requirement
-    {Nome do Requisito}
-    {Descrição breve e objetiva.}
+    {Ferramenta para simulação de testes}
+    {Será utilizado o programa ModelSim®-Altera Web Edition, para fazer a simulação dos módulos e testes dos mesmos.}
     {Importante}
 
     \requirement
-    {Nome do Requisito}
-    {Descrição breve e objetiva.}
+    {Ferramenta para prototipação}
+    {será utilizado a Plataforma de Desenvolvimento FPGA  Terasic ALTERA Cyclone III (EP3C25F324) para a execução do protótipo.}
     {Importante}
+
+    \requirement
+    {Linguagem de Descrição}
+    {Tanto projeto quanto os Teste será descrito usando Verilog-HDL.}
+    {Desejavel}
+
+    \requirement
+    {Plano de Teste}
+    {Será desenvolvido um conjunto de programa de teste para cado bloco implementado no projeto. }
+    {Desejavel}
+
+    \requirement{Organização dos Dados}
+    {Os bytes são numerados da esquerda para a direita, Big endian.}
+    {Essencial}
+
+    \requirement
+    {Ferramenta para programar o processador}
+    {Será utilizado o software Quartus para descarregar os programas que serão executados no processador.}
+    {Importante}
+
+
+    \requirement{Tempo de Operação}
+      {Toda instrução deve ser executada em exatamente cinco ciclos de clock.}
+      {Essencial}
+
   \end{nonfunctional}
 
 \section{Dependências}
@@ -213,7 +417,7 @@
 
   \begin{dependencies}
     \dependency{ULA}{Módulo da ULA implementado no projeto \textit{Warmup}, contando com algumas adaptações e incremento de operações.}
-\end{dependencies}  
+\end{dependencies}
 
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
