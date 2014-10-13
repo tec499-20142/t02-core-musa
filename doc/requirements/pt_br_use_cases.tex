@@ -134,42 +134,31 @@
 \end{minipage}
 \begin{minipage}[c]{0.19\linewidth}
 \centering
-\includegraphics[scale=0.50]{./pictures/use/atores/pc.png}
-\end{minipage}
-\begin{minipage}[c]{0.19\linewidth}
-\centering
-\includegraphics[scale=0.50]{./pictures/use/atores/banco_registradores.png}
-\end{minipage}
-\begin{minipage}[c]{0.19\linewidth}
-\centering
-\includegraphics[scale=0.50]{./pictures/use/atores/reistradores_flags.png}
+\includegraphics[scale=0.50]{./pictures/use/atores/alu.png}
 \end{minipage}
 \end{figure}
 
 \textbf{Controlador} – Unidade que controla a execução das operações.
 
-\textbf{PC} – Registrador contador e programa, aponta para próxima instrução.
-
-\textbf{Banco de registradores} – Conjunto de registradores de uso geral.
-
-\textbf{Registradores de flags} – Registradores de uso específicos para sinalizar resultados de operações.
+\textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
   
   \section{Casos de Usos}
   Esta sessão apresenta o conjunto de UC realizados para a implementação do projeto \textit{Core MUSA} (Núcleo de processamento de instruções do processador de propósito geral MUSA). As sessões a seguir foram divididas e nomeada utilizando a nomenclatura abreviada [UC (NÚMERO DO UC)] seguido de uma breve descrição em forma de título.
 
-  \usecase{Decodifica instrução}
-  O controlador é responsável por decodificar instrução e emitir resultado de operações aos registradores.
+  \usecase{Execução de instruções}
+  O controlador é responsável por decodificar instrução, solicitar operações na ALU e por fim garantir o armazenamento dos resultados de operações no banco registradores.
   
   \actors
     \begin{description}
-     \item \textbf{PC} – Registrador contador e programa, aponta para próxima instrução.
-     \item \textbf{Banco de registradores} – Conjunto de registradores de uso geral.
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
     \end{description}
     
   \preconditions 
     \begin{itemize}
      \item Atender aos requisitos funcionais [FR01 e FR02];
      \item Leitura do PC;
+     \item Realizar operações lógicas e aritméticas na ALU;
     \end{itemize}
 
   \postconditions
@@ -177,14 +166,16 @@
      \item Os resultados devem ser expressos nos registradores.
     \end{itemize}
   
-  \ucdiagram{./pictures/use/case/leitura.png}
+  \ucdiagram{./pictures/use/case/new.png}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
     \item Acesso ao PC;
+    \item Leitura da instrução apontada por PC;
     \item Acesso aos respectivos registradores;
     \item Executa operações;
     \item Atualiza registradores;
+    \item Atualiza valor do PC;
   \end{mainflow}
   
   % descricao do fluxo secundário (quando existir)
