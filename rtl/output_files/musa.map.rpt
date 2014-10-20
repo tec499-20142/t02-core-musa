@@ -1,5 +1,5 @@
 Analysis & Synthesis report for musa
-Thu Oct 16 16:39:17 2014
+Sun Oct 19 16:19:39 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -47,13 +47,13 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 16 16:39:16 2014      ;
+; Analysis & Synthesis Status        ; Successful - Sun Oct 19 16:19:39 2014      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; ula                                        ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 1,530                                      ;
-;     Total combinational functions  ; 1,530                                      ;
+; Total logic elements               ; 1,543                                      ;
+;     Total combinational functions  ; 1,543                                      ;
 ;     Dedicated logic registers      ; 0                                          ;
 ; Total registers                    ; 0                                          ;
 ; Total pins                         ; 102                                        ;
@@ -187,34 +187,34 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 1,530       ;
-;                                             ;             ;
-; Total combinational functions               ; 1530        ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 726         ;
-;     -- 3 input functions                    ; 759         ;
-;     -- <=2 input functions                  ; 45          ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 886         ;
-;     -- arithmetic mode                      ; 644         ;
-;                                             ;             ;
-; Total registers                             ; 0           ;
-;     -- Dedicated logic registers            ; 0           ;
-;     -- I/O registers                        ; 0           ;
-;                                             ;             ;
-; I/O pins                                    ; 102         ;
-; Embedded Multiplier 9-bit elements          ; 6           ;
-; Maximum fan-out node                        ; fx[1]~input ;
-; Maximum fan-out                             ; 66          ;
-; Total fan-out                               ; 5449        ;
-; Average fan-out                             ; 3.13        ;
-+---------------------------------------------+-------------+
++-------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                 ;
++---------------------------------------------+---------------+
+; Resource                                    ; Usage         ;
++---------------------------------------------+---------------+
+; Estimated Total logic elements              ; 1,543         ;
+;                                             ;               ;
+; Total combinational functions               ; 1543          ;
+; Logic element usage by number of LUT inputs ;               ;
+;     -- 4 input functions                    ; 734           ;
+;     -- 3 input functions                    ; 765           ;
+;     -- <=2 input functions                  ; 44            ;
+;                                             ;               ;
+; Logic elements by mode                      ;               ;
+;     -- normal mode                          ; 899           ;
+;     -- arithmetic mode                      ; 644           ;
+;                                             ;               ;
+; Total registers                             ; 0             ;
+;     -- Dedicated logic registers            ; 0             ;
+;     -- I/O registers                        ; 0             ;
+;                                             ;               ;
+; I/O pins                                    ; 102           ;
+; Embedded Multiplier 9-bit elements          ; 6             ;
+; Maximum fan-out node                        ; func[2]~input ;
+; Maximum fan-out                             ; 67            ;
+; Total fan-out                               ; 5498          ;
+; Average fan-out                             ; 3.14          ;
++---------------------------------------------+---------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -222,7 +222,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                    ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+--------------+
-; |ula                                   ; 1530 (287)        ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 102  ; 0            ; |ula                                                                                                                   ; work         ;
+; |ula                                   ; 1543 (300)        ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 102  ; 0            ; |ula                                                                                                                   ; work         ;
 ;    |lpm_divide:Div0|                   ; 1215 (0)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0                                                                                                   ; work         ;
 ;       |lpm_divide_01p:auto_generated|  ; 1215 (0)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated                                                                     ; work         ;
 ;          |abs_divider_4dg:divider|     ; 1215 (41)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider                                             ; work         ;
@@ -260,39 +260,40 @@ Note: number of Embedded Multiplier Blocks used is only available after a succes
 +-----------------------------------------------------+---------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
 +-----------------------------------------------------+---------------------+------------------------+
-; result[0]$latch                                     ; Mux8                ; yes                    ;
-; result[1]$latch                                     ; Mux8                ; yes                    ;
-; result[2]$latch                                     ; Mux8                ; yes                    ;
-; result[3]$latch                                     ; Mux8                ; yes                    ;
-; result[4]$latch                                     ; Mux8                ; yes                    ;
-; result[5]$latch                                     ; Mux8                ; yes                    ;
-; result[6]$latch                                     ; Mux8                ; yes                    ;
-; result[7]$latch                                     ; Mux8                ; yes                    ;
-; result[8]$latch                                     ; Mux8                ; yes                    ;
-; result[9]$latch                                     ; Mux8                ; yes                    ;
-; result[10]$latch                                    ; Mux8                ; yes                    ;
-; result[11]$latch                                    ; Mux8                ; yes                    ;
-; result[12]$latch                                    ; Mux8                ; yes                    ;
-; result[13]$latch                                    ; Mux8                ; yes                    ;
-; result[14]$latch                                    ; Mux8                ; yes                    ;
-; result[15]$latch                                    ; Mux8                ; yes                    ;
-; result[16]$latch                                    ; Mux8                ; yes                    ;
-; result[17]$latch                                    ; Mux8                ; yes                    ;
-; result[18]$latch                                    ; Mux8                ; yes                    ;
-; result[19]$latch                                    ; Mux8                ; yes                    ;
-; result[20]$latch                                    ; Mux8                ; yes                    ;
-; result[21]$latch                                    ; Mux8                ; yes                    ;
-; result[22]$latch                                    ; Mux8                ; yes                    ;
-; result[23]$latch                                    ; Mux8                ; yes                    ;
-; result[24]$latch                                    ; Mux8                ; yes                    ;
-; result[25]$latch                                    ; Mux8                ; yes                    ;
-; result[26]$latch                                    ; Mux8                ; yes                    ;
-; result[27]$latch                                    ; Mux8                ; yes                    ;
-; result[28]$latch                                    ; Mux8                ; yes                    ;
-; result[29]$latch                                    ; Mux8                ; yes                    ;
-; result[30]$latch                                    ; Mux8                ; yes                    ;
-; result[31]$latch                                    ; Mux8                ; yes                    ;
-; Number of user-specified and inferred latches = 32  ;                     ;                        ;
+; result[0]$latch                                     ; Mux14               ; yes                    ;
+; result[1]$latch                                     ; Mux14               ; yes                    ;
+; result[2]$latch                                     ; Mux14               ; yes                    ;
+; result[3]$latch                                     ; Mux14               ; yes                    ;
+; result[4]$latch                                     ; Mux14               ; yes                    ;
+; result[5]$latch                                     ; Mux14               ; yes                    ;
+; result[6]$latch                                     ; Mux14               ; yes                    ;
+; result[7]$latch                                     ; Mux14               ; yes                    ;
+; result[8]$latch                                     ; Mux14               ; yes                    ;
+; result[9]$latch                                     ; Mux14               ; yes                    ;
+; result[10]$latch                                    ; Mux14               ; yes                    ;
+; result[11]$latch                                    ; Mux14               ; yes                    ;
+; result[12]$latch                                    ; Mux14               ; yes                    ;
+; result[13]$latch                                    ; Mux14               ; yes                    ;
+; result[14]$latch                                    ; Mux14               ; yes                    ;
+; result[15]$latch                                    ; Mux14               ; yes                    ;
+; result[16]$latch                                    ; Mux14               ; yes                    ;
+; result[17]$latch                                    ; Mux14               ; yes                    ;
+; result[18]$latch                                    ; Mux14               ; yes                    ;
+; result[19]$latch                                    ; Mux14               ; yes                    ;
+; result[20]$latch                                    ; Mux14               ; yes                    ;
+; result[21]$latch                                    ; Mux14               ; yes                    ;
+; result[22]$latch                                    ; Mux14               ; yes                    ;
+; result[23]$latch                                    ; Mux14               ; yes                    ;
+; result[24]$latch                                    ; Mux14               ; yes                    ;
+; result[25]$latch                                    ; Mux14               ; yes                    ;
+; result[26]$latch                                    ; Mux14               ; yes                    ;
+; result[27]$latch                                    ; Mux14               ; yes                    ;
+; result[28]$latch                                    ; Mux14               ; yes                    ;
+; result[29]$latch                                    ; Mux14               ; yes                    ;
+; result[30]$latch                                    ; Mux14               ; yes                    ;
+; result[31]$latch                                    ; Mux14               ; yes                    ;
+; overflow$latch                                      ; Mux33               ; yes                    ;
+; Number of user-specified and inferred latches = 33  ;                     ;                        ;
 +-----------------------------------------------------+---------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -317,7 +318,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |ula|Mux8                  ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |ula|Mux14                 ;
 ; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |ula|Mux15                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
@@ -405,7 +406,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:08     ;
+; Top            ; 00:00:16     ;
 +----------------+--------------+
 
 
@@ -415,7 +416,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Oct 16 16:39:02 2014
+    Info: Processing started: Sun Oct 19 16:19:00 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file musa.v
@@ -423,41 +424,43 @@ Info (12021): Found 1 design units, including 1 entities, in source file musa.v
 Info (12021): Found 1 design units, including 1 entities, in source file ula.v
     Info (12023): Found entity 1: ula
 Info (12127): Elaborating entity "ula" for the top level hierarchy
-Warning (10270): Verilog HDL Case Statement warning at ula.v(13): incomplete case statement has no default case item
-Warning (10240): Verilog HDL Always Construct warning at ula.v(11): inferring latch(es) for variable "result", which holds its previous value in one or more paths through the always construct
-Warning (10034): Output port "overF" at ula.v(7) has no driver
-Info (10041): Inferred latch for "result[0]" at ula.v(11)
-Info (10041): Inferred latch for "result[1]" at ula.v(11)
-Info (10041): Inferred latch for "result[2]" at ula.v(11)
-Info (10041): Inferred latch for "result[3]" at ula.v(11)
-Info (10041): Inferred latch for "result[4]" at ula.v(11)
-Info (10041): Inferred latch for "result[5]" at ula.v(11)
-Info (10041): Inferred latch for "result[6]" at ula.v(11)
-Info (10041): Inferred latch for "result[7]" at ula.v(11)
-Info (10041): Inferred latch for "result[8]" at ula.v(11)
-Info (10041): Inferred latch for "result[9]" at ula.v(11)
-Info (10041): Inferred latch for "result[10]" at ula.v(11)
-Info (10041): Inferred latch for "result[11]" at ula.v(11)
-Info (10041): Inferred latch for "result[12]" at ula.v(11)
-Info (10041): Inferred latch for "result[13]" at ula.v(11)
-Info (10041): Inferred latch for "result[14]" at ula.v(11)
-Info (10041): Inferred latch for "result[15]" at ula.v(11)
-Info (10041): Inferred latch for "result[16]" at ula.v(11)
-Info (10041): Inferred latch for "result[17]" at ula.v(11)
-Info (10041): Inferred latch for "result[18]" at ula.v(11)
-Info (10041): Inferred latch for "result[19]" at ula.v(11)
-Info (10041): Inferred latch for "result[20]" at ula.v(11)
-Info (10041): Inferred latch for "result[21]" at ula.v(11)
-Info (10041): Inferred latch for "result[22]" at ula.v(11)
-Info (10041): Inferred latch for "result[23]" at ula.v(11)
-Info (10041): Inferred latch for "result[24]" at ula.v(11)
-Info (10041): Inferred latch for "result[25]" at ula.v(11)
-Info (10041): Inferred latch for "result[26]" at ula.v(11)
-Info (10041): Inferred latch for "result[27]" at ula.v(11)
-Info (10041): Inferred latch for "result[28]" at ula.v(11)
-Info (10041): Inferred latch for "result[29]" at ula.v(11)
-Info (10041): Inferred latch for "result[30]" at ula.v(11)
-Info (10041): Inferred latch for "result[31]" at ula.v(11)
+Warning (10230): Verilog HDL assignment warning at ula.v(20): truncated value with size 32 to match size of target (1)
+Warning (10270): Verilog HDL Case Statement warning at ula.v(12): incomplete case statement has no default case item
+Warning (10240): Verilog HDL Always Construct warning at ula.v(10): inferring latch(es) for variable "result", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at ula.v(10): inferring latch(es) for variable "overflow", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "overflow" at ula.v(10)
+Info (10041): Inferred latch for "result[0]" at ula.v(10)
+Info (10041): Inferred latch for "result[1]" at ula.v(10)
+Info (10041): Inferred latch for "result[2]" at ula.v(10)
+Info (10041): Inferred latch for "result[3]" at ula.v(10)
+Info (10041): Inferred latch for "result[4]" at ula.v(10)
+Info (10041): Inferred latch for "result[5]" at ula.v(10)
+Info (10041): Inferred latch for "result[6]" at ula.v(10)
+Info (10041): Inferred latch for "result[7]" at ula.v(10)
+Info (10041): Inferred latch for "result[8]" at ula.v(10)
+Info (10041): Inferred latch for "result[9]" at ula.v(10)
+Info (10041): Inferred latch for "result[10]" at ula.v(10)
+Info (10041): Inferred latch for "result[11]" at ula.v(10)
+Info (10041): Inferred latch for "result[12]" at ula.v(10)
+Info (10041): Inferred latch for "result[13]" at ula.v(10)
+Info (10041): Inferred latch for "result[14]" at ula.v(10)
+Info (10041): Inferred latch for "result[15]" at ula.v(10)
+Info (10041): Inferred latch for "result[16]" at ula.v(10)
+Info (10041): Inferred latch for "result[17]" at ula.v(10)
+Info (10041): Inferred latch for "result[18]" at ula.v(10)
+Info (10041): Inferred latch for "result[19]" at ula.v(10)
+Info (10041): Inferred latch for "result[20]" at ula.v(10)
+Info (10041): Inferred latch for "result[21]" at ula.v(10)
+Info (10041): Inferred latch for "result[22]" at ula.v(10)
+Info (10041): Inferred latch for "result[23]" at ula.v(10)
+Info (10041): Inferred latch for "result[24]" at ula.v(10)
+Info (10041): Inferred latch for "result[25]" at ula.v(10)
+Info (10041): Inferred latch for "result[26]" at ula.v(10)
+Info (10041): Inferred latch for "result[27]" at ula.v(10)
+Info (10041): Inferred latch for "result[28]" at ula.v(10)
+Info (10041): Inferred latch for "result[29]" at ula.v(10)
+Info (10041): Inferred latch for "result[30]" at ula.v(10)
+Info (10041): Inferred latch for "result[31]" at ula.v(10)
 Info (278001): Inferred 2 megafunctions from design logic
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
@@ -501,83 +504,83 @@ Info (13014): Ignored 146 buffer(s)
     Info (13016): Ignored 62 CARRY_SUM buffer(s)
     Info (13019): Ignored 84 SOFT buffer(s)
 Warning (13012): Latch result[0]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[1]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[2]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[3]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[4]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[5]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[6]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[7]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[8]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[9]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[10]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[11]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[12]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[13]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[14]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[15]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[16]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[17]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[18]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[19]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[20]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[21]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[22]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[23]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[24]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[25]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[26]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[27]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[28]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[29]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[30]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
 Warning (13012): Latch result[31]$latch has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal fx[2]
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "overF" is stuck at GND
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch overflow$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[1]
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1638 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1651 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 68 input pins
     Info (21059): Implemented 34 output pins
-    Info (21061): Implemented 1530 logic cells
+    Info (21061): Implemented 1543 logic cells
     Info (21062): Implemented 6 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 74 warnings
-    Info: Peak virtual memory: 529 megabytes
-    Info: Processing ended: Thu Oct 16 16:39:17 2014
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:07
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 75 warnings
+    Info: Peak virtual memory: 501 megabytes
+    Info: Processing ended: Sun Oct 19 16:19:39 2014
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:06
 
 
