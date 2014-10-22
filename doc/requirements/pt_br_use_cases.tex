@@ -189,6 +189,37 @@
     \item Atualiza registradores;
     \item Atualiza valor do PC;
   \end{mainflow}
+
+  \usecase{BRFL}
+  O Processador tem a capacidade de fazer desvios condicionais atrav\'{e}s da utilização das flags do sistema.
+  \actors
+    \begin{description}
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+     \item Atender ao requisito funcional [FR14];
+     \item Leitura do PC;
+     \item Realizar operações lógicas na ALU;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item Alteração do PC caso verdadeira.
+    \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/brfl.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Acesso ao PC;
+    \item Leitura da instrução apontada por PC;
+    \item Identificação e leitura da Flag ativa;
+    \item Executa operação L\'{o}gica;
+    \item Atualiza valor do PC;
+  \end{mainflow}
   
   % descricao do fluxo secundário (quando existir)
   %\begin{secondaryflow} 
