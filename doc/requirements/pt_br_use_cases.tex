@@ -221,6 +221,74 @@
     \item Atualiza valor do PC;
   \end{mainflow}
   
+  \usecase{Instrução LW}
+  O processador é capaz de carregar dados da memória para o Banco de registradores.
+  \actors
+    \begin{description}
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+     \item Ler instrução da Memória de instrução;
+     \item A instrução ter "opcode" específico para instrução LW;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item O dado deverá ser salvo no registrador de escrita (RD) do banco de registradores;
+    \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/LW_use_case.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Decodificação da instrução lida na Memória de Programa;
+    \item Acesso aos respectivos registradores;
+	\item Leitura do endereço base , a partir do registrador RT;
+	\item Extensão do valor de 16 bits lido na instrução para 32 bits;
+	\item Operação de soma com os dados de 32 bits, dado lido no registrador, com o valor de 16 bits extendido para 32 bits;
+	\item Resultado da operação será lido pela memória de dados, que servirá como endereço de memória para ler o dado;
+	\item O dado será enviado para o banco de registradores, e o dado será escrito no registrador de escrita RD;
+
+  \end{mainflow}
+  
+   \usecase{Instrução SW}
+  O processador é capaz de escrever dados na memória.
+  \actors
+    \begin{description}
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+     \item Ler instrução da Memória de instrução;
+	 \item A instrução ter opcode especifico para instrução SW;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item O dado deverá ser escrito na memória de dados.
+    \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/SW_use_case.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Decodificação da instrução lida na Memória de Programa;
+	\item Acesso aos respectivos registradores;
+	\item Leitura do endereço base, a partir do registrador RT;
+	\item Leitura do dado a ser escrito no registrador RS;
+	\item Extensão do valor de 16 bits lido na instrução para 32 bits;
+	\item Operação de soma com os dados de 32 bits com os seguintes valores, endereço lido do registrador RT e valor 32 bits extendido;
+	\item Resultado da operação será lido pela Memória de Dados, que servirá como endereço de memória para escrever o dado.
+	\item O dado será escrito na Memória de Dados.
+
+
+  \end{mainflow}
+  
   % descricao do fluxo secundário (quando existir)
   %\begin{secondaryflow} 
    % \sfitem{Título do Fluxo Secundário}
