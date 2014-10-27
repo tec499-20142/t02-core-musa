@@ -1,0 +1,586 @@
+Analysis & Synthesis report for musa
+Sun Oct 19 16:19:39 2014
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. User-Specified and Inferred Latches
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 14. lpm_mult Parameter Settings by Entity Instance
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Oct 19 16:19:39 2014      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; musa                                       ;
+; Top-level Entity Name              ; ula                                        ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 1,543                                      ;
+;     Total combinational functions  ; 1,543                                      ;
+;     Dedicated logic registers      ; 0                                          ;
+; Total registers                    ; 0                                          ;
+; Total pins                         ; 102                                        ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 6                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C25F324I7       ;                    ;
+; Top-level entity name                                                      ; ula                ; musa               ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; ula.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/ula.v                  ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_mult.tdf                                                   ;         ;
+; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc                                                 ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/multcore.inc                                                   ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/bypassff.inc                                                   ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/altshift.inc                                                   ;         ;
+; db/mult_r4t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/mult_r4t.tdf        ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                 ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc                                                ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                            ;         ;
+; db/lpm_divide_01p.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/lpm_divide_01p.tdf  ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/abs_divider_4dg.tdf ;         ;
+; db/alt_u_div_t8f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/alt_u_div_t8f.tdf   ;         ;
+; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/add_sub_unc.tdf     ;         ;
+; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/add_sub_vnc.tdf     ;         ;
+; db/lpm_abs_9v9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/db/lpm_abs_9v9.tdf     ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                 ;
++---------------------------------------------+---------------+
+; Resource                                    ; Usage         ;
++---------------------------------------------+---------------+
+; Estimated Total logic elements              ; 1,543         ;
+;                                             ;               ;
+; Total combinational functions               ; 1543          ;
+; Logic element usage by number of LUT inputs ;               ;
+;     -- 4 input functions                    ; 734           ;
+;     -- 3 input functions                    ; 765           ;
+;     -- <=2 input functions                  ; 44            ;
+;                                             ;               ;
+; Logic elements by mode                      ;               ;
+;     -- normal mode                          ; 899           ;
+;     -- arithmetic mode                      ; 644           ;
+;                                             ;               ;
+; Total registers                             ; 0             ;
+;     -- Dedicated logic registers            ; 0             ;
+;     -- I/O registers                        ; 0             ;
+;                                             ;               ;
+; I/O pins                                    ; 102           ;
+; Embedded Multiplier 9-bit elements          ; 6             ;
+; Maximum fan-out node                        ; func[2]~input ;
+; Maximum fan-out                             ; 67            ;
+; Total fan-out                               ; 5498          ;
+; Average fan-out                             ; 3.14          ;
++---------------------------------------------+---------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                        ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                    ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+; |ula                                   ; 1543 (300)        ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 102  ; 0            ; |ula                                                                                                                   ; work         ;
+;    |lpm_divide:Div0|                   ; 1215 (0)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0                                                                                                   ; work         ;
+;       |lpm_divide_01p:auto_generated|  ; 1215 (0)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated                                                                     ; work         ;
+;          |abs_divider_4dg:divider|     ; 1215 (41)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider                                             ; work         ;
+;             |alt_u_div_t8f:divider|    ; 1084 (1081)       ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider|alt_u_div_t8f:divider                       ; work         ;
+;                |add_sub_unc:add_sub_0| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider|alt_u_div_t8f:divider|add_sub_unc:add_sub_0 ; work         ;
+;                |add_sub_vnc:add_sub_1| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider|alt_u_div_t8f:divider|add_sub_vnc:add_sub_1 ; work         ;
+;             |lpm_abs_9v9:my_abs_den|   ; 45 (45)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider|lpm_abs_9v9:my_abs_den                      ; work         ;
+;             |lpm_abs_9v9:my_abs_num|   ; 45 (45)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ula|lpm_divide:Div0|lpm_divide_01p:auto_generated|abs_divider_4dg:divider|lpm_abs_9v9:my_abs_num                      ; work         ;
+;    |lpm_mult:Mult0|                    ; 28 (0)            ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |ula|lpm_mult:Mult0                                                                                                    ; work         ;
+;       |mult_r4t:auto_generated|        ; 28 (28)           ; 0 (0)        ; 0           ; 6            ; 0       ; 3         ; 0    ; 0            ; |ula|lpm_mult:Mult0|mult_r4t:auto_generated                                                                            ; work         ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 3           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 6           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 1           ;
+; Mixed Sign Embedded Multipliers       ; 2           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; result[0]$latch                                     ; Mux14               ; yes                    ;
+; result[1]$latch                                     ; Mux14               ; yes                    ;
+; result[2]$latch                                     ; Mux14               ; yes                    ;
+; result[3]$latch                                     ; Mux14               ; yes                    ;
+; result[4]$latch                                     ; Mux14               ; yes                    ;
+; result[5]$latch                                     ; Mux14               ; yes                    ;
+; result[6]$latch                                     ; Mux14               ; yes                    ;
+; result[7]$latch                                     ; Mux14               ; yes                    ;
+; result[8]$latch                                     ; Mux14               ; yes                    ;
+; result[9]$latch                                     ; Mux14               ; yes                    ;
+; result[10]$latch                                    ; Mux14               ; yes                    ;
+; result[11]$latch                                    ; Mux14               ; yes                    ;
+; result[12]$latch                                    ; Mux14               ; yes                    ;
+; result[13]$latch                                    ; Mux14               ; yes                    ;
+; result[14]$latch                                    ; Mux14               ; yes                    ;
+; result[15]$latch                                    ; Mux14               ; yes                    ;
+; result[16]$latch                                    ; Mux14               ; yes                    ;
+; result[17]$latch                                    ; Mux14               ; yes                    ;
+; result[18]$latch                                    ; Mux14               ; yes                    ;
+; result[19]$latch                                    ; Mux14               ; yes                    ;
+; result[20]$latch                                    ; Mux14               ; yes                    ;
+; result[21]$latch                                    ; Mux14               ; yes                    ;
+; result[22]$latch                                    ; Mux14               ; yes                    ;
+; result[23]$latch                                    ; Mux14               ; yes                    ;
+; result[24]$latch                                    ; Mux14               ; yes                    ;
+; result[25]$latch                                    ; Mux14               ; yes                    ;
+; result[26]$latch                                    ; Mux14               ; yes                    ;
+; result[27]$latch                                    ; Mux14               ; yes                    ;
+; result[28]$latch                                    ; Mux14               ; yes                    ;
+; result[29]$latch                                    ; Mux14               ; yes                    ;
+; result[30]$latch                                    ; Mux14               ; yes                    ;
+; result[31]$latch                                    ; Mux14               ; yes                    ;
+; overflow$latch                                      ; Mux33               ; yes                    ;
+; Number of user-specified and inferred latches = 33  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |ula|Mux14                 ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |ula|Mux15                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                    ;
++------------------------------------------------+-------------+---------------------+
+; Parameter Name                                 ; Value       ; Type                ;
++------------------------------------------------+-------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON          ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF         ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON          ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF         ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 32          ; Untyped             ;
+; LPM_WIDTHB                                     ; 32          ; Untyped             ;
+; LPM_WIDTHP                                     ; 64          ; Untyped             ;
+; LPM_WIDTHR                                     ; 64          ; Untyped             ;
+; LPM_WIDTHS                                     ; 1           ; Untyped             ;
+; LPM_REPRESENTATION                             ; SIGNED      ; Untyped             ;
+; LPM_PIPELINE                                   ; 0           ; Untyped             ;
+; LATENCY                                        ; 0           ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO          ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO          ; Untyped             ;
+; USE_EAB                                        ; OFF         ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5           ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone III ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL      ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT         ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO        ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0           ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0           ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_r4t    ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx          ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx          ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF         ; Untyped             ;
++------------------------------------------------+-------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                ;
+; LPM_WIDTHD             ; 32             ; Untyped                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_01p ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance         ;
++---------------------------------------+----------------+
+; Name                                  ; Value          ;
++---------------------------------------+----------------+
+; Number of entity instances            ; 1              ;
+; Entity Instance                       ; lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 32             ;
+;     -- LPM_WIDTHB                     ; 32             ;
+;     -- LPM_WIDTHP                     ; 64             ;
+;     -- LPM_REPRESENTATION             ; SIGNED         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO             ;
+;     -- INPUT_B_IS_CONSTANT            ; NO             ;
+;     -- USE_EAB                        ; OFF            ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
++---------------------------------------+----------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:16     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Sun Oct 19 16:19:00 2014
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file musa.v
+    Info (12023): Found entity 1: musa
+Info (12021): Found 1 design units, including 1 entities, in source file ula.v
+    Info (12023): Found entity 1: ula
+Info (12127): Elaborating entity "ula" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at ula.v(20): truncated value with size 32 to match size of target (1)
+Warning (10270): Verilog HDL Case Statement warning at ula.v(12): incomplete case statement has no default case item
+Warning (10240): Verilog HDL Always Construct warning at ula.v(10): inferring latch(es) for variable "result", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at ula.v(10): inferring latch(es) for variable "overflow", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "overflow" at ula.v(10)
+Info (10041): Inferred latch for "result[0]" at ula.v(10)
+Info (10041): Inferred latch for "result[1]" at ula.v(10)
+Info (10041): Inferred latch for "result[2]" at ula.v(10)
+Info (10041): Inferred latch for "result[3]" at ula.v(10)
+Info (10041): Inferred latch for "result[4]" at ula.v(10)
+Info (10041): Inferred latch for "result[5]" at ula.v(10)
+Info (10041): Inferred latch for "result[6]" at ula.v(10)
+Info (10041): Inferred latch for "result[7]" at ula.v(10)
+Info (10041): Inferred latch for "result[8]" at ula.v(10)
+Info (10041): Inferred latch for "result[9]" at ula.v(10)
+Info (10041): Inferred latch for "result[10]" at ula.v(10)
+Info (10041): Inferred latch for "result[11]" at ula.v(10)
+Info (10041): Inferred latch for "result[12]" at ula.v(10)
+Info (10041): Inferred latch for "result[13]" at ula.v(10)
+Info (10041): Inferred latch for "result[14]" at ula.v(10)
+Info (10041): Inferred latch for "result[15]" at ula.v(10)
+Info (10041): Inferred latch for "result[16]" at ula.v(10)
+Info (10041): Inferred latch for "result[17]" at ula.v(10)
+Info (10041): Inferred latch for "result[18]" at ula.v(10)
+Info (10041): Inferred latch for "result[19]" at ula.v(10)
+Info (10041): Inferred latch for "result[20]" at ula.v(10)
+Info (10041): Inferred latch for "result[21]" at ula.v(10)
+Info (10041): Inferred latch for "result[22]" at ula.v(10)
+Info (10041): Inferred latch for "result[23]" at ula.v(10)
+Info (10041): Inferred latch for "result[24]" at ula.v(10)
+Info (10041): Inferred latch for "result[25]" at ula.v(10)
+Info (10041): Inferred latch for "result[26]" at ula.v(10)
+Info (10041): Inferred latch for "result[27]" at ula.v(10)
+Info (10041): Inferred latch for "result[28]" at ula.v(10)
+Info (10041): Inferred latch for "result[29]" at ula.v(10)
+Info (10041): Inferred latch for "result[30]" at ula.v(10)
+Info (10041): Inferred latch for "result[31]" at ula.v(10)
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0"
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_r4t.tdf
+    Info (12023): Found entity 1: mult_r4t
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0"
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_01p.tdf
+    Info (12023): Found entity 1: lpm_divide_01p
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_t8f.tdf
+    Info (12023): Found entity 1: alt_u_div_t8f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_unc.tdf
+    Info (12023): Found entity 1: add_sub_unc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_vnc.tdf
+    Info (12023): Found entity 1: add_sub_vnc
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_9v9.tdf
+    Info (12023): Found entity 1: lpm_abs_9v9
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following DSP element node(s):
+        Warning (14320): Synthesized away node "lpm_mult:Mult0|mult_r4t:auto_generated|mac_mult7"
+        Warning (14320): Synthesized away node "lpm_mult:Mult0|mult_r4t:auto_generated|mac_out8"
+Info (13014): Ignored 146 buffer(s)
+    Info (13016): Ignored 62 CARRY_SUM buffer(s)
+    Info (13019): Ignored 84 SOFT buffer(s)
+Warning (13012): Latch result[0]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[1]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[2]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[3]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[4]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[5]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[6]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[7]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[8]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[9]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[10]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[11]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[12]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[13]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[14]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[15]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[16]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[17]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[18]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[19]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[20]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[21]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[22]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[23]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[24]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[25]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[26]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[27]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[28]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[29]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[30]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch result[31]$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[2]
+Warning (13012): Latch overflow$latch has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal func[1]
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1651 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 68 input pins
+    Info (21059): Implemented 34 output pins
+    Info (21061): Implemented 1543 logic cells
+    Info (21062): Implemented 6 DSP elements
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 75 warnings
+    Info: Peak virtual memory: 501 megabytes
+    Info: Processing ended: Sun Oct 19 16:19:39 2014
+    Info: Elapsed time: 00:00:39
+    Info: Total CPU time (on all processors): 00:00:06
+
+
