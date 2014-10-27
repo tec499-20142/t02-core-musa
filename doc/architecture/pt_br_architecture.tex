@@ -35,9 +35,9 @@
       \hline
       \cellcolor[gray]{0.9}
       \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\
-      \hline
-      20/10/2014 &  Concepção do Documento & fmbboaventura \\ \hline      
-      xx/xx/xxxx &
+      \hline 20/10/2014 &  Concepção do Documento & fmbboaventura \\ \hline
+      		 23/10/2014 &  Revisão Inicial & jadsonfirmo \\ \hline       
+      		 xx/xx/xxxx &
       \begin{itemize}
         \item Exemplo de;
         \item Revisões em lista;
@@ -55,7 +55,7 @@
 \chapter{Introdução}
   
   \section{Propósito do Documento}
-  Este documento descreve a arquitetura do projeto \ipPROCESSProject, incluindo especificações do circuitos internos e máquinas de estados de cada componente. Ele também apresenta diagramas de classe, definições de entrada e saída e diagramas de temporização.O principal objetivo deste documento é definir as especificações do projeto \ipPROCESSProject\ e prover uma visão geral completa do mesmo.
+  Este documento descreve a arquitetura do projeto \ipPROCESSProject, incluindo especificações dos circuitos internos e máquinas de estados de cada componente. Ele também apresenta diagramas de classe, definições de entrada e saída e diagramas de temporização. O principal objetivo deste documento é definir as especificações do projeto \ipPROCESSProject\ e prover uma visão geral completa do mesmo.
 
   \noindent \textcolor{red}{\textit{Informações adicionais podem ser incluídas nesta seção. Entretanto, via de regra, ela não deve se extender por muitos parágrafos.}}
 
@@ -73,10 +73,11 @@
 
 \section{Visão Geral do Documento}
 
-O presente documento é apresentado como segue:
+O presente documento é apresentado como segue:\\
 
   \begin{itemize}
-   \item \textbf{Capítulo 2 --} Este capítulo apresenta uma visão geral da arquitetura, com foco em entrada e saída do sistema e arquitetura geral do mesmo;
+   \item \textbf{Capítulo 2 --} Este capítulo apresenta uma visão geral da arquitetura, com foco em entrada e saída do sistema e arquitetura geral do mesmo.
+   \item \textbf{Capítulo 3 --} Este capítulo apresenta a descrição detalhada da arquitetura bem como seus módulos e componentes.
   \end{itemize}
 
 
@@ -102,8 +103,9 @@ O presente documento é apresentado como segue:
         \begin{tabular}[pos]{|m{2cm} | m{12cm}|} 
           \hline
           \cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
-             PC   &  Contador de Programa (Program Counter)\\ \hline
-             ULA   &  Unidade Lógica e Aritmética\\ \hline
+             PC       &  Contador de Programa (Program Counter)\\ \hline
+             ULA      &  Unidade Lógica e Aritmética\\ \hline
+             OPCODE   &  Código da Operação\\ \hline
         \end{tabular}
       \end{center}
     \end{table}  
@@ -115,9 +117,12 @@ O presente documento é apresentado como segue:
   A unidade de processamento a ser desenvolvida é composta a partir dos seguintes componentes:
   
   \begin{itemize}
-    \item \textbf{Componente 1 --} Breve descrição.
-    \item \textbf{Componente 2 --} Breve descrição.
-    \item \textbf{Componente n --} Breve descrição.
+    \item \textbf{PC --} Breve descrição.
+    \item \textbf{Memória de Dados --} Breve descrição.
+    \item \textbf{Memória de Instrução --} Breve descrição.
+    \item \textbf{ULA --} Breve descrição.
+    \item \textbf{Unidade de Controle --} Breve descrição.
+    \item \textbf{Banco de Registradores --} Breve descrição.
   \end{itemize}
   
   \section{Diagrama de Classe}
