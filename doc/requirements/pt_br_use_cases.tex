@@ -295,6 +295,88 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
 
   \end{mainflow}
   
+   \usecase{CALL}
+  O Processador deve ser capaz de desviar um programa em execução para uma subrotina.
+  \actors
+    \begin{description}
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+     \item Atender ao requisito funcional [FR15];
+     \item Leitura do PC;
+     \item Ter espaço disponível na pilha de memória;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item Alteração do PC.
+    \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/call.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Acesso ao PC;
+    \item Leitura da instrução apontada por PC;
+    \item Salvar o endereço atual do PC na pilha de memória;
+    \item Modifica o valor do PC para o endereço recebido na instrução;
+  \end{mainflow}
+  
+  \usecase{JR}
+  O Processador deve ser capaz de desviar um programa em execução para um endereço de destino.
+  \actors
+    \begin{description}
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+     \item Atender ao requisito funcional [FR12];
+     \item Leitura do PC;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item Alteração do PC.
+    \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/jr.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Acesso ao PC;
+    \item Leitura da instrução apontada por PC;
+    \item Modifica o valor do PC para o endereço recebido na instrução;
+  \end{mainflow}
+  
+  \usecase{JPC}
+  O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.
+  \actors
+  \begin{description}
+  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
+  \end{description}
+  
+  \preconditions 
+  \begin{itemize}
+  	\item Leitura do PC;
+  \end{itemize}
+  
+  \postconditions
+  \begin{itemize}
+  	\item Alteração do PC.
+  \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/jpc.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+  	\item Acesso ao PC;
+  	\item Leitura da instrução apontada por PC;
+  	\item Modifica o valor do PC para o endereço recebido na instrução;
+  \end{mainflow}
+  
   % descricao do fluxo secundário (quando existir)
   %\begin{secondaryflow} 
    % \sfitem{Título do Fluxo Secundário}
