@@ -60,9 +60,21 @@
 	  \end{itemize}  
 	  \\ \hline
 	  
+	  \small 29/10/2014 & \small Inclusão Casos de Uso: JPC & \small 
+	  \begin{itemize}
+	  	\item di3goleite; 
+	  \end{itemize}  
+	  \\ \hline
+	  
 	  \small 29/10/2014 & \small Inclusão Casos de Uso: RET e NOP & \small 
       \begin{itemize}
       	\item mtcastro; 
+	  \end{itemize}  
+	  \\ \hline
+	  
+	  \small 30/10/2014 & \small Refatoração do documento & \small 
+	  \begin{itemize}
+	  	\item di3goleite; 
 	  \end{itemize}  
 	  \\ \hline
 	  
@@ -91,17 +103,17 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   \end{itemize}
   
   \subsection{Representação Simbólica}
-  A Figura \ref{fig:uc_exemple} ilustra a simbologia utilizada para representar operações que devem ser realizadas pelo sistema. A Figura \ref{fig:actors} ilustra as duas simbologias utilizadas para representar os Atores do sistema. Um ator, dentro do escopo desta descrição, pode ser identificado como um módulo \textit{top level}, ou como um elemento de entrada e saída (botões, sensores, displays, etc).
+  A Figura \ref{fig:uc_exemple} ilustra a simbologia utilizada para representar operações que devem ser realizadas pelo sistema. A Figura \ref{fig:actors} apresenta os modelos de ilustração utilizados para representar os Atores do sistema. Um ator, dentro do escopo desta descrição, pode ser identificado como um módulo \textit{top level}, ou como um elemento de entrada e saída (botões, sensores, \textit{displays}, etc).
   
   \FloatBarrier
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.25\textwidth]{uc_exemple.png}
     \caption{Exemplo de Caso de Uso.}
-    \label{uc_exemple}
-  \end{figure}  
+    \label{fig:uc_exemple}
+  \end{figure}
   
-  A simbologia usual para representação de um Ator é apresentada na Figura \ref{fig:actor_exemple}, no entanto, para representar módulos incorporados que outrora deveriam utilizar a mesma simbologia, utiliza-se a representação ilustrada nas Figuras \ref{fig:ipcore_exemple} e \ref{fig:ipcore_single_exemple}, definida por convenção. Este elemento, em geral, está associado aos módulos do sistema, ou IP-cores de terceiros incorporados ao mesmo. Esta simbologia ainda foi divida, tendo em vista representar instâncias únicas (Figura \ref{fig:ipcore_single_exemple}), ou múltiplas (Figura \ref{fig:ipcore_exemple}) de um determinado componente. 
+  A simbologia usual para representação de um Ator é apresentada na Figura \ref{fig:actor_exemple}, no entanto, para representar módulos incorporados, utiliza-se as representações ilustradas nas Figuras \ref{fig:ipcore_exemple} e \ref{fig:ipcore_single_exemple}, definidas por convenção. Este elemento, em geral, está associado aos módulos do sistema, ou IP cores de terceiros incorporados ao mesmo. Esta simbologia foi divida, com o objetivo de representar instâncias únicas (Figura \ref{fig:ipcore_single_exemple}), ou múltiplas (Figura \ref{fig:ipcore_exemple}) de um determinado componente. 
   
   \FloatBarrier
   \begin{figure}[H]
@@ -128,7 +140,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     \label{fig:actors}
   \end{figure}
   
-  O projetista responsável por interpretar os diagramas não deve confundir-se no momento de interpretar as simbologias de atores. A representação alternativa, não implica que o módulo será instanciado no subsistema em questão, mas sim que os recursos providos por este \textit{core} são necessários para garantir o seu funcionamento.
+  O projetista responsável por interpretar os diagramas não deve confundir-se no momento de analisar as simbologias de atores. A representação alternativa, não implica que o módulo será instanciado no subsistema em questão, mas sim que os recursos providos por este \textit{core} são necessários para garantir o seu funcionamento.
   
   \subsection{Definições, Acrônimos e Abreviações}
   \FloatBarrier
@@ -138,11 +150,13 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
           \hline 
           \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
           UC & Caso de Uso  \\ \hline
+          ALU & Unidade Lógica e Aritmética \\ \hline
           SB & Sub-fluxo \\ \hline
           FS & Fluxo Secundário \\ \hline
           NFR & Requisito Não Funcional \\ \hline
           FR & Requisito Funcional \\ \hline
-          BT & Botão Direcional \\
+          BT & Botão Direcional \\ \hline
+          PC & \textit{Program Counter} \\
           \hline
         \end{tabular}
       \end{center}
@@ -168,10 +182,10 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
 \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
   
   \section{Casos de Usos}
-  Esta sessão apresenta o conjunto de UC realizados para a implementação do projeto \textit{Core MUSA} (Núcleo de processamento de instruções do processador de propósito geral MUSA). As sessões a seguir foram divididas e nomeada utilizando a nomenclatura abreviada [UC (NÚMERO DO UC)] seguido de uma breve descrição em forma de título.
+  Esta sessão apresenta o conjunto de UC realizados para a implementação do projeto \textit{Core }MUSA (Núcleo de processamento de instruções do processador de propósito geral MUSA). As sessões a seguir foram divididas e nomeada utilizando a nomenclatura abreviada [UC (NÚMERO DO UC)] seguido de uma breve descrição em forma de título.
 
   \usecase{Execução de instruções}
-  O controlador é responsável por decodificar instrução, solicitar operações na ALU e por fim garantir o armazenamento dos resultados de operações no banco registradores.
+  O controlador é responsável por decodificar instrução, solicitar operações na ALU e garantir o armazenamento dos resultados das operações no banco registradores.
   
   \actors
     \begin{description}
@@ -190,7 +204,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     \begin{itemize}
      \item Os resultados devem ser expressos nos registradores.
     \end{itemize}
-  
+
   \ucdiagram{./pictures/use/case/new.png}
   
   % descricao do fluxo principal de eventos
@@ -228,14 +242,14 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   % descricao do fluxo principal de eventos
   \begin{mainflow}
     \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
-    \item Identificação e leitura da Flag ativa;
-    \item Executa operação L\'{o}gica;
-    \item Atualiza valor do PC;
+    \item Leitura da instrução apontada pelo PC;
+    \item Identificação e leitura da \textit{Flag} ativa;
+    \item Executa a operação lógica;
+    \item Atualiza o valor do PC;
   \end{mainflow}
   
   \usecase{Instrução LW}
-  O processador é capaz de carregar dados da memória para o Banco de registradores.
+  O processador é capaz de carregar dados da memória pro banco de registradores.
   \actors
     \begin{description}
      \item \textbf{Controlador} – Unidade que controla a execução das operações.
@@ -244,8 +258,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     
   \preconditions 
     \begin{itemize}
-     \item Ler instrução da Memória de instrução;
-     \item A instrução ter "opcode" específico para instrução LW;
+     \item Leitura da Memória de instrução;
+     \item A instrução necessita ter o \textit{opcode} específico para a instrução LW;
     \end{itemize}
 
   \postconditions
