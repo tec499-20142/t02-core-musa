@@ -115,11 +115,6 @@ O presente documento é apresentado como segue:\\
   % fim
 
 \chapter{Visão Geral da Arquitetura}
-  \section{Arquitetura geral MUSA}
-  \begin{figure}[H]
-	\centering
-	%\input{./pictures/classes/Busca_de_Instrucao.png}
-  \end{figure}  
 
   \section{Descrição dos Componentes}
   A unidade de processamento a ser desenvolvida é composta a partir dos seguintes componentes:
@@ -258,55 +253,24 @@ O presente documento é apresentado como segue:\\
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
 
-  \section{ULA}
+  \section{Unidade de Controle}
 
     \subsection{Diagrama de Classe}
-    \begin{figure}[H]
+      \begin{figure}[H]
 	\centering
-	%\input{./pictures/classes/ULA.jpeg}
-      \end{figure}      
-     
+	%\input{}
+      \end{figure}
+
     \subsection{Definições de Entrada e Saída}
-      \FloatBarrier
-      \begin{center}
-        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endfirsthead
-          \hline
-          \multicolumn{4}{|l|}%
-          {{\bfseries continuação da página anterior}} \\
-          \hline
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endhead
-
-          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-          \endfoot
-
-          \hline
-          \endlastfoot
-
-          clock                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          OP1             & 32   & entrada   & Valor do primeiro operando.    \\ \hline
-          OP2             & 32   & entrada   & Valor do segundo operando.    \\ \hline
-          Function             & 3   & entrada   & Identificador da operação.    \\ \hline
-          Result             & 32   & saída   & Valor do resultado da operação realizada.    \\ \hline
-          Overflow             & 1   & saída   & Sinal de overflow, para quando ocorrer overflow durante a operação.    \\ \hline
-          Equal             & 1   & entrada   & Sinal de igualdade, para quando ocorrer uma comparação entre dois valores iguais.    \\ \hline
-        \end{longtable}
-      \end{center}  
+   
+    \subsection{Datapath Interno}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Busca de Instrução}
 
     \subsection{Diagrama de Classe}
     \begin{figure}[H]
 	\centering
-	%\input{./pictures/classes/Busca_de_Instrucao.png}
+	\input{./pictures/classes/Busca_de_Instrucao.png}
       \end{figure}      
      
     \subsection{Definições de Entrada e Saída}
@@ -334,18 +298,19 @@ O presente documento é apresentado como segue:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          clock\_in                & 1   & entrada   & Clock principal do sistema.    \\ \hline
           entradaPC             & 18   & entrada   & Endereço do PC atual.    \\ \hline
           saidaInstrucao             & 32   & saída   & Instrução que sai da memória de instrução .    \\ \hline
         \end{longtable}
       \end{center}  
+    \subsection{Datapath Interno}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Pilha}
 
     \subsection{Diagrama de Classe}
       \begin{figure}[H]
 	\centering
-	%\input{./pictures/classes/Pilha.png}
+	\input{./pictures/classes/Pilha.png}
       \end{figure} 
      
     \subsection{Definições de Entrada e Saída}
@@ -373,20 +338,21 @@ O presente documento é apresentado como segue:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          clock\_in                & 1   & entrada   & Clock principal do sistema.    \\ \hline
           entradaDeDados             & 18   & entrada   & Endereço do PC que será armazenado.    \\ \hline
           popRequest             & 1   & entrada   & Sinal para tirar o ultimo endereço armmazenado da pilha.    \\ \hline
           pushRequest             & 1   & entrada   & Sinal para salvar o endereço do PC da pilha.    \\ \hline
           saidaDeDados             & 32   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
         \end{longtable}
       \end{center}  
+    \subsection{Datapath Interno}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Busca do Registrador e Interação com Pilha}
 
     \subsection{Diagrama de Classe}
       \begin{figure}[H]
 	\centering
-	%\input{./pictures/classes/Registrador.png}
+	\input{./pictures/classes/Registrador.png}
       \end{figure} 
      
     \subsection{Definições de Entrada e Saída}
@@ -414,57 +380,22 @@ O presente documento é apresentado como segue:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          clock\_in                & 1   & entrada   & Clock principal do sistema.    \\ \hline
           RegistradorDestino            & 5   & entrada   & Endereço do registrador onde será salvo o resultado de uma operação.    \\ \hline
           RegistradorSaida             & 5   & saída   & Registrador .    \\ \hline
           AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura nos registradores.    \\ \hline
           AtivaEscrita		   & 1   & entrada   & Sinal para ativar a escrita nos registradores.    \\ \hline	
           EscritaDestino             & 32   & entrada   & Escreve um valor de 32 bits no registrador endereçado pelo RegistradorDestino.    \\ \hline
         \end{longtable}
-      \end{center}   
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \section{Acesso à memória}
-
-    \subsection{Diagrama de Classe}
-      \begin{figure}[H]
-	\centering
-	%\input{./pictures/classes/Leitura.png}
-      \end{figure} 
-     
-    \subsection{Definições de Entrada e Saída}
-      \FloatBarrier
-      \begin{center}
-        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endfirsthead
-          \hline
-          \multicolumn{4}{|l|}%
-          {{\bfseries continuação da página anterior}} \\
-          \hline
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endhead
-
-          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-          \endfoot
-
-          \hline
-          \endlastfoot
-
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          entradaDeDados             & 32   & entrada   & Valor que será armazenado na memória de dados.    \\ \hline
-          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita na memória de dados.    \\ \hline
-          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura na memória de dados.    \\ \hline
-          saidaDeDados             & 32   & saída   & Valor que irá sair da memória de dados.    \\ \hline
-        \end{longtable}
       \end{center}  
-   
+    \subsection{Datapath Interno}    
+    
+    
+    \subsection{Máquina de Estados}
+
+    \subsection{Temporização}
+
+
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
 % \bibliographystyle{ieeetr}
