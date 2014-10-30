@@ -377,6 +377,40 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   	\item Modifica o valor do PC para o endereço recebido na instrução;
   \end{mainflow}
   
+  \usecase{Instruções  L\'{o}gicas e Aritm\'{e}ticas.}
+  O controlador é responsável por decodificar instrução, solicitar operações na ALU e por fim garantir o armazenamento dos resultados de operações no banco registradores.
+  
+  \actors
+    \begin{description}
+     \item \textbf{Controlador} – Unidade que controla a execução das operações.
+     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+     \item Atender aos requisitos funcionais [FR03 a FR10];
+     \item Leitura do PC;
+     \item Realizar operações lógicas e aritméticas na ALU;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item Os resultados devem ser expressos nos registradores.
+    \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/UC-ULA.jpeg}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Acesso ao PC;
+    \item Leitura da instrução apontada por PC;
+    \item Acesso aos respectivos registradores;
+    \item Controlador direciona os dados dos registradoes para a entrada da ULA;
+    \item Controlador envia o function para ativar a operação desejada na ULA;
+    \item ULA realiza as operações;
+    \item Dispara flags, se for o caso;
+    \item Envia o resultado para o registrador de destino;
+  \end{mainflow}
   % descricao do fluxo secundário (quando existir)
   %\begin{secondaryflow} 
    % \sfitem{Título do Fluxo Secundário}
