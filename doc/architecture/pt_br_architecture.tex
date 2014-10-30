@@ -39,6 +39,7 @@
       		 23/10/2014 &  Revisão Inicial & jadsonfirmo \\ \hline
       		 29/10/2014 &  Adcionada Breve Descrição dos Componentes & fmbboaventura \\ \hline       
       		 29/10/2014 & Stakeholders & jadsonfirmo \\ \hline
+      		 30/10/2014 & Ajustes estruturais & fmbboaventura e jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -52,8 +53,10 @@
   
   \section{Propósito do Documento}
   Este documento descreve a arquitetura do projeto \ipPROCESSProject, incluindo especificações dos circuitos internos e máquinas de estados de cada componente. Ele também apresenta diagramas de classe, definições de entrada e saída e diagramas de temporização. O principal objetivo deste documento é definir as especificações do projeto \ipPROCESSProject\ e prover uma visão geral completa do mesmo.
-
-  \noindent \textcolor{red}{\textit{Informações adicionais podem ser incluídas nesta seção. Entretanto, via de regra, ela não deve se extender por muitos parágrafos.}}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \noindent \textcolor{red}{\textit{Informações adicionais podem ser incluídas nesta seção. Entretanto, via de regra, ela não deve se extender por muitos parágrafos.}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \section{Stakeholders}
     \FloatBarrier
@@ -124,11 +127,111 @@ O presente documento é apresentado como segue:\\
     \item \textbf{Banco de Registradores --} Contém os registradores de propósito geral do processador.
   \end{itemize}
   
-  \section{Diagrama de Classe}
+  \section{Intruções}
+  A unidade de processamento possui 21 intruções essenciais para o processamento das operações. Elas são desmembradas em quatro formatos: R-type, I-type, Load/Store e Jump.
+  
+  \begin{itemize}
+    \item \textbf{R-type --} Operações lógicas e aritméticas.\\
+    \begin{itemize}
+        \item \textbf{ADD:} Soma de dois valores.
+        \item \textbf{SUB:} Subtração de dois valores.
+        \item \textbf{MUL:} Multiplicação de dois valores.
+        \item \textbf{DIV:} Divisão de dois valores.
+        \item \textbf{AND:} Operação lógica AND entre dois valores.
+        \item \textbf{OR:} Operação lógica OR entre dois valores.
+        \item \textbf{NOT:} Operação lógica NOT.
+        \item \textbf{CMP:} Comparação de dois valores.
+    \end{itemize}
 
-  \section{Definições de Entrada e Saída}
+    \item \textbf{I-type --} Operações imediatas.\\ 
+    \begin{itemize}
+        \item \textbf{ADDi:} Soma de dois valores, sendo um destes imediato.
+        \item \textbf{SUBi:} Subtração de dois valores, sendo um destes imediato.
+        \item \textbf{ANDi:} Operação lógica AND entre dois valores, sendo um destes imediato.
+        \item \textbf{ORi:} Operação lógica OR entre dois valores, sendo um destes imediato.     
+    \end{itemize}
 
-  \section{Datapath Interno}
+    
+    \item \textbf{Load/Store --} Operações de carregamento e armazenamento.\\
+    \begin{itemize}
+        \item \textbf{LW:} Operação de leitura na memória de dados.
+        \item \textbf{SW:} Operação de armazenamento na memória de dados.
+    \end{itemize}
+    
+    \item \textbf{Jump --} Operações de desvio.\\
+    \begin{itemize}
+        \item \textbf{JR:} Desvia o programa para um endereço de destino.
+        \item \textbf{JPC:} Desvia o programa para um endereço relativo ao PC.
+        \item \textbf{BRFL:} Desvia o programa para um endereço de destino, atendendo uma condição de flag.
+        \item \textbf{CALL:} Desvia um programa em execução para uma sub-rotina.
+        \item \textbf{RET:} Retorna de uma sub-rotina.
+        \item \textbf{HALT:} Para a execução de um programa.
+        \item \textbf{NOP:} Não realiza operação.
+    \end{itemize}
+    
+    \end{itemize}
+
+  \section{Detalhamento das Intruções}
+  
+  \begin{itemize}
+     
+     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT, CMP, ADDi, SUBi, ANDi e ORi:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{FUNCTION} & \textbf{RD} & \textbf{RS} & \textbf{RT} & \textbf{IM} \\ 
+  	\hline 
+  	04 & 04 & 05 & 05 & 05 & 09 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações Aritméticas, Lógicas e Imediatas}
+  \end{table}
+  
+   \item \textbf{LW e SW:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|c|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{RD} & \textbf{RS} & \textbf{I} & \textbf{} \\ 
+  	\hline 
+  	04 & 04 & 05 & 16 & 02 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações de Leitura e Escrita}
+  \end{table}
+  
+  \item \textbf{JR, BRFL, CALL, RET, HALT e NOP:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{RF} & \textbf{CST} & \textbf{} \\ 
+  	\hline 
+  	04 & 05 & 05 & 18 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações de Salto}
+  \end{table}
+  
+    \item \textbf{JPC:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{I} \\ 
+  	\hline 
+  	04 & 28 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout da Operação JPC}
+  \end{table}
+  
+  \end{itemize}
 
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
