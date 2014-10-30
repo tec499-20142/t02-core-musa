@@ -40,6 +40,7 @@
       		 29/10/2014 &  Adcionada Breve Descrição dos Componentes & fmbboaventura \\ \hline       
       		 29/10/2014 & Stakeholders & jadsonfirmo \\ \hline
       		 30/10/2014 & Ajustes estruturais & fmbboaventura e jadsonfirmo \\ \hline
+      		 30/10/2014 & Detalhamento das Instruções & jadsonfirmo e KelCarmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -119,11 +120,17 @@ O presente documento é apresentado como segue:\\
   
   \begin{itemize}
     \item \textbf{PC --} Registrador que guarda o endereço da próxima instrução a ser executada.
+    
     \item \textbf{Memória de Dados --} A Memória de dados é endereçada com 33 bits, que comporta no máximo 2 elevado a 33 palavras de instrução no total, que guarda dados com tamanho de 32 bits que foram manipulados pelo programa ou processador. 
+   
     \item \textbf{Memória de Instrução --} A Memória de instrução é endereçada com 18 bits, que comporta no máximo 2 elevado a 18 palavras de instrução no total, tem tamanho de 1048576 bytes, justamente pelo fato da palavra de instrução ter 32 bits. Por fim é a memória que guarda o programa codificado em linguagem assembly.
+    
     \item \textbf{ULA --} É responsável por todo o processamento realizado no processador, pois esta unidade executa as instruções lógicas e aritméticas.
+    
     \item \textbf{Unidade de Controle --} Esta unidade decodifica a instrução e define sinais de controle como, sinais de leitura, escrita de memória e de registradores de armazenamento temporário interno e sinais de liberação de barramentos para endereço e dados e unidades funcionais. As unidades funcionais internas do processador são controladas por esta unidade de temporização e controle. Os determinados sinais de controle são enviados para as demais unidades após a decodificação de uma determinada instrução que partem do registrador de instrução ( IR ).
+    
     \item \textbf{Banco de Registradores --} Contém os 32 registradores de propósito geral do processador.
+    
     \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno de chamadas de funções. ( Detalhar mais, qual tamanho dos endereçamento e tal .. ) 
   \end{itemize}
   
@@ -189,6 +196,8 @@ O presente documento é apresentado como segue:\\
   	\caption{Layout das Operações Aritméticas, Lógicas e Imediatas}
   \end{table}
   
+  Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo IM é reservado para as operações imediatas.\\
+  
    \item \textbf{LW e SW:}
 
   \begin{table}[H]
@@ -202,6 +211,9 @@ O presente documento é apresentado como segue:\\
   	\end{tabular} 
   	\caption{Layout das Operações de Leitura e Escrita}
   \end{table}
+  
+  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo I (de 16 bits) que representa o deslocamento do registrador base. Os dois bits restantes serão sempre ignorados.\\
+
   
   \item \textbf{JR, BRFL, CALL, RET, HALT e NOP:}
 
@@ -217,6 +229,8 @@ O presente documento é apresentado como segue:\\
   	\caption{Layout das Operações de Salto}
   \end{table}
   
+  Instruções de salto, que especificam um registrador RF e uma CST (FLAG), para a instrução BRFL, que realiza um salto caso condição de comparação com a flag for verdadeira. Utilizará também 18 bits  utilizará 18 bits na instrução que respresenta uma posição de endereço de memória, para as instruções JR, CALL e HALT. As instruções RET e NOP não utilizam registradores.\\
+  
     \item \textbf{JPC:}
 
   \begin{table}[H]
@@ -230,6 +244,8 @@ O presente documento é apresentado como segue:\\
   	\end{tabular} 
   	\caption{Layout da Operação JPC}
   \end{table}
+  
+  Essa instrução que representa um desvio relativo ao PC contém além do código de operação (OPCODE) um valor de 28 bits que representa o deslocamento o qual pode ser tomado.
   
   \end{itemize}
 
