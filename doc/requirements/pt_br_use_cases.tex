@@ -83,6 +83,13 @@
 	  \end{itemize}  
 	  \\ \hline
 	  
+	  \\ \hline
+	  
+	  \small 30/10/2014 & \small Inclusão Casos de Uso: HALT & \small 
+      \begin{itemize}
+      	\item mtcastro; 
+	  \end{itemize}
+	  
     \end{tabular}
   \end{table}
 
@@ -494,6 +501,29 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   	\item Acesso ao PC;
   	\item Leitura da instrução apontada pelo PC;
   	\item Modifica o valor do PC pro endereço da próxima instrução.
+  \end{mainflow}
+  
+  
+  \usecase{HALT}
+  O processador deve ser capaz de encerra o programa.
+  \actors
+  \begin{description}
+  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
+  \end{description}
+  
+  \preconditions 
+  \begin{itemize}
+  	\item Atender ao requisito funcional [FR15];
+  	\item Leitura do PC;
+  \end{itemize}
+    
+  \ucdiagram{./pictures/use/case/halt.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+  	\item Acesso ao PC;
+  	\item Leitura da instrução apontada pelo PC;
+  	\item Desliga o \textit{clock} do processador.
   \end{mainflow} 
 
 % Optional bibliography section
