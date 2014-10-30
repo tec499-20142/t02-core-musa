@@ -273,15 +273,15 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   \begin{mainflow}
     \item Decodificação da instrução lida na Memória de Programa;
     \item Acesso aos respectivos registradores;
-	\item Leitura do endereço base , a partir do registrador RT;
+	\item Leitura do endereço base, a partir do registrador RT;
 	\item Extensão do valor de 16 bits lido na instrução para 32 bits;
-	\item Operação de soma com os dados de 32 bits, dado lido no registrador, com o valor de 16 bits extendido para 32 bits;
+	\item Operação de soma com os dados de 32 bits, dado lido no registrador, com o valor de 16 bits estendido para 32 bits;
 	\item Resultado da operação será lido pela memória de dados, que servirá como endereço de memória para ler o dado;
-	\item O dado será enviado para o banco de registradores, e o dado será escrito no registrador de escrita RD;
+	\item O dado será enviado para o banco de registradores, e será escrito no registrador de escrita RD;
 
   \end{mainflow}
   
-   \usecase{Instrução SW}
+  \usecase{Instrução SW}
   O processador é capaz de escrever dados na memória.
   \actors
     \begin{description}
@@ -291,8 +291,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     
   \preconditions 
     \begin{itemize}
-     \item Ler instrução da Memória de instrução;
-	 \item A instrução ter opcode especifico para instrução SW;
+     \item Leitura da Memória de instrução;
+     \item A instrução necessita ter o \textit{opcode} específico para a instrução SW;
     \end{itemize}
 
   \postconditions
@@ -308,42 +308,43 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
 	\item Acesso aos respectivos registradores;
 	\item Leitura do endereço base, a partir do registrador RT;
 	\item Leitura do dado a ser escrito no registrador RS;
-	\item Extensão do valor de 16 bits lido na instrução para 32 bits;
-	\item Operação de soma com os dados de 32 bits com os seguintes valores, endereço lido do registrador RT e valor 32 bits extendido;
+	\item Extensão do valor de 16 bits, lido na instrução, para 32 bits;
+	\item Operação de soma com os dados de 32 bits com os seguintes valores: endereço lido do registrador RT e valor de 32 bits estendido;
 	\item Resultado da operação será lido pela Memória de Dados, que servirá como endereço de memória para escrever o dado.
 	\item O dado será escrito na Memória de Dados.
-
-
   \end{mainflow}
   
-   \usecase{CALL}
-  O Processador deve ser capaz de desviar um programa em execução para uma subrotina.
-  \actors
-    \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-    \end{description}
-    
-  \preconditions 
-    \begin{itemize}
-     \item Atender ao requisito funcional [FR15];
-     \item Leitura do PC;
-     \item Ter espaço disponível na pilha de memória;
-    \end{itemize}
+	\usecase{CALL}
+	O Processador deve ser capaz de desviar um programa em execução para uma subrotina.
+	
+	\actors
+	\begin{description}
+		\item \textbf{Controlador} – Unidade que controla a execução das operações.
+	\end{description}
+	
+	\preconditions 
+	\begin{itemize}
+		\item Atender ao requisito funcional [FR15];
+		\item Leitura do PC;
+		\item Ter espaço disponível na pilha de memória;
+	\end{itemize}
+	
+	\postconditions
+	\begin{itemize}
+		\item Alteração do PC.
+	\end{itemize}
 
-  \postconditions
-    \begin{itemize}
-     \item Alteração do PC.
-    \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/call.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
-    \item Salvar o endereço atual do PC na pilha de memória;
-    \item Modifica o valor do PC para o endereço recebido na instrução;
-  \end{mainflow}
+	\newpage
+	
+	\ucdiagram{./pictures/use/case/call.png}
+	
+	% descricao do fluxo principal de eventos
+	\begin{mainflow}
+		\item Acesso ao PC;
+		\item Leitura da instrução apontada por PC;
+		\item Salvar o endereço atual do PC na pilha de memória;
+		\item Modifica o valor do PC para o endereço recebido pela instrução;
+	\end{mainflow}
   
   \usecase{JR}
   O Processador deve ser capaz de desviar um programa em execução para um endereço de destino.
@@ -368,8 +369,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   % descricao do fluxo principal de eventos
   \begin{mainflow}
     \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
-    \item Modifica o valor do PC para o endereço recebido na instrução;
+    \item Leitura da instrução apontada pelo PC;
+    \item Modifica o valor do PC pro endereço recebido na instrução;
   \end{mainflow}
   
   \usecase{JPC}
@@ -393,13 +394,13 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada por PC;
-  	\item Modifica o valor do PC para o endereço recebido na instrução;
+  	\item Acessa o valor de PC;
+  	\item Faz a leitura da instrução apontada pelo PC;
+  	\item Modifica o valor do PC pro endereço recebido na instrução;
   \end{mainflow}
   
   \usecase{Instruções  L\'{o}gicas e Aritm\'{e}ticas.}
-  O controlador é responsável por decodificar instrução, solicitar operações na ALU e por fim garantir o armazenamento dos resultados de operações no banco registradores.
+  O controlador é responsável por decodificar instrução, solicitar operações na ALU e garantir o armazenamento dos resultados das operações no banco registradores.
   
   \actors
     \begin{description}
@@ -426,15 +427,15 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     \item Acesso ao PC;
     \item Leitura da instrução apontada por PC;
     \item Acesso aos respectivos registradores;
-    \item Controlador direciona os dados dos registradoes para a entrada da ULA;
-    \item Controlador envia o function para ativar a operação desejada na ULA;
-    \item ULA realiza as operações;
-    \item Dispara flags, se for o caso;
-    \item Envia o resultado para o registrador de destino;
+    \item Controlador direciona os dados dos registradores para a entrada da ULA;
+    \item Controlador envia o \textit{function} para ativar a operação desejada na ULA;
+    \item A ULA realiza as operações;
+    \item \textit{Flags} são disparadas, caso seja necessário;
+    \item Envia o resultado pro registrador de destino;
   \end{mainflow}
   
   \usecase{RET}
-  O processador deve ser capaz de retornar do ultimo desvio tomado pelo programa.
+  O processador deve ser capaz de retornar do último desvio tomado pelo programa.
   \actors
   \begin{description}
   	\item \textbf{Controlador} – Unidade que controla a execução das operações.
@@ -456,15 +457,15 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   % descricao do fluxo principal de eventos
   \begin{mainflow}
   	\item Acesso ao PC;
-  	\item Leitura da instrução apontada por PC;
-  	\item Ler o endereço do topo da pilha;
-  	\item Remove o endereço do topo da pilha;
+  	\item Leitura da instrução apontada pelo PC;
+  	\item Leitura do endereço do topo da pilha;
+  	\item Remoção do endereço do topo da pilha;
   	\item Incrementa o endereço removido do topo da pilha;
-  	\item Modifica o valor do PC para o valor Incrementado;
+  	\item Modifica o valor do PC pro valor incrementado;
   \end{mainflow}
   
    \usecase{NOP}
-  O processador deve ser capaz de não realizar nenhuma ação durante os cinco ciclos de clock determinado para esta instrução.
+  O processador deve ser capaz de realizar nenhuma operação durante cinco ciclos de \textit{clock}.
   \actors
   \begin{description}
   	\item \textbf{Controlador} – Unidade que controla a execução das operações.
@@ -486,21 +487,9 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   % descricao do fluxo principal de eventos
   \begin{mainflow}
   	\item Acesso ao PC;
-  	\item Leitura da instrução apontada por PC;
-  	\item Modifica o valor do PC para o endereço da próxima instrunção.
-  \end{mainflow}
-  
-  % descricao do fluxo secundário (quando existir)
-  %\begin{secondaryflow} 
-   % \sfitem{Título do Fluxo Secundário}
-    %\begin{enumerate}
-     % \item Liste aqui as etapas do fluxo secundário;
-    %\end{enumerate}
-    %\sfitem{Título do Fluxo Secundário}
-    %\begin{enumerate}
-     % \item Liste aqui as etapas do fluxo secundário;
-    %\end{enumerate}
-  %\end{secondaryflow}  
+  	\item Leitura da instrução apontada pelo PC;
+  	\item Modifica o valor do PC pro endereço da próxima instrução.
+  \end{mainflow} 
 
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
