@@ -59,6 +59,13 @@
       	\item jadsonfirmo; 
 	  \end{itemize}  
 	  \\ \hline
+	  
+	  \small 29/10/2014 & \small Inclusão Casos de Uso: RET e NOP & \small 
+      \begin{itemize}
+      	\item mtcastro; 
+	  \end{itemize}  
+	  \\ \hline
+	  
     \end{tabular}
   \end{table}
 
@@ -411,6 +418,64 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     \item Dispara flags, se for o caso;
     \item Envia o resultado para o registrador de destino;
   \end{mainflow}
+  
+  \usecase{RET}
+  O processador deve ser capaz de retornar do ultimo desvio tomado pelo programa.
+  \actors
+  \begin{description}
+  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
+  \end{description}
+  
+  \preconditions 
+  \begin{itemize}
+  	\item Atender ao requisito funcional [FR15];
+  	\item Leitura do PC;
+  \end{itemize}
+  
+  \postconditions
+  \begin{itemize}
+  	\item Alteração do PC.
+  \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/ret.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+  	\item Acesso ao PC;
+  	\item Leitura da instrução apontada por PC;
+  	\item Ler o endereço do topo da pilha;
+  	\item Remove o endereço do topo da pilha;
+  	\item Incrementa o endereço removido do topo da pilha;
+  	\item Modifica o valor do PC para o valor Incrementado;
+  \end{mainflow}
+  
+   \usecase{NOP}
+  O processador deve ser capaz de não realizar nenhuma ação durante os cinco ciclos de clock determinado para esta instrução.
+  \actors
+  \begin{description}
+  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
+  \end{description}
+  
+  \preconditions 
+  \begin{itemize}
+  	\item Atender ao requisito funcional [FR15];
+  	\item Leitura do PC;
+  \end{itemize}
+  
+  \postconditions
+  \begin{itemize}
+  	\item Alteração do PC.
+  \end{itemize}
+  
+  \ucdiagram{./pictures/use/case/nop.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+  	\item Acesso ao PC;
+  	\item Leitura da instrução apontada por PC;
+  	\item Modifica o valor do PC para o endereço da próxima instrunção.
+  \end{mainflow}
+  
   % descricao do fluxo secundário (quando existir)
   %\begin{secondaryflow} 
    % \sfitem{Título do Fluxo Secundário}
