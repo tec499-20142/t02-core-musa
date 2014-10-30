@@ -380,48 +380,6 @@ O presente documento é apresentado como segue:\\
           saidaDeDados             & 32   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
         \end{longtable}
       \end{center}  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \section{Busca do Registrador e Interação com Pilha}
-
-    \subsection{Diagrama de Classe}
-      \begin{figure}[H]
-	\centering
-	%\input{./pictures/classes/Registrador.png}
-      \end{figure} 
-     
-    \subsection{Definições de Entrada e Saída}
-      \FloatBarrier
-      \begin{center}
-        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endfirsthead
-          \hline
-          \multicolumn{4}{|l|}%
-          {{\bfseries continuação da página anterior}} \\
-          \hline
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endhead
-
-          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-          \endfoot
-
-          \hline
-          \endlastfoot
-
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          RegistradorDestino            & 5   & entrada   & Endereço do registrador onde será salvo o resultado de uma operação.    \\ \hline
-          RegistradorSaida             & 5   & saída   & Registrador .    \\ \hline
-          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura nos registradores.    \\ \hline
-          AtivaEscrita		   & 1   & entrada   & Sinal para ativar a escrita nos registradores.    \\ \hline	
-          EscritaDestino             & 32   & entrada   & Escreve um valor de 32 bits no registrador endereçado pelo RegistradorDestino.    \\ \hline
-        \end{longtable}
-      \end{center}   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Acesso à memória}
