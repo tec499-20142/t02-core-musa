@@ -5,14 +5,15 @@
 
 \usepackage{ipprocess}
 % Use longtable if you want big tables to split over multiple pages.
-% \usepackage{longtable}
-\usepackage[utf8]{inputenc} 
+\usepackage{longtable}
+\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel} % Uncomment for portuguese
 
 \sloppy
 
 \graphicspath{{./pictures/}} % Pictures dir
 \makeindex
+
 \begin{document}
 
 \DocumentTitle{Documento de Arquitetura}
@@ -37,10 +38,11 @@
       \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\
       \hline 20/10/2014 &  Concepção do Documento & fmbboaventura \\ \hline
       		 23/10/2014 &  Revisão Inicial & jadsonfirmo \\ \hline
-      		 29/10/2014 &  Adcionada Breve Descrição dos Componentes & fmbboaventura \\ \hline       
+      		 29/10/2014 &  Adicionada Breve Descrição dos Componentes & fmbboaventura \\ \hline       
       		 29/10/2014 & Stakeholders & jadsonfirmo \\ \hline
       		 30/10/2014 & Ajustes estruturais & fmbboaventura e jadsonfirmo \\ \hline
       		 30/10/2014 & Detalhamento das Instruções & jadsonfirmo, KelCarmo e Odivio \\ \hline
+      		 30/10/2014 & Adição dos diagramas de classes & gordinh \\ \hline
     \end{tabular}
   \end{table}
 
@@ -114,6 +116,11 @@ O presente documento é apresentado como segue:\\
   % fim
 
 \chapter{Visão Geral da Arquitetura}
+  \section{Arquitetura geral MUSA}
+  \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/Architecture/DataPath.png}
+  \end{figure}  
 
   \section{Descrição dos Componentes}
   A unidade de processamento a ser desenvolvida é composta a partir dos seguintes componentes:
@@ -252,19 +259,213 @@ O presente documento é apresentado como segue:\\
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
 
-  \section{Nome do Módulo}
+  \section{ULA}
 
     \subsection{Diagrama de Classe}
-
+    \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/ULA.png}
+      \end{figure}      
+     
     \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
 
-    \subsection{Datapath Interno}
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
 
-    \subsection{Máquina de Estados}
+          \hline
+          \endlastfoot
 
-    \subsection{Temporização}
+          clock                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          OP1             & 32   & entrada   & Valor do primeiro operando.    \\ \hline
+          OP2             & 32   & entrada   & Valor do segundo operando.    \\ \hline
+          Function             & 3   & entrada   & Identificador da operação.    \\ \hline
+          Result             & 32   & saída   & Valor do resultado da operação realizada.    \\ \hline
+          Overflow             & 1   & saída   & Sinal de overflow, para quando ocorrer overflow durante a operação.    \\ \hline
+          Equal             & 1   & entrada   & Sinal de igualdade, para quando ocorrer uma comparação entre dois valores iguais.    \\ \hline
+        \end{longtable}
+      \end{center}  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Busca de Instrução}
 
+    \subsection{Diagrama de Classe}
+    \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/Busca_de_Instrucao.png}
+      \end{figure}      
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
 
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          entradaPC             & 18   & entrada   & Endereço do PC atual.    \\ \hline
+          saidaInstrucao             & 32   & saída   & Instrução que sai da memória de instrução .    \\ \hline
+        \end{longtable}
+      \end{center}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Pilha}
+
+    \subsection{Diagrama de Classe}
+      \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/pilha.png}
+      \end{figure} 
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
+
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          entradaDeDados             & 18   & entrada   & Endereço do PC que será armazenado.    \\ \hline
+          popRequest             & 1   & entrada   & Sinal para tirar o ultimo endereço armmazenado da pilha.    \\ \hline
+          pushRequest             & 1   & entrada   & Sinal para salvar o endereço do PC da pilha.    \\ \hline
+          saidaDeDados             & 32   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
+        \end{longtable}
+      \end{center}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Acesso à memória}
+
+    \subsection{Diagrama de Classe}
+      \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/Leitura.png}
+      \end{figure} 
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
+
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          entradaDeDados             & 32   & entrada   & Valor que será armazenado na memória de dados.    \\ \hline
+          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita na memória de dados.    \\ \hline
+          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura na memória de dados.    \\ \hline
+          saidaDeDados             & 32   & saída   & Valor que irá sair da memória de dados.    \\ \hline
+        \end{longtable}
+      \end{center}  
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Busca de Registradores}
+
+    \subsection{Diagrama de Classe}
+      \begin{figure}[H]
+	\centering
+	%\input{./pictures/classes/Registrador.png}
+      \end{figure} 
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
+
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          EscritaDestino             & 32   & entrada   & Escrita do valor nos registradores de destino.    \\ \hline
+          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita no Banco de Registradores.    \\ \hline
+          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
+          RegistradorDeSaida             & 32   & saída   & Saída do valor contido nos registradores.    \\ \hline
+          RegistradorDestino             & 5   & Entrada   & Endereço do registrador destino.    \\ \hline
+        \end{longtable}
+      \end{center}  
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
 % \bibliographystyle{ieeetr}
