@@ -120,11 +120,12 @@ O presente documento é apresentado como segue:\\
   
   \begin{itemize}
     \item \textbf{PC --} Registrador que guarda o endereço da próxima instrução a ser executada.
-    \item \textbf{Memória de Dados --} Parte da memória que armazena dados manipulados pelo programa.
-    \item \textbf{Memória de Instrução --} Parte da memória que comtem o código do programa em linguagem de máquina.
-    \item \textbf{ULA --} Implementa operações lógicas e aritméticas.
-    \item \textbf{Unidade de Controle --} Decodifica a instrução e define sinais de controle para os demais componentes.
-    \item \textbf{Banco de Registradores --} Contém os registradores de propósito geral do processador.
+    \item \textbf{Memória de Dados --} A Memória de dados é endereçada com 33 bits, que comporta no máximo 2 elevado a 33 palavras de instrução no total, que guarda dados com tamanho de 32 bits que foram manipulados pelo programa ou processador. 
+    \item \textbf{Memória de Instrução --} A Memória de instrução é endereçada com 18 bits, que comporta no máximo 2 elevado a 18 palavras de instrução no total, tem tamanho de 1048576 bytes, justamente pelo fato da palavra de instrução ter 32 bits. Por fim é a memória que guarda o programa codificado em linguagem assembly.
+    \item \textbf{ULA --} É responsável por todo o processamento realizado no processador, pois esta unidade executa as instruções lógicas e aritméticas.
+    \item \textbf{Unidade de Controle --} Esta unidade decodifica a instrução e define sinais de controle como, sinais de leitura, escrita de memória e de registradores de armazenamento temporário interno e sinais de liberação de barramentos para endereço e dados e unidades funcionais. As unidades funcionais internas do processador são controladas por esta unidade de temporização e controle. Os determinados sinais de controle são enviados para as demais unidades após a decodificação de uma determinada instrução que partem do registrador de instrução ( IR ).
+    \item \textbf{Banco de Registradores --} Contém os 32 registradores de propósito geral do processador.
+    \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno de chamadas de funções. ( Detalhar mais, qual tamanho dos endereçamento e tal .. ) 
   \end{itemize}
   
   \section{Intruções}

@@ -55,6 +55,7 @@
       \small 20/10/2014 & \small Refatoração do documento & \small jadsonfirmo \\ \hline
       \small 23/10/2014 & \small Revisão & \small jadsonfirmo \\ \hline
       \small 28/10/2014 & \small Atualização de Requisitos & \small jadsonfirmo \\ \hline
+      \small 30/10/2014 & \small Revisão Final & \small jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -351,15 +352,13 @@
 
       \requirement
       {Instrução RET}
-      {O processador deve ser capaz retornar de uma sub-rotina.
+      {O processador deve ser capaz de retornar de uma sub-rotina.
       A instrução RET está compreendida da seguinte forma:\\
       \begin{itemize}
          \item A instrução deverá acessar a pilha procurando pelo endereço de retorno. Ao acessar a pilha, que contém os endereços do PC salvos, o programa deve ir para o endereço que está no topo da pilha.
         \end{itemize}
         }
       {Essencial}
-
-
 
     \end{functional}
 
@@ -369,7 +368,7 @@
 
       \requirement
       {Instrução NOP}
-      {Não realiza operação.}
+      {O processador deve ser capaz de não realizar operações durante os 5 ciclos de clock.}
       {Essencial}
 
       \requirement
@@ -392,7 +391,7 @@
       {Essencial}
 
       \requirement{Above}
-      {}
+      {Esta Flag deve ser utilizada como resultado da instrução CMP, deve constar verdadeiro quando uma palavra é maior que a outra.}
       {Essencial}
 
       \requirement{Error}
