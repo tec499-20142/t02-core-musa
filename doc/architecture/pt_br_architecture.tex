@@ -5,14 +5,15 @@
 
 \usepackage{ipprocess}
 % Use longtable if you want big tables to split over multiple pages.
-% \usepackage{longtable}
-\usepackage[utf8]{inputenc} 
+\usepackage{longtable}
+\usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel} % Uncomment for portuguese
 
 \sloppy
 
 \graphicspath{{./pictures/}} % Pictures dir
 \makeindex
+
 \begin{document}
 
 \DocumentTitle{Documento de Arquitetura}
@@ -36,13 +37,12 @@
       \cellcolor[gray]{0.9}
       \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\
       \hline 20/10/2014 &  Concepção do Documento & fmbboaventura \\ \hline
-      		 23/10/2014 &  Revisão Inicial & jadsonfirmo \\ \hline       
-      		 xx/xx/xxxx &
-      \begin{itemize}
-        \item Exemplo de;
-        \item Revisões em lista;
-      \end{itemize}
-      & <Autor(es)> \\ \hline 
+      		 23/10/2014 &  Revisão Inicial & jadsonfirmo \\ \hline
+      		 29/10/2014 &  Adicionada Breve Descrição dos Componentes & fmbboaventura \\ \hline       
+      		 29/10/2014 & Stakeholders & jadsonfirmo \\ \hline
+      		 30/10/2014 & Ajustes estruturais & fmbboaventura e jadsonfirmo \\ \hline
+      		 30/10/2014 & Detalhamento das Instruções & jadsonfirmo, KelCarmo e Odivio \\ \hline
+      		 30/10/2014 & Adição dos diagramas de classes & gordinh \\ \hline
     \end{tabular}
   \end{table}
 
@@ -56,9 +56,10 @@
   
   \section{Propósito do Documento}
   Este documento descreve a arquitetura do projeto \ipPROCESSProject, incluindo especificações dos circuitos internos e máquinas de estados de cada componente. Ele também apresenta diagramas de classe, definições de entrada e saída e diagramas de temporização. O principal objetivo deste documento é definir as especificações do projeto \ipPROCESSProject\ e prover uma visão geral completa do mesmo.
-
-  \noindent \textcolor{red}{\textit{Informações adicionais podem ser incluídas nesta seção. Entretanto, via de regra, ela não deve se extender por muitos parágrafos.}}
-
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \noindent \textcolor{red}{\textit{Informações adicionais podem ser incluídas nesta seção. Entretanto, via de regra, ela não deve se extender por muitos parágrafos.}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Stakeholders}
     \FloatBarrier
     \begin{table}[H] 
@@ -66,7 +67,10 @@
         \begin{tabular}[pos]{|m{6cm} | m{8cm}|} 
           \hline 
           \cellcolor[gray]{0.9}\textbf{Nome} & \cellcolor[gray]{0.9}\textbf{Papel/Responsabilidades} \\ \hline
-           &  \\ \hline
+          Diego Leite e Lucas Morais & Gerencia  \\ \hline
+           Victor Figueiredo, Matheus Castro, Odivio Caio Santos e Kelvin Carmo & Desenvolvimento  \\ \hline
+           Filipe Boaventura e Wagner Bittencourt & Implementação  \\ \hline
+           Jadson Firmo & Análise e Refatoração  \\ \hline
         \end{tabular}
       \end{center}
     \end{table} 
@@ -112,41 +116,356 @@ O presente documento é apresentado como segue:\\
   % fim
 
 \chapter{Visão Geral da Arquitetura}
+  \section{Arquitetura geral MUSA}
+  \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/DataPaths/Architecture/DataPathFinal.png}
+  \end{figure}  
 
   \section{Descrição dos Componentes}
   A unidade de processamento a ser desenvolvida é composta a partir dos seguintes componentes:
   
   \begin{itemize}
-    \item \textbf{PC --} Breve descrição.
-    \item \textbf{Memória de Dados --} Breve descrição.
-    \item \textbf{Memória de Instrução --} Breve descrição.
-    \item \textbf{ULA --} Breve descrição.
-    \item \textbf{Unidade de Controle --} Breve descrição.
-    \item \textbf{Banco de Registradores --} Breve descrição.
+    \item \textbf{PC --} Registrador que guarda o endereço da próxima instrução a ser executada.
+    
+    \item \textbf{Memória de Dados --} A Memória de dados é endereçada com 33 bits, que comporta no máximo 2 elevado a 33 palavras de instrução no total, que guarda dados com tamanho de 32 bits que foram manipulados pelo programa ou processador. 
+   
+    \item \textbf{Memória de Instrução --} A Memória de instrução é endereçada com 18 bits, que comporta no máximo 2 elevado a 18 palavras de instrução no total, tem tamanho de 1048576 bytes, justamente pelo fato da palavra de instrução ter 32 bits. Por fim é a memória que guarda o programa codificado em linguagem assembly.
+    
+    \item \textbf{ULA --} É responsável por todo o processamento realizado no processador, pois esta unidade executa as instruções lógicas e aritméticas.
+    
+    \item \textbf{Unidade de Controle --} Esta unidade decodifica a instrução e define sinais de controle como, sinais de leitura, escrita de memória e de registradores de armazenamento temporário interno e sinais de liberação de barramentos para endereço e dados e unidades funcionais. As unidades funcionais internas do processador são controladas por esta unidade de temporização e controle. Os determinados sinais de controle são enviados para as demais unidades após a decodificação de uma determinada instrução que partem do registrador de instrução ( IR ).
+    
+    \item \textbf{Banco de Registradores --} Contém os 32 registradores de propósito geral do processador.
+    
+    \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno de chamadas de funções. Possui 32 registradores de 18 bits e um contador responsável por apontar o topo da pilha.
   \end{itemize}
   
-  \section{Diagrama de Classe}
+  \section{Intruções}
+  A unidade de processamento possui 21 intruções essenciais para o processamento das operações. Elas são desmembradas em quatro formatos: R-type, I-type, Load/Store e Jump.
+  
+  \begin{itemize}
+    \item \textbf{R-type --} Operações lógicas e aritméticas.\\
+    \begin{itemize}
+        \item \textbf{ADD:} Soma de dois valores.
+        \item \textbf{SUB:} Subtração de dois valores.
+        \item \textbf{MUL:} Multiplicação de dois valores.
+        \item \textbf{DIV:} Divisão de dois valores.
+        \item \textbf{AND:} Operação lógica AND entre dois valores.
+        \item \textbf{OR:} Operação lógica OR entre dois valores.
+        \item \textbf{NOT:} Operação lógica NOT.
+        \item \textbf{CMP:} Comparação de dois valores.
+    \end{itemize}
 
-  \section{Definições de Entrada e Saída}
+    \item \textbf{I-type --} Operações imediatas.\\ 
+    \begin{itemize}
+        \item \textbf{ADDi:} Soma de dois valores, sendo um destes imediato.
+        \item \textbf{SUBi:} Subtração de dois valores, sendo um destes imediato.
+        \item \textbf{ANDi:} Operação lógica AND entre dois valores, sendo um destes imediato.
+        \item \textbf{ORi:} Operação lógica OR entre dois valores, sendo um destes imediato.     
+    \end{itemize}
 
-  \section{Datapath Interno}
+    
+    \item \textbf{Load/Store --} Operações de carregamento e armazenamento.\\
+    \begin{itemize}
+        \item \textbf{LW:} Operação de leitura na memória de dados.
+        \item \textbf{SW:} Operação de armazenamento na memória de dados.
+    \end{itemize}
+    
+    \item \textbf{Jump --} Operações de desvio.\\
+    \begin{itemize}
+        \item \textbf{JR:} Desvia o programa para um endereço de destino.
+        \item \textbf{JPC:} Desvia o programa para um endereço relativo ao PC.
+        \item \textbf{BRFL:} Desvia o programa para um endereço de destino, atendendo uma condição de flag.
+        \item \textbf{CALL:} Desvia um programa em execução para uma sub-rotina.
+        \item \textbf{RET:} Retorna de uma sub-rotina.
+        \item \textbf{HALT:} Para a execução de um programa.
+        \item \textbf{NOP:} Não realiza operação.
+    \end{itemize}
+    
+    \end{itemize}
+
+  \section{Detalhamento das Intruções}
+  
+  \begin{itemize}
+     
+     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT, CMP, ADDi, SUBi, ANDi e ORi:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{FUNCTION} & \textbf{RD} & \textbf{RS} & \textbf{RT} & \textbf{IM} \\ 
+  	\hline 
+  	04 & 04 & 05 & 05 & 05 & 09 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações Aritméticas, Lógicas e Imediatas}
+  \end{table}
+  
+  Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo IM é reservado para as operações imediatas.\\
+  
+   \item \textbf{LW e SW:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|c|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{RD} & \textbf{RS} & \textbf{I} & \textbf{} \\ 
+  	\hline 
+  	04 & 04 & 05 & 16 & 02 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações de Leitura e Escrita}
+  \end{table}
+  
+  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo I (de 16 bits) que representa o deslocamento do registrador base. Os dois bits restantes serão sempre ignorados.\\
+
+  
+  \item \textbf{JR, BRFL, CALL, RET, HALT e NOP:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{RF} & \textbf{CST} & \textbf{} \\ 
+  	\hline 
+  	04 & 05 & 05 & 18 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações de Salto}
+  \end{table}
+  
+  Instruções de salto, que especificam um registrador RF e uma CST (FLAG), para a instrução BRFL, que realiza um salto caso condição de comparação com a flag for verdadeira. Utilizará também 18 bits  utilizará 18 bits na instrução que respresenta uma posição de endereço de memória, para as instruções JR, CALL e HALT. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
+  
+    \item \textbf{JPC:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{I} \\ 
+  	\hline 
+  	04 & 28 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout da Operação JPC}
+  \end{table}
+  
+  Essa instrução que representa um desvio relativo ao PC contém além do código de operação (OPCODE) um valor de 28 bits que representa o deslocamento o qual pode ser tomado.
+  
+  \end{itemize}
 
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
 
-  \section{Nome do Módulo}
+  \section{ULA}
 
     \subsection{Diagrama de Classe}
-
+    \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/ULA.png}
+      \end{figure}      
+     
     \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
 
-    \subsection{Datapath Interno}
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
 
-    \subsection{Máquina de Estados}
+          \hline
+          \endlastfoot
 
-    \subsection{Temporização}
+          clock                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          OP1             & 32   & entrada   & Valor do primeiro operando.    \\ \hline
+          OP2             & 32   & entrada   & Valor do segundo operando.    \\ \hline
+          Function             & 3   & entrada   & Identificador da operação.    \\ \hline
+          Result             & 32   & saída   & Valor do resultado da operação realizada.    \\ \hline
+          Overflow             & 1   & saída   & Sinal de overflow, para quando ocorrer overflow durante a operação.    \\ \hline
+          Equal             & 1   & entrada   & Sinal de igualdade, para quando ocorrer uma comparação entre dois valores iguais.    \\ \hline
+        \end{longtable}
+      \end{center}  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Busca de Instrução}
 
+    \subsection{Diagrama de Classe}
+    \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/Busca_de_Instrucao.png}
+      \end{figure}      
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
 
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          entradaPC             & 18   & entrada   & Endereço do PC atual.    \\ \hline
+          saidaInstrucao             & 32   & saída   & Instrução que sai da memória de instrução .    \\ \hline
+        \end{longtable}
+      \end{center}  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Pilha}
+
+    \subsection{Diagrama de Classe}
+      \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/pilha.png}
+      \end{figure} 
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
+
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          entradaDeDados             & 18   & entrada   & Endereço do PC que será armazenado.    \\ \hline
+          popRequest             & 1   & entrada   & Sinal para tirar o ultimo endereço armmazenado da pilha.    \\ \hline
+          pushRequest             & 1   & entrada   & Sinal para salvar o endereço do PC da pilha.    \\ \hline
+          saidaDeDados             & 32   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
+        \end{longtable}
+      \end{center}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Acesso à memória}
+
+    \subsection{Diagrama de Classe}
+      \begin{figure}[H]
+	\centering
+	\ucdiagram{./pictures/classes/Leitura.png}
+      \end{figure} 
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
+
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          entradaDeDados             & 32   & entrada   & Valor que será armazenado na memória de dados.    \\ \hline
+          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita na memória de dados.    \\ \hline
+          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura na memória de dados.    \\ \hline
+          saidaDeDados             & 32   & saída   & Valor que irá sair da memória de dados.    \\ \hline
+        \end{longtable}
+      \end{center}  
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Busca de Registradores}
+
+    \subsection{Diagrama de Classe}
+      \begin{figure}[H]
+	\centering
+	%\input{./pictures/classes/Registrador.png}
+      \end{figure} 
+     
+    \subsection{Definições de Entrada e Saída}
+      \FloatBarrier
+      \begin{center}
+        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endfirsthead
+          \hline
+          \multicolumn{4}{|l|}%
+          {{\bfseries continuação da página anterior}} \\
+          \hline
+          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+          \endhead
+
+          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+          \endfoot
+
+          \hline
+          \endlastfoot
+
+          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
+          EscritaDestino             & 32   & entrada   & Escrita do valor nos registradores de destino.    \\ \hline
+          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita no Banco de Registradores.    \\ \hline
+          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
+          RegistradorDeSaida             & 32   & saída   & Saída do valor contido nos registradores.    \\ \hline
+          RegistradorDestino             & 5   & Entrada   & Endereço do registrador destino.    \\ \hline
+        \end{longtable}
+      \end{center}  
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
 % \bibliographystyle{ieeetr}

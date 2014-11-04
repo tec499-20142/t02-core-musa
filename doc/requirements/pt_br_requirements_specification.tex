@@ -54,6 +54,8 @@
       \small 09/10/2014 & \small Revisão do documento & \small Figueiredovr, mtcastro, di3goleite \\ \hline
       \small 20/10/2014 & \small Refatoração do documento & \small jadsonfirmo \\ \hline
       \small 23/10/2014 & \small Revisão & \small jadsonfirmo \\ \hline
+      \small 28/10/2014 & \small Atualização de Requisitos & \small jadsonfirmo \\ \hline
+      \small 30/10/2014 & \small Revisão Final & \small jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -207,6 +209,28 @@
        \end{itemize}
        }
       {Essencial}
+      
+      \requirement
+      {Instrução ADDi}
+      {O processador deve ser capaz de realizar a soma de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução ADDi está compreendida da seguinte forma:\\
+       \begin{itemize}
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando1 e o imediato (RS1+RS2).
+       \end{itemize}
+       }
+      {Essencial}
+      
+      \requirement
+      {Instrução SUBi}
+      {O processador deve ser capaz de realizar a subtração de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução SUBi está compreendida da seguinte forma:\\
+       \begin{itemize}
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando1 e o imediato (RS1-RS2).
+       \end{itemize}
+       }
+      {Essencial}
 
      \requirement
       {Instrução CMP}
@@ -238,7 +262,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da multiplicação entre o operando1 e operando2 (RS1||RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando1 e operando2 (RS1||RS2).
        \end{itemize}
        }
       {Essencial}
@@ -251,6 +275,30 @@
          \item Registrador de Destino (RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
          \end{itemize}
          }
+      {Essencial}
+      
+      \requirement
+      {Instrução ANDi}
+      {O processador deve ser capaz de realizar a operação lógica AND, bit a bit, de dois valores, de modo que um desses valores é um valor imediato.
+      A instrução ANDi está compreendida da seguinte forma:\\
+       \begin{itemize}
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando1 e o imediato (RS1\&\&RS2).
+       \end{itemize}
+       }
+      {Essencial}
+      
+      \requirement
+      {Instrução ORi}
+      {O processador deve ser capaz de realizar a operação lógica OR, bit a bit, de dois valores, de modo que um desses valores é um valor imediato.
+      A instrução ORi está compreendida da seguinte forma:\\
+       \begin{itemize}
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando1 e o imediato (RS1||RS2).
+       \end{itemize}
+       }
       {Essencial}
 
       \requirement
@@ -304,15 +352,13 @@
 
       \requirement
       {Instrução RET}
-      {O processador deve ser capaz retornar de uma sub-rotina.
+      {O processador deve ser capaz de retornar de uma sub-rotina.
       A instrução RET está compreendida da seguinte forma:\\
       \begin{itemize}
          \item A instrução deverá acessar a pilha procurando pelo endereço de retorno. Ao acessar a pilha, que contém os endereços do PC salvos, o programa deve ir para o endereço que está no topo da pilha.
         \end{itemize}
         }
       {Essencial}
-
-
 
     \end{functional}
 
@@ -322,7 +368,7 @@
 
       \requirement
       {Instrução NOP}
-      {Não realiza operação.}
+      {O processador deve ser capaz de não realizar operações durante os 5 ciclos de clock.}
       {Essencial}
 
       \requirement
@@ -336,8 +382,8 @@
 
     \begin{functional}
 
-      \requirement{Overflow}
-      {O processador deve ser capaz de avisar que houve um erro (ou um "estouro") na operação aritimética através da flag de overflow.}
+      \requirement{Overflow/Underflow}
+      {O processador deve ser capaz de avisar que houve um erro (ou um "estouro") na operação aritimética através da flag de overflow/underflow.}
       {Essencial}
 
       \requirement{Equals}
@@ -345,7 +391,7 @@
       {Essencial}
 
       \requirement{Above}
-      {}
+      {Esta Flag deve ser utilizada como resultado da instrução CMP, deve constar verdadeiro quando uma palavra é maior que a outra.}
       {Essencial}
 
       \requirement{Error}
