@@ -1,0 +1,3 @@
+module stack ();
+
+endmodule
