@@ -43,6 +43,7 @@
       		 30/10/2014 & Ajustes estruturais & fmbboaventura e jadsonfirmo \\ \hline
       		 30/10/2014 & Detalhamento das Instruções & jadsonfirmo, KelCarmo e Odivio \\ \hline
       		 30/10/2014 & Adição dos diagramas de classes & gordinh \\ \hline
+      		 06/11/2014 & Refatoração do documento & jadsonfirmo e KelCarmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -189,70 +190,54 @@ O presente documento é apresentado como segue:\\
   
   \begin{itemize}
      
-     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT, CMP, ADDi, SUBi, ANDi e ORi:}
+     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT:}
 
   \begin{table}[H]
 \centering
 	\begin{tabular}{|c|c|c|c|c|c|}
   	\hline 
-  	\textbf{OPCODE} & \textbf{FUNCTION} & \textbf{RD} & \textbf{RS} & \textbf{RT} & \textbf{IM} \\ 
+  	\textbf{OPCODE} & \textbf{RS} & \textbf{RT} & \textbf{RD} & \textbf{SHAMT} & \textbf{FUNCTION} \\ 
   	\hline 
-  	04 & 04 & 05 & 05 & 05 & 09 \\ 
+  	06 & 05 & 05 & 05 & 05 & 06 \\ 
   	\hline 
   	\end{tabular} 
-  	\caption{Layout das Operações Aritméticas, Lógicas e Imediatas}
+  	\caption{Layout das Operações Aritméticas e Lógicas}
   \end{table}
   
   Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo IM é reservado para as operações imediatas.\\
   
-   \item \textbf{LW e SW:}
-
-  \begin{table}[H]
-\centering
-	\begin{tabular}{|c|c|c|c|c|}
-  	\hline 
-  	\textbf{OPCODE} & \textbf{RD} & \textbf{RS} & \textbf{I} & \textbf{} \\ 
-  	\hline 
-  	04 & 04 & 05 & 16 & 02 \\ 
-  	\hline 
-  	\end{tabular} 
-  	\caption{Layout das Operações de Leitura e Escrita}
-  \end{table}
-  
-  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo I (de 16 bits) que representa o deslocamento do registrador base. Os dois bits restantes serão sempre ignorados.\\
-
-  
-  \item \textbf{JR, BRFL, CALL, RET, HALT e NOP:}
+   \item \textbf{LW e SW, ADDi, SUBi, ANDi, ORi e BRFL:}
 
   \begin{table}[H]
 \centering
 	\begin{tabular}{|c|c|c|c|}
   	\hline 
-  	\textbf{OPCODE} & \textbf{RF} & \textbf{CST} & \textbf{} \\ 
+  	\textbf{OPCODE} & \textbf{RD} & \textbf{RS} & \textbf{IMMEDIATE}  \\ 
   	\hline 
-  	04 & 05 & 05 & 18 \\ 
+  	06 & 05 & 05 & 16 \\ 
+  	\hline 
+  	\end{tabular} 
+  	\caption{Layout das Operações de Leitura/Escrita e operações imediatas}
+  \end{table}
+  
+  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo I (de 16 bits) que representa o deslocamento do registrador base. Os dois bits restantes serão sempre ignorados.\\
+
+  
+  \item \textbf{JR, CALL, RET, HALT e NOP e JPC:}
+
+  \begin{table}[H]
+\centering
+	\begin{tabular}{|c|c|}
+  	\hline 
+  	\textbf{OPCODE} & \textbf{TARGET} \\ 
+  	\hline 
+  	06 & 26 \\ 
   	\hline 
   	\end{tabular} 
   	\caption{Layout das Operações de Salto}
   \end{table}
   
   Instruções de salto, que especificam um registrador RF e uma CST (FLAG), para a instrução BRFL, que realiza um salto caso condição de comparação com a flag for verdadeira. Utilizará também 18 bits  utilizará 18 bits na instrução que respresenta uma posição de endereço de memória, para as instruções JR, CALL e HALT. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
-  
-    \item \textbf{JPC:}
-
-  \begin{table}[H]
-\centering
-	\begin{tabular}{|c|c|}
-  	\hline 
-  	\textbf{OPCODE} & \textbf{I} \\ 
-  	\hline 
-  	04 & 28 \\ 
-  	\hline 
-  	\end{tabular} 
-  	\caption{Layout da Operação JPC}
-  \end{table}
-  
-  Essa instrução que representa um desvio relativo ao PC contém além do código de operação (OPCODE) um valor de 28 bits que representa o deslocamento o qual pode ser tomado.
   
   \end{itemize}
 
@@ -298,7 +283,7 @@ O presente documento é apresentado como segue:\\
           Function             & 3   & entrada   & Identificador da operação.    \\ \hline
           Result             & 32   & saída   & Valor do resultado da operação realizada.    \\ \hline
           Overflow             & 1   & saída   & Sinal de overflow, para quando ocorrer overflow durante a operação.    \\ \hline
-          Equal             & 1   & entrada   & Sinal de igualdade, para quando ocorrer uma comparação entre dois valores iguais.    \\ \hline
+          Equals             & 1   & saída   & Sinal de igualdade, para quando ocorrer uma comparação entre dois valores iguais.    \\ \hline
         \end{longtable}
       \end{center}  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
