@@ -130,42 +130,37 @@
   \section{Casos de Teste}
   Esta sessão apresenta o conjunto de TC realizados para a implementação dos testes do projeto Core-MUSA. As sessões a seguir foram divididas e nomeadas utilizando a nomenclatura abreviada [TC (NÚMERO DO TC)] seguido de uma breve descrição em forma de título.
 
-  \testcase{Título do Caso de Teste}
-  Apresentar aqui a descrição geral para o caso de uso.
+  \testcase{ULA}
+A ULA tem como objetivo principal realizar operações logicas e aritimeticas, onde algumas delas estão ligadas diretamente a flags informativas ou de erros.
   
-  \preconditions 
-    \begin{itemize}
-     \item Uma Pré-condição;
-     \item Mais uma Pré-condição;
-    \end{itemize}
-    
   \inputs
   	\begin{itemize}
-     \item Uma Entrada;
-     \item Mais uma Entrada;
-    \end{itemize}
+     \item Operando 1;
+     \item Operando 2;
+     \item Sinal de identificação da operação;
+     \end{itemize}
     
   \actions
   \begin{itemize}
-     \item ??????
+     \item Realizar a operação solicitada;
+     \item Ativar os sinais de saida de dados e de flags, caso ocorram;
     \end{itemize}
   
   \results
   	\begin{itemize}
-     \item Definir aqui os resultados esperados
-    \end{itemize}
-
-  \postconditions
-    \begin{itemize}
-     \item Definir aqui as pós-condições
+     \item Valor de 32 bits relativos ao resultado da operação;
+     \item Sinal de flag, caso ocorram;
     \end{itemize}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Descrição da etapa 1;
-    \item Descrição da etapa 2;
-    \item Descrição da etapa 3;
-    \item Descrição da etapa final;
+    \item As funcionalidades serão testadas na seguinte ordem de acordo com o sinal de identificação: ADD, ADDI, SUB, SUBI,
+AND, ANDI, OR, ORI, MUL, DIV, CMP, NOT;
+    \item Os valores ultilizados para os operandos serão adquiridos de forma aleatória;
+    \item Cada funcionalidade será testada 100 vezes;
+    \item Serão testados os seguintes casos de flags auxiliares: Equals ,Above;
+    \item Serão testados os seguintes casos de flag de erro de forma proposital: Overflow;
+    \item As flags serão testadas com a ultilização de uma saida de controle temporária para os sinais;
   \end{mainflow}
   
   % descricao do fluxo secundário (quando existir)
