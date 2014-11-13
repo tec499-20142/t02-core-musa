@@ -43,8 +43,9 @@
       		 30/10/2014 & Ajustes estruturais & fmbboaventura e jadsonfirmo \\ \hline
       		 30/10/2014 & Detalhamento das Instruções & jadsonfirmo, KelCarmo e Odivio \\ \hline
       		 30/10/2014 & Adição dos diagramas de classes & gordinh \\ \hline
-      		 06/11/2014 & Refatoração do documento & jadsonfirmo e KelCarmo \\ \hline
+      		 06/11/2014 & Mudanças nos Layouts das Instruções e no diagrama de classe da ULA & jadsonfirmo e KelCarmo \\ \hline
       		 10/11/2014 & Detalhamento dos Opcodes & jadsonfirmo \\ \hline
+      		 13/11/2014 & Alteração na tabela dos Opcodes & jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -161,8 +162,8 @@ O presente documento é apresentado como segue:\\
   	DIV & Divisão de dois valores. & 000000 & 011010 \\ \hline
   	AND & Operação lógica AND entre dois valores. & 000000 & 100100 \\ \hline
   	OR & Operação lógica OR entre dois valores. & 000000 & 100101 \\ \hline
-  	NOT & Operação lógica NOT. & 000000 & ? \\ \hline
-  	CMP & Comparação de dois valores. & 000000 & ? \\ \hline
+  	NOT & Operação lógica NOT. & 000000 & 100111 \\ \hline
+  	CMP & Comparação de dois valores. & 000000 & 011011 \\ \hline
   	\end{tabular} 
   	\caption{Instruções do tipo R.}
   \end{table}    
@@ -177,7 +178,7 @@ O presente documento é apresentado como segue:\\
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
   	ADDi &  Soma de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
-  	SUBi & Subtração de dois valores, sendo um destes imediato. & ? & - \\ \hline
+  	SUBi & Subtração de dois valores, sendo um destes imediato. & 100000 & - \\ \hline
   	ANDi & Operação lógica AND entre dois valores, sendo um destes imediato. & 001100 & - \\ \hline
   	ORi & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
   	\end{tabular} 
@@ -208,8 +209,8 @@ O presente documento é apresentado como segue:\\
   	\hline 
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
-  	JR & Desvia o programa para um endereço de destino. & 001000 & - \\ \hline
-  	JPC & Desvia o programa para um endereço relativo ao PC. & ? & - \\ \hline
+  	JR & Desvia o programa para um endereço de destino. &001000 & - \\ \hline
+  	JPC & Desvia o programa para um endereço relativo ao PC. & 000011 & - \\ \hline
   	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de flag. & ? & - \\ \hline
   	CALL & Desvia um programa em execução para uma sub-rotina. & ? & - \\ \hline
   	RET & Retorna de uma sub-rotina. & ? & - \\ \hline
