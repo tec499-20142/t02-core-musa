@@ -36,13 +36,12 @@
       \textbf{Date} & \cellcolor[gray]{0.9}\textbf{Descrição} & \cellcolor[gray]{0.9}\textbf{Autor(s)}\\ \hline
       \hline
       \small 10/11/2014 & \small Concepção do Documento & \small fmbboaventura \\ \hline      
-      \small xx/xx/xxxx &
+     \small 16/11/2014 &
       \begin{small}
         \begin{itemize}
-          \item Exemplo de;
-          \item Revisões em lista;
+          \item Plano de Teste da Memória de Instrução;
         \end{itemize}
-      \end{small} & \small <Autor(es)> \\ \hline 
+      \end{small} & \small mtcastro \\ \hline
     \end{tabular}
   \end{table}
 
@@ -174,6 +173,39 @@ AND, ANDI, OR, ORI, MUL, DIV, CMP, NOT;
       \item Liste aqui as etapas do fluxo secundário;
     \end{enumerate}
   \end{secondaryflow}  
+  
+  
+  
+  \testcase{Memória de Instrução}
+O objetivo deste teste é garantir que os registradores responsáveis por armazenar as instruções do programa  estejam lendo as informações corretas na posição correta.
+  
+  \inputs
+  	\begin{itemize}
+     \item Endereço de Instrução;
+     \end{itemize}
+    
+  \actions
+  \begin{itemize}
+     \item Busca um instrução na posição informada no endereço;
+    \end{itemize}
+  
+  \results
+  	\begin{itemize}
+     \item Confirmação da veracidade dos dados informado na saída;
+    \end{itemize}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item A memória de instrução recebe um endereço, a instrução
+Relacionada é buscada e passada adiante;
+    \item A entrada será um código de endereço aleatório  de 18 bits;
+    
+    \item Será testada 20 vezes;
+    \item A condição de testes é que o valor contido nos registradores de instrução seja igual ao valor associado ao endereço de instrução do programa de teste;
+    
+    \item Critério de aceitação é acertos igual ou maior 99\% do total de casos de teste;
+    \item As flags serão testadas com a ultilização de uma saida de controle temporária para os sinais;
+  \end{mainflow}
 
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
