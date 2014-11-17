@@ -1,26 +1,22 @@
-`include "../rtl/alu.v"
-module ula_tb(
-  reg signed [31:0] op1,
-	reg signed [31:0] op2,
-	reg [3:0] op_code,
-	reg equals,
-	reg above,
-	wire signed [31:0] res,
-	wire of,
-	wire z,	
-	// Variaveis de teste
-	integer expected_result,
-	integer op_count, ex_count);
+module ula_tb;
+  reg signed [31:0] op1;
+	reg signed [31:0] op2;
+	reg [3:0] op_code;
+	wire signed [31:0] res;
+	wire of;
+	wire z;
 	
-	alu u(
-	 .op1(op1),
-	 .op2(op2),
+	// Variaveis de teste
+	integer expected_result;
+	integer op_count, ex_count;
+	
+	ula u(
+	 .inA(op1),
+	 .inB(op2),
 	 .func(op_code),
 	 .result(res),
 	 .overflow(of),
-	 .zero(z),
-	 .equals(equals),
-	 .above(above)
+	 .zero(z)
 	);
 	
 	initial begin
