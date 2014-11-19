@@ -47,6 +47,7 @@
       		 10/11/2014 & Detalhamento dos Opcodes & jadsonfirmo \\ \hline
       		 13/11/2014 & Alteração na tabela dos Opcodes & jadsonfirmo \\ \hline
       		 17/11/2014 & Alteração no diagrama de classes da ULA e ajustes na tabela dos Opcodes & jadsonfirmo \\ \hline
+      		 18/11/2014 & Ajustes dos Opcodes & jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -213,8 +214,8 @@ O presente documento é apresentado como segue:\\
   	JR & Desvia o programa para um endereço de destino. & 000000 & 001000 \\ \hline
   	JPC & Desvia o programa para um endereço relativo ao PC. & 000000 & 001001 \\ \hline
   	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de flag. & 010001 & - \\ \hline
-  	CALL & Desvia um programa em execução para uma sub-rotina. & ? & - \\ \hline
-  	RET & Retorna de uma sub-rotina. & ? & - \\ \hline
+  	CALL & Desvia um programa em execução para uma sub-rotina. & 000011 & - \\ \hline
+  	RET & Retorna de uma sub-rotina. & 000000 & 001000 \\ \hline
   	HALT & Para a execução de um programa. & 000000 & 001101 \\ \hline
   	NOP & Não realiza operação. & 000000 & 000000 \\ \hline
   	\end{tabular} 
