@@ -109,8 +109,8 @@ A ULA tem como objetivo principal realizar operações logicas e aritimeticas, o
   \begin{mainflow}
     \item As funcionalidades serão testadas na seguinte ordem de acordo com o sinal de identificação: ADD, ADDI, SUB, SUBI,
 AND, ANDI, OR, ORI, MUL, DIV, CMP, NOT;
-    \item Os valores ultilizados para os operandos serão escolhidos pela equipe;
-    \item Cada funcionalidade será testada 5 vezes;
+    \item Os valores ultilizados para os operandos serão escolhidos de forma aleatória;
+    \item Cada funcionalidade será testada 100 vezes;
     \item Serão testados os seguintes casos de flags auxiliares: Equals ,Above;
     \item Serão testados os seguintes casos de flag de erro de forma proposital: Overflow;
     \item As flags serão testadas com a ultilização de uma saida de controle temporária para os sinais;
@@ -163,7 +163,7 @@ Relacionada é buscada e passada adiante;
 
  \testcase{Bando de Registradores}
 O Banco de Registradores tem como função executar operações de 
-leitura de dados anteriormente gravados e de escrita de dados para modificar as informações internas. Ele possui 32 registradores de propósito geral do processador.
+leitura de dados anteriormente gravados e de escrita de dados para modificar as informações internas. Ele possui 32 registradores de propósito geral do processador. 
   
   \inputs
   	\begin{itemize}
@@ -191,6 +191,34 @@ leitura de dados anteriormente gravados e de escrita de dados para modificar as 
      \item Será feita a Leitura do 10 registradores escolhidos previamente no Banco.
      \item Serão escritos valores escolhidos pela equipe em 5 dos 10 registradores previamente escolhidos.
      \item Será feita novamente a leitura dos 10 registradores escolhidos previamente no Banco.
+  \end{mainflow}
+
+ \testcase{Pilha}
+A pilha é tem como funcão armazenar os valores de PC em casos de Chamada a função. Possui 32 registradores de 18 bits e um contador responsável por apontar o topo da pilha.
+  
+  \inputs
+  	\begin{itemize}
+     \item Sinal de ativação de Leitura;
+     \item Saida do endereço de 18bits;
+     \item Sinal de ativação de Escrita;
+     \item Entrada do endereço de 18bits.
+     \end{itemize}
+    
+  \actions
+  \begin{itemize}
+     \item Trocar o valor de saida para o proximo na pilha;
+     \item Modificar o contador para apontar sempre para o topo da pilha;
+    \end{itemize}
+  
+  \results
+  	\begin{itemize}
+     \item Valor de 18 bits relativo ao ultimo valor guardado; 
+    \end{itemize}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+     \item Serão escritos valores aleatorios de  18bits na pilha.
+     \item A pilha será esvaziada e os valores comparados.
   \end{mainflow}
 
 % Optional bibliography section
