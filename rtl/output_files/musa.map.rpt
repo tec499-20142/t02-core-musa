@@ -1,6 +1,6 @@
 Analysis & Synthesis report for musa
-Wed Nov 19 15:55:20 2014
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Thu Nov 20 12:53:07 2014
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -33,24 +33,24 @@ applicable agreement for further details.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Nov 19 15:55:20 2014          ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
-; Revision Name                      ; musa                                       ;
-; Top-level Entity Name              ; musa                                       ;
-; Family                             ; Cyclone III                                ;
-; Total logic elements               ; N/A until Partition Merge                  ;
-;     Total combinational functions  ; N/A until Partition Merge                  ;
-;     Dedicated logic registers      ; N/A until Partition Merge                  ;
-; Total registers                    ; N/A until Partition Merge                  ;
-; Total pins                         ; N/A until Partition Merge                  ;
-; Total virtual pins                 ; N/A until Partition Merge                  ;
-; Total memory bits                  ; N/A until Partition Merge                  ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
-; Total PLLs                         ; N/A until Partition Merge                  ;
-+------------------------------------+--------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Failed - Thu Nov 20 12:53:07 2014               ;
+; Quartus II 32-bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; musa                                            ;
+; Top-level Entity Name              ; musa                                            ;
+; Family                             ; Cyclone III                                     ;
+; Total logic elements               ; N/A until Partition Merge                       ;
+;     Total combinational functions  ; N/A until Partition Merge                       ;
+;     Dedicated logic registers      ; N/A until Partition Merge                       ;
+; Total registers                    ; N/A until Partition Merge                       ;
+; Total pins                         ; N/A until Partition Merge                       ;
+; Total virtual pins                 ; N/A until Partition Merge                       ;
+; Total memory bits                  ; N/A until Partition Merge                       ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                       ;
+; Total PLLs                         ; N/A until Partition Merge                       ;
++------------------------------------+-------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -140,59 +140,50 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 6           ;
-; Maximum allowed            ; 6           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ;   0.0%      ;
-+----------------------------+-------------+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
 
 
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Nov 19 15:55:19 2014
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu Nov 20 12:53:06 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
-Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file control_unit_microprogramed.v
+    Info (12023): Found entity 1: control_unit_microprogramed
 Info (12021): Found 1 design units, including 1 entities, in source file musa.v
     Info (12023): Found entity 1: musa
 Warning (10463): Verilog HDL Declaration warning at control_unit.v(8): "return" is SystemVerilog-2005 keyword
-Error (10170): Verilog HDL syntax error at control_unit.v(15) near text "parameter";  expecting an identifier ("parameter" is a reserved keyword ) File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/control_unit.v Line: 15
-Error (10170): Verilog HDL syntax error at control_unit.v(18) near text "=";  expecting an operand File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/control_unit.v Line: 18
-Error (10170): Verilog HDL syntax error at control_unit.v(19) near text "=";  expecting an operand File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/control_unit.v Line: 19
-Error (10170): Verilog HDL syntax error at control_unit.v(135) near text "state";  expecting ";" File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/control_unit.v Line: 135
-Error (10170): Verilog HDL syntax error at control_unit.v(162) near text "state";  expecting ";" File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/control_unit.v Line: 162
-Error (10170): Verilog HDL syntax error at control_unit.v(181) near text "end";  expecting "endcase" File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/control_unit.v Line: 181
-Info (12021): Found 0 design units, including 0 entities, in source file control_unit.v
+Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
+    Info (12023): Found entity 1: control_unit
 Info (12021): Found 1 design units, including 1 entities, in source file data_memory.v
     Info (12023): Found entity 1: data_memory
 Info (12021): Found 1 design units, including 1 entities, in source file instruction_memory.v
     Info (12023): Found entity 1: instruction_memory
 Info (12021): Found 1 design units, including 1 entities, in source file stack.v
     Info (12023): Found entity 1: stack
-Error (10170): Verilog HDL syntax error at alu.v(50) near text ")";  expecting an operand File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/alu.v Line: 50
-Error (10170): Verilog HDL syntax error at alu.v(53) near text "else";  expecting "end" File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/alu.v Line: 53
-Error (10170): Verilog HDL syntax error at alu.v(54) near text "op2";  expecting ")" File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/alu.v Line: 54
-Error (10112): Ignored design unit "alu" at alu.v(5) due to previous errors File: /home/victor/Documentos/UEFS/SD/t02-core-musa/rtl/alu.v Line: 5
+Error (10170): Verilog HDL syntax error at alu.v(50) near text ")";  expecting an operand File: /home/victorf/Documentos/GitHub/t02-core-musa/rtl/alu.v Line: 50
+Error (10170): Verilog HDL syntax error at alu.v(53) near text "else";  expecting "end" File: /home/victorf/Documentos/GitHub/t02-core-musa/rtl/alu.v Line: 53
+Error (10170): Verilog HDL syntax error at alu.v(54) near text "op2";  expecting ")" File: /home/victorf/Documentos/GitHub/t02-core-musa/rtl/alu.v Line: 54
+Error (10112): Ignored design unit "alu" at alu.v(5) due to previous errors File: /home/victorf/Documentos/GitHub/t02-core-musa/rtl/alu.v Line: 5
 Info (12021): Found 0 design units, including 0 entities, in source file alu.v
 Info (12021): Found 1 design units, including 1 entities, in source file registers_bank.v
     Info (12023): Found entity 1: registers_bank
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 10 errors, 1 warning
-    Error: Peak virtual memory: 620 megabytes
-    Error: Processing ended: Wed Nov 19 15:55:20 2014
-    Error: Elapsed time: 00:00:01
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 4 errors, 2 warnings
+    Error: Peak virtual memory: 321 megabytes
+    Error: Processing ended: Thu Nov 20 12:53:08 2014
+    Error: Elapsed time: 00:00:02
     Error: Total CPU time (on all processors): 00:00:01
 
 
