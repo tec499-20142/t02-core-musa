@@ -1,7 +1,7 @@
 // Esta ula possui capacidade de trabalhar com operandos negativos,
-// portanto são destinados 1 bit pro sinal e 31 bits para dados.
+// portanto sao destinados 1 bit pro sinal e 31 bits para dados.
 // Dessa forma, a ALU do nosso processador possui a capacidade de
-// trabalhar com dados de -2147483648 até +2147483648.
+// trabalhar com dados de -2147483648 ate +2147483648.
 module alu(
 	input signed [31:0] op1,
 	input signed [31:0] op2,
@@ -14,7 +14,7 @@ module alu(
 	output reg zero
 );
 
-// Inicializa as saídas, de forma que todas estejam zeradas até que
+// Inicializa as saidas, de forma que todas estejam zeradas até que
 // sejam modificadas pelo algoritmo da ALU
 initial begin
 	zero = 1'b0;
@@ -24,11 +24,11 @@ initial begin
 	result = 32'b00000000000000000000000000000000;
 end
 
-// Sempre que uma função for designada para este bloco, será avaliado
-// o que foi recebido, para assim, processar a requisição.
+// Sempre que uma funcao for designada para este bloco, sera� avaliado
+// o que foi recebido, para assim, processar a requisiao.
 always @ (func) begin
 
-	// Analiza a função recebida a aplica o cálculo requisitado
+	// Analiza a funcao recebida a aplica o calculo requisitado
 	case(func)
 		3'b000: result = op1 + op2;
 		3'b001: result = op1 - op2;
@@ -39,8 +39,8 @@ always @ (func) begin
 		3'b110: result = !op1;
 	endcase
 
-	// Após executar a requisição é necessário avaliar e modificar,
-	// caso necessário, os valores de saída registrados em cada flag
+	// Apos executar a requisicao eh necessario avaliar e modificar,
+	// caso necessaio, os valores de saaia registrados em cada flag
 	if (func == 3'b001 && result > 0) begin
 		above = 1'b1;
 	end else
