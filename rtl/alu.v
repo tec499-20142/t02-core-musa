@@ -47,11 +47,11 @@ always @ (func) begin
 		if (func == 3'b001 && result == 0) begin
 			equals = 1'b1;
 	end else
-		if ( (func == 3'b000 || func == 3'b001 || func == 3'b010 ||)
+		if ( (func == 3'b000 || func == 3'b001 || func == 3'b010)
 		&& (result < -2147483648 || result > 2147483648) ) begin
 			overflow = 1'b1;
 	end  else
-		if (func == 3'b011 op2 == 0) begin
+		if (func == 3'b011 || op2 == 0) begin
 			overflow = 1'b1;
 	end
 end
