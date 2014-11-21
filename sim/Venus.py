@@ -1,4 +1,5 @@
 arquivo = open('code.txt' , 'r')
+arquivo2 = open('bin.txt' , 'w')
 
 r_type = {'ADD':'000000','SUB':'000000','MUL':'000000','DIV':'000000','AND':'000000','OR':'000000','NOT':'000000','CMP':'000000'}
 i_type = {'ADDi':'001000', 'SUBi':'001001', 'ANDi':'001100','ORi':'001101', 'LW':'100011','SW':'101011'}
@@ -19,12 +20,16 @@ def start(linha):
     lista_r = r_type.keys()
     lista_i = i_type.keys()
     lista_j = j_type.keys()
+
     if  linha[0] in lista_r :
-        print  r_type()
+        arquivo2.writelines(rtype(linha)+'\n')
+
     elif linha[0] in lista_j:
-        print  j_type()
+        arquivo2.writelines(jtype(linha)+'\n')
+
     elif linha[0] in lista_i:
-        print j_type()
+        arquivo2.writelines(itype(linha)+'\n')
+
     #TODO ESCREVER NO ARQUIVO
 
 
@@ -48,4 +53,14 @@ def rtype ( linha ):
     return nova_linha
 
 def itype( linha ):
-    #TODO
+    nova_linha = i_type.get(linha[0])
+    nova_linha = nova_linha + registers.get(linha[1])
+    nova_linha = nova_linha + registers.get(linha[2])
+
+    bina = bin(int(linha[3]))[2:]
+    bina2 = ''
+
+    for i in range(16-len(bina)):                        #Completa com 0 a esquerda o valor do imediato vulgo extensor de sinal
+        bina2 = bina2 + '0'
+
+    return nova_linha + bina2
