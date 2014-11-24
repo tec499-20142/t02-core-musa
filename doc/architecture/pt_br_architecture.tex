@@ -46,6 +46,11 @@
       		 06/11/2014 & Mudanças nos Layouts das Instruções e no diagrama de classe da ULA & jadsonfirmo e KelCarmo \\ \hline
       		 10/11/2014 & Detalhamento dos Opcodes & jadsonfirmo \\ \hline
       		 13/11/2014 & Alteração na tabela dos Opcodes & jadsonfirmo \\ \hline
+<<<<<<< HEAD
+=======
+      		 17/11/2014 & Alteração no diagrama de classes da ULA e ajustes na tabela dos Opcodes & jadsonfirmo \\ \hline
+      		 18/11/2014 & Ajustes dos Opcodes & jadsonfirmo \\ \hline
+>>>>>>> f8473d5af3f70ca9976df0c7036649805c3fbab3
     \end{tabular}
   \end{table}
 
@@ -122,7 +127,7 @@ O presente documento é apresentado como segue:\\
   \section{Arquitetura geral MUSA}
   \begin{figure}[H]
 	\centering
-	\ucdiagram{./pictures/DataPaths/Arquitetura/DataPathFinal.png}
+	\includegraphics{./pictures/DataPaths/Arquitetura/DataPathFinal.png}
   \end{figure}  
 
   \section{Descrição dos Componentes}
@@ -178,7 +183,11 @@ O presente documento é apresentado como segue:\\
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
   	ADDi &  Soma de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
+<<<<<<< HEAD
   	SUBi & Subtração de dois valores, sendo um destes imediato. & 100000 & - \\ \hline
+=======
+  	SUBi & Subtração de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
+>>>>>>> f8473d5af3f70ca9976df0c7036649805c3fbab3
   	ANDi & Operação lógica AND entre dois valores, sendo um destes imediato. & 001100 & - \\ \hline
   	ORi & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
   	\end{tabular} 
@@ -186,7 +195,7 @@ O presente documento é apresentado como segue:\\
   \end{table}
 
     
-    \item \textbf{Load/Store --} Operações de carregamento e armazenamento.
+    \item \textbf{Load/Store --} Operações de carregamento e armazenamento (Intruções de tipo I).
 
 	\begin{table}[H]
 	\centering
@@ -209,6 +218,7 @@ O presente documento é apresentado como segue:\\
   	\hline 
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
+<<<<<<< HEAD
   	JR & Desvia o programa para um endereço de destino. &001000 & - \\ \hline
   	JPC & Desvia o programa para um endereço relativo ao PC. & 000011 & - \\ \hline
   	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de flag. & ? & - \\ \hline
@@ -216,6 +226,15 @@ O presente documento é apresentado como segue:\\
   	RET & Retorna de uma sub-rotina. & ? & - \\ \hline
   	HALT & Para a execução de um programa. & ? & - \\ \hline
   	NOP & Não realiza operação. & ? & - \\ \hline
+=======
+  	JR & Desvia o programa para um endereço de destino. & 000000 & 001000 \\ \hline
+  	JPC & Desvia o programa para um endereço relativo ao PC. & 000000 & 001001 \\ \hline
+  	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de flag. & 010001 & - \\ \hline
+  	CALL & Desvia um programa em execução para uma sub-rotina. & 000011 & - \\ \hline
+  	RET & Retorna de uma sub-rotina. & 000000 & 001000 \\ \hline
+  	HALT & Para a execução de um programa. & 000000 & 001101 \\ \hline
+  	NOP & Não realiza operação. & 000000 & 000000 \\ \hline
+>>>>>>> f8473d5af3f70ca9976df0c7036649805c3fbab3
   	\end{tabular} 
   	\caption{Instruções de Load/Store.}
   \end{table}
