@@ -21,7 +21,7 @@ parameter add  = 6'b100000, sub = 6'b100010, mul = 6'b011000, div = 6'b011010,
  f_and = 6'b100100, f_or = 6'b100101, f_not = 6'b100111, cmp = 6'b011011;  //Function das operações aritimeticas, r_type.
 parameter addi = 6'b001000, andi = 6'b001100, ori = 6'b001101, subi = 6'b001000; // OP_code das operações imediatas, tipo I
 parameter lw =  6'b100011, sw = 6'b101011; // OP_code das instruções de Load e Store
-parameter jr =  6'b001000, brfl = 6'b010001, halt = 6'b000000, nop = 6'b000000, call = 6'b000011;   //OP_code das operações de desvio, TO_DO -> JPC, CALL, RET
+parameter jr =  6'b001000, jpc = 6'b001001, brfl = 6'b010001, halt = 6'b000010, nop = 6'b000001, call = 6'b000011, ret = 6'b000111;   //OP_code das operações de desvio, TO_DO -> JPC, CALL, RET
 
 always @(opcode_reg) begin 
 
