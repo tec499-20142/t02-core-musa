@@ -31,13 +31,16 @@ initial begin
 	ptr = 1'b0;
 end
 
-if (push) begin
-	stack[ptr] <= read_PC;
-	write_PC <= stack[ptr];
-	ptr <= ptr + 1;
-end else
-	if (pop) begin
-		ptr <= ptr - 1;
+// Cria um loop para monitorar o que fazer
+always begin
+	if (push) begin
+		stack[ptr] <= read_PC;
 		write_PC <= stack[ptr];
+		ptr <= ptr + 1;
+	end else
+		if (pop) begin
+			ptr <= ptr - 1;
+			write_PC <= stack[ptr];
+	end
 end
 endmodule
