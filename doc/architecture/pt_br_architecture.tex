@@ -46,11 +46,10 @@
       		 06/11/2014 & Mudanças nos Layouts das Instruções e no diagrama de classe da ULA & jadsonfirmo e KelCarmo \\ \hline
       		 10/11/2014 & Detalhamento dos Opcodes & jadsonfirmo \\ \hline
       		 13/11/2014 & Alteração na tabela dos Opcodes & jadsonfirmo \\ \hline
-<<<<<<< HEAD
-=======
       		 17/11/2014 & Alteração no diagrama de classes da ULA e ajustes na tabela dos Opcodes & jadsonfirmo \\ \hline
       		 18/11/2014 & Ajustes dos Opcodes & jadsonfirmo \\ \hline
->>>>>>> f8473d5af3f70ca9976df0c7036649805c3fbab3
+ 		 24/11/2014 & Refatoração do DataPath & Odivio Caio \\ \hline
+
     \end{tabular}
   \end{table}
 
@@ -127,7 +126,7 @@ O presente documento é apresentado como segue:\\
   \section{Arquitetura geral MUSA}
   \begin{figure}[H]
 	\centering
-	\includegraphics{./pictures/DataPaths/Arquitetura/DataPathFinal.png}
+	\includegraphics[width=\linewidth]{./pictures/DataPaths/Arquitetura/DataPathFinal.png}
   \end{figure}  
 
   \section{Descrição dos Componentes}
@@ -183,11 +182,7 @@ O presente documento é apresentado como segue:\\
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
   	ADDi &  Soma de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
-<<<<<<< HEAD
-  	SUBi & Subtração de dois valores, sendo um destes imediato. & 100000 & - \\ \hline
-=======
   	SUBi & Subtração de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
->>>>>>> f8473d5af3f70ca9976df0c7036649805c3fbab3
   	ANDi & Operação lógica AND entre dois valores, sendo um destes imediato. & 001100 & - \\ \hline
   	ORi & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
   	\end{tabular} 
