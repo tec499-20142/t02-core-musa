@@ -1,41 +1,43 @@
+// Quando uma operacao de PUSH e recebida, a pilha faz a leitura
+// do read_PC atual e o escreve na saida write_PC, que mantem sempre
+// o valor existente no topo da pilha e salva na estrutura, atualizando
+// o ponteiro da pilha. Quando o POP e requisitado, o ponteiro da pilha e
+// decrementado e a saida write_PC e atualizada
 module stack (
-	clk,
-	reset,
-	q,
-	d,
+	read_PC,
+	write_PC,
 	push,
 	pop,
 );
 
-	parameter WIDTH = 11;
-	parameter DEPTH = 7;
+// Parametros de configuracao da pilha
+parameter WIDTH = 18;
+parameter DEPTH = 32768;
 
-	input                    clk;
-	input                    reset;
-	input      [WIDTH - 1:0] d;
-	output reg [WIDTH - 1:0] q;
-	input                    push;
-	input                    pop;
+// Entradas e saidas da pilha
+input      [WIDTH - 1:0] read_PC;
+output reg [WIDTH - 1:0] write_PC;
+input                    push;
+input                    pop;
 
-	reg [DEPTH - 1:0] ptr;
-	reg [WIDTH - 1:0] stack [0:(1 << DEPTH) - 1];
+// Ponteiro da pilha
+reg [DEPTH - 1:0] ptr;
 
-	always @(posedge clk) begin
-		if (reset)
-			ptr <= 0;
-		else if (push)
-			ptr <= ptr + 1;
-		else if (pop)
-			ptr <= ptr - 1;
-	end
+// Estrutura de pilha
+reg [WIDTH - 1:0] stack [0:DEPTH - 1];
 
-	always @(posedge clk) begin
-		if (push || pop) begin
-			if(push)
-				stack[ptr] <= q;
+// Ao inicializar esse modulo o topo da pilha precisa ser a sua base
+initial begin
+	ptr = 1'b0;
+end
 
-			q <= stack[ptr - 1];
-		end
-	end
-
+if (push) begin
+	stack[ptr] <= read_PC;
+	write_PC <= stack[ptr];
+	ptr <= ptr + 1;
+end else
+	if (pop) begin
+		ptr <= ptr - 1;
+		write_PC <= stack[ptr];
+end
 endmodule
