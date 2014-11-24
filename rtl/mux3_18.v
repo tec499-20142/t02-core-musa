@@ -1,4 +1,4 @@
-module mux (
+module mux3_18 (
 
 	input [17:0] in00,in01,in10,in11,
 	input [1:0] ctrl,
