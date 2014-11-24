@@ -5,7 +5,7 @@
 module alu(
 	input signed [31:0] op1,
 	input signed [31:0] op2,
-	input [2:0] func,
+	input [5:0] func,
 	
 	output reg signed [31:0] result,
 	output reg overflow,
@@ -24,34 +24,34 @@ initial begin
 	result = 32'b00000000000000000000000000000000;
 end
 
-// Sempre que uma funcao for designada para este bloco, sera¡ avaliado
+// Sempre que uma funcao for designada para este bloco, sera avaliado
 // o que foi recebido, para assim, processar a requisiao.
 always @ (func) begin
 
 	// Analiza a funcao recebida a aplica o calculo requisitado
 	case(func)
-		3'b000: result = op1 + op2;
-		3'b001: result = op1 - op2;
-		3'b010: result = op1 * op2;
-		3'b011: result = op1 / op2;
-		3'b100: result = op1 & op2;
-		3'b101: result = op1 | op2;
-		3'b110: result = !op1;
+		5'b100000: result = op1 + op2;
+		5'b100010: result = op1 - op2;
+		5'b011000: result = op1 * op2;
+		5'b011010: result = op1 / op2;
+		5'b100100: result = op1 & op2;
+		5'b100101: result = op1 | op2;
+		5'b100111: result = !op1;
 	endcase
 
 	// Apos executar a requisicao eh necessario avaliar e modificar,
 	// caso necessaio, os valores de saaia registrados em cada flag
-	if (func == 3'b001 && result > 0) begin
+	if (func == 5'b100010 && result > 0) begin
 		above = 1'b1;
 	end else
-		if (func == 3'b001 && result == 0) begin
+		if (func == 5'b100010 && result == 0) begin
 			equals = 1'b1;
 	end else
-		if ( (func == 3'b000 || func == 3'b001 || func == 3'b010)
+		if ( (func == 5'b100000 || func == 5b100010b001 || func == 5'b011000)
 		&& (result < -2147483648 || result > 2147483648) ) begin
 			overflow = 1'b1;
 	end  else
-		if (func == 3'b011 || op2 == 0) begin
+		if (func == 5'b011010 || op2 == 0) begin
 			overflow = 1'b1;
 	end
 end
