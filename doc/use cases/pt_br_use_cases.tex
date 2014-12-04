@@ -87,6 +87,12 @@
       \begin{itemize}
       	\item mtcastro; 
 	  \end{itemize}
+ 	   \\ \hline
+
+ 	 \small 30/10/2014 & \small Refatoração dos fluxos e tamanho das Imagens & \small 
+      \begin{itemize}
+      	\item Odivio Caio; 
+	  \end{itemize}
 	  
 	  \\ \hline
     \end{tabular}
@@ -220,12 +226,10 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
-    \item Acesso aos respectivos registradores;
-    \item Executa operações;
-    \item Atualiza registradores;
-    \item Atualiza valor do PC;
+    \item Controlador faz a decodificação do OPcode da instrução recebida;
+    \item Controlador comanda a execução da leitura dos registradores recebidos;
+    \item A ULA executa as operação relacionada ao Function;
+    \item Controlador comanda a execução da escrita do valor no registrador destino;
   \end{mainflow}
 
   \usecase{BRFL}
@@ -240,6 +244,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     \begin{itemize}
      \item Atender ao requisito funcional [FR14];
      \item Leitura do PC;
+     \item Leitura do Banco de Registrador;
      \item Realizar operações lógicas na ALU;
     \end{itemize}
 
@@ -248,15 +253,14 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
      \item Alteração do PC caso verdadeira.
     \end{itemize}
   
-  \ucdiagram{./pictures/use/case/brfl.png}
+  \ucdiagram{./pictures/use/case/brlf.png}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada pelo PC;
-    \item Identificação e leitura da \textit{Flag} ativa;
-    \item Executa a operação lógica;
-    \item Atualiza o valor do PC;
+    \item Controlador faz a decodificação do OPcode da instrução recebida;
+    \item Controlador executa a leitura da \textit{Flag} e da constante contidas no bando de registrador;
+    \item A ULA executa a operação lógica dos operandos;
+    \item Controlador executa a atualização do PC dependendo do resultado;
   \end{mainflow}
   
   \usecase{Instrução LW}
@@ -284,11 +288,11 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   \begin{mainflow}
     \item Decodificação da instrução lida na Memória de Programa;
     \item Acesso aos respectivos registradores;
-	\item Leitura do endereço base, a partir do registrador RT;
-	\item Extensão do valor de 16 bits lido na instrução para 32 bits;
-	\item Operação de soma com os dados de 32 bits, dado lido no registrador, com o valor de 16 bits estendido para 32 bits;
-	\item Resultado da operação será lido pela memória de dados, que servirá como endereço de memória para ler o dado;
-	\item O dado será enviado para o banco de registradores, e será escrito no registrador de escrita RD;
+    \item Leitura do endereço base, a partir do registrador RT;
+    \item Extensão do valor de 16 bits lido na instrução para 32 bits;
+    \item Operação de soma com os dados de 32 bits, dado lido no registrador, com o valor de 16 bits estendido para 32 bits;
+    \item Resultado da operação será lido pela memória de dados, que servirá como endereço de memória para ler o dado;
+    \item O dado será enviado para o banco de registradores, e será escrito no registrador de escrita RD;
 
   \end{mainflow}
   
@@ -351,10 +355,9 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
 	
 	% descricao do fluxo principal de eventos
 	\begin{mainflow}
-		\item Acesso ao PC;
-		\item Leitura da instrução apontada por PC;
-		\item Salvar o endereço atual do PC na pilha de memória;
-		\item Modifica o valor do PC para o endereço recebido pela instrução;
+		\item Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
+		\item Controlador executa a escrita do endereço atual do PC na pilha de memória;
+		\item Controlador executa a atualização do PC para o endereço recebido pela instrução;
 	\end{mainflow}
   
   \usecase{JR}
@@ -379,9 +382,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada pelo PC;
-    \item Modifica o valor do PC pro endereço recebido na instrução;
+    \item Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
+    \item Controlador executa a atualização do PC para o endereço recebido pela instrução;
   \end{mainflow}
   
   \usecase{JPC}
@@ -405,8 +407,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-  	\item Acessa o valor de PC;
-  	\item Faz a leitura da instrução apontada pelo PC;
+  	\item Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
+          \item Controlador executa a leitura da instrução na pilha;
   	\item Modifica o valor do PC pro endereço recebido na instrução;
   \end{mainflow}
   
@@ -435,11 +437,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
+    \item  Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
     \item Acesso aos respectivos registradores;
-    \item Controlador direciona os dados dos registradores para a entrada da ULA;
-    \item Controlador envia o \textit{function} para ativar a operação desejada na ULA;
     \item A ULA realiza as operações;
     \item \textit{Flags} são disparadas, caso seja necessário;
     \item Envia o resultado pro registrador de destino;
@@ -467,8 +466,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada pelo PC;
+  	\item Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
   	\item Leitura do endereço do topo da pilha;
   	\item Remoção do endereço do topo da pilha;
   	\item Incrementa o endereço removido do topo da pilha;
@@ -497,8 +495,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada pelo PC;
+  	\item Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
   	\item Modifica o valor do PC pro endereço da próxima instrução.
   \end{mainflow}
   
@@ -520,8 +517,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada pelo PC;
+  	\item Controlador faz a  decodificação do OPcode da instrução apontada pelo PC;
   	\item Desliga o \textit{clock} do processador.
   \end{mainflow} 
 
