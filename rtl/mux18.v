@@ -12,3 +12,6 @@ always @(*) begin
 	end else begin 
 		out <= in0
 	end
+end
+
+endmodule

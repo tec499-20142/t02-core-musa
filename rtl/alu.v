@@ -7,18 +7,21 @@ module alu(
 	input signed [31:0] op2,
 	input [5:0] func,
 	
-	// [31:0] resultado da operacao
-	// [34:32] flags
-	// [32] above
-	// [33] equals
-	// [34] overflow
-	output reg signed [34:0] result
+	output reg signed [31:0] result,
+	output reg overflow,
+	output reg equals,
+	output reg above,
+	output reg zero
 );
 
 // Inicializa as saidas, de forma que todas estejam zeradas até que
 // sejam modificadas pelo algoritmo da ALU
 initial begin
-	result = 35'b00000000000000000000000000000000000;
+	zero = 1'b0;
+	above = 1'b0;
+	equals = 1'b0;
+	overflow = 1'b0;
+	result = 32'b00000000000000000000000000000000;
 end
 
 // Sempre que uma funcao for designada para este bloco, sera avaliado
@@ -27,13 +30,13 @@ always @ (func) begin
 
 	// Analiza a funcao recebida a aplica o calculo requisitado
 	case(func)
-		6'b100000: result[31:0] = op1 + op2;
-		6'b100010: result[31:0] = op1 - op2;
-		6'b011000: result[31:0] = op1 * op2;
-		6'b011010: result[31:0] = op1 / op2;
-		6'b100100: result[31:0] = op1 & op2;
-		6'b100101: result[31:0] = op1 | op2;
-		6'b100111: result[31:0] = !op1;
+		6'b100000: result = op1 + op2;
+		6'b100010: result = op1 - op2;
+		6'b011000: result = op1 * op2;
+		6'b011010: result = op1 / op2;
+		6'b100100: result = op1 & op2;
+		6'b100101: result = op1 | op2;
+		6'b100111: result = !op1;
 	endcase
 
 	// Apos executar a requisicao eh necessario avaliar e modificar,

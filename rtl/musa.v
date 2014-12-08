@@ -7,7 +7,9 @@ wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
 w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc,
 ;
 
-wire [31:0] w_reg_alumux, w_alu_out, w_op1,w_op2, , w_datamem_out, w_register_in, w_extend_mux;
+wire [31:0] w_reg_alumux, , w_op1,w_op2, w_datamem_out, w_register_in, w_extend_mux;
+
+wire[34:0]  w_alu_out, w_datamem_out_35 ;
 
 wire [15:0] w_immediat16;
 
@@ -135,10 +137,10 @@ mux32 mux_alu(
 	.out(w_op2)
 );
 
-mux32 mux_data(
+mux35 mux_data(
 
 	.in0(w_alu_out),    //Saida da ula
-	.in1(w_datamem_out), // Saida da memoria de dados 
+	.in1(w_datamem_out_35), // Saida da memoria de dados 
 	.ctrl(w_control_alu_data),
 
 	.out(w_register_in)
@@ -175,6 +177,12 @@ mux18 somador_mux (
 
 );
 
+sign_extend_32_35 sign_extend_datamemory(
+
+.extend(w_datamem_out),
+.extended(w_datamem_out_35)
+
+);
 
 
 endmodule
