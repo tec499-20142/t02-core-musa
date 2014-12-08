@@ -48,8 +48,10 @@
       		 13/11/2014 & Alteração na tabela dos Opcodes & jadsonfirmo \\ \hline
       		 17/11/2014 & Alteração no diagrama de classes da ULA e ajustes na tabela dos Opcodes & jadsonfirmo \\ \hline
       		 18/11/2014 & Ajustes dos Opcodes & jadsonfirmo \\ \hline
- 		 24/11/2014 & Refatoração do DataPath & Odivio Caio \\ \hline
-
+ 		     24/11/2014 & Refatoração do DataPath & Odivio Caio \\ \hline
+		  	 07/12/2014 & Opcodes de acordo com o Vênus & jadsonfirmo \\ \hline
+		  	 07/12/2014 & Alteraçao Layout do JR e ajustes de conflitos & jadsonfirmo \\ \hline
+		  	 08/12/2014 & Revisão documento de arquitetura & jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -126,7 +128,7 @@ O presente documento é apresentado como segue:\\
   \section{Arquitetura geral MUSA}
   \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{./pictures/datapaths/Arquitetura/DataPath.png}
+	\includegraphics[width=\linewidth]{./pictures/DataPaths/Arquitetura/DataPathFinal.png}
   \end{figure}  
 
   \section{Descrição dos Componentes}
@@ -159,7 +161,7 @@ O presente documento é apresentado como segue:\\
 	\begin{tabular}{|c|m{6cm}|c|c|}
   	\hline 
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
-  	\hline 
+  	\hline   	
   	ADD & Soma de dois valores. & 000000 & 100000 \\ \hline
   	SUB & Subtração de dois valores. & 000000 & 100010 \\ \hline
   	MUL & Multiplicação de dois valores. & 000000 & 011000 \\ \hline
@@ -168,10 +170,10 @@ O presente documento é apresentado como segue:\\
   	OR & Operação lógica OR entre dois valores. & 000000 & 100101 \\ \hline
   	NOT & Operação lógica NOT. & 000000 & 100111 \\ \hline
   	CMP & Comparação de dois valores. & 000000 & 011011 \\ \hline
+  	JR & Desvia o programa para um endereço de destino. & 001000 & - \\ \hline
   	\end{tabular} 
   	\caption{Instruções do tipo R.}
   \end{table}    
-
 
     \item \textbf{I-type --} Operações imediatas.
     
@@ -182,14 +184,13 @@ O presente documento é apresentado como segue:\\
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
   	ADDi &  Soma de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
-  	SUBi & Subtração de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
+  	SUBi & Subtração de dois valores, sendo um destes imediato. & 001001 & - \\ \hline
   	ANDi & Operação lógica AND entre dois valores, sendo um destes imediato. & 001100 & - \\ \hline
   	ORi & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
   	\end{tabular} 
   	\caption{Instruções do tipo I.}
   \end{table}
 
-    
     \item \textbf{Load/Store --} Operações de carregamento e armazenamento (Intruções de tipo I).
 
 	\begin{table}[H]
@@ -203,23 +204,23 @@ O presente documento é apresentado como segue:\\
   	\end{tabular} 
   	\caption{Instruções de Load/Store.}
   \end{table}
-
     
-    \item \textbf{Jump --} Operações de desvio.
+    \item \textbf{Jump --} Operações de desvio e branch.
     
 	\begin{table}[H]
 	\centering
 	\begin{tabular}{|c|m{6cm}|c|c|}
   	\hline 
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
-  	\hline
-  	JR & Desvia o programa para um endereço de destino. & 000000 & 001000 \\ \hline
-  	JPC & Desvia o programa para um endereço relativo ao PC. & 000000 & 001001 \\ \hline
+  	\hline 
+
+  	JPC & Desvia o programa para um endereço relativo ao PC. & 001001 & - \\ \hline
   	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de flag. & 010001 & - \\ \hline
   	CALL & Desvia um programa em execução para uma sub-rotina. & 000011 & - \\ \hline
-  	RET & Retorna de uma sub-rotina. & 000000 & 001000 \\ \hline
-  	HALT & Para a execução de um programa. & 000000 & 001101 \\ \hline
-  	NOP & Não realiza operação. & 000000 & 000000 \\ \hline
+  	RET & Retorna de uma sub-rotina. & 000111 & - \\ \hline
+  	HALT & Para a execução de um programa. & 000010 & - \\ \hline
+  	NOP & Não realiza operação. & 000001 & - \\ \hline
+
   	\end{tabular} 
   	\caption{Instruções de Load/Store.}
   \end{table}
@@ -230,7 +231,7 @@ O presente documento é apresentado como segue:\\
   
   \begin{itemize}
      
-     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT:}
+     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT e JR :}
 
   \begin{table}[H]
 \centering
@@ -241,7 +242,7 @@ O presente documento é apresentado como segue:\\
   	06 & 05 & 05 & 05 & 05 & 06 \\ 
   	\hline 
   	\end{tabular} 
-  	\caption{Instruções do tipo J.}
+  	\caption{Instruções do tipo R.}
   \end{table}
   
   Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo IM é reservado para as operações imediatas.\\
@@ -263,7 +264,7 @@ O presente documento é apresentado como segue:\\
   Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo I (de 16 bits) que representa o deslocamento do registrador base. Os dois bits restantes serão sempre ignorados.\\
 
   
-  \item \textbf{JR, CALL, RET, HALT e NOP e JPC:}
+  \item \textbf{CALL, RET, HALT e NOP e JPC:}
 
   \begin{table}[H]
 \centering
