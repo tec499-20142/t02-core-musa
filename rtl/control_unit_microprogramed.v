@@ -5,7 +5,7 @@ input clk, rst_n;
 input [5:0] opcode;
 
 output read_reg, write_reg, read_data, write_data, immediat,
- control_function, control_alu_data, rtrn, pop, push, write_pc;
+ control_function, control_alu_data, rtrn, pop, push, write_pc, brfl_control;
 output [1:0] branch;
 output[5:0] fnction;
 reg [5:0] opcode_reg;
@@ -262,6 +262,7 @@ always @(opcode_reg) begin
             rtrn <= 1'b0;
             pop <= 1'b0;
             push <= 1'b0;
+            brfl_control <= 1'b1;
 
             end
 
@@ -277,7 +278,7 @@ always @(posedge clk or negedge rst_n) begin
 
     if(~rst_n) begin
 	 
-				read_reg <= 1'b0;
+		read_reg <= 1'b0;
             write_reg <= 1'b0;
             read_data <= 1'b0;
             write_data <= 1'b0;
@@ -289,7 +290,7 @@ always @(posedge clk or negedge rst_n) begin
             rtrn <= 1'b0;
             pop <= 1'b0;
             push <= 1'b0;
-				opcode_reg = 6'b000000;
+		opcode_reg = 6'b000000;
 
     end else if(clk_en) begin
         if (count == 3'b100) begin
