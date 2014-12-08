@@ -317,14 +317,10 @@ O presente documento é apresentado como segue:\\
 
           \hline
           \endlastfoot
-
-          clock                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          OP1             & 32   & entrada   & Valor do primeiro operando.    \\ \hline
-          OP2             & 32   & entrada   & Valor do segundo operando.    \\ \hline
+          OP1             & 32   & entrada   & Primeiro operando.    \\ \hline
+          OP2             & 32   & entrada   & Segundo operando.    \\ \hline
           Function             & 3   & entrada   & Identificador da operação.    \\ \hline
-          Result             & 32   & saída   & Valor do resultado da operação realizada.    \\ \hline
-          Overflow             & 1   & saída   & Sinal de overflow, para quando ocorrer overflow durante a operação.    \\ \hline
-          Equals             & 1   & saída   & Sinal de igualdade, para quando ocorrer uma comparação entre dois valores iguais.    \\ \hline
+          Result             & 35   & saída   & Resultado da operação com as \textit{flags}.    \\
         \end{longtable}
       \end{center}  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
