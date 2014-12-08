@@ -39,17 +39,21 @@ always @ (func) begin
 	// Apos executar a requisicao eh necessario avaliar e modificar,
 	// caso necessaio, os valores de saaia registrados em cada flag
 	if (func == 6'b100010 && result > 0) begin
-		above = 1'b1;
+		// above
+		result[32] = 1'b1;
 	end else
 		if (func == 6'b100010 && result == 0) begin
-			equals = 1'b1;
+			// equals
+			result[33] = 1'b1;
 	end else
 		if ( (func == 6'b100000 || func == 6'b100010 || func == 6'b011000)
 		&& (result < -2147483648 || result > 2147483648) ) begin
-			overflow = 1'b1;
+			// overflow
+			result[34] = 1'b1;
 	end  else
 		if (func == 6'b011010 || op2 == 0) begin
-			overflow = 1'b1;
+			// overflow
+			result[34] = 1'b1;
 	end
 end
 
