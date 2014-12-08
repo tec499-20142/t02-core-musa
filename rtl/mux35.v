@@ -1,9 +1,9 @@
-module mux32 (
+module mux35 (
 
-	input[31:0] in0,in1,
+	input[34:0] in0,in1,
 	input ctrl,
 
-	output [31:0] out
+	output [34:0] out
 );
 
 always @(*) begin

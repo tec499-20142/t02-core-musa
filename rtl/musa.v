@@ -11,7 +11,7 @@ wire [31:0] w_reg_alumux, w_alu_out, w_op1,w_op2, , w_datamem_out, w_register_in
 
 wire [15:0] w_immediat16;
 
-wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_pc_adress;
+wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_pc_adress, w_brfl_reg;
 
 reg [31:0] reg_instruction;
 
@@ -42,7 +42,9 @@ control_unit_microprogramed cum01(
 .push(w_push),
 .write_pc(w_write_pc),
 .branch(w_branch),
-.fnction(w_fnction)
+.fnction(w_fnction),
+.brfl_control(w_brfl_reg)
+
 );
 
  alu alu01(
@@ -76,7 +78,7 @@ instruction_memory instruction_memory01 (
 	.q(reg_instruction)
 );
 
-registers_bank registers_bank01(
+registers_bank registers_bank01(     //TO DO COLOCAR A ENTRADA DE SINAL DO BRFL_CONTROL
 	
 	.clock(clk),
 	.address(),
@@ -154,10 +156,10 @@ mux6 alu_control (
 
 mux3_18 branch_mux (
 
-	.in00(w_somador_out), //saida do somador
-	.in01(w_read_reg),    //saida do banco de registradores
-	.in10(w_pc_adress),   //immediato da instrução
-	.in11(),
+	.in000(w_somador_out), //saida do somador
+	.in001(w_read_reg),    //saida do banco de registradores
+	.in010(w_pc_adress),   //immediato da instrução
+	.in100(w_read_reg),    // BRFL caso a flag seja  verdadeira
 	.cntl(w_branch),       //sinal da UC
 
 	.out(w_pc_in)               // write pc
