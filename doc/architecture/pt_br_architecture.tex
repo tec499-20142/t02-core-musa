@@ -8,6 +8,7 @@
 \usepackage{longtable}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel} % Uncomment for portuguese
+\usepackage{pdflscape} % set ladscape/portrait pdf pages
 
 \sloppy
 
@@ -124,12 +125,6 @@ Este documento é dividido através das seguintes seções:\\
   % fim
 
 \chapter{Visão Geral da Arquitetura}
-  \section{Arquitetura geral MUSA}
-  \begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{./pictures/datapath/DataPath.png}
-  \end{figure}  
-
   \section{Descrição dos Componentes}
   A unidade de processamento a ser desenvolvida é composta a partir dos seguintes componentes:
   
@@ -226,7 +221,7 @@ Este documento é dividido através das seguintes seções:\\
     
     \end{itemize}
 
-  \section{Detalhamento das Intruções}
+  \section{Detalhamento das Instruções}
   
   \begin{itemize}
      
@@ -280,6 +275,15 @@ Este documento é dividido através das seguintes seções:\\
   Instruções de salto, que especificam um registrador RF e uma CST (FLAG), para a instrução BRFL, que realiza um salto caso condição de comparação com a flag for verdadeira. Utilizará também 18 bits  utilizará 18 bits na instrução que respresenta uma posição de endereço de memória, para as instruções JR, CALL e HALT. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
   
   \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+	\section{DataPath interno}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{./pictures/datapath/DataPath.png}
+	\end{figure}
+\end{landscape}
 
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
@@ -490,7 +494,7 @@ Este documento é dividido através das seguintes seções:\\
           RegistradorDeSaida             & 32   & saída   & Saída do valor contido nos registradores.    \\ \hline
           RegistradorDestino             & 5   & Entrada   & Endereço do registrador destino.    \\ \hline
         \end{longtable}
-      \end{center}  
+      \end{center}
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
 % \bibliographystyle{ieeetr}
