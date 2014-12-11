@@ -478,11 +478,14 @@ Este documento é dividido através das seguintes seções:\\
           \endlastfoot
 
           clock\_in & 1 & entrada & Sinal de \textit{clock} da fase. \\ \hline
-          EscritaDestino & 32 & entrada & Escrita do valor nos registradores de destino. \\ \hline
-          AtivaEscrita & 1 & entrada & Sinal para ativar a escrita no Banco de Registradores. \\ \hline
-          AtivaLeitura & 1 & entrada & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
-          RegistradorDeSaida & 32 & saída & Saída do valor contido nos registradores.    \\ \hline
-          RegistradorDestino & 5 & Entrada & Endereço do registrador destino.    \\ \hline
+          write_data & 32 & entrada & Valor de escrita para o registrador de destino. \\ \hline
+          write_reg & 1 & entrada & Sinal para ativar a escrita no Banco de Registradores. \\ \hline
+          read_reg & 1 & entrada & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
+          data1 & 32 & saída & Saída do valor contido nos registradores.    \\ \hline
+          data2 & 32 & saída & Saída do valor contido nos registradores.    \\ \hline
+          rs & 5 & Entrada & Endereço do registrador um.    \\ \hline
+          rt & 5 & Entrada & Endereço do registrador dois.    \\ \hline
+          rd & 5 & Entrada & Endereço do registrador destino.    \\ \hline
         \end{longtable}
       \end{center}
 % Optional bibliography section
