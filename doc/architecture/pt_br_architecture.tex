@@ -145,7 +145,7 @@ Este documento é dividido através das seguintes seções:\\
   \end{itemize}
   
   \section{Intruções}
-  A unidade de processamento possui 21 instruções essenciais para o processamento das operações. Elas são desmembradas em quatro formatos: R-type, I-type, Load/Store e Jump.
+  A unidade de processamento possui 21 instruções essenciais para o processamento das operações. Elas são desmembradas em três formatos: R-type, I-type, e Jump.
   
   \begin{itemize}
     \item \textbf{R-type --} Operações lógicas e aritméticas.
@@ -181,22 +181,10 @@ Este documento é dividido através das seguintes seções:\\
   	SUBi & Subtração de dois valores, sendo um destes imediato. & 001001 & - \\ \hline
   	ANDi & Operação lógica AND entre dois valores, sendo um destes imediato. & 001100 & - \\ \hline
   	ORi & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
+    LW & Operação de leitura na memória de dados. & 100011 & - \\ \hline
+    SW & Operação de armazenamento na memória de dados. & 101011 & - \\ \hline
   	\end{tabular} 
   	\caption{Instruções do tipo I.}
-  \end{table}
-
-    \item \textbf{Load/Store --} Operações de carregamento e armazenamento (Intruções de tipo I).
-
-	\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|m{6cm}|c|c|}
-  	\hline 
-  	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
-  	\hline 
-  	LW & Operação de leitura na memória de dados. & 100011 & - \\ \hline
-  	SW & Operação de armazenamento na memória de dados. & 101011 & - \\ \hline
-  	\end{tabular} 
-  	\caption{Instruções de Load/Store.}
   \end{table}
     
     \item \textbf{Jump --} Operações de desvio e branch.
@@ -326,7 +314,7 @@ Este documento é dividido através das seguintes seções:\\
           \endlastfoot
           OP1             & 32   & entrada   & Primeiro operando.    \\ \hline
           OP2             & 32   & entrada   & Segundo operando.    \\ \hline
-          Function             & 3   & entrada   & Identificador da operação.    \\ \hline
+          Function             & 6   & entrada   & Identificador da operação.    \\ \hline
           Result             & 35   & saída   & Resultado da operação com as \textit{flags}.    \\
         \end{longtable}
       \end{center}  
@@ -407,7 +395,7 @@ Este documento é dividido através das seguintes seções:\\
           entradaDeDados             & 18   & entrada   & Endereço do PC que será armazenado.    \\ \hline
           popRequest             & 1   & entrada   & Sinal para tirar o ultimo endereço armmazenado da pilha.    \\ \hline
           pushRequest             & 1   & entrada   & Sinal para salvar o endereço do PC da pilha.    \\ \hline
-          saidaDeDados             & 32   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
+          saidaDeDados             & 18   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
         \end{longtable}
       \end{center}  
 
