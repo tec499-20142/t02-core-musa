@@ -57,6 +57,7 @@
       \small 28/10/2014 & \small Atualização de Requisitos & \small jadsonfirmo \\ \hline
       \small 30/10/2014 & \small Revisão Final & \small jadsonfirmo \\ \hline
       \small 11/12/2014 & \small Refatoração do Documento: Revisão, correções e ajustes. & \small jadsonfirmo \\ \hline
+      \small 11/12/2014 & \small Modificação do requisito da instrução BRFL & \small KelCarmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -335,8 +336,8 @@
       {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de \textit{flag}.
       A instrução BRFL está compreendida da seguinte forma:\\
        \begin{itemize}
-         \item Registrador (R) - registrador que contém o endereço para salto.
-         \item Contante (CST) - constante a qual será comparada com uma flag, de modo que se o resultado da comparação tiver resultado verdadeiro, o programa salta para o endereço armazenado no registrador (R).
+         \item Registrador (R) - registrador que contém a constante que será comprada com o valor de flag.
+         \item Imediato - valor do endereço destino, no qual será tomado se a condição for verdadeira.
          \end{itemize}
          }
       {Essencial}
