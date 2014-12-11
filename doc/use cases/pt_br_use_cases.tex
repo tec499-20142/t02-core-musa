@@ -212,8 +212,8 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     
   \preconditions 
     \begin{itemize}
-     \item Funcionamento do PC;
-     \item Funcionamento da Memoria de Istruções;
+     \item Endereço apotado por PC ser válido;
+     \item instrução possuir um \textit{OPCODE} válido;
     \end{itemize}
 
   \postconditions
@@ -239,6 +239,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   \preconditions 
     \begin{itemize}
      \item Atender aos requisitos funcionais [FR03 a FR10];
+     \item Endereço(s) do(s) registradores serem válidos;
     \end{itemize}
 
   \postconditions
@@ -250,9 +251,9 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Realização da ação referente ao   \textit{Function} recebido;
+    \item Realização da ação referente ao \textit{Function} recebido;
     \item \textit{Flags} são disparadas, caso seja necessário;
-    \item Apresenta o resultado e a flag, caso ocorra, em sua saida;
+    \item Apresentação do resultado;
   \end{mainflow}
 
 \usecase{Desvios}
@@ -265,12 +266,12 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     
   \preconditions 
     \begin{itemize}
-     \item Sinais de Controle;
+     \item Endereço do saltor ser válido;
     \end{itemize}
 
   \postconditions
     \begin{itemize}
-     \item Nenhuma.
+     \item Modificação do PC.
     \end{itemize}
 
   \ucdiagram{./pictures/use/case/jump.png}
@@ -290,13 +291,13 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     
   \preconditions 
     \begin{itemize}
-     \item Sinais de Controle;
-     \item Possuir espaço livre para escrita.
+    \item Sinais de Controle;
+    \item Endereço(s) do(s) registrador(s);
     \end{itemize}
 
   \postconditions
     \begin{itemize}
-    \item Não possui.
+    \item Saidas de 32 bits.
     \end{itemize}
 
   \ucdiagram{./pictures/use/case/BD.png}
@@ -304,6 +305,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   % descricao do fluxo principal de eventos
   \begin{mainflow}
     \item Controlador executa a leitura ou a escrita no Banco de Registradores;
+    \O modulo BD identifica os endereços e apresenta as saidas;
   \end{mainflow}  
 
 
