@@ -51,8 +51,8 @@ always @(opcode_reg) begin
             read_data <= 1'b0;
             write_data <= 1'b0;
             immediat <= 1'b1;
-            fnction <= 6'b000000;
-            control_function <= 1'b0;
+            fnction <= 6'b100000;
+            control_function <= 1'b1;
             control_alu_data <= 1'b0;
             branch <= 2'b00;
             rtrn <= 1'b0;
@@ -68,8 +68,8 @@ always @(opcode_reg) begin
             read_data <= 1'b0;
             write_data <= 1'b0;
             immediat <= 1'b1;
-            fnction <= 6'b000000;
-            control_function <= 1'b0;
+            fnction <= 6'b100010;
+            control_function <= 1'b1;
             control_alu_data <= 1'b0;
             branch <= 2'b00;
             rtrn <= 1'b0;
@@ -85,8 +85,8 @@ always @(opcode_reg) begin
             read_data <= 1'b0;
             write_data <= 1'b0;
             immediat <= 1'b1;
-            fnction <= 6'b000000;
-            control_function <= 1'b0;
+            fnction <= 6'b100100;
+            control_function <= 1'b1;
             control_alu_data <= 1'b0;
             branch <= 2'b00;
             rtrn <= 1'b0;
@@ -102,8 +102,8 @@ always @(opcode_reg) begin
             read_data <= 1'b0;
             write_data <= 1'b0;
             immediat <= 1'b1;
-            fnction <= 6'b000000;
-            control_function <= 1'b0;
+            fnction <= 6'b100101;
+            control_function <= 1'b1;
             control_alu_data <= 1'b0;
             branch <= 2'b00;
             rtrn <= 1'b0;
@@ -112,7 +112,7 @@ always @(opcode_reg) begin
 
             end
 
-            lw:begin    // LOAD STORE
+            lw:begin    
 
             read_reg <= 1'b1;
             write_reg <= 1'b1;
