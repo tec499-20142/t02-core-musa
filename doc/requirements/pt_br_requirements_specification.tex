@@ -109,6 +109,10 @@
           NFR     & Requisito Não Funcional  \\ \hline
           D       & Dependência  \\ \hline
           PC      & \textit{Program Counter} (Contador de Programa)  \\ \hline
+          RD      & Registrador de Destino  \\ \hline
+          RS      & Registrador Fonte  \\ \hline
+          Bit	  & \textit{Binary Digit} (Digito Binário) \\ \hline
+          Byte	  & \textit{Binary Term} (Conjunto de 8 \textit{bits}) \\ \hline
         \end{tabular}
       \end{center}
     \end{table}
@@ -301,12 +305,8 @@
        \end{itemize}
        }
       {Essencial}
-
-      \requirement
-      {Tamanho da palavra de uma instrução de 32 \textit{bits}}
-      {O Tamanho de uma palavra de instrução que é compatível com o processador é de 32 \textit{bits}.}
-      {Essencial}
-\end{functional}
+      
+	\end{functional}
     \subsection{Instruções de Desvio}
 
     \begin{functional}
@@ -397,9 +397,20 @@
 
      \end{functional}
 
-     \subsection{Modos de Endereçamento}
+	\subsection{Outros Requisitos Funcionais}
 
-    \begin{functional}
+    \begin{functional}     
+     
+     \requirement
+      {Tamanho da palavra de uma instrução}
+      {O Tamanho de uma palavra de instrução que é compatível com o processador é de 32 \textit{bits}.}
+      {Essencial}
+      
+	\end{functional}
+
+	\subsection{Modos de Endereçamento}
+
+	\begin{functional}
 
       \requirement{Imediato}
       {O processador deve aceitar instruções onde o dado já é passado explicitamente na instrução.}
