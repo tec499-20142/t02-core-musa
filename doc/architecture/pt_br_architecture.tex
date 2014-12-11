@@ -52,8 +52,8 @@
  		     24/11/2014 & Refatoração do \textit{Datapath} & Odivio Caio \\ \hline
 		  	 07/12/2014 & Opcodes de acordo com o \textit{software} Vênus & jadsonfirmo \\ \hline
 		  	 07/12/2014 & Alteração no \textit{layout} do JR e remoção de conflitos & jadsonfirmo \\ \hline
-		  	 08/12/2014 & Revisão documento de arquitetura & jadsonfirmo \\ \hline
 		  	 09/12/2014 & Correções estruturais do documento & di3goleite \\ \hline
+		  	 11/12/2014 & Revisão & jadsonfirmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -119,6 +119,8 @@ Este documento é dividido através das seguintes seções:\\
           \cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
              PC       &  Contador de Programa (\textit{Program Counter})\\ \hline
              ULA      &  Unidade Lógica e Aritmética\\ \hline
+             Bit	  & \textit{Binary Digit} (Digito Binário) \\ \hline
+          	 Byte	  & \textit{Binary Term} (Conjunto de 8 \textit{bits}) \\ \hline
         \end{tabular}
       \end{center}
     \end{table}  
@@ -131,9 +133,9 @@ Este documento é dividido através das seguintes seções:\\
   \begin{itemize}
     \item \textbf{PC --} Registrador que guarda o endereço da próxima instrução a ser executada.
     
-    \item \textbf{Memória de Dados --} A Memória de dados é endereçada com 33 bits, que comporta no máximo 2 elevado a 33 palavras de instrução no total, que guarda dados com tamanho de 32 bits que foram manipulados pelo programa ou processador. 
+    \item \textbf{Memória de Dados --} A Memória de dados é endereçada com 33 \textit{bits}, que comporta no máximo 2 elevado a 33 palavras de instrução no total, que guarda dados com tamanho de 32 \textit{bits} que foram manipulados pelo programa ou processador. 
    
-    \item \textbf{Memória de Instrução --} A Memória de instrução é endereçada com 18 bits, que comporta no máximo 2 elevado a 18 palavras de instrução no total, tem tamanho de 1048576 bytes, justamente pelo fato da palavra de instrução ter 32 bits. Por fim é a memória que guarda o programa codificado em linguagem assembly.
+    \item \textbf{Memória de Instrução --} A Memória de instrução é endereçada com 18 \textit{bits}, que comporta no máximo 2 elevado a 18 palavras de instrução no total, tem tamanho de 1048576 \textit{bytes}, justamente pelo fato da palavra de instrução ter 32 \textit{bits}. Por fim é a memória que guarda o programa codificado em linguagem \textit{Assembly}.
     
     \item \textbf{ULA --} É responsável por todo o processamento realizado no processador, pois esta unidade executa as instruções lógicas e aritméticas.
     
@@ -141,14 +143,14 @@ Este documento é dividido através das seguintes seções:\\
     
     \item \textbf{Banco de Registradores --} Contém os 32 registradores de propósito geral do processador.
     
-    \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno de chamadas de funções. Possui 32 registradores de 18 bits e um contador responsável por apontar o topo da pilha.
+    \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno de chamadas de funções. Possui 32 registradores de 18 \textit{bits} e um contador responsável por apontar o topo da pilha.
   \end{itemize}
   
   \section{Intruções}
-  A unidade de processamento possui 21 instruções essenciais para o processamento das operações. Elas são desmembradas em três formatos: R-type, I-type, e Jump.
+  A unidade de processamento possui 21 instruções essenciais para o processamento das operações. Elas são desmembradas em três formatos: Tipo R (Registradores), Tipo I (Imediatas), e Tipo J (\textit{Jump, ou Desvio}).
   
   \begin{itemize}
-    \item \textbf{R-type --} Operações lógicas e aritméticas.
+    \item \textbf{Tipo R --} Operações lógicas e aritméticas.
     
 	\begin{table}[H]
 	\centering
@@ -169,7 +171,7 @@ Este documento é dividido através das seguintes seções:\\
   	\caption{Instruções do tipo R.}
   \end{table}    
 
-    \item \textbf{I-type --} Operações imediatas.
+    \item \textbf{Tipo I --} Operações imediatas.
     
 	\begin{table}[H]
 	\centering
@@ -187,7 +189,7 @@ Este documento é dividido através das seguintes seções:\\
   	\caption{Instruções do tipo I.}
   \end{table}
     
-    \item \textbf{Jump --} Operações de desvio e branch.
+    \item \textbf{Tipo J --} Operações de desvio e branch.
     
 	\begin{table}[H]
 	\centering
@@ -204,7 +206,7 @@ Este documento é dividido através das seguintes seções:\\
   	NOP & Não realiza operação. & 000001 & - \\ \hline
 
   	\end{tabular} 
-  	\caption{Instruções de Load/Store.}
+  	\caption{Instruções do tipo J.}
   \end{table}
     
     \end{itemize}
@@ -224,10 +226,10 @@ Este documento é dividido através das seguintes seções:\\
   	06 & 05 & 05 & 05 & 05 & 06 \\ 
   	\hline 
   	\end{tabular} 
-  	\caption{Instruções do tipo R.}
+  	\caption{\textit{Layout} das instruções do tipo R.}
   \end{table}
   
-  Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo IM é reservado para as operações imediatas.\\
+  Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo SHAMT é reservado para as operações imediatas.\\
   
    \item \textbf{LW e SW, ADDi, SUBi, ANDi, ORi e BRFL:}
 
@@ -240,10 +242,10 @@ Este documento é dividido através das seguintes seções:\\
   	06 & 05 & 05 & 16 \\ 
   	\hline 
   	\end{tabular} 
-  	\caption{Layout das Operações de Leitura/Escrita e operações imediatas}
+  	\caption{\textit{Layout} das Operações de Leitura/Escrita e operações imediatas}
   \end{table}
   
-  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo I (de 16 bits) que representa o deslocamento do registrador base. Os dois bits restantes serão sempre ignorados.\\
+  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
 
   
   \item \textbf{CALL, RET, HALT e NOP e JPC:}
@@ -257,10 +259,10 @@ Este documento é dividido através das seguintes seções:\\
   	06 & 26 \\ 
   	\hline 
   	\end{tabular} 
-  	\caption{Layout das Operações de Salto}
+  	\caption{Layout das Operações de Salto (Tipo J)}
   \end{table}
   
-  Instruções de salto, que especificam um registrador RF e uma CST (FLAG), para a instrução BRFL, que realiza um salto caso condição de comparação com a flag for verdadeira. Utilizará também 18 bits  utilizará 18 bits na instrução que respresenta uma posição de endereço de memória, para as instruções JR, CALL e HALT. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
+  Instruções de salto possue, além do OPCODE, um campo de 26 \textit{bits} representando uma posição de endereço de memória, para as instruções CALL, HALT e JPC. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
   
   \end{itemize}
 
@@ -312,10 +314,10 @@ Este documento é dividido através das seguintes seções:\\
 
           \hline
           \endlastfoot
-          OP1             & 32   & entrada   & Primeiro operando.    \\ \hline
-          OP2             & 32   & entrada   & Segundo operando.    \\ \hline
-          Function             & 6   & entrada   & Identificador da operação.    \\ \hline
-          Result             & 35   & saída   & Resultado da operação com as \textit{flags}.    \\
+          OP1  & 32   & entrada & Primeiro operando.    \\ \hline
+          OP2  & 32   & entrada & Segundo operando.    \\ \hline
+          \textit{Function} & 6 & entrada & Identificador da operação.    \\ \hline
+          \textit{Result} & 35 & saída & Resultado da operação com as \textit{flags}.    \\
         \end{longtable}
       \end{center}  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -352,9 +354,9 @@ Este documento é dividido através das seguintes seções:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          entradaPC             & 18   & entrada   & Endereço do PC atual.    \\ \hline
-          saidaInstrucao             & 32   & saída   & Instrução que sai da memória de instrução .    \\ \hline
+          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase.    \\ \hline
+          entradaPC & 18 & entrada & Endereço do PC atual.    \\ \hline
+          saidaInstrucao & 32 & saída & Instrução que sai da memória de instrução.    \\ \hline
         \end{longtable}
       \end{center}  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,11 +393,11 @@ Este documento é dividido através das seguintes seções:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          entradaDeDados             & 18   & entrada   & Endereço do PC que será armazenado.    \\ \hline
-          popRequest             & 1   & entrada   & Sinal para tirar o ultimo endereço armmazenado da pilha.    \\ \hline
-          pushRequest             & 1   & entrada   & Sinal para salvar o endereço do PC da pilha.    \\ \hline
-          saidaDeDados             & 18   & saída   & Ultimo endereço salvo na pilha para retorno do PC.    \\ \hline
+          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase. \\ \hline
+          entradaDeDados & 18 & entrada & Endereço do PC que será armazenado. \\ \hline
+          popRequest & 1 & entrada & Sinal para tirar o ultimo endereço armmazenado da pilha. \\ \hline
+          pushRequest & 1 & entrada & Sinal para salvar o endereço do PC da pilha. \\ \hline
+          saidaDeDados & 18 & saída & Último endereço salvo na pilha para retorno do PC. \\ \hline
         \end{longtable}
       \end{center}  
 
@@ -433,11 +435,11 @@ Este documento é dividido através das seguintes seções:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          entradaDeDados             & 32   & entrada   & Valor que será armazenado na memória de dados.    \\ \hline
-          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita na memória de dados.    \\ \hline
-          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura na memória de dados.    \\ \hline
-          saidaDeDados             & 32   & saída   & Valor que irá sair da memória de dados.    \\ \hline
+          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase. \\ \hline
+          entradaDeDados & 32 & entrada & Valor que será armazenado na memória de dados.    \\ \hline
+          AtivaEscrita & 1 & entrada & Sinal para ativar a escrita na memória de dados.    \\ \hline
+          AtivaLeitura & 1 & entrada & Sinal para ativar a leitura na memória de dados.    \\ \hline
+          saidaDeDados & 32 & saída & Valor que irá sair da memória de dados.    \\ \hline
         \end{longtable}
       \end{center}  
    
@@ -475,12 +477,12 @@ Este documento é dividido através das seguintes seções:\\
           \hline
           \endlastfoot
 
-          clock\_in                & 1   & entrada   & Sinal de clock da fase.    \\ \hline
-          EscritaDestino             & 32   & entrada   & Escrita do valor nos registradores de destino.    \\ \hline
-          AtivaEscrita             & 1   & entrada   & Sinal para ativar a escrita no Banco de Registradores.    \\ \hline
-          AtivaLeitura             & 1   & entrada   & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
-          RegistradorDeSaida             & 32   & saída   & Saída do valor contido nos registradores.    \\ \hline
-          RegistradorDestino             & 5   & Entrada   & Endereço do registrador destino.    \\ \hline
+          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase. \\ \hline
+          EscritaDestino & 32 & entrada & Escrita do valor nos registradores de destino. \\ \hline
+          AtivaEscrita & 1 & entrada & Sinal para ativar a escrita no Banco de Registradores. \\ \hline
+          AtivaLeitura & 1 & entrada & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
+          RegistradorDeSaida & 32 & saída & Saída do valor contido nos registradores.    \\ \hline
+          RegistradorDestino & 5 & Entrada & Endereço do registrador destino.    \\ \hline
         \end{longtable}
       \end{center}
 % Optional bibliography section
