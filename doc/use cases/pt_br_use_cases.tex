@@ -93,6 +93,12 @@
       \begin{itemize}
       	\item Odivio Caio; 
 	  \end{itemize}
+	  \\ \hline
+
+	\small 12/12/2014 & \small Adição dos novos casos de uso& \small 
+      \begin{itemize}
+      	\item Odivio Caio; 
+	  \end{itemize}
 	  
 	  \\ \hline
     \end{tabular}
@@ -168,12 +174,9 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
           \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
           UC & Caso de Uso  \\ \hline
           ULA & Unidade Lógica e Aritmética \\ \hline
-          SB & Sub-fluxo \\ \hline
-          FS & Fluxo Secundário \\ \hline
           NFR & Requisito Não Funcional \\ \hline
           FR & Requisito Funcional \\ \hline
-          BT & Botão Direcional \\ \hline
-	BD & Banco de Registradoresl \\ \hline
+	BR & Banco de Registradores \\ \hline
           PC & \textit{Program Counter} \\
           \hline
         \end{tabular}
@@ -221,7 +224,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
      \item Execução da Instrução.
     \end{itemize}
 
-  \ucdiagram{./pictures/use/case/decodificacao.png}
+   \ucdiagram{./pictures/use/case/decodificacao.png}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
@@ -281,7 +284,7 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
     \item Controlador executa a escrita no PC;
   \end{mainflow}  
 
-\usecase{Leitura e Escrita no BD}
+\usecase{Leitura e Escrita no BR}
    O processador tem a capacidade de efetuar a leitura ou escrita de um valor de 32 bits no Banco de Registradores.
   
   \actors
@@ -305,10 +308,36 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
   % descricao do fluxo principal de eventos
   \begin{mainflow}
     \item Controlador executa a leitura ou a escrita no Banco de Registradores;
-    \item O modulo BD identifica os endereços e apresenta as saidas;
+    \item O modulo BR identifica os endereços e apresenta as saidas;
   \end{mainflow}  
 
+\usecase{Imediatos do tipo aritmético e lógico}
+   O sistema tem a capacidade de enviar valores imediatos para ULA.
+  
+  \actors
+    \begin{description}
+     \item \textbf{Controlador}.
+     \item \textbf{ULA}.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+    \item Sinais de Controle;
+    \end{itemize}
 
+  \postconditions
+    \begin{itemize}
+    \item Saidas de 35 bits.
+    \end{itemize}
+
+  \ucdiagram{./pictures/use/case/ImeArit.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}    \item Realização da ação referente ao \textit{Function} recebido;
+    \item Valor imediato recebido é estendido;
+    \item \textit{Flags} são disparadas, caso seja necessário;
+    \item Apresentação do resultado;
+  \end{mainflow}  
  
 
 % Optional bibliography section
