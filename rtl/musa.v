@@ -7,7 +7,7 @@ wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
 w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc,w_add_pc
 ;
 
-wire [31:0] w_reg_alumux, , w_op1,w_op2, w_datamem_out, w_register_in, w_extend_mux;
+wire [31:0] w_reg_alumux,  w_op1,w_op2, w_datamem_out, w_register_in, w_extend_mux;
 
 wire[34:0]  w_alu_out, w_datamem_out_35 ;
 
@@ -17,13 +17,13 @@ wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_pc_ad
 
 reg [31:0] reg_instruction;
 
-assign [15:0] reg_instruction = w_immediat16;
+assign w_immediat16 = reg_instruction[15:0] ;
 
-assign [31:25] reg_instruction = w_opcode;
+assign  w_opcode = reg_instruction [31:25];
 
-assign [5:0] reg_instruction = w_ula_function;
+assign   w_ula_function = reg_instruction [5:0];
 
-assign [17:0] reg_instruction = w_pc_adress;
+assign  w_pc_adress = reg_instruction [17:0];
 
 
 control_unit_microprogramed cum01(
@@ -94,7 +94,7 @@ registers_bank registers_bank01(     //TO DO COLOCAR A ENTRADA DE SINAL DO BRFL_
 // Extensor de sinal do operando imediato
 sign_extend sign_extend01(
 
-.extend(w_immediat16]),
+.extend(w_immediat16),
 
 .extended(w_extend_mux)
 
