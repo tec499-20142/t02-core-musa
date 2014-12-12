@@ -1,0 +1,17 @@
+Este Plano de Testes tem como objetivo descrever o fluxo de atividades que serão tomadas para se testar uma Unidade Logica e Aritimetica.
+
+A ULA tem como objetivo principal realizar operações logicas e aritimeticas, onde algumas delas estão ligadas diretamente a flags informativas ou de erros.
+
+fluxo:
+
+-as funcionalidades serão testadas na seguinte ordem: ADD,ADDI,SUB,SUBI,
+AND, ANDI, OR, ORI, MUL, DIV, CMP, NOT.
+-os valores ultilizados serão de natureza aleatória.
+-cada funcionalidade será testada 10 vezes, dando um total de 120 execuções para instruções, 40 execuções para flags.
+-serão testados os seguintes casos de flag de erro de forma proposital: Overflow, Underflow.
+-neste caso valores ultilizados serão escolhidos pela equipe de testes
+-serão testados os seguintes casos de flags auxiliares:Equals,Above.
+-As flags serão testadas com a ultilização de uma saida de controle temporária para os sinais.
+-não serão testados as demais funcinalidades ligadas a ULA que ainda não apresentam seu RTL desenvolvido exemplo LW/SW.
+-não serão testados os sinais de controles vindos da Unidade de Controle.
+
