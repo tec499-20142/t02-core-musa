@@ -10,9 +10,9 @@ module stack_tb;
 				 
 	stack sk(
 		.read_PC(read_PC),
+		.write_PC(write_PC),
 		.push(push),
-		.pop(pop),
-		.write_PC(write_PC)
+		.pop(pop)
 	);
 	
 	initial begin

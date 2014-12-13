@@ -7,12 +7,13 @@ module stack (
 	read_PC,
 	write_PC,
 	push,
-	pop,
+	pop
+
 );
 
 // Parametros de configuracao da pilha
 parameter WIDTH = 18;
-parameter DEPTH = 32768;
+parameter DEPTH = 32;
 
 // Entradas e saidas da pilha
 input      [WIDTH - 1:0] read_PC;
@@ -31,16 +32,14 @@ initial begin
 	ptr = 1'b0;
 end
 
-// Cria um loop para monitorar o que fazer
-always begin
-	if (push) begin
+// este always monitora o sinal push e add no topo da pilha quando o sinal mudar para 1
+always@ (posedge push) begin
 		stack[ptr] <= read_PC;
-		write_PC <= stack[ptr];
 		ptr <= ptr + 1;
-	end else
-		if (pop) begin
-			ptr <= ptr - 1;
-			write_PC <= stack[ptr];
-	end
+end
+// este always monitora o sinal pop e remove o topo da pilha quando o sinal mudar para 1
+always@ (posedge pop) begin
+    ptr = ptr - 1;
+    write_PC <= stack[ptr]; 
 end
 endmodule
