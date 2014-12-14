@@ -1,6 +1,7 @@
 
 arquivo = open('code.txt' , 'r')
 arquivo2 = open('bin.txt' , 'w')
+arquivo3 = open('hex.txt' , 'w')
 
 r_type = {'ADD':'000000','SUB':'000000','MUL':'000000','DIV':'000000','AND':'000000','OR':'000000','NOT':'000000','CMP':'000000'}
 i_type = {'ADDi':'001000', 'SUBi':'001001', 'ANDi':'001100','ORi':'001101', 'LW':'100011','SW':'101011'}
@@ -24,10 +25,14 @@ def start(linha):
     lista_brfl = brfl_type.keys()
 
     if  linha[0] in lista_r :
-        arquivo2.writelines(rtype(linha)+'\n')
+        instrucao = rtype(linha)
+        arquivo2.writelines(instrucao +'\n')
+        #instrucao = '0x' + hex('0b'+instrucao)
+        #arquivo3.writelines(instrucao + '\n')
 
     elif linha[0] in lista_j:
         arquivo2.writelines(jtype(linha)+'\n')
+        arquivo3.writelines(jtype(linha)+'\n')
 
     elif linha[0] in lista_i:
         arquivo2.writelines(itype(linha)+'\n')
@@ -73,6 +78,7 @@ def itype( linha ):
 
 #CALL RET E JR
 def branch(linha):
+    print (linha[1])
     nova_linha = i_type.get(linha[0])
     nova_linha = nova_linha + registers.get(linha[1])
 
@@ -93,3 +99,7 @@ def brfl (linha):
 for linha in arquivo:
     start(linha)
     print linha
+
+arquivo3.close()
+arquivo.close()
+arquivo2.close()

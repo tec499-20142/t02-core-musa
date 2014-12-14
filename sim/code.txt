@@ -1,6 +1,5 @@
 ADD $t1,$t1,$t1
 ADDi $t1,$t1,150
-BRFL 345
 LW $t5,$t8,0
 SW $t2,$t6,34
 MUL $t1,$t6,$t7
