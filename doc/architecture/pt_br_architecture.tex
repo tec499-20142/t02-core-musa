@@ -68,6 +68,7 @@
 		12/12/2014 & Correção de bug na tabela de Busca de Registradores & di3goleite \\ \hline
 		15/12/2014 & Correção do datapath no documento e da tabela de histórico de revisões & di3goleite \\ \hline
 		15/12/2014 & Revisão da visão geral da arquitetura & di3goleite \\ \hline
+		15/12/2014 & Correção dos OPCODES do JR e do SUBi & di3goleite \\ \hline
 	\end{longtable}
 \end{center}
 
@@ -204,7 +205,7 @@ Este documento é dividido através das seguintes capítulos:
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
   	ADDi & Soma de dois valores, sendo um destes imediato. & 001000 & - \\ \hline
-  	SUBi & Subtração de dois valores, sendo um destes imediato. & 001001 & - \\ \hline
+  	SUBi & Subtração de dois valores, sendo um destes imediato. & 001110 & - \\ \hline
   	ANDi & Operação lógica AND entre dois valores, sendo um destes imediato. & 001100 & - \\ \hline
   	ORi  & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
     LW   & Operação de leitura na memória de dados. & 100011 & - \\ \hline
@@ -222,7 +223,7 @@ Este documento é dividido através das seguintes capítulos:
   	\textbf{INSTRUÇÃO} & \textbf{DESCRIÇÃO} & \textbf{OPCODE} & \textbf{FUNCTION} \\ 
   	\hline 
   	JPC  & Desvia o programa para um endereço relativo ao PC. & 001001 & - \\ \hline
-    JR   & Desvia o programa para um endereço de destino. & 001000 & - \\ \hline
+    JR   & Desvia o programa para um endereço de destino. & 011000 & - \\ \hline
   	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de \textit{flag}. & 010001 & - \\ \hline
   	CALL & Desvia um programa em execução para uma sub-rotina. & 000011 & - \\ \hline
   	RET  & Retorna de uma sub-rotina. & 000111 & - \\ \hline
