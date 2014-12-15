@@ -1,25 +1,29 @@
-module control_unit_microprogramed(clk, rst_n, opcode, read_reg, write_reg, read_data, write_data, immediat,
- fnction, control_function, control_alu_data, branch, rtrn, pop, push, write_pc,brfl_control, add_pc);
+module control_unit_microprogramed(clk, opcode, read_reg, write_reg, read_data, write_data, immediat,
+ fnction, control_function, control_alu_data, branch, rtrn, pop, push, write_pc,brfl_control, add_pc, count);
 
-input clk, rst_n;
+input clk;
 input [5:0] opcode;
 
 output reg read_reg, write_reg, read_data, write_data, immediat,
  control_function, control_alu_data, rtrn, pop, push, write_pc, brfl_control, add_pc;
-output reg [1:0] branch;
+output reg [2:0] branch, count;//aten��o
 output reg[5:0] fnction;
 reg [5:0] opcode_reg;
-reg [2:0] count,count2;
+reg [2:0] count2;
 
 
 parameter ifh = 3'b000, id = 3'b001, ex = 3'b010, mem = 3'b011 , wb =3'b100; // Estagios
 parameter r_type = 6'b000000; // OP_code das instruções aritimeticas
 parameter add  = 6'b100000, sub = 6'b100010, mul = 6'b011000, div = 6'b011010,
  f_and = 6'b100100, f_or = 6'b100101, f_not = 6'b100111, cmp = 6'b011011;  //Function das operações aritimeticas, r_type.
-parameter addi = 6'b001000, andi = 6'b001100, ori = 6'b001101, subi = 6'b001000; // OP_code das operações imediatas, tipo I
+parameter addi = 6'b001000, andi = 6'b001100, ori = 6'b001101, subi = 6'b001110; // OP_code das operações imediatas, tipo I
 parameter lw =  6'b100011, sw = 6'b101011; // OP_code das instruções de Load e Store
-parameter jr =  6'b001000, jpc = 6'b001001, brfl = 6'b010001, halt = 6'b000010, nop = 6'b000001, call = 6'b000011, ret = 6'b000111;   //OP_code das operações de desvio, TO_DO -> JPC, CALL, RET
+parameter jr =  6'b011000, jpc = 6'b001001, brfl = 6'b010001, halt = 6'b000010, nop = 6'b000001, call = 6'b000011, ret = 6'b000111;   //OP_code das operações de desvio, TO_DO -> JPC, CALL, RET
 
+initial begin
+  count <= 3'b001;
+  count2 <= 3'b000;
+end 
 always @(opcode) begin 
 
 	 opcode_reg = opcode;
@@ -36,7 +40,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -54,11 +58,11 @@ always @(opcode) begin
             fnction = 6'b100000;
             control_function = 1'b1;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+				    add_pc = 1'b0;
 
             end
 
@@ -72,7 +76,7 @@ always @(opcode) begin
             fnction = 6'b100010;
             control_function = 1'b1;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -90,7 +94,7 @@ always @(opcode) begin
             fnction = 6'b100100;
             control_function = 1'b1;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -108,7 +112,7 @@ always @(opcode) begin
             fnction = 6'b100101;
             control_function = 1'b1;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -126,7 +130,7 @@ always @(opcode) begin
             fnction = 6'b100000;
             control_function = 1'b1;
             control_alu_data = 1'b1;
-            branch = 2'b00;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -144,7 +148,7 @@ always @(opcode) begin
             fnction = 6'b100000;
             control_function = 1'b1;
             control_alu_data = 1'b1;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -162,7 +166,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b1;
@@ -180,7 +184,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b1;
             push = 1'b0;
@@ -198,11 +202,11 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b10;
+            branch = 3'b010;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+			     	add_pc = 1'b0;
 
             end
 
@@ -216,7 +220,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b10;
+            branch = 3'b010;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -234,11 +238,11 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b101;
+            branch = 3'b101;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+				    add_pc = 1'b0;
 
             end
 
@@ -252,7 +256,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -270,7 +274,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b10;
+            branch = 3'b010;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
@@ -287,46 +291,22 @@ always @(opcode) begin
     
 end
 
-always @(posedge clk or negedge rst_n) begin 
+always @(posedge clk ) begin 
 
-    if(~rst_n) begin
-	 
-	    read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 2'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-				opcode_reg = 6'b000000;
-				add_pc = 1'b0;
 
-    end else begin
         if (count == 3'b100) begin
-
+            write_pc = 1'b1;
             opcode_reg = 6'b000000;
-            count = 3'b000;
-				write_pc = 1'b1;
-	
         end else begin
-
             count = count + 3'b001;
-				write_pc = 1'b0;
-
+				    write_pc = 1'b0;
         end
-
-    end
 end
 
 always @(negedge clk ) begin
 
 	if (count2 == 3'b100) begin
-
+        count <= 3'b000;
 				write_pc = 1'b0;
 				read_reg = 1'b0;
             write_reg = 1'b0;
@@ -336,7 +316,7 @@ always @(negedge clk ) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 2'b000;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
