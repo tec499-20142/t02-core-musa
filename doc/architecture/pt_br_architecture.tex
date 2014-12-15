@@ -79,7 +79,7 @@
 \chapter{Introdução}
   
   \section{Propósito do Documento}
-  Este documento descreve a arquitetura do projeto \ipPROCESSProject, incluindo as especificações dos circuitos internos, bem como suas devidas máquinas de estados. Também, serão apresentados diagramas de classes, de temporização e definições de entradas e saídas. O principal objetivo deste documento é definir as especificações de arquitetura do \ipPROCESSProject e provê uma visão geral do projeto.
+  Este documento descreve a arquitetura do projeto \ipPROCESSProject, incluindo as especificações dos circuitos internos, bem como suas devidas máquinas de estados. Também, serão apresentados diagramas de classes, de temporização e definições de entradas e saídas. O principal objetivo deste documento é definir as especificações de arquitetura do \ipPROCESSProject \space e provê uma visão geral do projeto.
   
   \section{Stakeholders}
     \FloatBarrier
@@ -98,7 +98,7 @@
 
 \section{Visão Geral do Documento}
 
-Este documento é dividido através das seguintes seções:\\
+Este documento é dividido através das seguintes capítulos:
 
   \begin{itemize}
   	\item \textbf{Capítulo 2 --} Nesta seção será apresentada a visão geral da arquitetura do projeto.
@@ -132,8 +132,6 @@ Este documento é dividido através das seguintes seções:\\
           \cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
              PC       &  Contador de Programa (\textit{Program Counter})\\ \hline
              ULA      &  Unidade Lógica e Aritmética\\ \hline
-             Bit	  & \textit{Binary Digit} (Digito Binário) \\ \hline
-          	 Byte	  & \textit{Binary Term} (Conjunto de 8 \textit{bits}) \\ \hline
         \end{tabular}
       \end{center}
     \end{table}  
@@ -158,6 +156,16 @@ Este documento é dividido através das seguintes seções:\\
     
     \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno de chamadas de funções. Possui 32 registradores de 18 \textit{bits} e um contador responsável por apontar o topo da pilha.
   \end{itemize}
+  \newpage
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{landscape}
+  	\section{DataPath interno}
+  	\begin{figure}[H]
+  		\centering
+  		\includegraphics[width=620px]{./pictures/datapath/DataPath.png}
+  	\end{figure}
+  \end{landscape}
   
   \section{Intruções}
   A unidade de processamento possui 21 instruções essenciais para o processamento das operações. Elas são desmembradas em três formatos: Tipo R (Registradores), Tipo I (Imediatas), e Tipo J (\textit{Jump, ou Desvio}).
@@ -278,15 +286,6 @@ Este documento é dividido através das seguintes seções:\\
   Instruções de salto possue, além do OPCODE, um campo de 26 \textit{bits} representando uma posição de endereço de memória, para as instruções CALL, HALT e JPC. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
   
   \end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-	\section{DataPath interno}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=620px]{./pictures/datapath/DataPath.png}
-	\end{figure}
-\end{landscape}
 
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
