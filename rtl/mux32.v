@@ -9,9 +9,9 @@ module mux32 (
 always @(*) begin
 
 	if(ctrl) begin
-		out <=in1
+		out <=in1;
 	end else begin 
-		out <= in0
+		out <= in0;
 	end
 end
 
