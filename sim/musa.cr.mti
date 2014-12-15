@@ -1,11 +1,11 @@
-{C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/ula.v} {2 {vlog -work work {C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/ula.v}
+{C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/sim/alu_tb.sv} {2 {vlog -work musa-test -sv {C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/sim/alu_tb.sv}
 ** Warning: (14) Failed to open "C:/Users/Filipe Boaventura/Documents/ECOMP/5? Semestre/SD/Problema 2/t02-core-musa/sim/musa.mpf" specified by the MODELSIM environment variable.
 
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module ula
+-- Compiling module alu_tb
 
 Top level modules:
-	ula
+	alu_tb
 
 } {} {}} {C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/musa.v} {2 {vlog -work work {C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/musa.v}
 ** Warning: (14) Failed to open "C:/Users/Filipe Boaventura/Documents/ECOMP/5? Semestre/SD/Problema 2/t02-core-musa/sim/musa.mpf" specified by the MODELSIM environment variable.
@@ -15,5 +15,14 @@ Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 
 Top level modules:
 	musa
+
+} {} {}} {C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/ula.v} {2 {vlog -work work {C:/Users/Filipe Boaventura/Documents/ECOMP/5º Semestre/SD/Problema 2/t02-core-musa/rtl/ula.v}
+** Warning: (14) Failed to open "C:/Users/Filipe Boaventura/Documents/ECOMP/5? Semestre/SD/Problema 2/t02-core-musa/sim/musa.mpf" specified by the MODELSIM environment variable.
+
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module ula
+
+Top level modules:
+	ula
 
 } {} {}}

@@ -3,24 +3,15 @@
 module alu_tb;
   reg signed [31:0] op1;
 	reg signed [31:0] op2;
-	reg [2:0] func;
-	reg [2:0] tmp;
-	reg signed [31:0] result;
-	wire overflow;
-	wire zero;
-	wire equals;
-	wire above;
+	reg [5:0] func;
+	wire signed [34:0] result;
 	int test_log;
 	
 	alu u(
 	 .op1(op1),
 	 .op2(op2),
 	 .func(func),
-	 .result(result),
-	 .overflow(overflow),
-	 .zero(zero),
-	 .equals(equals),
-	 .above(above)
+	 .result(result)
 	);
 	
 	initial begin
@@ -28,18 +19,34 @@ module alu_tb;
 	  $fmonitor
 	  (
 	      test_log, 
-	      "Operando 1: %d\nOperando 2: %d\nResultado : %d\nOverflow  : %b\nAbove     : %b\nEquals    : %b\n", 
+	      "Operando 1: %d\nOperando 2: %d\nResultado : %d\nAbove  : %b\nEquals     : %b\nOverflow    : %b\n", 
 	      op1, 
 	      op2, 
-	      result, 
-	      overflow,
-	      above,
-	      equals
+	      result[31:0],
+	      result[32],
+	      result[33],
+	      result[34]
 	  );
 	  
-	  func = 3'b000;
+	  $monitor
+	  (
+	      "Operando 1: %d\nOperando 2: %d\nResultado : %d\nAbove  : %b\nEquals     : %b\nOverflow    : %b\n", 
+	      op1, 
+	      op2, 
+	      result[31:0],
+	      result[32],
+	      result[33],
+	      result[34]
+	  );
 	  
-	  repeat(7) begin
+	  func = 6'b100000;
+	  
+	  repeat(10) begin
+	      op1 = $random;
+	      op2 = $random;
+	      #1;
+	  end
+	  /*repeat(7) begin
 	    repeat(10) begin
 	      op1 = $random;
 	      op2 = $random;
@@ -47,7 +54,7 @@ module alu_tb;
 	    end 
 	    tmp = func + 3'b001;
 	    func =  tmp;
-	  end // end repeat
+	  end // end repeat*/
 	  $fclose(test_log);
 	end
 endmodule	

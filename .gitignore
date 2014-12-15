@@ -195,3 +195,7 @@ simulation/
 timing/
 testbench/
 *_sim/
+
+# ignore .c builds
+*.exe
+*.o

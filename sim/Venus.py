@@ -1,5 +1,5 @@
 
-arquivo = open('code.txt' , 'r')
+arquivo = open('decode-test.txt' , 'r')
 arquivo2 = open('bin.txt' , 'w')
 arquivo3 = open('hex.txt' , 'w')
 
