@@ -1,0 +1,8 @@
+# Load canceled
+# Load canceled
+vlib work
+vlog -reportprogress 300 -work work {/home/wagner/Dropbox/UEFS/2014.2/MI_SD/Problema 2/t02-core-musa/sim/alu_tb.sv}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# ** Error: /home/wagner/Dropbox/UEFS/2014.2/MI_SD/Problema 2/t02-core-musa/sim/alu_tb.sv(1): Cannot open `include file "../rtl/alu.v".
+# -- Compiling module alu_tb
+# ** Error: /home/wagner/Dropbox/UEFS/2014.2/MI_SD/Problema 2/t02-core-musa/sim/alu_tb.sv(21): near ".": syntax error, unexpected '.', expecting ')'

@@ -56,6 +56,8 @@
       \small 23/10/2014 & \small Revisão & \small jadsonfirmo \\ \hline
       \small 28/10/2014 & \small Atualização de Requisitos & \small jadsonfirmo \\ \hline
       \small 30/10/2014 & \small Revisão Final & \small jadsonfirmo \\ \hline
+      \small 11/12/2014 & \small Refatoração do Documento: Revisão, correções e ajustes. & \small jadsonfirmo \\ \hline
+      \small 11/12/2014 & \small Modificação do requisito da instrução BRFL & \small KelCarmo \\ \hline
     \end{tabular}
   \end{table}
 
@@ -75,8 +77,8 @@
   \begin{itemize}
    \item \textbf{Requisitos funcionais -} Lista de todos os requisitos funcionais.
    \item \textbf{Requisitos não funcionais -} Lista de todos os requisitos não funcionais.
-   \item \textbf{Dependências -} Conjunto de dependências de IP-cores previstos.
-   \item \textbf{Notas -} apresenta a lista de notas apresentadas ao longo do documento.
+   \item \textbf{Dependências -} Conjunto de dependências de \textit{IP-cores} previstos.
+   \item \textbf{Notas -} Lista de notas apresentadas ao longo do documento.
    \item \textbf{Referências -} Lista de todos os textos referenciados nesse documento.
   \end{itemize}
 
@@ -88,9 +90,9 @@
         \begin{tabular}[pos]{|m{5cm} | m{9cm}|}
           \hline
           \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
-          Requisitos Funcionais & Requisitos de hardware que compõem os módulos, descrevendo as ações que o mesmo deve estar apto a executar. Estas informações são capturadas a partir do desenvolvimento dos casos de uso, que documentam as entradas, os processos e as saídas geradas.  \\ \hline
-          Requisitos Não Funcionais & Requisitos de hardware que compõem os módulos, representando as características que o mesmo deve ter, ou restrições que o mesmo deve operar. Estas características referem-se técnicas, algoritmos, tecnologias e especificidades do Sistema como um todo.  \\ \hline
-          Dependências & Requisitos de reuso de IP-cores, descrevendo as funções que cada um deve exercer. \\ \hline
+          Requisitos Funcionais & Requisitos de \textit{hardware} que compõem os módulos, descrevendo as ações que o mesmo deve estar apto a executar. Estas informações são capturadas a partir do desenvolvimento dos casos de uso, que documentam as entradas, os processos e as saídas geradas.  \\ \hline
+          Requisitos Não Funcionais & Requisitos de \textit{hardware} que compõem os módulos, representando as características que o mesmo deve ter, ou restrições que o mesmo deve operar. Estas características referem-se técnicas, algoritmos, tecnologias e especificidades do sistema como um todo.  \\ \hline
+          Dependências & Requisitos de reuso de \textit{IP-cores}, descrevendo as funções que cada um deve exercer. \\ \hline
         \end{tabular}
       \end{center}
     \end{table}
@@ -107,7 +109,11 @@
           FR      & Requisito Funcional  \\ \hline
           NFR     & Requisito Não Funcional  \\ \hline
           D       & Dependência  \\ \hline
-          PC      & Program Counter (Contador de Programa)  \\ \hline
+          PC      & \textit{Program Counter} (Contador de Programa)  \\ \hline
+          RD      & Registrador de Destino  \\ \hline
+          RS      & Registrador Fonte  \\ \hline
+          Bit	  & \textit{Binary Digit} (Digito Binário) \\ \hline
+          Byte	  & \textit{Binary Term} (Conjunto de 8 \textit{bits}) \\ \hline
         \end{tabular}
       \end{center}
     \end{table}
@@ -137,11 +143,11 @@
      \requirement
       {Instrução LW}
       {O processador deve ser capaz de ler valores da memória de dados.
-       A instrução LW está compreendida da seguinte forma:\\
+       A instrução LW (\textit{Load Word}) está compreendida da seguinte forma:\\
        \begin{itemize}
         \item Registrador de Destino (RD) - registrador onde será armazenado o valor que será carregado da memória.
         \item Registrador Fonte (RS) - registrador fonte onde contém o dado a ser lido.
-        \item Deslocamento (I16) - endereço, de 16 bits, o qual haverá o deslocamento de bits a partir do RS.
+        \item Deslocamento (I16) - endereço, de 16 \textit{bits}, o qual haverá o deslocamento de \textit{bits} a partir do RS.
        \end{itemize}
        }
       {Essencial}
@@ -149,11 +155,11 @@
      \requirement
       {Instrução SW}
       {O processador deve ser capaz de inserir valores na memória de dados.
-      A instrução SW está compreendida da seguinte forma:\\
+      A instrução SW (\textit{Store Word}) está compreendida da seguinte forma:\\
        \begin{itemize}
         \item Registrador Fonte (RS) - registrador fonte onde contém o dado a ser salvo.
         \item Registrador de Destino (RD) - registrador onde será armazenado o valor proveniente do RS.
-        \item Deslocamento (I16) - endereço, de 16 bits, o qual haverá o deslocamento de bits a partir do RD.
+        \item Deslocamento (I16) - endereço, de 16 \textit{bits}, o qual haverá o deslocamento de \textit{bits} a partir do RD.
        \end{itemize}
        }
       {Essencial}
@@ -167,9 +173,9 @@
       {O processador deve ser capaz de realizar a soma de dois valores, levando em consideração o sinal.
       A instrução ADD está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
-        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando1 e operando2 (RS1+RS2).
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando 1 e operando 2 (RS1+RS2).
        \end{itemize}
        }
       {Essencial}
@@ -179,9 +185,9 @@
       {O processador deve ser capaz de realizar a subtração de dois valores, levando em consideração o sinal.
       A instrução SUB está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
-        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando1 e operando2 (RS1-RS2).
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando 1 e operando 2 (RS1-RS2).
        \end{itemize}
        }
       {Essencial}
@@ -191,9 +197,9 @@
       {O processador deve ser capaz de realizar a multiplicação de dois valores, levando em consideração o sinal.
       A instrução MUL está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
-        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da multiplicação entre o operando1 e operando2 (RS1*RS2).
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da multiplicação entre o operando 1 e operando 2 (RS1*RS2).
        \end{itemize}
        }
       {Essencial}
@@ -203,9 +209,9 @@
       {O processador deve ser capaz de realizar a divisão de dois valores, levando em consideração o sinal.
       A instrução DIV está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
-        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da divisão entre o operando1 e operando2 (RS1/RS2).
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da divisão entre o operando 1 e operando 2 (RS1/RS2).
        \end{itemize}
        }
       {Essencial}
@@ -214,9 +220,9 @@
       {Instrução ADDi}
       {O processador deve ser capaz de realizar a soma de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução ADDi está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando1 e o imediato (RS1+RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando 1 e o imediato (RS1+RS2).
        \end{itemize}
        }
       {Essencial}
@@ -225,16 +231,16 @@
       {Instrução SUBi}
       {O processador deve ser capaz de realizar a subtração de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução SUBi está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando1 e o imediato (RS1-RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando 1 e o imediato (RS1-RS2).
        \end{itemize}
        }
       {Essencial}
 
      \requirement
       {Instrução CMP}
-      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar uma flag para sinalizar igualdade.
+      {O processador deve ser capaz de comparar dois registradores e ativar ou desativar a \textit{flag} equals para sinalizar igualdade caso os operandos sejam iguais, ou a \textit{flag} above caso o operando 1 seja maior que o operando 2.
       A instrução CMP está compreendida da seguinte forma:\\
       \begin{itemize}
        \item Registrador 1 (RS) - registrador representando um valor que será comparado com o RD.
@@ -245,31 +251,31 @@
 
       \requirement
       {Instrução AND}
-      {O processador deve ser capaz de realizar a operação lógica AND, bit a bit, de dois valores.
+      {O processador deve ser capaz de realizar a operação lógica AND, \textit{bit} a \textit{bit}, de dois valores.
       A instrução AND está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
-        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando1 e operando2 (RS1\&\&RS2).
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando 1 e operando 2 (RS1\&\&RS2).
        \end{itemize}
        }
       {Essencial}
 
       \requirement
       {Instrução OR}
-      {O processador deve ser capaz de realizar a operação lógica OR, bit a bit, de dois valores.
+      {O processador deve ser capaz de realizar a operação lógica OR, \textit{bit} a \textit{bit}, de dois valores.
       A instrução OR está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
-        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando1 e operando2 (RS1||RS2).
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando 1 e operando 2 (RS1||RS2).
        \end{itemize}
        }
       {Essencial}
 
       \requirement
       {Instrução NOT}
-      {O processador deve ser capaz de realizar a operação lógica NOT, de inversão, bit a bit.
+      {O processador deve ser capaz de realizar a operação lógica NOT, de inversão, \textit{bit} a \textit{bit}.
       A instrução NOT está compreendida da seguinte forma:\\
        \begin{itemize}
          \item Registrador de Destino (RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
@@ -279,33 +285,29 @@
       
       \requirement
       {Instrução ANDi}
-      {O processador deve ser capaz de realizar a operação lógica AND, bit a bit, de dois valores, de modo que um desses valores é um valor imediato.
+      {O processador deve ser capaz de realizar a operação lógica AND, \textit{bit} a \textit{bit}, de dois valores, de modo que um desses valores é um valor imediato.
       A instrução ANDi está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando1 e o imediato (RS1\&\&RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando 1 e o imediato (RS1\&\&RS2).
        \end{itemize}
        }
       {Essencial}
       
       \requirement
       {Instrução ORi}
-      {O processador deve ser capaz de realizar a operação lógica OR, bit a bit, de dois valores, de modo que um desses valores é um valor imediato.
+      {O processador deve ser capaz de realizar a operação lógica OR, \textit{bit} a \textit{bit}, de dois valores, de modo que um desses valores é um valor imediato.
       A instrução ORi está compreendida da seguinte forma:\\
        \begin{itemize}
-        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando1.
+        \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando1 e o imediato (RS1||RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando 1 e o imediato (RS1||RS2).
        \end{itemize}
        }
       {Essencial}
-
-      \requirement
-      {Tamanho da palavra de uma instrução de 32 bits}
-      {O Tamanho de uma palavra de instrução que é compatível com o processador é de 32 bits.}
-      {Essencial}
-\end{functional}
+      
+	\end{functional}
     \subsection{Instruções de Desvio}
 
     \begin{functional}
@@ -324,18 +326,18 @@
       {O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.
       A instrução JPC está compreendida da seguinte forma:\\
        \begin{itemize}
-         \item Registrador de Endereço (RD) - registrador onde contém o valor, de 28 bits, relativo ao PC, para onde o programa deverá ir.
+         \item Registrador de Endereço (RD) - registrador que contém o valor, de 28 bits, relativo ao PC, para onde o programa deverá ser desviado.
          \end{itemize}
          }
       {Essencial}
 
       \requirement
       {Instrução BRFL}
-      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de flag.
+      {O processador deve ser capaz de desviar um programa em execução para um endereço de destino atendendo a uma condição de \textit{flag}.
       A instrução BRFL está compreendida da seguinte forma:\\
        \begin{itemize}
-         \item Registrador (R) - registrador que contém o endereço para salto.
-         \item Contante (CST) - constante a qual será comparada com uma flag, de modo que se o resultado da comparação tiver resultado verdadeiro, o programa salta para o endereço armazenado no registrador (R).
+         \item Registrador (R) - registrador que contém a constante que será comprada com o valor de flag.
+         \item Imediato - valor do endereço destino, no qual será tomado se a condição for verdadeira.
          \end{itemize}
          }
       {Essencial}
@@ -345,7 +347,7 @@
       {O processador deve ser capaz de desviar um programa em execução para uma sub-rotina.
       A instrução CALL está compreendida da seguinte forma:\\
        \begin{itemize}
-         \item Registrador de Destino (RD) - registrador onde contém o valor para onde o programa deverá ir. Essa instrução salva o endereço atual do pc, armazenado-o na pilha.
+         \item Registrador de Destino (RD) - registrador onde contém o valor para onde o programa deverá ir. Essa instrução salva o endereço atual do PC, armazenado-o na pilha.
         \end{itemize}
         }
       {Essencial}
@@ -368,7 +370,7 @@
 
       \requirement
       {Instrução NOP}
-      {O processador deve ser capaz de não realizar operações durante os 5 ciclos de clock.}
+      {O processador deve ser capaz de não realizar operações durante os 5 ciclos de \textit{clock}.}
       {Essencial}
 
       \requirement
@@ -383,26 +385,42 @@
     \begin{functional}
 
       \requirement{Overflow/Underflow}
-      {O processador deve ser capaz de avisar que houve um erro (ou um "estouro") na operação aritimética através da flag de overflow/underflow.}
+      {O processador deve ser capaz de avisar que houve um erro (ou um "estouro") na operação aritimética através da \textit{flag} de overflow/underflow.}
       {Essencial}
 
       \requirement{Equals}
-      {Esta Flag deve ser utilizada como resultado da instrução CMP, deve constar verdadeiro quando as duas palavras comparadas forem iguais.}
+      {Esta \textit{flag} deve ser utilizada como resultado da instrução CMP, e deve constar verdadeiro quando as duas palavras comparadas forem iguais.}
       {Essencial}
 
       \requirement{Above}
-      {Esta Flag deve ser utilizada como resultado da instrução CMP, deve constar verdadeiro quando uma palavra é maior que a outra.}
-      {Essencial}
-
-      \requirement{Error}
-      {Deve indicar a ocorrência de uma operação não válida, como por exemplo divisão por zero.}
+      {Esta \textit{flag} deve ser utilizada como resultado da instrução CMP, e deve constar verdadeiro quando o valor de uma palavra é maior do que o valor da outra.}
       {Essencial}
 
      \end{functional}
 
-     \subsection{Modos de Endereçamento}
+	\subsection{Outros Requisitos Funcionais}
 
-    \begin{functional}
+    \begin{functional}     
+     
+     \requirement
+      {Tamanho da palavra de uma instrução}
+      {O Tamanho de uma palavra de instrução que é compatível com o processador é de 32 \textit{bits}.}
+      {Essencial}
+      
+	\end{functional}
+	
+	 \begin{functional}     
+     
+     \requirement
+      {Tamanho de endereço}
+      {O processor trabalha com endereços de 18 bits, para a memória de instrução e 32 bits, para a memória de dados. }
+      {Essencial}
+      
+	\end{functional}
+
+	\subsection{Modos de Endereçamento}
+
+	\begin{functional}
 
       \requirement{Imediato}
       {O processador deve aceitar instruções onde o dado já é passado explicitamente na instrução.}
@@ -420,7 +438,7 @@
 
 
 \section{Requisitos não Funcionais}
-Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
+Esta seção apresenta a lista de Requisitos Não Funcionais do projeto.
 
   \begin{nonfunctional}
 
@@ -431,7 +449,7 @@ Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
 
     \requirement
     {Ferramenta para prototipação}
-    {Será utilizada a Plataforma de Desenvolvimento FPGA  Terasic ALTERA Cyclone III (EP3C25F324) para a execução do protótipo.}
+    {Será utilizada a Plataforma de Desenvolvimento FPGA  (Terasic ALTERA Cyclone III (EP3C25F324)) para a execução do protótipo.}
     {Importante}
 
     \requirement
@@ -445,17 +463,17 @@ Esta seção apresenta a lista de Requisitos não Funcionais do projeto.
     {Desejável}
 
     \requirement{Organização dos Dados}
-    {Os bytes são numerados da esquerda para a direita: formato Big Endian.}
+    {Os \textit{bytes} são numerados da esquerda para a direita: formato \textit{Big Endian}.}
     {Essencial}
 
     \requirement
     {Ferramenta para programar o processador}
-    {Será utilizado o software Quartus para descarregar os programas que serão executados no processador.}
+    {Será utilizado o \textit{software} Quartus para descarregar os programas que serão executados no processador.}
     {Importante}
 
 
     \requirement{Tempo de Operação}
-    {Toda instrução deve ser executada em exatamente cinco ciclos de clock.}
+    {Toda instrução deve ser executada em exatamente cinco ciclos de \textit{clock}.}
     {Essencial}
 
   \end{nonfunctional}

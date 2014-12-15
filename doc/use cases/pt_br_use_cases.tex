@@ -87,6 +87,18 @@
       \begin{itemize}
       	\item mtcastro; 
 	  \end{itemize}
+ 	   \\ \hline
+
+ 	 \small 30/10/2014 & \small Refatoração dos fluxos e tamanho das Imagens & \small 
+      \begin{itemize}
+      	\item Odivio Caio; 
+	  \end{itemize}
+	  \\ \hline
+
+	\small 12/12/2014 & \small Adição dos novos casos de uso& \small 
+      \begin{itemize}
+      	\item Odivio Caio; 
+	  \end{itemize}
 	  
 	  \\ \hline
     \end{tabular}
@@ -161,12 +173,10 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
           \hline 
           \cellcolor[gray]{0.9}\textbf{Termo} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
           UC & Caso de Uso  \\ \hline
-          ALU & Unidade Lógica e Aritmética \\ \hline
-          SB & Sub-fluxo \\ \hline
-          FS & Fluxo Secundário \\ \hline
+          ULA & Unidade Lógica e Aritmética \\ \hline
           NFR & Requisito Não Funcional \\ \hline
           FR & Requisito Funcional \\ \hline
-          BT & Botão Direcional \\ \hline
+	BR & Banco de Registradores \\ \hline
           PC & \textit{Program Counter} \\
           \hline
         \end{tabular}
@@ -184,346 +194,151 @@ Este documento tem como objetivo a especificação dos casos de uso do projeto C
 \end{minipage}
 \begin{minipage}[c]{0.19\linewidth}
 \centering
-\includegraphics[scale=0.50]{./pictures/use/atores/alu.png}
+\includegraphics[scale=0.50]{./pictures/use/atores/ula.png}
 \end{minipage}
 \end{figure}
 
 \textbf{Controlador} – Unidade que controla a execução das operações.
 
-\textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+\textbf{ULA} – Unidade L\'{o}gica e Aritm\'{e}tica.
   
   \section{Casos de Usos}
   Esta sessão apresenta o conjunto de UC realizados para a implementação do projeto \textit{Core }MUSA (Núcleo de processamento de instruções do processador de propósito geral MUSA). As sessões a seguir foram divididas e nomeada utilizando a nomenclatura abreviada [UC (NÚMERO DO UC)] seguido de uma breve descrição em forma de título.
 
-  \usecase{Execução de instruções}
-  O controlador é responsável por decodificar instrução, solicitar operações na ALU e garantir o armazenamento dos resultados das operações no banco registradores.
+ \usecase{Execução de instruções}
+  O controlador deve ser capaz de decodificar a instrução e operá-la no sistema.
   
   \actors
     \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+     \item \textbf{Controlador}.
     \end{description}
     
   \preconditions 
     \begin{itemize}
-     \item Atender aos requisitos funcionais [FR01 e FR02];
-     \item Leitura do PC;
-     \item Realizar operações lógicas e aritméticas na ALU;
+     \item Endereço apotado por PC ser válido;
+     \item instrução possuir um \textit{OPCODE} válido;
     \end{itemize}
 
   \postconditions
     \begin{itemize}
-     \item Os resultados devem ser expressos nos registradores.
+     \item Execução da Instrução.
     \end{itemize}
 
-  \ucdiagram{./pictures/use/case/new.png}
+   \ucdiagram{./pictures/use/case/decodificacao.png}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
-    \item Acesso aos respectivos registradores;
-    \item Executa operações;
-    \item Atualiza registradores;
-    \item Atualiza valor do PC;
+    \item Controlador faz a decodificação do \textit{opcode} da instrução recebida;
   \end{mainflow}
 
-  \usecase{BRFL}
-  O Processador tem a capacidade de fazer desvios condicionais atrav\'{e}s da utilização das flags do sistema.
-  \actors
-    \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
-    \end{description}
-    
-  \preconditions 
-    \begin{itemize}
-     \item Atender ao requisito funcional [FR14];
-     \item Leitura do PC;
-     \item Realizar operações lógicas na ALU;
-    \end{itemize}
-
-  \postconditions
-    \begin{itemize}
-     \item Alteração do PC caso verdadeira.
-    \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/brfl.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada pelo PC;
-    \item Identificação e leitura da \textit{Flag} ativa;
-    \item Executa a operação lógica;
-    \item Atualiza o valor do PC;
-  \end{mainflow}
-  
-  \usecase{Instrução LW}
-  O processador é capaz de carregar dados da memória pro banco de registradores.
-  \actors
-    \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
-    \end{description}
-    
-  \preconditions 
-    \begin{itemize}
-     \item Leitura da Memória de instrução;
-     \item A instrução necessita ter o \textit{opcode} específico para a instrução LW;
-    \end{itemize}
-
-  \postconditions
-    \begin{itemize}
-     \item O dado deverá ser salvo no registrador de escrita (RD) do banco de registradores;
-    \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/LW_use_case.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-    \item Decodificação da instrução lida na Memória de Programa;
-    \item Acesso aos respectivos registradores;
-	\item Leitura do endereço base, a partir do registrador RT;
-	\item Extensão do valor de 16 bits lido na instrução para 32 bits;
-	\item Operação de soma com os dados de 32 bits, dado lido no registrador, com o valor de 16 bits estendido para 32 bits;
-	\item Resultado da operação será lido pela memória de dados, que servirá como endereço de memória para ler o dado;
-	\item O dado será enviado para o banco de registradores, e será escrito no registrador de escrita RD;
-
-  \end{mainflow}
-  
-  \usecase{Instrução SW}
-  O processador é capaz de escrever dados na memória.
-  \actors
-    \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
-    \end{description}
-    
-  \preconditions 
-    \begin{itemize}
-     \item Leitura da Memória de instrução;
-     \item A instrução necessita ter o \textit{opcode} específico para a instrução SW;
-    \end{itemize}
-
-  \postconditions
-    \begin{itemize}
-     \item O dado deverá ser escrito na memória de dados.
-    \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/SW_use_case.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-    \item Decodificação da instrução lida na Memória de Programa;
-	\item Acesso aos respectivos registradores;
-	\item Leitura do endereço base, a partir do registrador RT;
-	\item Leitura do dado a ser escrito no registrador RS;
-	\item Extensão do valor de 16 bits, lido na instrução, para 32 bits;
-	\item Operação de soma com os dados de 32 bits com os seguintes valores: endereço lido do registrador RT e valor de 32 bits estendido;
-	\item Resultado da operação será lido pela Memória de Dados, que servirá como endereço de memória para escrever o dado.
-	\item O dado será escrito na Memória de Dados.
-  \end{mainflow}
-  
-	\usecase{CALL}
-	O Processador deve ser capaz de desviar um programa em execução para uma subrotina.
-	
-	\actors
-	\begin{description}
-		\item \textbf{Controlador} – Unidade que controla a execução das operações.
-	\end{description}
-	
-	\preconditions 
-	\begin{itemize}
-		\item Atender ao requisito funcional [FR15];
-		\item Leitura do PC;
-		\item Ter espaço disponível na pilha de memória;
-	\end{itemize}
-	
-	\postconditions
-	\begin{itemize}
-		\item Alteração do PC.
-	\end{itemize}
-
-	\newpage
-	
-	\ucdiagram{./pictures/use/case/call.png}
-	
-	% descricao do fluxo principal de eventos
-	\begin{mainflow}
-		\item Acesso ao PC;
-		\item Leitura da instrução apontada por PC;
-		\item Salvar o endereço atual do PC na pilha de memória;
-		\item Modifica o valor do PC para o endereço recebido pela instrução;
-	\end{mainflow}
-  
-  \usecase{JR}
-  O Processador deve ser capaz de desviar um programa em execução para um endereço de destino.
-  \actors
-    \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-    \end{description}
-    
-  \preconditions 
-    \begin{itemize}
-     \item Atender ao requisito funcional [FR12];
-     \item Leitura do PC;
-    \end{itemize}
-
-  \postconditions
-    \begin{itemize}
-     \item Alteração do PC.
-    \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/jr.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada pelo PC;
-    \item Modifica o valor do PC pro endereço recebido na instrução;
-  \end{mainflow}
-  
-  \usecase{JPC}
-  O processador deve ser capaz de desviar um programa em execução para um endereço relativo ao PC.
-  \actors
-  \begin{description}
-  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
-  \end{description}
-  
-  \preconditions 
-  \begin{itemize}
-  	\item Leitura do PC;
-  \end{itemize}
-  
-  \postconditions
-  \begin{itemize}
-  	\item Alteração do PC.
-  \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/jpc.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-  	\item Acessa o valor de PC;
-  	\item Faz a leitura da instrução apontada pelo PC;
-  	\item Modifica o valor do PC pro endereço recebido na instrução;
-  \end{mainflow}
-  
-  \usecase{Instruções  L\'{o}gicas e Aritm\'{e}ticas.}
-  O controlador é responsável por decodificar instrução, solicitar operações na ALU e garantir o armazenamento dos resultados das operações no banco registradores.
+    \usecase{Instruções  L\'{o}gicas e Aritm\'{e}ticas.}
+  A ULA é responsável por efetuar as operações Logicas e Aritiméticas.
   
   \actors
     \begin{description}
-     \item \textbf{Controlador} – Unidade que controla a execução das operações.
-     \item \textbf{ALU} – Unidade L\'{o}gica e Aritm\'{e}tica.
+     \item \textbf{ULA} .
     \end{description}
     
   \preconditions 
     \begin{itemize}
      \item Atender aos requisitos funcionais [FR03 a FR10];
-     \item Leitura do PC;
-     \item Realizar operações lógicas e aritméticas na ALU;
+     \item Endereço(s) do(s) registradores serem válidos;
     \end{itemize}
 
   \postconditions
     \begin{itemize}
-     \item Os resultados devem ser expressos nos registradores.
+     \item Ter como saida o Valor resultante e a  \textit{Flag}, caso ocorra.
     \end{itemize}
   
-  \ucdiagram{./pictures/use/case/UC-ULA.jpeg}
+  \ucdiagram{./pictures/use/case/NewUla.png}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-    \item Acesso ao PC;
-    \item Leitura da instrução apontada por PC;
-    \item Acesso aos respectivos registradores;
-    \item Controlador direciona os dados dos registradores para a entrada da ULA;
-    \item Controlador envia o \textit{function} para ativar a operação desejada na ULA;
-    \item A ULA realiza as operações;
+    \item Realização da ação referente ao \textit{Function} recebido;
     \item \textit{Flags} são disparadas, caso seja necessário;
-    \item Envia o resultado pro registrador de destino;
+    \item Apresentação do resultado;
   \end{mainflow}
+
+\usecase{Desvios}
+   O processador tem a capacidade de desviar do fluxo normal de execução.
   
-  \usecase{RET}
-  O processador deve ser capaz de retornar do último desvio tomado pelo programa.
   \actors
-  \begin{description}
-  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
-  \end{description}
-  
-  \preconditions 
-  \begin{itemize}
-  	\item Atender ao requisito funcional [FR15];
-  	\item Leitura do PC;
-  \end{itemize}
-  
-  \postconditions
-  \begin{itemize}
-  	\item Alteração do PC.
-  \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/ret.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada pelo PC;
-  	\item Leitura do endereço do topo da pilha;
-  	\item Remoção do endereço do topo da pilha;
-  	\item Incrementa o endereço removido do topo da pilha;
-  	\item Modifica o valor do PC pro valor incrementado;
-  \end{mainflow}
-  
-   \usecase{NOP}
-  O processador deve ser capaz de não realizar operações durante cinco ciclos de \textit{clock}.
-  \actors
-  \begin{description}
-  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
-  \end{description}
-  
-  \preconditions 
-  \begin{itemize}
-  	\item Atender ao requisito funcional [FR15];
-  	\item Leitura do PC;
-  \end{itemize}
-  
-  \postconditions
-  \begin{itemize}
-  	\item Alteração do PC.
-  \end{itemize}
-  
-  \ucdiagram{./pictures/use/case/nop.png}
-  
-  % descricao do fluxo principal de eventos
-  \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada pelo PC;
-  	\item Modifica o valor do PC pro endereço da próxima instrução.
-  \end{mainflow}
-  
-  
-  \usecase{HALT}
-  O processador deve ser capaz de encerra o programa.
-  \actors
-  \begin{description}
-  	\item \textbf{Controlador} – Unidade que controla a execução das operações.
-  \end{description}
-  
-  \preconditions 
-  \begin{itemize}
-  	\item Atender ao requisito funcional [FR15];
-  	\item Leitura do PC;
-  \end{itemize}
+    \begin{description}
+     \item \textbf{Controlador}.
+    \end{description}
     
-  \ucdiagram{./pictures/use/case/halt.png}
+  \preconditions 
+    \begin{itemize}
+     \item Endereço do saltor ser válido;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+     \item Modificação do PC.
+    \end{itemize}
+
+  \ucdiagram{./pictures/use/case/jump.png}
   
   % descricao do fluxo principal de eventos
   \begin{mainflow}
-  	\item Acesso ao PC;
-  	\item Leitura da instrução apontada pelo PC;
-  	\item Desliga o \textit{clock} do processador.
-  \end{mainflow} 
+    \item Controlador executa a escrita no PC;
+  \end{mainflow}  
+
+\usecase{Leitura e Escrita no BR}
+   O processador tem a capacidade de efetuar a leitura ou escrita de um valor de 32 bits no Banco de Registradores.
+  
+  \actors
+    \begin{description}
+     \item \textbf{Controlador}.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+    \item Sinais de Controle;
+    \item Endereço(s) do(s) registrador(s);
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+    \item Saidas de 32 bits.
+    \end{itemize}
+
+  \ucdiagram{./pictures/use/case/BD.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}
+    \item Controlador executa a leitura ou a escrita no Banco de Registradores;
+    \item O modulo BR identifica os endereços e apresenta as saidas;
+  \end{mainflow}  
+
+\usecase{Imediatos do tipo aritmético e lógico}
+   O sistema tem a capacidade de enviar valores imediatos para ULA.
+  
+  \actors
+    \begin{description}
+     \item \textbf{Controlador}.
+     \item \textbf{ULA}.
+    \end{description}
+    
+  \preconditions 
+    \begin{itemize}
+    \item Sinais de Controle;
+    \end{itemize}
+
+  \postconditions
+    \begin{itemize}
+    \item Saidas de 35 bits.
+    \end{itemize}
+
+  \ucdiagram{./pictures/use/case/ImeArit.png}
+  
+  % descricao do fluxo principal de eventos
+  \begin{mainflow}    \item Realização da ação referente ao \textit{Function} recebido;
+    \item Valor imediato recebido é estendido;
+    \item \textit{Flags} são disparadas, caso seja necessário;
+    \item Apresentação do resultado;
+  \end{mainflow}  
+ 
 
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.

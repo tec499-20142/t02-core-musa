@@ -1,6 +1,6 @@
 Flow report for musa
-Wed Oct 29 23:18:17 2014
-Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Mon Dec  8 12:33:59 2014
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -40,10 +40,10 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Flow Failed - Wed Oct 29 23:18:17 2014     ;
-; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Flow Status                        ; Flow Failed - Mon Dec  8 12:33:59 2014     ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
-; Top-level Entity Name              ; ula                                        ;
+; Top-level Entity Name              ; musa                                       ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C25F324I7                               ;
 ; Timing Models                      ; Final                                      ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/29/2014 23:18:16 ;
+; Start date & time ; 12/08/2014 12:33:59 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; musa                ;
 +-------------------+---------------------+
@@ -75,19 +75,26 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 132683358407312.141463549606837       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 247232645262794.141805283914663       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --             ;
+; IP_TOOL_NAME                        ; ROM: 1-PORT                           ; --            ; --          ; --             ;
+; IP_TOOL_NAME                        ; RAM: 1-PORT                           ; --            ; --          ; --             ;
+; IP_TOOL_VERSION                     ; 13.1                                  ; --            ; --          ; --             ;
+; IP_TOOL_VERSION                     ; 13.1                                  ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 100                                   ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; -40                                   ; --            ; --          ; --             ;
+; MISC_FILE                           ; instruction_memory.bsf                ; --            ; --          ; --             ;
+; MISC_FILE                           ; instruction_memory_bb.v               ; --            ; --          ; --             ;
+; MISC_FILE                           ; data_memory.bsf                       ; --            ; --          ; --             ;
+; MISC_FILE                           ; data_memory_bb.v                      ; --            ; --          ; --             ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                  ; --            ; --          ; --             ;
-; PARTITION_COLOR                     ; 16764057                              ; --            ; ula         ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; ula         ; Top            ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; ula         ; Top            ;
+; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top            ;
 ; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --            ; --          ; --             ;
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                          ; --            ; --          ; --             ;
-; TOP_LEVEL_ENTITY                    ; ula                                   ; musa          ; --          ; --             ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 
 
@@ -96,18 +103,18 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:03     ; 1.0                     ; 358 MB              ; 00:00:01                           ;
-; Total                ; 00:00:03     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 610 MB              ; 00:00:01                           ;
+; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                                ;
-+----------------------+------------------+------------------+------------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name          ; OS Version       ; Processor type ;
-+----------------------+------------------+------------------+------------------+----------------+
-; Analysis & Synthesis ; tux              ; CrunchBang Linux ; CrunchBang Linux ; i686           ;
-+----------------------+------------------+------------------+------------------+----------------+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++----------------------+------------------+----------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
++----------------------+------------------+----------------+------------+----------------+
+; Analysis & Synthesis ; Tesla            ; Ubuntu 14.04.1 ; 14         ; x86_64         ;
++----------------------+------------------+----------------+------------+----------------+
 
 
 ------------
