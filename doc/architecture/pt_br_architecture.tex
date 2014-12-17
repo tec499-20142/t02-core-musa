@@ -72,6 +72,7 @@
 		15/12/2014 & Correção dos OPCODES do JR e do SUBi & di3goleite \\ \hline
 		16/12/2014 & Mudanças no datapath e descrição da arquitetura & di3goleite \\ \hline
 		17/12/2014 & Finalização da descrição da arquitetura & di3goleite \\ \hline
+		17/12/2014 & Revisão parcial do documento e das definições de entrada e saídas &gordinh \\ \hline
 	\end{longtable}
 \end{center}
 
@@ -103,7 +104,7 @@
 
 \section{Visão Geral do Documento}
 
-Este documento é dividido através das seguintes capítulos:
+Este documento é dividido através dos seguintes capítulos:
 
   \begin{itemize}
   	\item \textbf{Capítulo 2 --} Nesta seção será apresentada a visão geral da arquitetura do projeto.
@@ -268,7 +269,7 @@ Este documento é dividido através das seguintes capítulos:
   	\caption{\textit{Layout} das Operações de Leitura/Escrita e operações imediatas}
   \end{table}
   
-  Além do OPCODE, este tipo de instrução utiliza: um registrador fonte (RS), um registrador de destino (RD) para instruções de leitura (LW) e de escrita (SW). Também conta com o campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
+  Além do OPCODE, este tipo de instrução utiliza: um registrador fonte (RS) e um registrador de destino (RD) para instruções de leitura (LW) e de escrita (SW). Também conta com o campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
   
   \item \textbf{CALL, RET, HALT, NOP, JPC, JR e BRFL:}
 
@@ -363,9 +364,8 @@ Este documento é dividido através das seguintes capítulos:
 		
 		\hline
 		\endlastfoot
-		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
-		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
-		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
+		read\_address & 18   & entrada & Endereço que será lido	       \\ \hline
+		instruction & 32 & saída & Saída da instrução atual		\\ \hline
 	\end{longtable}
 \end{center} 
 
@@ -446,10 +446,10 @@ Este documento é dividido através das seguintes capítulos:
 		
 		\hline
 		\endlastfoot
-		read\_pc & 18 & entrada & Endereço atual capturado do PC \\ \hline
+		read\_PC & 18 & entrada & Endereço atual capturado do PC \\ \hline
 		pop\_request & 1 & entrada & Sinal utilizado para remover o último endereço armazenado na pilha \\ \hline
 		push\_request & 1 & entrada & Sinal utilizado para armazenar um endereço na pilha \\ \hline
-		write\_pc & 18 & saída & Altera o PC pelo endereço retornado por um pop\_request \\ \hline
+		write\_PC & 18 & saída & Altera o PC pelo endereço retornado por um pop\_request \\ \hline
 		
 	\end{longtable}
 \end{center}  
