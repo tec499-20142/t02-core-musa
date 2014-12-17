@@ -335,7 +335,85 @@ Este documento é dividido através das seguintes capítulos:
 		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
 		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
 	\end{longtable}
-\end{center}  
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Memória de Instrução}
+
+\subsection{Diagrama de bloco}
+\begin{figure}[H]
+	\centering
+	\input{./pictures/diagrams/mem_instruction.tex}
+\end{figure}      
+
+\subsection{Definições de Entradas e Saídas}
+\FloatBarrier
+\begin{center}
+	\begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endfirsthead
+		\hline
+		\multicolumn{4}{|l|}%
+		{{\bfseries continuação da página anterior}} \\
+		\hline
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endhead
+		
+		\multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+		\endfoot
+		
+		\hline
+		\endlastfoot
+		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
+		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
+		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
+	\end{longtable}
+\end{center} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Banco de Registradores}
+
+\subsection{Diagrama de bloco}
+\begin{figure}[H]
+	\centering
+	%\input{./pictures/diagrams/registers_bank.tex}
+\end{figure}      
+
+\subsection{Definições de Entradas e Saídas}
+\FloatBarrier
+\begin{center}
+	\begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endfirsthead
+		\hline
+		\multicolumn{4}{|l|}%
+		{{\bfseries continuação da página anterior}} \\
+		\hline
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endhead
+		
+		\multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+		\endfoot
+		
+		\hline
+		\endlastfoot
+		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
+		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
+		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
+	\end{longtable}
+\end{center} 
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{ULA}
@@ -377,44 +455,7 @@ Este documento é dividido através das seguintes capítulos:
           \textit{Flags}  & 3   & saída & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
         \end{longtable}
       \end{center}
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      \section{Memória de Instrução}
       
-      \subsection{Diagrama de bloco}
-      \begin{figure}[H]
-      	\centering
-      	\input{./pictures/diagrams/mem_instruction.tex}
-      \end{figure}      
-      
-      \subsection{Definições de Entradas e Saídas}
-      \FloatBarrier
-      \begin{center}
-      	\begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-      		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-      		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-      		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-      		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-      		\endfirsthead
-      		\hline
-      		\multicolumn{4}{|l|}%
-      		{{\bfseries continuação da página anterior}} \\
-      		\hline
-      		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-      		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-      		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-      		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-      		\endhead
-      		
-      		\multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-      		\endfoot
-      		
-      		\hline
-      		\endlastfoot
-      		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
-      		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
-      		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
-      	\end{longtable}
-      \end{center}
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Busca de Instrução}
 
