@@ -230,7 +230,7 @@ Este documento é dividido através das seguintes capítulos:
   	\hline 
   	JPC  & Desvia o programa para um endereço relativo ao PC. & 001001 & - \\ \hline
     JR   & Desvia o programa para um endereço de destino. & 011000 & - \\ \hline
-  	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de \textit{flag}. & 010001 & - \\ \hline
+  	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de \textit{flag}. & 010001 & 111111 \\ \hline
   	CALL & Desvia um programa em execução para uma sub-rotina. & 000011 & - \\ \hline
   	RET  & Retorna de uma sub-rotina. & 000111 & - \\ \hline
   	HALT & Para a execução de um programa. & 000010 & - \\ \hline
@@ -418,7 +418,48 @@ Este documento é dividido através das seguintes capítulos:
 		data\_1  & 32   & saída & Dado 1    \\ \hline
 		data\_2  & 32   & saída & Dado 2    \\ \hline
 	\end{longtable}
-\end{center} 
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pilha}
+
+\subsection{Diagrama de bloco}
+\begin{figure}[H]
+	\centering
+	\input{./pictures/diagrams/stack.tex}
+\end{figure} 
+
+\subsection{Definições de Entradas e Saídas}
+\FloatBarrier
+\begin{center}
+	\begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endfirsthead
+		\hline
+		\multicolumn{4}{|l|}%
+		{{\bfseries continuação da página anterior}} \\
+		\hline
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endhead
+		
+		\multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+		\endfoot
+		
+		\hline
+		\endlastfoot
+		read\_pc & 18 & entrada & Endereço atual capturado do PC \\ \hline
+		pop\_request & 1 & entrada & Sinal utilizado para remover o último endereço armazenado na pilha \\ \hline
+		push\_request & 1 & entrada & Sinal utilizado para armazenar um endereço na pilha \\ \hline
+		write\_pc & 18 & saída & Altera o PC pelo endereço retornado por um pop\_request \\ \hline
+		
+	\end{longtable}
+\end{center}  
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{ULA}
@@ -460,86 +501,6 @@ Este documento é dividido através das seguintes capítulos:
           \textit{Flags}  & 3   & saída & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
         \end{longtable}
       \end{center}
-      
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \section{Busca de Instrução}
-
-    \subsection{Diagrama de Classe}
-    \begin{figure}[H]
-	\centering
-	%\ucdiagram{./pictures/classes/Busca_de_Instrucao.png}
-      \end{figure}      
-     
-    \subsection{Definições de Entrada e Saída}
-      \FloatBarrier
-      \begin{center}
-        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endfirsthead
-          \hline
-          \multicolumn{4}{|l|}%
-          {{\bfseries continuação da página anterior}} \\
-          \hline
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endhead
-
-          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-          \endfoot
-
-          \hline
-          \endlastfoot
-
-          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase.    \\ \hline
-          entradaPC & 18 & entrada & Endereço do PC atual.    \\ \hline
-          saidaInstrucao & 32 & saída & Instrução que sai da memória de instrução.    \\ \hline
-        \end{longtable}
-      \end{center}  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \section{Pilha}
-
-    \subsection{Diagrama de Classe}
-      \begin{figure}[H]
-	\centering
-	%\ucdiagram{./pictures/diagrams/stack.png}
-      \end{figure} 
-     
-    \subsection{Definições de Entrada e Saída}
-      \FloatBarrier
-      \begin{center}
-        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endfirsthead
-          \hline
-          \multicolumn{4}{|l|}%
-          {{\bfseries continuação da página anterior}} \\
-          \hline
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endhead
-
-          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-          \endfoot
-
-          \hline
-          \endlastfoot
-          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase. \\ \hline
-          write\_pc & 18 & entrada & Endereço do PC que será armazenado. \\ \hline
-          popRequest & 1 & entrada & Sinal para tirar o ultimo endereço armmazenado da pilha. \\ \hline
-          pushRequest & 1 & entrada & Sinal para salvar o endereço do PC da pilha. \\ \hline
-          read\_pc & 18 & saída & Último endereço salvo na pilha para retorno do PC. \\ \hline
-        \end{longtable}
-      \end{center}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Acesso à memória}
