@@ -298,6 +298,44 @@ Este documento é dividido através das seguintes capítulos:
 % inicio das descrições de arquitetura para cada componente do sistema
 \chapter{Descrição da Arquitetura}
 
+\section{PC}
+
+\subsection{Diagrama de bloco}
+\begin{figure}[H]
+	\centering
+	\input{./pictures/diagrams/pc.tex}
+\end{figure}      
+
+\subsection{Definições de Entradas e Saídas}
+\FloatBarrier
+\begin{center}
+	\begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endfirsthead
+		\hline
+		\multicolumn{4}{|l|}%
+		{{\bfseries continuação da página anterior}} \\
+		\hline
+		\multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
+		\multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
+		\endhead
+		
+		\multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
+		\endfoot
+		
+		\hline
+		\endlastfoot
+		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
+		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
+		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
+	\end{longtable}
+\end{center}  
+
   \section{ULA}
 
   \subsection{Diagrama de bloco}
@@ -306,7 +344,7 @@ Este documento é dividido através das seguintes capítulos:
    	\input{./pictures/diagrams/ula.tex}
   \end{figure}      
      
-    \subsection{Definições de Entrada e Saída}
+    \subsection{Definições de Entradas e Saídas}
       \FloatBarrier
       \begin{center}
         \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
@@ -330,10 +368,10 @@ Este documento é dividido através das seguintes capítulos:
 
           \hline
           \endlastfoot
-          OP1  & 32   & entrada & Primeiro operando.    \\ \hline
-          OP2  & 32   & entrada & Segundo operando.    \\ \hline
-          \textit{Function} & 6 & entrada & Identificador da operação.    \\ \hline
-          \textit{Result} & 32 & saída & Resultado da operação.    \\ \hline
+          OP1  & 32   & entrada & Primeiro operando    \\ \hline
+          OP2  & 32   & entrada & Segundo operando    \\ \hline
+          \textit{Function} & 6 & entrada & Identificador da operação    \\ \hline
+          \textit{Result} & 32 & saída & Resultado da operação    \\ \hline
           \textit{Flags}  & 3   & saída & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
         \end{longtable}
       \end{center}  
