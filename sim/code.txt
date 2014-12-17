@@ -3,4 +3,12 @@ ADDi $t1,$t1,150
 LW $t5,$t8,0
 SW $t2,$t6,34
 MUL $t1,$t6,$t7
+BRFL $t3,256
+JR $t7
+JPC 500
+HALT 
+NOP
+CMP $t5,$t3
+CALL 650
+RET
 
