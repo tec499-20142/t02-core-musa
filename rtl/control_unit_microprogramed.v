@@ -158,7 +158,7 @@ always @(opcode) begin
 
             call:begin    // TIPO J    to do *******
 
-            read_reg = 1'b1;
+            read_reg = 1'b0;
             write_reg = 1'b0;
             read_data = 1'b0;
             write_data = 1'b0;
@@ -166,17 +166,17 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 3'b000;
+            branch = 3'b010;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b1;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
 
             end
 
             ret:begin
 
-            read_reg = 1'b1;
+            read_reg = 1'b0;
             write_reg = 1'b0;
             read_data = 1'b0;
             write_data = 1'b0;
@@ -188,7 +188,7 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b1;
             push = 1'b0;
-				add_pc = 1'b1;
+		add_pc = 1'b1;
 
             end
 
@@ -198,15 +198,15 @@ always @(opcode) begin
             write_reg = 1'b0;
             read_data = 1'b0;
             write_data = 1'b0;
-            immediat = 1'b1;
+            immediat = 1'b0;
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 3'b010;
+            branch = 3'b001;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-			     	add_pc = 1'b0;
+		add_pc = 1'b0;
 
             end
 
@@ -220,11 +220,11 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 3'b010;
+            branch = 3'b100;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
 
             end
 
@@ -238,11 +238,11 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 3'b101;
+            branch = 3'b011;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				    add_pc = 1'b0;
+		add_pc = 1'b0;
 
             end
 
@@ -260,7 +260,7 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
 
             end
 
@@ -271,15 +271,15 @@ always @(opcode) begin
             read_data = 1'b0;
             write_data = 1'b0;
             immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
+            fnction = 6'b111111;
+            control_function = 1'b1;
             control_alu_data = 1'b0;
-            branch = 3'b100;
+            branch = 3'b000;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
             brfl_control = 1'b1;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
 
             end
 
@@ -320,9 +320,9 @@ always @(negedge clk ) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				opcode_reg = 6'b000000;
-				count2 = 3'b000;
-				add_pc = 1'b0;
+		opcode_reg = 6'b000000;
+		count2 = 3'b000;
+		add_pc = 1'b0;
 
 	end else begin
 	
