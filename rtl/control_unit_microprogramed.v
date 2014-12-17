@@ -6,7 +6,7 @@ input [5:0] opcode;
 
 output reg read_reg, write_reg, read_data, write_data, immediat,
  control_function, control_alu_data, rtrn, pop, push, write_pc, brfl_control, add_pc;
-output reg [2:0] branch, count;//atenção
+output reg [2:0] branch, count;//atenï¿½ï¿½o
 output reg[5:0] fnction;
 reg [5:0] opcode_reg;
 reg [2:0] count2;
@@ -274,7 +274,7 @@ always @(opcode) begin
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
-            branch = 3'b010;
+            branch = 3'b100;
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
