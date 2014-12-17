@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <limits.h>
 //#include "main.h"
 
 //Global Variables:
 //pc: Program Counter
 //registers[]: represent register bank
 //mem[]: Represent the data memory
-int  pc=0, registers[32], mem[1000];
+//flags: bool vector containing the flags
+//       bit 2: above
+//       bit 1: equals
+//       bit 0: overflow
+const int overflow = 0, equals = 1, above = 2;
+int  pc=0, registers[32], mem[1000], stk[32], ptr = 0;
+bool flags[3];
 
 
 //Fuction to identify the instruction type:
@@ -19,14 +27,14 @@ char identify_instruction_type(int instruction_opcode)
     if(instruction_opcode == 0x23 || // Load Word
        instruction_opcode == 0x2b || // Store Word
        instruction_opcode == 0x08 || // Add Immediate
-       instruction_opcode == 0x09 || // Subtract Immediate
+       instruction_opcode == 0x0e || // Subtract Immediate
        instruction_opcode == 0x0c || // And Immediate
        instruction_opcode == 0x0d || // Or Immediate
        instruction_opcode == 0x11)   // BRFL
     {
         result = 'i';
     }
-    else if (instruction_opcode == 0x00 || instruction_opcode == 0x08)
+    else if (instruction_opcode == 0x00 || instruction_opcode == 0x18)
     {
         result = 'r';
     }
@@ -49,6 +57,30 @@ char identify_instruction_type(int instruction_opcode)
 
 }
 
+void push(int value)
+{
+    stk[ptr] = value;
+    ptr++;
+}
+
+int pop()
+{
+    ptr--;
+    return stk[ptr];
+}
+
+bool check_overflow(int op1, int op2)
+{
+    if ((op2 > 0 && op1 > INT_MAX - op2) ||
+    (op2 < 0 && op1 < INT_MIN - op2))
+    {
+        flags[overflow] = 1;
+        return 1;
+    }
+    flags[overflow] = 0;
+    return 0;
+}
+
 //Function responsible to reproduce the results of the i-type instructions
 void decode_i_type(unsigned int instruction_opcode, unsigned int instruction)
 {
@@ -64,13 +96,19 @@ void decode_i_type(unsigned int instruction_opcode, unsigned int instruction)
     if(instruction_opcode == 0x23)
     {
         printf("Instruction Mnemonic: LW\n");
+        check_overflow(registers[rs1], imm);
         registers[rd] = mem[registers[rs1] + imm];
+        printf("Memory Target: %d\n", (registers[rs1] + imm));
+        printf("Value loaded from memory to register %d: %d\n", rd, registers[rd]);
     }
     //Store Instruction - sw mem = RD
     else if(instruction_opcode == 0x2b)
     {
         printf("Instruction Mnemonic: SW\n");
+        check_overflow(registers[rs1], imm);
         mem[registers[rs1] + imm] = registers[rd];
+        printf("Memory Target: %d\n", (registers[rs1] + imm));
+        printf("Value stored in memory from register %d: %d\n", mem[registers[rs1] + imm], registers[rd]);
     }
     //brfl - TBD
     else if(instruction_opcode == 0x11)
@@ -82,29 +120,33 @@ void decode_i_type(unsigned int instruction_opcode, unsigned int instruction)
     else if(instruction_opcode == 0x08)
     {
         printf("Instruction Mnemonic: ADDi\n");
+        check_overflow(registers[rs1], imm);
         registers[rd] = registers[rs1] + imm;
-        printf("Value written to the register %x is: %x\n", rd, registers[rd]);
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
     //subi RD = RS1 - Sext(imm)
-    else if(instruction_opcode == 0x09)
+    else if(instruction_opcode == 0x0e)
     {
         printf("Instruction Mnemonic: SUBi\n");
+        check_overflow(registers[rs1], imm);
         registers[rd] = registers[rs1] - imm;
-        printf("Value written to the register %x is: %x\n", rd, registers[rd]);
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
     //andi RD = RS1 ^ Sext(imm)
     else if(instruction_opcode == 0x0c)
     {
         printf("Instruction Mnemonic: ANDi\n");
         registers[rd] = registers[rs1] & imm;
-        printf("Value written to the register %x is: %x\n", rd, registers[rd]);
+        flags[overflow] = 0;
+        printf("Value written to register %x : %x\n", rd, registers[rd]);
     }
     //ori RD = RS1 V Sext(imm)
     else if(instruction_opcode == 0x0d)
     {
         printf("Instruction Mnemonic: ORi\n");
         registers[rd] = registers[rs1] | imm;
-        printf("Value written to the register %x is: %x\n", rd, registers[rd]);
+        flags[overflow] = 0;
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
 }
 
@@ -123,40 +165,50 @@ void decode_r_type(unsigned int instruction_opcode, unsigned int instruction)
     if(function == 0x20)
     {
         printf("Instruction Mnemonic: ADD\n");
+        check_overflow(registers[rs1], registers[rs2]);
         registers[rd] = registers[rs1] + registers[rs2];
-        printf("rs1: %x registers[rs1] %x\n",rs1, registers[rs1]);
-        printf("Valor escrito no registrador %x eh: %x\n", rd, registers[rd]);
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
     //sub - RD = RS1 - RS2
     else if(function == 0x22)
     {
         printf("Instruction Mnemonic: SUB\n");
+        check_overflow(registers[rs1], registers[rs2]);
         registers[rd] = registers[rs1] - registers[rs2];
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
     //and - RD = RS1 ^ RS2
     else if(function == 0x24)
     {
         printf("Instruction Mnemonic: AND\n");
         registers[rd] = registers[rs1] & registers[rs2];
+        flags[overflow] = 0;
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
 
-    //not (anteriormente, estava como "nor"
+    //not (anteriormente, estava como "nor")
     else if(function == 0x27)
     {
         printf("Instruction Mnemonic: NOT\n");
         registers[rd] = ~registers[rs2];
+        flags[overflow] = 0;
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
     //or - RD = RS1 _ RS2
     else if(function == 0x25)
     {
         printf("Instruction Mnemonic: OR\n");
         registers[rd] = registers[rs1] | registers[rs2];
+        flags[overflow] = 0;
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
-    //mult - RD = RS1 . RS2
+    //mul - RD = RS1 . RS2
     else if(function == 0x18)
     {
         printf("Instruction Mnemonic: MUL\n");
+        check_overflow(registers[rs1], registers[rs2]);
         registers[rd] = registers[rs1] * registers[rs2];
+        printf("Value written to register %x: %x\n", rd, registers[rd]);
     }
     //div - RD = RS1 / RS2
     else if(function == 0x1A)
@@ -165,9 +217,11 @@ void decode_r_type(unsigned int instruction_opcode, unsigned int instruction)
         if(registers[rs2] != 0)
         {
             registers[rd] = registers[rs1] / registers[rs2];
+            printf("Value written to register %x: %x\n", rd, registers[rd]);
         }
         else
         {
+            flags[overflow] = 1;
             printf("--------------------------------------\n");
             printf("ERROR!! Cannot divide by zero! RS2: %x\n", registers[rs2]);
             printf("--------------------------------------\n");
@@ -182,11 +236,11 @@ void decode_r_type(unsigned int instruction_opcode, unsigned int instruction)
 
     }
     //jr PC = RS1
-    else if(function == 0x08)
+    else if(function == 0x18)
     {
         printf("Instruction Mnemonic: JR\n");
-        pc = (registers[rs1]/4) - 1;// -1 because the increment of for.
-        printf("JR - Valor de PC: %x\n", pc);
+        pc = registers[rs1] - 1;//(registers[rs1]/4) - 1;// -1 because the increment of for.
+        printf("JR - PC Value: %x\n", pc);
     }
     else
     {
@@ -202,16 +256,39 @@ void decode_j_type(unsigned int instruction_opcode, unsigned int instruction)
     int pc_offset;
 
     pc_offset = (instruction & 0x3FFFFFF);
+    printf("PC offset: %x\n", pc_offset);
+
+    if(instruction_opcode == 0x01)
+    {
+        printf("Instruction Mnemonic: NOP\n");
+        printf("Nothing to do here.....\n");
+    }
+    else if(instruction_opcode == 0x02)
+    {
+        //fixme
+        printf("Instruction Mnemonic: HALT\n");
+        pc--;
+    }
     //pc = pc offset
-    if(instruction_opcode == 0x02)
+    else if(instruction_opcode == 0x03)
     {
+        printf("Instruction Mnemonic: CALL\n");
+        printf("Stacking current PC: %x\n");
+        push(pc);
         pc = pc_offset - 1;// -1 because the increment of for.
+        printf("CALL - PC value: %x\n", pc);
     }
-    else if(instruction_opcode == 0x3e)
+    else if(instruction_opcode == 0x07)
     {
+        printf("Instruction Mnemonic: RET\n");
+        pc = pop();
+        printf("RET - PC value: %x\n", pc);
     }
-    else if(instruction_opcode == 0x3f)
+    else if(instruction_opcode == 0x09)
     {
+        printf("Instruction Mnemonic: JPC\n");
+        pc = (pc + pc_offset) - 1;// -1 because the increment of for.
+        printf("JPC - PC value: %x\n", pc);
 
     }
 }
@@ -301,6 +378,8 @@ void main (int argc, char *argv[])
         {
             decode_j_type(instruction_opcode, instruction[pc]);
         }
+        printf("Flags:\n");
+        printf("Overflow: %d, Equals: %d, Above: %d\n", flags[overflow], flags[equals], flags[above]);
         printf("PC Value (hex): %x\n\n\n", pc);
     }
 
