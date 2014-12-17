@@ -1,2 +1,4 @@
-Warning (10268): Verilog HDL information at control_unit_microprogramed.v(277): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at control_unit_microprogramed.v(306): always construct contains both blocking and non-blocking assignments
 Warning (10268): Verilog HDL information at control_unit.v(21): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at stack.v(41): always construct contains both blocking and non-blocking assignments
+Warning (10273): Verilog HDL warning at registers_bank.v(36): extended using "x" or "z"

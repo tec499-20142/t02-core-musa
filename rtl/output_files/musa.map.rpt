@@ -1,5 +1,5 @@
 Analysis & Synthesis report for musa
-Mon Dec  8 12:33:59 2014
+Tue Dec 16 22:29:01 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Mon Dec  8 12:33:59 2014          ;
+; Analysis & Synthesis Status        ; Failed - Tue Dec 16 22:29:01 2014          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; musa                                       ;
@@ -147,7 +147,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 4      ;
+; Number detected on machine ; 6      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
@@ -158,36 +158,34 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Mon Dec  8 12:33:58 2014
+    Info: Processing started: Tue Dec 16 22:29:00 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit_microprogramed.v
     Info (12023): Found entity 1: control_unit_microprogramed
-Error (10170): Verilog HDL syntax error at musa.v(8) near text ";";  expecting an identifier File: /home/di3go/workspace/t02-core-musa/rtl/musa.v Line: 8
-Error (10170): Verilog HDL syntax error at musa.v(10) near text ",";  expecting an identifier File: /home/di3go/workspace/t02-core-musa/rtl/musa.v Line: 10
-Error (10170): Verilog HDL syntax error at musa.v(18) near text "[";  expecting "(" File: /home/di3go/workspace/t02-core-musa/rtl/musa.v Line: 18
-Error (10170): Verilog HDL syntax error at musa.v(97) near text "]";  expecting ")" File: /home/di3go/workspace/t02-core-musa/rtl/musa.v Line: 97
-Warning (10275): Verilog HDL Module Instantiation warning at musa.v(119): ignored dangling comma in List of Port Connections
-Error (10112): Ignored design unit "musa" at musa.v(1) due to previous errors File: /home/di3go/workspace/t02-core-musa/rtl/musa.v Line: 1
-Info (12021): Found 0 design units, including 0 entities, in source file musa.v
-Warning (10463): Verilog HDL Declaration warning at control_unit.v(8): "return" is SystemVerilog-2005 keyword
+Warning (10275): Verilog HDL Module Instantiation warning at musa.v(68): ignored dangling comma in List of Port Connections
+Warning (10275): Verilog HDL Module Instantiation warning at musa.v(132): ignored dangling comma in List of Port Connections
+Info (12021): Found 1 design units, including 1 entities, in source file musa.v
+    Info (12023): Found entity 1: musa
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
     Info (12023): Found entity 1: control_unit
 Info (12021): Found 1 design units, including 1 entities, in source file data_memory.v
     Info (12023): Found entity 1: data_memory
 Info (12021): Found 1 design units, including 1 entities, in source file instruction_memory.v
     Info (12023): Found entity 1: instruction_memory
-Warning (10238): Verilog Module Declaration warning at stack.v(11): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "stack"
 Info (12021): Found 1 design units, including 1 entities, in source file stack.v
     Info (12023): Found entity 1: stack
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu
 Info (12021): Found 1 design units, including 1 entities, in source file registers_bank.v
     Info (12023): Found entity 1: registers_bank
-Info (144001): Generated suppressed messages file /home/di3go/workspace/t02-core-musa/rtl/output_files/musa.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 5 errors, 4 warnings
-    Error: Peak virtual memory: 610 megabytes
-    Error: Processing ended: Mon Dec  8 12:33:59 2014
+Warning (10236): Verilog HDL Implicit Net warning at musa.v(179): created implicit net for "w_pc_adress"
+Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(36): object "out_data" on left-hand side of assignment must have a variable data type File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/registers_bank.v Line: 36
+Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(37): object "out_dataB" on left-hand side of assignment must have a variable data type File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/registers_bank.v Line: 37
+Info (144001): Generated suppressed messages file C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 4 warnings
+    Error: Peak virtual memory: 450 megabytes
+    Error: Processing ended: Tue Dec 16 22:29:01 2014
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 
@@ -195,6 +193,6 @@ Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 5 errors, 4 warn
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in /home/di3go/workspace/t02-core-musa/rtl/output_files/musa.map.smsg.
+The suppressed messages can be found in C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg.
 
 
