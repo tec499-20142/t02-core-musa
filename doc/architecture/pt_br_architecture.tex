@@ -6,6 +6,7 @@
 \usepackage{ipprocess}
 % Use longtable if you want big tables to split over multiple pages.
 \usepackage{longtable}
+\usepackage{tikz}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel} % Uncomment for portuguese
 \usepackage{pdflscape} % set ladscape/portrait pdf pages
@@ -135,6 +136,11 @@ Este documento é dividido através das seguintes capítulos:
              PC       &  Contador de Programa (\textit{Program Counter})\\ \hline
              ULA      &  Unidade Lógica e Aritmética\\ \hline
              UC      &  Unidade de Controle\\ \hline
+             OPCODE  &  \textit{Operation Code}\\ \hline
+             RS      &  \textit{Register Source}\\ \hline
+             RD      &  \textit{Register Destination}\\ \hline
+             LW      &  \textit{Load Word}\\ \hline
+             SW      &  \textit{Store Word}\\ \hline
         \end{tabular}
       \end{center}
     \end{table}  
@@ -163,10 +169,10 @@ Este documento é dividido através das seguintes capítulos:
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{landscape}
-  	\section{DataPath interno}
+  	\section{DataPath do MUSA}
   	\begin{figure}[H]
   		\centering
-  		\includegraphics[width=600px]{./pictures/datapath/DataPath.png}
+  		\includegraphics[width=628px]{./pictures/datapath/DataPath.png}
   	\end{figure}
   \end{landscape}
   
@@ -253,7 +259,7 @@ Este documento é dividido através das seguintes capítulos:
   	\caption{\textit{Layout} das instruções do tipo R.}
   \end{table}
   
-  Esse conjunto de instruções utiliza dois registradores fontes (RS e RT) de dados e um registrador de destino (RD) para realizar as operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo SHAMT não será utilizado nessa versão do processador.\\
+  O conjunto de instruções do tipo R utiliza o código da operação (OPCODE), dois registradores fontes (RS e RT) de dados e um registrador de destino (RD), para auxiliar na realização das operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo SHAMT não será utilizado no projeto deste processador.\\
   
    \item \textbf{LW e SW, ADDi, SUBi, ANDi, ORi:}
 
@@ -269,8 +275,7 @@ Este documento é dividido através das seguintes capítulos:
   	\caption{\textit{Layout} das Operações de Leitura/Escrita e operações imediatas}
   \end{table}
   
-  Esse conjunto de instruções utiliza, além do código de operação (OPCODE), um registrador fonte (RS), e um registrador destino (RD) para instruções de leitura (LW) e de escrita (SW). Utiliza também do campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
-
+  Além do OPCODE, este tipo de instrução utiliza: um registrador fonte (RS), um registrador de destino (RD) para instruções de leitura (LW) e de escrita (SW). Também conta com o campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
   
   \item \textbf{CALL, RET, HALT, NOP, JPC, JR e BRFL:}
 
@@ -283,10 +288,10 @@ Este documento é dividido através das seguintes capítulos:
   	06 & 26 \\ 
   	\hline 
   	\end{tabular} 
-  	\caption{Layout das Operações de Salto (Tipo J)}
+  	\caption{\textit{Layout} das Operações de Salto (Tipo J)}
   \end{table}
   
-  Instruções de salto possue, além do OPCODE, um campo de 26 \textit{bits} representando uma posição de endereço de memória, para as instruções CALL, HALT e JPC. As instruções RET e NOP só utilizam o OPCODE da instrução.\\
+  As instruções do tipo J contam com o OPCODE e um campo de 26 \textit{bits}, representando uma posição de endereço de memória, estes campos são utilizados pelas instruções CALL, HALT e JPC, enquanto RET e NOP só utilizam o OPCODE da instrução.\\
   
   \end{itemize}
 
@@ -295,14 +300,10 @@ Este documento é dividido através das seguintes capítulos:
 
   \section{ULA}
 
-    \subsection{Diagrama de Classe}
-    %\begin{figure}[H]
-	%\centering
-	%\ucdiagram{./pictures/classes/ula.jpeg}
-    %  \end{figure}
+  \subsection{Diagrama de bloco}
   \begin{figure}[H]
-     	\centering
-     	\includegraphics[scale=1.5]{./pictures/diagrams/ula.jpeg}
+   	\centering
+   	\input{./pictures/diagrams/ula.tex}
   \end{figure}      
      
     \subsection{Definições de Entrada e Saída}
@@ -332,7 +333,8 @@ Este documento é dividido através das seguintes capítulos:
           OP1  & 32   & entrada & Primeiro operando.    \\ \hline
           OP2  & 32   & entrada & Segundo operando.    \\ \hline
           \textit{Function} & 6 & entrada & Identificador da operação.    \\ \hline
-          \textit{Result} & 35 & saída & Resultado da operação com as \textit{flags}.    \\
+          \textit{Result} & 32 & saída & Resultado da operação.    \\ \hline
+          \textit{Flags}  & 3   & saída & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
         \end{longtable}
       \end{center}  
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -380,7 +382,7 @@ Este documento é dividido através das seguintes capítulos:
     \subsection{Diagrama de Classe}
       \begin{figure}[H]
 	\centering
-	\ucdiagram{./pictures/diagrams/stack.png}
+	%\ucdiagram{./pictures/diagrams/stack.png}
       \end{figure} 
      
     \subsection{Definições de Entrada e Saída}
@@ -463,7 +465,7 @@ Este documento é dividido através das seguintes capítulos:
     \subsection{Diagrama de Classe}
       \begin{figure}[H]
 	\centering
-	\ucdiagram{./pictures/diagrams/registers_bank.png}
+	%\ucdiagram{./pictures/diagrams/registers_bank.png}
       \end{figure} 
      
     \subsection{Definições de Entrada e Saída}
