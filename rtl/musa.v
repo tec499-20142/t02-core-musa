@@ -4,7 +4,7 @@ wire [5:0] w_opcode, w_fnction, w_ula_function,w_fnction_alu;
 wire [1:0] w_branch;
 
 wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
-w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, brfl_control, brfl_result
+w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl_control, w_brfl_result
 ;
 
 wire [2:0] w_branch_control;
@@ -13,7 +13,7 @@ wire [31:0] w_reg_alumux, w_op1,w_op2, w_datamem_out, w_register_in, w_extend_mu
 
 wire [15:0] w_immediat16;
 
-wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_pc_adress;
+wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_adress;
 
 reg [31:0] reg_instruction;
 
@@ -23,11 +23,11 @@ assign w_opcode = reg_instruction [31:25];
 
 assign w_ula_function = reg_instruction [5:0];
 
-assign w_pc_adress = reg_instruction [17:0];
+assign w_brfl_adress = reg_instruction [20:2];
 
-assign brfl_result = brfl_control & w_alu_out[0];
+assign w_brfl_result = w_brfl_control & w_alu_out[0];
 
-assign w_branch_control = {brfl_result,w_branch} ;
+assign w_branch_control = {w_brfl_result,w_branch} ;
 
 //Unidade de Controle
 control_unit_microprogramed cum01(
@@ -177,7 +177,7 @@ mux3_18 branch_mux (
 	.in000(w_somador_out),			 //saida do somador do pc
 	.in001(w_read_reg),    			//saida do banco de registradores
 	.in010(w_pc_adress),  			 //immediato da instrução
-	.in100(w_read_reg),  			 // BRFL caso a flag seja  verdadeira
+	.in100(w_brfl_adress),  			 // BRFL caso a flag seja  verdadeira
 	.in101(w_pc_out), 				// endereço do PC
 	.cntl(w_branch_control),       //sinal da UC
 

@@ -1,11 +1,11 @@
 module control_unit(clk, opcode, read_reg, write_reg, read_data, write_data, immediat,
- fnction, control_function, control_alu_data, branch, return, pop, push, write_pc);
+ fnction, control_function, control_alu_data, branch, rtrn, pop, push, write_pc);
 
 input clk;
 input [5:0] opcode;
 
 output read_reg, write_reg, read_data, write_data, immediat,
- control_function, control_alu_data, return, pop, push, write_pc;
+ control_function, control_alu_data, rtrn, pop, push, write_pc;
 output [1:0] branch;
 output[5:0] fnction;
 reg [5:0] state;
