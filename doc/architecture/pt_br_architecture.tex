@@ -21,7 +21,7 @@
 \DocumentTitle{Documento de Arquitetura}
 \Project{Core-MUSA}
 \Organization{Universidade Estadual de Feira de Santana}
-\Version{Build 2.0a}
+\Version{Build 3.0}
 
 \capa
 
@@ -70,6 +70,8 @@
 		15/12/2014 & Correção do datapath no documento e da tabela de histórico de revisões & di3goleite \\ \hline
 		15/12/2014 & Revisão da visão geral da arquitetura & di3goleite \\ \hline
 		15/12/2014 & Correção dos OPCODES do JR e do SUBi & di3goleite \\ \hline
+		16/12/2014 & Mudanças no datapath e descrição da arquitetura & di3goleite \\ \hline
+		17/12/2014 & Finalização da descrição da arquitetura & di3goleite \\ \hline
 	\end{longtable}
 \end{center}
 
@@ -166,15 +168,6 @@ Este documento é dividido através das seguintes capítulos:
     \item \textbf{Pilha --} Memória destinada para armazenamento dos endereços de retorno das chamadas de funções. Possui 32 registradores de 18 \textit{bits} e um contador responsável por apontar o topo da pilha.
   \end{itemize}
   \newpage
-  
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{landscape}
-  	\section{DataPath do MUSA}
-  	\begin{figure}[H]
-  		\centering
-  		\includegraphics[width=610px]{./pictures/datapath/DataPath.png}
-  	\end{figure}
-  \end{landscape}
   
   \section{Instruções}
   
@@ -343,7 +336,7 @@ Este documento é dividido através das seguintes capítulos:
 \subsection{Diagrama de bloco}
 \begin{figure}[H]
 	\centering
-	\input{./pictures/diagrams/mem_instruction.tex}
+	\input{./pictures/diagrams/instruction_memory.tex}
 \end{figure}      
 
 \subsection{Definições de Entradas e Saídas}
@@ -505,13 +498,13 @@ Este documento é dividido através das seguintes capítulos:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Acesso à memória}
 
-    \subsection{Diagrama de Classe}
+    \subsection{Diagrama de bloco}
       \begin{figure}[H]
 	\centering
-	%\ucdiagram{./pictures/classes/Leitura.png}
+	\input{./pictures/diagrams/data_memory.tex}
       \end{figure} 
      
-    \subsection{Definições de Entrada e Saída}
+    \subsection{Definições de Entradas e Saídas}
       \FloatBarrier
       \begin{center}
         \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
@@ -535,58 +528,22 @@ Este documento é dividido através das seguintes capítulos:
 
           \hline
           \endlastfoot
-          clock\_in & 1 & entrada & Sinal de \textit{clock} da fase. \\ \hline
-          address & 33 & entrada & Endereço da memória onde o dado será armazenado. \\ \hline
-          data\_in & 32 & entrada & Valor que será armazenado na memória de dados.    \\ \hline
-          write\_data & 1 & entrada & Sinal para ativar a escrita na memória de dados.    \\ \hline
-          read\_data & 1 & entrada & Sinal para ativar a leitura na memória de dados.    \\ \hline
-          data & 32 & saída & Valor que irá sair da memória de dados.    \\ \hline
-        \end{longtable}
-      \end{center}  
-   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \section{Busca de Registradores}
-
-    \subsection{Diagrama de Classe}
-      \begin{figure}[H]
-	\centering
-	%\ucdiagram{./pictures/diagrams/registers_bank.png}
-      \end{figure} 
-     
-    \subsection{Definições de Entrada e Saída}
-      \FloatBarrier
-      \begin{center}
-        \begin{longtable}[pos]{| l | c | c | m{7cm} |} \hline         
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endfirsthead
-          \hline
-          \multicolumn{4}{|l|}%
-          {{\bfseries continuação da página anterior}} \\
-          \hline
-          \multicolumn{1}{|c|}{\cellcolor[gray]{0.9}\textbf{Nome}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Tamanho}} & 
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Direção}} &
-          \multicolumn{1}{c|}{\cellcolor[gray]{0.9}\textbf{Descrição}} \\ \hline
-          \endhead
-
-          \multicolumn{4}{|r|}{{continua na próxima página}} \\ \hline
-          \endfoot
-
-          \hline
-          \endlastfoot
-          write\_data & 32 & entrada & Valor de escrita para o registrador de destino. \\ \hline
-          write\_reg & 1 & entrada & Sinal para ativar a escrita no Banco de Registradores. \\ \hline
-          read\_reg & 1 & entrada & Sinal para ativar a leitura no Banco de Registradores.    \\ \hline
-          data1 & 32 & saída & Saída do valor contido nos registradores.    \\ \hline
-          data2 & 32 & saída & Saída do valor contido nos registradores.    \\ \hline
-          rs & 5 & Entrada & Endereço do registrador um.    \\ \hline
-          rt & 5 & Entrada & Endereço do registrador dois.    \\ \hline
-          rd & 5 & Entrada & Endereço do registrador destino.    \\ \hline
+          address & 32 & entrada & Endereço da memória onde o dado será armazenado \\ \hline
+          data\_input & 32 & entrada & Valor a ser armazenado na memória de dados    \\ \hline
+          write\_data & 1 & entrada & Sinal que habilita a escrita da memória de dados    \\ \hline
+          read\_data & 1 & entrada & Sinal que habilita a leitura da memória de dados    \\ \hline
+          data & 32 & saída & Saída do dado requisitado   \\ \hline
         \end{longtable}
       \end{center}
+      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\chapter{DataPath Externo}
+      	\begin{figure}[H]
+      		\centering
+      		\includegraphics[width=\textwidth]{./pictures/datapath/DataPath.png}
+      	\end{figure}
+\end{landscape}
 % Optional bibliography section
 % To use bibliograpy, first provide the ipprocess.bib file on the root folder.
 % \bibliographystyle{ieeetr}
