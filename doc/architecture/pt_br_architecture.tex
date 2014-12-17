@@ -409,9 +409,14 @@ Este documento é dividido através das seguintes capítulos:
 		
 		\hline
 		\endlastfoot
-		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
-		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
-		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
+		RS  & 5   & entrada & Registrador fonte    \\ \hline
+		RT  & 5   & entrada & Registrador fonte    \\ \hline
+		RD  & 5   & entrada & Registrador de destino    \\ \hline
+		write\_reg  & 1   & entrada & Habilita a escrita do registrador destino em RD    \\ \hline
+		read\_reg  & 1   & entrada & Habilita a leitura dos registradores fonte (RS e RT)    \\ \hline
+		write\_data  & 32   & entrada & Dado a ser escrito no registrador de destino RD    \\ \hline
+		data\_1  & 32   & saída & Dado 1    \\ \hline
+		data\_2  & 32   & saída & Dado 2    \\ \hline
 	\end{longtable}
 \end{center} 
 
