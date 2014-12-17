@@ -5,7 +5,7 @@ module somador(
 	
 	always @(*)
 		begin
-			adress_out = read_adress + 1;
+			adress_out = read_adress + 1'b1;
 		end
 endmodule
-			
+	
