@@ -271,8 +271,8 @@ always @(opcode) begin
             read_data = 1'b0;
             write_data = 1'b0;
             immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
+            fnction = 6'b111111;
+            control_function = 1'b1;
             control_alu_data = 1'b0;
             branch = 3'b000;
             rtrn = 1'b0;
