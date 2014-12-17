@@ -4,7 +4,7 @@ wire [5:0] w_opcode, w_fnction, w_ula_function,w_fnction_alu;
 wire [2:0] w_branch, count;
 
 wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
-w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result
+w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result, w_write_data
 ;
 
 wire [3:0] w_branch_control;
@@ -43,7 +43,7 @@ control_unit_microprogramed cum01(
 	.read_reg(w_read_reg),     				  // Ativa leitura no banco de registradores
 	.write_reg(w_write_reg),				 // Ativa a escrita no banco de registradores
 	.read_data(w_read_data),				// Ativa a leitura na memoria de dados
-	.write_data(),							 // Ativa a escrita da memoria de dados
+	.write_data(w_write_data),							 // Ativa a escrita da memoria de dados
 	.immediat(w_immediat),					// Sinal de controle para o multiplexador da entrada da ULA
 	.control_function(w_control_function),	// Sinal de controle do multiplexador do function da ULA
 	.control_alu_data(w_control_alu_data),	// Sinal de controle do multiplexador da saida da ula
@@ -74,12 +74,12 @@ control_unit_microprogramed cum01(
 //TO DO**********************************************************
 data_memory data_memory01 (
 
-	.address(),
+	.address(w_alu_out),
 	.clock(clk),
-	.data(w_datamem_out),
-	.wren(),
+	.data(),
+	.wren(w_write_data),
 
-	.q()
+	.q(w_datamem_out)
 );
 
 //Memoria de instruções
