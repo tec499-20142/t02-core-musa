@@ -43,7 +43,11 @@ always @ (func) begin
 		6'b100111: result = !op1;
 		6'b111111: //BRFL
 			begin
-				
+				if(op1[2] == flags_in[2] && op1[1] == flags_in[1] && op1[0] == flags_in[0]) begin
+					result = 32'b0000000000000000000001;
+				end else begin
+					result = 32'b0000000000000000000000;
+				end
 			end
 	endcase
 
