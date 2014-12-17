@@ -1,11 +1,11 @@
 module control_unit_microprogramed(clk, opcode, read_reg, write_reg, read_data, write_data, immediat,
- fnction, control_function, control_alu_data, branch, rtrn, pop, push, write_pc,brfl_control, add_pc, count);
+ fnction, control_function, control_alu_data, branch, rtrn, pop, push, write_pc,brfl_control, add_pc, reg_control);
 
 input clk;
 input [5:0] opcode;
 
 output reg read_reg, write_reg, read_data, write_data, immediat,
- control_function, control_alu_data, rtrn, pop, push, write_pc, brfl_control, add_pc;
+ control_function, control_alu_data, rtrn, pop, push, write_pc, brfl_control, add_pc, reg_control;
 output reg [2:0] branch, count;//aten��o
 output reg[5:0] fnction;
 reg [5:0] opcode_reg;
@@ -44,7 +44,8 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -62,7 +63,9 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				    add_pc = 1'b0;
+		add_pc = 1'b0;
+            reg_control = 1'b1;
+
 
             end
 
@@ -80,7 +83,8 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
+            reg_control = 1'b1;
 
             end
 
@@ -98,7 +102,8 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
+            reg_control = 1'b1;
 
             end
 
@@ -116,7 +121,8 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
+            reg_control = 1'b1;
 
             end
 
@@ -124,8 +130,8 @@ always @(opcode) begin
 
             read_reg = 1'b1;
             write_reg = 1'b1;
-            read_data = 1'b0;
-            write_data = 1'b1;
+            read_data = 1'b1;
+            write_data = 1'b0;
             immediat = 1'b1;
             fnction = 6'b100000;
             control_function = 1'b1;
@@ -134,7 +140,8 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+            reg_control = 1'b1;
+		add_pc = 1'b0;
 
             end
 
@@ -152,7 +159,8 @@ always @(opcode) begin
             rtrn = 1'b0;
             pop = 1'b0;
             push = 1'b0;
-				add_pc = 1'b0;
+		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -171,6 +179,7 @@ always @(opcode) begin
             pop = 1'b0;
             push = 1'b1;
 		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -189,6 +198,7 @@ always @(opcode) begin
             pop = 1'b1;
             push = 1'b0;
 		add_pc = 1'b1;
+            reg_control = 1'b0;
 
             end
 
@@ -207,6 +217,7 @@ always @(opcode) begin
             pop = 1'b0;
             push = 1'b0;
 		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -216,7 +227,7 @@ always @(opcode) begin
             write_reg = 1'b0;
             read_data = 1'b0;
             write_data = 1'b0;
-            immediat = 1'b1;
+            immediat = 1'b0;
             fnction = 6'b000000;
             control_function = 1'b0;
             control_alu_data = 1'b0;
@@ -225,6 +236,7 @@ always @(opcode) begin
             pop = 1'b0;
             push = 1'b0;
 		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -243,6 +255,7 @@ always @(opcode) begin
             pop = 1'b0;
             push = 1'b0;
 		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -261,6 +274,7 @@ always @(opcode) begin
             pop = 1'b0;
             push = 1'b0;
 		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -280,6 +294,7 @@ always @(opcode) begin
             push = 1'b0;
             brfl_control = 1'b1;
 		add_pc = 1'b0;
+            reg_control = 1'b0;
 
             end
 
@@ -295,20 +310,25 @@ always @(posedge clk ) begin
 
 
         if (count == 3'b100) begin
+
             write_pc = 1'b1;
             opcode_reg = 6'b000000;
+
         end else begin
+
             count = count + 3'b001;
-				    write_pc = 1'b0;
+		write_pc = 1'b0;
+
         end
 end
 
 always @(negedge clk ) begin
 
 	if (count2 == 3'b100) begin
-        count <= 3'b000;
-				write_pc = 1'b0;
-				read_reg = 1'b0;
+
+            count <= 3'b000;
+		write_pc = 1'b0;
+		read_reg = 1'b0;
             write_reg = 1'b0;
             read_data = 1'b0;
             write_data = 1'b0;
@@ -323,6 +343,8 @@ always @(negedge clk ) begin
 		opcode_reg = 6'b000000;
 		count2 = 3'b000;
 		add_pc = 1'b0;
+            brfl_control = 1'b0;
+            reg_control = 1'b0;
 
 	end else begin
 	
