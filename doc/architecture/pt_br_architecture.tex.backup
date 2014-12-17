@@ -72,6 +72,7 @@
 		15/12/2014 & Correção dos OPCODES do JR e do SUBi & di3goleite \\ \hline
 		16/12/2014 & Mudanças no datapath e descrição da arquitetura & di3goleite \\ \hline
 		17/12/2014 & Finalização da descrição da arquitetura & di3goleite \\ \hline
+		17/12/2014 & Revisão parcial do documento e das definições de entrada e saídas &gordinh \\ \hline
 	\end{longtable}
 \end{center}
 
@@ -209,6 +210,7 @@ Este documento é dividido através dos seguintes capítulos:
   	ORi  & Operação lógica OR entre dois valores, sendo um destes imediato. & 001101 & - \\ \hline
     LW   & Operação de leitura na memória de dados. & 100011 & - \\ \hline
     SW   & Operação de armazenamento na memória de dados. & 101011 & - \\ \hline
+    BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de \textit{flag}. & 010001 & 111111 \\ \hline
   	\end{tabular} 
   	\caption{Instruções do tipo I.}
   \end{table}
@@ -223,7 +225,6 @@ Este documento é dividido através dos seguintes capítulos:
   	\hline 
   	JPC  & Desvia o programa para um endereço relativo ao PC. & 001001 & - \\ \hline
     JR   & Desvia o programa para um endereço de destino. & 011000 & - \\ \hline
-  	BRFL & Desvia o programa para um endereço de destino, atendendo uma condição de \textit{flag}. & 010001 & 111111 \\ \hline
   	CALL & Desvia um programa em execução para uma sub-rotina. & 000011 & - \\ \hline
   	RET  & Retorna de uma sub-rotina. & 000111 & - \\ \hline
   	HALT & Para a execução de um programa. & 000010 & - \\ \hline
@@ -238,7 +239,7 @@ Este documento é dividido através dos seguintes capítulos:
   
   \begin{itemize}
      
-     \item \textbf{ADD, SUB, MUL, DIV, AND, OR e NOT :}
+     \item \textbf{ADD, SUB, MUL, DIV, AND, OR, NOT e JR:}
 
   \begin{table}[H]
 \centering
@@ -254,7 +255,7 @@ Este documento é dividido através dos seguintes capítulos:
   
   O conjunto de instruções do tipo R utiliza o código da operação (OPCODE), dois registradores fontes (RS e RT) de dados e um registrador de destino (RD), para auxiliar na realização das operações. O campo FUNCTION é utilizado como um segundo campo de código de operação, ampliando o leque de operações possíveis. O campo SHAMT não será utilizado no projeto deste processador.\\
   
-   \item \textbf{LW e SW, ADDi, SUBi, ANDi, ORi:}
+   \item \textbf{LW e SW, ADDi, SUBi, ANDi, ORi e BRFL:}
 
   \begin{table}[H]
 \centering
@@ -268,9 +269,9 @@ Este documento é dividido através dos seguintes capítulos:
   	\caption{\textit{Layout} das Operações de Leitura/Escrita e operações imediatas}
   \end{table}
   
-  Além do OPCODE, este tipo de instrução utiliza: um registrador fonte (RS), um registrador de destino (RD) para instruções de leitura (LW) e de escrita (SW). Também conta com o campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
+  Além do OPCODE, este tipo de instrução utiliza: um registrador fonte (RS) e um registrador de destino (RD) para instruções de leitura (LW) e de escrita (SW). Também conta com o campo IMMEDIATE (I) (de 16 \textit{bits}) que representa o deslocamento do registrador base.\\
   
-  \item \textbf{CALL, RET, HALT, NOP, JPC, JR e BRFL:}
+  \item \textbf{CALL, RET, HALT, NOP e JPC:}
 
   \begin{table}[H]
 \centering
@@ -363,9 +364,8 @@ Este documento é dividido através dos seguintes capítulos:
 		
 		\hline
 		\endlastfoot
-		write\_pc  & 1   & entrada & Entrada de controle que habilita a escrita do registrador do PC    \\ \hline
-		read\_address\_in & 18   & entrada & Novo PC a ser armazenado    \\ \hline
-		read\_address\_out & 18 & saída & Saída com o PC atualizado    \\ \hline
+		read\_address & 18   & entrada & Endereço que será lido	       \\ \hline
+		instruction & 32 & saída & Saída da instrução atual		\\ \hline
 	\end{longtable}
 \end{center} 
 
@@ -446,10 +446,10 @@ Este documento é dividido através dos seguintes capítulos:
 		
 		\hline
 		\endlastfoot
-		read\_pc & 18 & entrada & Endereço atual capturado do PC \\ \hline
+		read\_PC & 18 & entrada & Endereço atual capturado do PC \\ \hline
 		pop\_request & 1 & entrada & Sinal utilizado para remover o último endereço armazenado na pilha \\ \hline
 		push\_request & 1 & entrada & Sinal utilizado para armazenar um endereço na pilha \\ \hline
-		write\_pc & 18 & saída & Altera o PC pelo endereço retornado por um pop\_request \\ \hline
+		write\_PC & 18 & saída & Altera o PC pelo endereço retornado por um pop\_request \\ \hline
 		
 	\end{longtable}
 \end{center}  
@@ -487,11 +487,12 @@ Este documento é dividido através dos seguintes capítulos:
 
           \hline
           \endlastfoot
-          OP1  & 32   & entrada & Primeiro operando    \\ \hline
-          OP2  & 32   & entrada & Segundo operando    \\ \hline
-          \textit{Function} & 6 & entrada & Identificador da operação    \\ \hline
-          \textit{Result} & 32 & saída & Resultado da operação    \\ \hline
-          \textit{Flags}  & 3   & saída & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
+          op1  & 32   & entrada & Primeiro operando    \\ \hline
+          op2  & 32   & entrada & Segundo operando    \\ \hline
+          func & 6 & entrada & Identificador da operação    \\ \hline
+          flags\_in  & 3   & entrada & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
+          result & 32 & saída & Resultado da operação    \\ \hline
+          flags\_out  & 3   & saída & \textit{Flags} \textit{above}, \textit{equals} e \textit{overflow}    \\ \hline
         \end{longtable}
       \end{center}
 

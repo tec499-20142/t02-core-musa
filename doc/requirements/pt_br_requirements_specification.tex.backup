@@ -58,8 +58,6 @@
       \small 30/10/2014 & \small Revisão Final & \small jadsonfirmo \\ \hline
       \small 11/12/2014 & \small Refatoração do Documento: Revisão, correções e ajustes. & \small jadsonfirmo \\ \hline
       \small 11/12/2014 & \small Modificação do requisito da instrução BRFL & \small KelCarmo \\ \hline
-      \small 17/12/2014 & \small Atualização das instruções & \small gordinh \\ \hline
-      \small 17/12/2014 & \small Revisão do documento & \small gordinh \\ \hline
     \end{tabular}
   \end{table}
 
@@ -177,7 +175,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando 1 e operando 2 (RS1 + RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando 1 e operando 2 (RS1+RS2).
        \end{itemize}
        }
       {Essencial}
@@ -189,7 +187,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando 1 e operando 2 (RS1 - RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando 1 e operando 2 (RS1-RS2).
        \end{itemize}
        }
       {Essencial}
@@ -201,7 +199,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da multiplicação entre o operando 1 e operando 2 (RS1 * RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da multiplicação entre o operando 1 e operando 2 (RS1*RS2).
        \end{itemize}
        }
       {Essencial}
@@ -213,7 +211,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da divisão entre o operando 1 e operando 2 (RS1 / RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da divisão entre o operando 1 e operando 2 (RS1/RS2).
        \end{itemize}
        }
       {Essencial}
@@ -223,21 +221,21 @@
       {O processador deve ser capaz de realizar a soma de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução ADDi está compreendida da seguinte forma:\\
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
-        \item Imediato (I)- valor imediato, de 16 bits, representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando 1 e o imediato (RS1 + I).
+        \item Imediato - valor imediato, de 16 bits, representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da soma entre o operando 1 e o imediato (RS1+Imediato).
        \end{itemize}
        }
       {Essencial}
       
       \requirement
       {Instrução SUBi}
-      {O processador deve ser capaz de reImediatoalizar a subtração de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução SUBi está compreendida da seguinte forma:\\
+      {O processador deve ser capaz de realizar a subtração de dois valores (levando em consideração o sinal), de modo que um desses valores é um valor imediato. A instrução SUBi está compreendida da seguinte forma:\\
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
-        \item Imediato (I)- valor imediato, de 16 bits, representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando 1 e o imediato (RS1 - I).
+        \item Imediato - valor imediato, de 16 bits, representando o operando 2.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da subtração entre o operando 1 e o imediato (RS1-Imediato).
        \end{itemize}
-       }Imediato
+       }
       {Essencial}
 
      \requirement
@@ -245,8 +243,8 @@
       {O processador deve ser capaz de comparar dois registradores e ativar ou desativar a \textit{flag} equals para sinalizar igualdade caso os operandos sejam iguais, ou a \textit{flag} above caso o operando 1 seja maior que o operando 2.
       A instrução CMP está compreendida da seguinte forma:\\
       \begin{itemize}
-       \item Registrador 1 (RS1) - registrador representando um valor que será comparado com o RS2.
-       \item Registrador 2 (RS2) - registrador representando um valor que será comparado com o RS1.
+       \item Registrador 1 (RS) - registrador representando um valor que será comparado com o RD.
+       \item Registrador 2 (RD) - registrador representando um valor que será comparado com o RS.
       \end{itemize}
       }
       {Essencial}
@@ -258,7 +256,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando 1 e operando 2 (RS1 \&\& RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando 1 e operando 2 (RS1\&\&RS2).
        \end{itemize}
        }
       {Essencial}
@@ -270,7 +268,7 @@
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
         \item Registrador Fonte 2 (RS2) - registrador fonte representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando 1 e operando 2 (RS1 || RS2).
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando 1 e operando 2 (RS1||RS2).
        \end{itemize}
        }
       {Essencial}
@@ -280,8 +278,7 @@
       {O processador deve ser capaz de realizar a operação lógica NOT, de inversão, \textit{bit} a \textit{bit}.
       A instrução NOT está compreendida da seguinte forma:\\
        \begin{itemize}
-	 \item Registrador Fonte (RS) - registrador fonte representando o operando que será negado.
-         \item Registrador de Destino (RD) - registrador onde será armazenado o valor a ser negado.
+         \item Registrador de Destino (RD) - registrador onde contém o valor a ser negado e onde será armazenado este valor.
          \end{itemize}
          }
       {Essencial}
@@ -292,8 +289,8 @@
       A instrução ANDi está compreendida da seguinte forma:\\
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
-        \item Imediato (I)- valor imediat, de 16 bits, representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando 1 e o imediato (RS1 \&\& I).
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação AND entre o operando 1 e o imediato (RS1\&\&RS2).
        \end{itemize}
        }
       {Essencial}
@@ -304,8 +301,8 @@
       A instrução ORi está compreendida da seguinte forma:\\
        \begin{itemize}
         \item Registrador Fonte 1 (RS1) - registrador fonte representando o operando 1.
-        \item Imediato (I)- valor imediat, de 16 bits, representando o operando 2.
-        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando 1 e o imediato (RS1 || I ).
+        \item Registrador Fonte 2 (RS2) - registrador fonte representando o valor imediato.
+        \item Registrador de Destino (RD) - registrador onde será armazenado o valor da operação OR entre o operando 1 e o imediato (RS1||RS2).
        \end{itemize}
        }
       {Essencial}
@@ -378,13 +375,7 @@
 
       \requirement
       {Instrução HALT}
-      {O processador deve ser capaz de parar a execução de um programa.
-     
-     A instrução HALT está compreendida da seguinte forma:\\      
-      \begin{itemize}
-       \item Imediato (I) - valor imediato, de 26 bits, representando o endereço da instrução HALT para fazer o desvio, interrompendo assim a execução do programa.
-      \end{itemize}
-      }
+      {O processador deve ser capaz de parar a execução de um programa.}
       {Essencial}
 
     \end{functional}
@@ -394,11 +385,11 @@
     \begin{functional}
 
       \requirement{Overflow/Underflow}
-      {O processador deve ser capaz de avisar que houve um erro (ou um "estouro") na operação aritmética através da \textit{flag} de \textit{overflow}/\textit{underflow}.}
+      {O processador deve ser capaz de avisar que houve um erro (ou um "estouro") na operação aritimética através da \textit{flag} de overflow/underflow.}
       {Essencial}
 
       \requirement{Equals}
-      {Esta \textit{flag} deve ser utilizada como resultado da instrução CMP, e deve constar verdadeiro (valor 1) quando as duas palavras comparadas forem iguais.}
+      {Esta \textit{flag} deve ser utilizada como resultado da instrução CMP, e deve constar verdadeiro quando as duas palavras comparadas forem iguais.}
       {Essencial}
 
       \requirement{Above}
@@ -413,7 +404,7 @@
      
      \requirement
       {Tamanho da palavra de uma instrução}
-      {O tamanho da palavra de instrução, que é compatível com o processador, é de 32 \textit{bits}.}
+      {O Tamanho de uma palavra de instrução que é compatível com o processador é de 32 \textit{bits}.}
       {Essencial}
       
 	\end{functional}
@@ -422,7 +413,7 @@
      
      \requirement
       {Tamanho de endereço}
-      {O processador trabalha com endereços de 18 bits, para a memória de instrução e 32 bits, para a memória de dados. }
+      {O processor trabalha com endereços de 18 bits, para a memória de instrução e 32 bits, para a memória de dados. }
       {Essencial}
       
 	\end{functional}
@@ -431,7 +422,7 @@
      
      \requirement
       {Pilha}
-      {O processor trabalha com uma pilha separada, dedicada somente a guardar endereços do PC para o retorno de funções.}
+      {O processor trabalha com uma pilha separada, dedicada somente a guardar retorno de funções}
       {Essencial}
       
 	\end{functional}
