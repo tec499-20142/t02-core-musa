@@ -49,7 +49,6 @@
       \small 08/12/2014 & \small Ajustes iniciais & \small jadsonfirmo \\ \hline 
       \small 12/12/2014 & \small Inserção de dados e alterações & \small jadsonfirmo \& lucasmorais \\ \hline
       \small 15/12/2014 & \small Visão Geral do DUT e ajustes & \small jadsonfirmo\\ \hline
-      \small 16/12/2014 & \small Revisão parcial e ortogr\'afica & \small gordinh\\ \hline
     \end{longtable}
   \end{center}
 
@@ -92,7 +91,6 @@
 				\cellcolor[gray]{0.9}\textbf{Sigla} & \cellcolor[gray]{0.9}\textbf{Descrição} \\ \hline
 				DUT & Design Under Test \\ \hline
         		IF  & Interface \\ \hline
-        		DUV & Design under verification \\ \hline
       \end{tabular}
     \end{center}
   \end{table}  
@@ -111,7 +109,7 @@
   		
   		\item As entradas para o DUT são declarados como "reg" e saídas são declarados como \textit{wires} (fios). Nota-se que as saídas do DUT são entradas para o \textit{testbench}, lembrando que qualquer entrada deve ser um \textit{wire} (fio).
   		
-  		\item As entradas para DUT são os impulsos gerados no \textit{testbenches}. Os estímulos são, normalmente, gerados em um bloco sempre processual inicial ou \textit{testbench}.
+  		\item As entradas para DUT são os impulsos gerados no \textit{testbenches}. Os estímulos são, normalmente, gerados em um bloco sempre processual na inicial ou \textit{testbench}.
   		
   		\item Após a implementação do DUT, temos a simulação do DUV e o \textit{testbench}.
   		
