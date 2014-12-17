@@ -1,19 +1,19 @@
 module musa(input clk,rst_n);
 
 wire [5:0] w_opcode, w_fnction, w_ula_function,w_fnction_alu;
-wire [1:0] w_branch;
+wire [2:0] w_branch, count;
 
 wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
-w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl_control, w_brfl_result
+w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result
 ;
 
-wire [2:0] w_branch_control;
+wire [3:0] w_branch_control;
 
 wire [31:0] w_reg_alumux, w_op1,w_op2, w_datamem_out, w_register_in, w_extend_mux, w_alu_out;
 
 wire [15:0] w_immediat16;
 
-wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_adress, w_jump_immediat, w_jump_reg;
+wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_adress, w_jump_immediat, w_jump_reg, w_jump_jpc;
 
 reg [31:0] reg_instruction;
 
@@ -27,7 +27,7 @@ assign w_ula_function = reg_instruction [5:0];
 
 assign w_brfl_adress = reg_instruction [20:2];
 
-assign w_brfl_result = w_brfl_control & w_alu_out[0];
+assign w_brfl_result = w_brfl & w_alu_out[0];
 
 assign w_branch_control = {w_brfl_result,w_branch};
 
@@ -53,7 +53,7 @@ control_unit_microprogramed cum01(
 	.write_pc(w_write_pc),					// Sinal que habilita a escrita no PC
 	.branch(w_branch),						// Sinal de controle para o multiplexador de desv
 	.fnction(w_fnction),					// Function para a ULA
-	.brfl_control(w_brfl_control),			// Sinal de controle para o BRFL
+	.brfl_control(w_brfl),			// Sinal de controle para o BRFL
 	.add_pc(w_add_pc) 						// Sinal de controle para o multiplexador do somador do pc
 
 );
@@ -144,6 +144,16 @@ somador somador01(
 
 );
 
+//Somador do JPC
+somador_jpc s_jpc01(
+
+	.read_adress(w_pc_out),
+	.immediat(w_jump_immediat),
+
+	.adress_out(w_jump_jpc)
+
+);
+
 //Multiplexador da entrada da ula para valores imediatos
 mux32 mux_alu(
 
@@ -178,12 +188,13 @@ mux6 alu_control (
 // Multiplexador de desvios
 mux3_18 branch_mux (
 
-	.in000(w_somador_out),			 //saida do somador do pc
-	.in001(w_jump_reg),    			//saida do banco de registradores
-	.in010(w_jump_immediat),  			 //immediato da instrução
-	.in100(w_brfl_adress),  			 // BRFL caso a flag seja  verdadeira
-	.in011(w_pc_out), 				// endereço do PC
-	.cntl(w_branch_control),       //sinal da UC
+	.in0000(w_somador_out),				 //saida do somador do pc
+	.in0001(w_jump_reg),    			//saida do banco de registradores
+	.in0010(w_jump_immediat),  			//immediato da instrução
+	.in1000(w_brfl_adress),  			// BRFL caso a flag seja  verdadeira
+	.in0011(w_pc_out),					//HALT
+	.in0100(w_jump_jpc), 				// endereço do PC
+	.cntl(w_branch_control),       		//sinal da UC
 
 	.out(w_pc_in)               // write pc
 );
