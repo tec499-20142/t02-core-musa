@@ -6,6 +6,7 @@
 \usepackage{ipprocess}
 % Use longtable if you want big tables to split over multiple pages.
 \usepackage{longtable}
+\usepackage{tikz}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel} % Uncomment for portuguese
 \usepackage{pdflscape} % set ladscape/portrait pdf pages
@@ -168,7 +169,7 @@ Este documento é dividido através das seguintes capítulos:
   
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{landscape}
-  	\section{DataPath interno}
+  	\section{DataPath do MUSA}
   	\begin{figure}[H]
   		\centering
   		\includegraphics[width=600px]{./pictures/datapath/DataPath.png}
@@ -299,14 +300,15 @@ Este documento é dividido através das seguintes capítulos:
 
   \section{ULA}
 
-    \subsection{Diagrama de Classe}
+    \subsection{Diagrama de bloco}
     %\begin{figure}[H]
 	%\centering
 	%\ucdiagram{./pictures/classes/ula.jpeg}
     %  \end{figure}
   \begin{figure}[H]
      	\centering
-     	\includegraphics[scale=1.5]{./pictures/diagrams/ula.jpeg}
+     	\input{./pictures/diagrams/ula.tex}
+     	%\includegraphics[scale=1.5]{./pictures/diagrams/ula.jpeg}
   \end{figure}      
      
     \subsection{Definições de Entrada e Saída}
