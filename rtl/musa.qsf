@@ -57,7 +57,6 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VERILOG_FILE somador_jpc.v
 set_global_assignment -name VERILOG_FILE control_unit_microprogramed.v
 set_global_assignment -name VERILOG_FILE musa.v
-set_global_assignment -name VERILOG_FILE control_unit.v
 set_global_assignment -name VERILOG_FILE data_memory.v
 set_global_assignment -name VERILOG_FILE instruction_memory.v
 set_global_assignment -name VERILOG_FILE stack.v

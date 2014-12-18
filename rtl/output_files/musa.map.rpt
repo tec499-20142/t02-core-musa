@@ -1,5 +1,5 @@
 Analysis & Synthesis report for musa
-Wed Dec 17 21:38:11 2014
+Wed Dec 17 22:07:56 2014
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Dec 17 21:38:11 2014          ;
+; Analysis & Synthesis Status        ; Failed - Wed Dec 17 22:07:56 2014          ;
 ; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; musa                                       ;
@@ -164,7 +164,7 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Dec 17 21:38:08 2014
+    Info: Processing started: Wed Dec 17 22:07:52 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
 Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
 Warning (12019): Can't analyze file -- file somador_jpc.v is missing
@@ -172,28 +172,84 @@ Info (12021): Found 1 design units, including 1 entities, in source file control
     Info (12023): Found entity 1: control_unit_microprogramed
 Info (12021): Found 1 design units, including 1 entities, in source file musa.v
     Info (12023): Found entity 1: musa
-Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
-    Info (12023): Found entity 1: control_unit
 Warning (12019): Can't analyze file -- file data_memory.v is missing
 Warning (12019): Can't analyze file -- file instruction_memory.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file stack.v
     Info (12023): Found entity 1: stack
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu
-Warning (10263): Verilog HDL Event Control warning at registers_bank.v(16): event expression contains "|" or "||"
 Info (12021): Found 1 design units, including 1 entities, in source file registers_bank.v
     Info (12023): Found entity 1: registers_bank
 Warning (12019): Can't analyze file -- file instruction_memory.vhd is missing
 Warning (10236): Verilog HDL Implicit Net warning at musa.v(70): created implicit net for "w_reg_control"
-Error (10161): Verilog HDL error at registers_bank.v(18): object "enable_write" is not declared File: C:/Users/Matheus/Documents/t02-core-musa/rtl/registers_bank.v Line: 18
-Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(22): object "data_1" on left-hand side of assignment must have a variable data type File: C:/Users/Matheus/Documents/t02-core-musa/rtl/registers_bank.v Line: 22
-Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(23): object "data_2" on left-hand side of assignment must have a variable data type File: C:/Users/Matheus/Documents/t02-core-musa/rtl/registers_bank.v Line: 23
+Info (12127): Elaborating entity "musa" for the top level hierarchy
+Warning (10858): Verilog HDL warning at musa.v(21): object flag_reg used but never assigned
+Warning (10230): Verilog HDL assignment warning at musa.v(35): truncated value with size 19 to match size of target (18)
+Warning (10030): Net "flag_reg" at musa.v(21) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "control_unit_microprogramed" for hierarchy "control_unit_microprogramed:cum01"
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "read_reg", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "write_reg", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "write_data", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "immediat", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "fnction", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "control_function", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "control_alu_data", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "branch", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "rtrn", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "pop", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "push", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "add_pc", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "reg_control", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "brfl_control", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "brfl_control" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "reg_control" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "add_pc" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "push" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "pop" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "rtrn" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "branch[0]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "branch[1]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "branch[2]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "control_alu_data" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "control_function" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "fnction[0]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "fnction[1]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "fnction[2]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "fnction[3]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "fnction[4]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "fnction[5]" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "immediat" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "write_data" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "read_data" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "write_reg" at control_unit_microprogramed.v(27)
+Info (10041): Inferred latch for "read_reg" at control_unit_microprogramed.v(27)
+Error (10028): Can't resolve multiple constant drivers for net "read_reg" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10029): Constant driver at control_unit_microprogramed.v(27) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 27
+Error (10028): Can't resolve multiple constant drivers for net "write_reg" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "read_data" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "write_data" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "immediat" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "control_function" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "control_alu_data" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "rtrn" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "pop" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "push" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "write_pc" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10029): Constant driver at control_unit_microprogramed.v(309) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 309
+Error (10028): Can't resolve multiple constant drivers for net "brfl_control" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "add_pc" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "reg_control" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "branch[2]" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "branch[1]" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (10028): Can't resolve multiple constant drivers for net "branch[0]" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
+Error (12152): Can't elaborate user hierarchy "control_unit_microprogramed:cum01" File: C:/Users/Matheus/Documents/t02-core-musa/rtl/musa.v Line: 73
 Info (144001): Generated suppressed messages file C:/Users/Matheus/Documents/t02-core-musa/rtl/output_files/musa.map.smsg
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 3 errors, 6 warnings
-    Error: Peak virtual memory: 361 megabytes
-    Error: Processing ended: Wed Dec 17 21:38:11 2014
-    Error: Elapsed time: 00:00:03
-    Error: Total CPU time (on all processors): 00:00:02
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 20 errors, 23 warnings
+    Error: Peak virtual memory: 362 megabytes
+    Error: Processing ended: Wed Dec 17 22:07:57 2014
+    Error: Elapsed time: 00:00:05
+    Error: Total CPU time (on all processors): 00:00:03
 
 
 +------------------------------------------+

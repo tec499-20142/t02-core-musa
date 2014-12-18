@@ -7,15 +7,15 @@ module registers_bank(
 	input write_reg,
 	input read_reg,
 	input [31:0] write_data,
-	output [31:0] data_1,
-	output [31:0] data_2);
+	output reg [31:0] data_1,
+	output reg [31:0] data_2);
  
 // 32 registradores de proposito geral
 reg [31:0] registers[31:0];
 
-always @ (write_reg || read_reg) begin
+always @ (write_reg or read_reg) begin
 	
-	if (enable_write) begin
+	if (write_reg) begin
 		registers[RD] = write_data;
 	end else
 		if (read_reg) begin
