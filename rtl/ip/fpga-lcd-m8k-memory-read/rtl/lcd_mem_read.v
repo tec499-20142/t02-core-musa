@@ -1,6 +1,6 @@
 module lcd_mem_read 
 #(
-	parameter ADDR_WIDTH = 12,
+	parameter ADDR_WIDTH = 8,
 	parameter DATA_WIDTH = 32
 )
 (

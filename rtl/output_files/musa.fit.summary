@@ -1,15 +1,15 @@
-Fitter Status : Successful - Thu Dec 18 11:44:34 2014
+Fitter Status : Successful - Thu Dec 18 14:34:44 2014
 Quartus II 32-bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : musa
 Top-level Entity Name : musa
 Family : Cyclone III
 Device : EP3C25F324I7
 Timing Models : Final
-Total logic elements : 0 / 24,624 ( 0 % )
-    Total combinational functions : 0 / 24,624 ( 0 % )
-    Dedicated logic registers : 0 / 24,624 ( 0 % )
-Total registers : 0
-Total pins : 2 / 216 ( < 1 % )
+Total logic elements : 121 / 24,624 ( < 1 % )
+    Total combinational functions : 120 / 24,624 ( < 1 % )
+    Dedicated logic registers : 59 / 24,624 ( < 1 % )
+Total registers : 59
+Total pins : 19 / 216 ( 9 % )
 Total virtual pins : 0
 Total memory bits : 0 / 608,256 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )

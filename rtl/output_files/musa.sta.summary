@@ -2,4 +2,100 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow 1200mV 100C Model Setup 'clk'
+Slack : -2.883
+TNS   : -101.288
+
+Type  : Slow 1200mV 100C Model Setup 'read_in'
+Slack : -1.152
+TNS   : -6.298
+
+Type  : Slow 1200mV 100C Model Hold 'clk'
+Slack : 0.417
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Hold 'read_in'
+Slack : 0.421
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Recovery 'clk'
+Slack : 0.039
+TNS   : 0.000
+
+Type  : Slow 1200mV 100C Model Removal 'clk'
+Slack : -0.101
+TNS   : -5.132
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -68.535
+
+Type  : Slow 1200mV 100C Model Minimum Pulse Width 'read_in'
+Slack : -3.000
+TNS   : -13.280
+
+Type  : Slow 1200mV -40C Model Setup 'clk'
+Slack : -2.494
+TNS   : -84.479
+
+Type  : Slow 1200mV -40C Model Setup 'read_in'
+Slack : -0.824
+TNS   : -4.256
+
+Type  : Slow 1200mV -40C Model Hold 'clk'
+Slack : 0.343
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Hold 'read_in'
+Slack : 0.361
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Recovery 'clk'
+Slack : 0.105
+TNS   : 0.000
+
+Type  : Slow 1200mV -40C Model Removal 'clk'
+Slack : -0.099
+TNS   : -5.003
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -68.535
+
+Type  : Slow 1200mV -40C Model Minimum Pulse Width 'read_in'
+Slack : -3.000
+TNS   : -13.280
+
+Type  : Fast 1200mV -40C Model Setup 'clk'
+Slack : -1.119
+TNS   : -25.669
+
+Type  : Fast 1200mV -40C Model Setup 'read_in'
+Slack : 0.008
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Hold 'clk'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Hold 'read_in'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Fast 1200mV -40C Model Recovery 'clk'
+Slack : -0.076
+TNS   : -3.828
+
+Type  : Fast 1200mV -40C Model Removal 'clk'
+Slack : -0.069
+TNS   : -3.501
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -56.571
+
+Type  : Fast 1200mV -40C Model Minimum Pulse Width 'read_in'
+Slack : -3.000
+TNS   : -11.704
+
 ------------------------------------------------------------

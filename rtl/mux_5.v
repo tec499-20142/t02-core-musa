@@ -1,9 +1,9 @@
 module mux_5 (
 
-	input[5:0] in0 ,in1,
+	input[4:0] in0 ,in1,
 	input ctrl,
 	
-	output reg [5:0] out
+	output reg [4:0] out
 );
 
 always @(*) begin

@@ -54,6 +54,12 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE "ip/fpga-lcd-m8k-memory-read/rtl/lcd/Reset_Delay.v"
+set_global_assignment -name VERILOG_FILE "ip/fpga-lcd-m8k-memory-read/rtl/lcd/LCD_Read_FSM.v"
+set_global_assignment -name VERILOG_FILE "ip/fpga-lcd-m8k-memory-read/rtl/lcd/LCD_Controller.v"
+set_global_assignment -name VERILOG_FILE "ip/fpga-lcd-m8k-memory-read/rtl/util/sp_ram_with_init.v"
+set_global_assignment -name VERILOG_FILE "ip/fpga-lcd-m8k-memory-read/rtl/util/bin_to_asc_hex.v"
+set_global_assignment -name VERILOG_FILE "ip/fpga-lcd-m8k-memory-read/rtl/lcd_mem_read.v"
 set_global_assignment -name VERILOG_FILE mux35.v
 set_global_assignment -name VERILOG_FILE mux32.v
 set_global_assignment -name VERILOG_FILE mux6.v
@@ -68,4 +74,6 @@ set_global_assignment -name VERILOG_FILE registers_bank.v
 set_global_assignment -name QIP_FILE data_memory.qip
 set_global_assignment -name VERILOG_FILE mux_5.v
 set_global_assignment -name VERILOG_FILE somador_jpc.v
+set_global_assignment -name VERILOG_FILE mux_lcd.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"

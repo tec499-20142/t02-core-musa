@@ -1,4 +1,32 @@
-module musa(input clk,rst_n);
+module musa
+#(
+	parameter ADDR_WIDTH = 8,
+	parameter DATA_WIDTH = 32
+)(
+
+input clk,
+
+	input clk_50,    // Clock
+	input rst_n,  // Asynchronous reset active low
+	// Input key
+	input seletor,
+	input read_in,				// Read trigger key[3]
+	
+	// Debug
+	output data_mem_rd_en_out,  // Red0 LED
+
+	// LCD signals
+	output [7:0] lcd_data_out, 	// LCD data
+	output lcd_on_out,			// LCD power on/off
+	output lcd_blon_out,		// LCD back light on/off
+	output lcd_rw_out,			// LCD read/write select, 0 = write, 1 = read
+	output lcd_en_out,			// LCD enable
+	output lcd_rs_out			// LCD command/data select, 0 = command, 1 = data
+
+);
+
+wire [DATA_WIDTH-1:0] mem_data;
+wire [ADDR_WIDTH-1:0] mem_addr;
 
 wire [5:0] w_opcode, w_fnction, w_ula_function,w_fnction_alu;
 wire [2:0] w_branch, count, w_flag_in, w_flag_out;
@@ -16,13 +44,13 @@ wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_
 
 wire [4:0] w_rs, w_rt, w_rd, w_rd_mux_out;
 
-wire [7:0] w_data_addres;
+wire [7:0] w_data_address, w_memo_address_in;
 
 reg [31:0] reg_instruction;
 
 reg [2:0] flag_reg;
 
-assign w_data_addres = w_alu_out[7:0];
+assign w_data_address = w_alu_out[7:0];
 
 assign w_flag_in = flag_reg [2:0];
 
@@ -93,7 +121,7 @@ data_memory data_memory01 (
 
 	.data(w_reg_alumux),
 	.wren(w_write_data),
-	.address(w_data_addres),
+	.address(w_memo_address_in),
 	.clock(clk),
 
 	.q(w_datamem_out)
@@ -233,5 +261,38 @@ mux_5 registers_bank_mux(
 
 	.out(w_rd_mux_out) 			 // Entrada do somador
 );
+
+lcd_mem_read 
+#(
+	.ADDR_WIDTH(ADDR_WIDTH),
+	.DATA_WIDTH(DATA_WIDTH)
+) lcd_mem_read_u0 (
+	.clk_50(clk),    			// Board clock 50Mhz
+	.rst_n(rst_n),  				// Asynchronous reset active low key[0]
+	.read_in(read_in),				// Read trigger key[3]
+	
+	// Data memory
+	.mem_data_in(mem_data), 	// Data memory output
+	.addr_out(mem_addr),	// Data memory address
+	.data_mem_rd_en_out(data_mem_rd_en_out),			// Data memory read enable
+
+	// LCD signals
+	.lcd_data_out(lcd_data_out), 	// LCD data
+	.lcd_on_out(lcd_on_out),			// LCD power on/off
+	.lcd_blon_out(lcd_blon_out),		// LCD back light on/off
+	.lcd_rw_out(lcd_rw_out),			// LCD read/write select, 0 = write, 1 = read
+	.lcd_en_out(lcd_en_out),			// LCD enable
+	.lcd_rs_out(lcd_rs_out)			// LCD command/data select, 0 = command, 1 = data
+);
+
+mux_lcd (
+
+	.in0(w_data_address),
+	.in1(mem_addr),
+	.ctrl(seletor),
+	
+	.out(w_memo_address_in)
+);
+
 
 endmodule
