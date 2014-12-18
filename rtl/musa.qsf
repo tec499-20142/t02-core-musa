@@ -54,12 +54,18 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VERILOG_FILE mux_5.v
-set_global_assignment -name VERILOG_FILE somador_jpc.v
+set_global_assignment -name VERILOG_FILE mux35.v
+set_global_assignment -name VERILOG_FILE mux32.v
+set_global_assignment -name VERILOG_FILE mux6.v
+set_global_assignment -name VERILOG_FILE mux18.v
+set_global_assignment -name VERILOG_FILE mux3_18.v
+set_global_assignment -name VERILOG_FILE somador.v
 set_global_assignment -name VERILOG_FILE control_unit_microprogramed.v
 set_global_assignment -name VERILOG_FILE musa.v
 set_global_assignment -name VERILOG_FILE stack.v
 set_global_assignment -name VERILOG_FILE alu.v
 set_global_assignment -name VERILOG_FILE registers_bank.v
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name QIP_FILE data_memory.qip
+set_global_assignment -name VERILOG_FILE mux_5.v
+set_global_assignment -name VERILOG_FILE somador_jpc.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
