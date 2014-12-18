@@ -33,13 +33,22 @@ initial begin
 end
 
 // este always monitora o sinal push e add no topo da pilha quando o sinal mudar para 1
-always@ (posedge push) begin
+always@ (push or pop) begin
+	
+	if(push)begin
+	
 		stack[ptr] <= read_PC;
 		ptr <= ptr + 1;
-end
+		
+	end
 // este always monitora o sinal pop e remove o topo da pilha quando o sinal mudar para 1
-always@ (posedge pop) begin
-    ptr = ptr - 1;
-    write_PC <= stack[ptr]; 
+	if(pop) begin
+	
+		ptr <= ptr - 1;
+		write_PC <= stack[ptr]; 
+		
+	end
+	
 end
+
 endmodule

@@ -1,6 +1,6 @@
 module somador(
-	input read_adress[17:0],
-	output adress_out[17:0]);
+	input [17:0] read_adress,
+	output reg [17:0] adress_out);
 	
 	
 	always @(*)

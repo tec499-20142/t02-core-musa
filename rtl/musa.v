@@ -16,9 +16,13 @@ wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_
 
 wire [4:0] w_rs, w_rt, w_rd, w_rd_mux_out;
 
+wire [7:0] w_data_addres;
+
 reg [31:0] reg_instruction;
 
 reg [2:0] flag_reg;
+
+assign w_data_addres = w_alu_out[7:0];
 
 assign w_flag_in = flag_reg [2:0];
 
@@ -88,10 +92,10 @@ control_unit_microprogramed cum01(
 //Memoria de dados
 data_memory data_memory01 (
 
-	.address(w_alu_out),
-	.clock(clk),
 	.data(w_reg_alumux),
 	.wren(w_write_data),
+	.address(w_data_addres),
+	.clock(clk),
 
 	.q(w_datamem_out)
 );
@@ -224,11 +228,11 @@ mux18 somador_mux (
 
 mux_5 registers_bank_mux(
 
-	.in0(w_rt),  		// pc
-	.in1(w_rd),		// Saida da pilha
+	.in0(w_rt),  					// pc
+	.in1(w_rd),						// Saida da pilha
 	.ctrl(w_reg_control),  		//Sinald e controle da UC
 
-	.out(w_rd_mux_out) 		 // Entrada do somador
+	.out(w_rd_mux_out) 			 // Entrada do somador
 );
 
 endmodule

@@ -1,6 +1,6 @@
 Analysis & Synthesis report for musa
-Wed Dec 17 22:07:56 2014
-Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Thu Dec 18 00:02:35 2014
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -37,8 +37,8 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Dec 17 22:07:56 2014          ;
-; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Analysis & Synthesis Status        ; Failed - Thu Dec 18 00:02:35 2014          ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; musa                                       ;
 ; Family                             ; Cyclone III                                ;
@@ -141,33 +141,30 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
-+----------------------------+-------------+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 6      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
 
 
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 32-bit Analysis & Synthesis
+Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Dec 17 22:07:52 2014
+    Info: Processing started: Thu Dec 18 00:02:34 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
-Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
-Warning (12019): Can't analyze file -- file somador_jpc.v is missing
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file mux_5.v
+    Info (12023): Found entity 1: mux_5
+Info (12021): Found 1 design units, including 1 entities, in source file somador_jpc.v
+    Info (12023): Found entity 1: somador_jpc
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit_microprogramed.v
     Info (12023): Found entity 1: control_unit_microprogramed
 Info (12021): Found 1 design units, including 1 entities, in source file musa.v
@@ -181,12 +178,13 @@ Info (12021): Found 1 design units, including 1 entities, in source file alu.v
 Info (12021): Found 1 design units, including 1 entities, in source file registers_bank.v
     Info (12023): Found entity 1: registers_bank
 Warning (12019): Can't analyze file -- file instruction_memory.vhd is missing
-Warning (10236): Verilog HDL Implicit Net warning at musa.v(70): created implicit net for "w_reg_control"
+Warning (10236): Verilog HDL Implicit Net warning at musa.v(74): created implicit net for "w_reg_control"
 Info (12127): Elaborating entity "musa" for the top level hierarchy
-Warning (10858): Verilog HDL warning at musa.v(21): object flag_reg used but never assigned
-Warning (10230): Verilog HDL assignment warning at musa.v(35): truncated value with size 19 to match size of target (18)
-Warning (10030): Net "flag_reg" at musa.v(21) has no driver or initial value, using a default initial value '0'
+Warning (10858): Verilog HDL warning at musa.v(23): object flag_reg used but never assigned
+Warning (10230): Verilog HDL assignment warning at musa.v(39): truncated value with size 19 to match size of target (18)
+Warning (10030): Net "flag_reg" at musa.v(23) has no driver or initial value, using a default initial value '0'
 Info (12128): Elaborating entity "control_unit_microprogramed" for hierarchy "control_unit_microprogramed:cum01"
+Warning (10036): Verilog HDL or VHDL warning at control_unit_microprogramed.v(12): object "count2" assigned a value but never read
 Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "read_reg", which holds its previous value in one or more paths through the always construct
 Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "write_reg", which holds its previous value in one or more paths through the always construct
 Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct
@@ -224,37 +222,268 @@ Info (10041): Inferred latch for "write_data" at control_unit_microprogramed.v(2
 Info (10041): Inferred latch for "read_data" at control_unit_microprogramed.v(27)
 Info (10041): Inferred latch for "write_reg" at control_unit_microprogramed.v(27)
 Info (10041): Inferred latch for "read_reg" at control_unit_microprogramed.v(27)
-Error (10028): Can't resolve multiple constant drivers for net "read_reg" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10029): Constant driver at control_unit_microprogramed.v(27) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 27
-Error (10028): Can't resolve multiple constant drivers for net "write_reg" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "read_data" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "write_data" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "immediat" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "control_function" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "control_alu_data" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "rtrn" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "pop" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "push" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "write_pc" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10029): Constant driver at control_unit_microprogramed.v(309) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 309
-Error (10028): Can't resolve multiple constant drivers for net "brfl_control" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "add_pc" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "reg_control" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "branch[2]" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "branch[1]" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (10028): Can't resolve multiple constant drivers for net "branch[0]" at control_unit_microprogramed.v(325) File: C:/Users/Matheus/Documents/t02-core-musa/rtl/control_unit_microprogramed.v Line: 325
-Error (12152): Can't elaborate user hierarchy "control_unit_microprogramed:cum01" File: C:/Users/Matheus/Documents/t02-core-musa/rtl/musa.v Line: 73
-Info (144001): Generated suppressed messages file C:/Users/Matheus/Documents/t02-core-musa/rtl/output_files/musa.map.smsg
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 20 errors, 23 warnings
-    Error: Peak virtual memory: 362 megabytes
-    Error: Processing ended: Wed Dec 17 22:07:57 2014
-    Error: Elapsed time: 00:00:05
-    Error: Total CPU time (on all processors): 00:00:03
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu01"
+Warning (10235): Verilog HDL Always Construct warning at alu.v(37): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(37): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(38): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(38): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(39): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(39): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(40): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(40): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(41): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(41): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(42): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(42): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(43): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(46): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at alu.v(46): variable "flags_in" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10270): Verilog HDL Case Statement warning at alu.v(36): incomplete case statement has no default case item
+Warning (10235): Verilog HDL Always Construct warning at alu.v(69): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at alu.v(33): inferring latch(es) for variable "result", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at alu.v(33): inferring latch(es) for variable "flags_out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "result[0]" at alu.v(33)
+Info (10041): Inferred latch for "result[1]" at alu.v(33)
+Info (10041): Inferred latch for "result[2]" at alu.v(33)
+Info (10041): Inferred latch for "result[3]" at alu.v(33)
+Info (10041): Inferred latch for "result[4]" at alu.v(33)
+Info (10041): Inferred latch for "result[5]" at alu.v(33)
+Info (10041): Inferred latch for "result[6]" at alu.v(33)
+Info (10041): Inferred latch for "result[7]" at alu.v(33)
+Info (10041): Inferred latch for "result[8]" at alu.v(33)
+Info (10041): Inferred latch for "result[9]" at alu.v(33)
+Info (10041): Inferred latch for "result[10]" at alu.v(33)
+Info (10041): Inferred latch for "result[11]" at alu.v(33)
+Info (10041): Inferred latch for "result[12]" at alu.v(33)
+Info (10041): Inferred latch for "result[13]" at alu.v(33)
+Info (10041): Inferred latch for "result[14]" at alu.v(33)
+Info (10041): Inferred latch for "result[15]" at alu.v(33)
+Info (10041): Inferred latch for "result[16]" at alu.v(33)
+Info (10041): Inferred latch for "result[17]" at alu.v(33)
+Info (10041): Inferred latch for "result[18]" at alu.v(33)
+Info (10041): Inferred latch for "result[19]" at alu.v(33)
+Info (10041): Inferred latch for "result[20]" at alu.v(33)
+Info (10041): Inferred latch for "result[21]" at alu.v(33)
+Info (10041): Inferred latch for "result[22]" at alu.v(33)
+Info (10041): Inferred latch for "result[23]" at alu.v(33)
+Info (10041): Inferred latch for "result[24]" at alu.v(33)
+Info (10041): Inferred latch for "result[25]" at alu.v(33)
+Info (10041): Inferred latch for "result[26]" at alu.v(33)
+Info (10041): Inferred latch for "result[27]" at alu.v(33)
+Info (10041): Inferred latch for "result[28]" at alu.v(33)
+Info (10041): Inferred latch for "result[29]" at alu.v(33)
+Info (10041): Inferred latch for "result[30]" at alu.v(33)
+Info (10041): Inferred latch for "result[31]" at alu.v(33)
+Info (10041): Inferred latch for "flags_out[0]" at alu.v(60)
+Info (10041): Inferred latch for "flags_out[1]" at alu.v(60)
+Info (10041): Inferred latch for "flags_out[2]" at alu.v(60)
+Info (12128): Elaborating entity "registers_bank" for hierarchy "registers_bank:rb01"
+Warning (10235): Verilog HDL Always Construct warning at registers_bank.v(19): variable "write_data" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at registers_bank.v(19): variable "RD" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at registers_bank.v(22): variable "RS" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at registers_bank.v(23): variable "RT" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at registers_bank.v(16): inferring latch(es) for variable "data_1", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at registers_bank.v(16): inferring latch(es) for variable "data_2", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "data_2[0]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[1]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[2]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[3]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[4]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[5]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[6]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[7]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[8]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[9]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[10]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[11]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[12]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[13]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[14]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[15]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[16]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[17]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[18]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[19]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[20]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[21]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[22]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[23]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[24]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[25]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[26]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[27]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[28]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[29]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[30]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_2[31]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[0]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[1]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[2]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[3]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[4]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[5]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[6]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[7]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[8]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[9]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[10]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[11]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[12]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[13]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[14]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[15]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[16]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[17]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[18]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[19]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[20]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[21]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[22]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[23]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[24]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[25]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[26]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[27]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[28]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[29]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[30]" at registers_bank.v(21)
+Info (10041): Inferred latch for "data_1[31]" at registers_bank.v(21)
+Warning (12125): Using design file sign_extend.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: sign_extend
+Info (12128): Elaborating entity "sign_extend" for hierarchy "sign_extend:sign_extend01"
+Warning (12125): Using design file program_counter.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: program_counter
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:pc01"
+Warning (10240): Verilog HDL Always Construct warning at program_counter.v(9): inferring latch(es) for variable "read_adress_out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "read_adress_out[0]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[1]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[2]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[3]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[4]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[5]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[6]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[7]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[8]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[9]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[10]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[11]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[12]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[13]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[14]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[15]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[16]" at program_counter.v(9)
+Info (10041): Inferred latch for "read_adress_out[17]" at program_counter.v(9)
+Info (12128): Elaborating entity "stack" for hierarchy "stack:stack01"
+Warning (10235): Verilog HDL Always Construct warning at stack.v(40): variable "read_PC" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at stack.v(40): variable "ptr" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at stack.v(41): variable "ptr" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at stack.v(47): variable "ptr" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10235): Verilog HDL Always Construct warning at stack.v(48): variable "ptr" is read inside the Always Construct but isn't in the Always Construct's Event Control
+Warning (10240): Verilog HDL Always Construct warning at stack.v(36): inferring latch(es) for variable "ptr", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at stack.v(36): inferring latch(es) for variable "write_PC", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "write_PC[0]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[1]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[2]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[3]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[4]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[5]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[6]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[7]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[8]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[9]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[10]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[11]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[12]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[13]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[14]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[15]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[16]" at stack.v(36)
+Info (10041): Inferred latch for "write_PC[17]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[0]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[1]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[2]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[3]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[4]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[5]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[6]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[7]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[8]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[9]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[10]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[11]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[12]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[13]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[14]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[15]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[16]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[17]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[18]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[19]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[20]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[21]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[22]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[23]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[24]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[25]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[26]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[27]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[28]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[29]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[30]" at stack.v(36)
+Info (10041): Inferred latch for "ptr[31]" at stack.v(36)
+Warning (12125): Using design file somador.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: somador
+Info (12128): Elaborating entity "somador" for hierarchy "somador:somador01"
+Info (12128): Elaborating entity "somador_jpc" for hierarchy "somador_jpc:s_jpc01"
+Warning (12125): Using design file mux32.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: mux32
+Info (12128): Elaborating entity "mux32" for hierarchy "mux32:mux_alu"
+Warning (12125): Using design file mux6.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: mux6
+Info (12128): Elaborating entity "mux6" for hierarchy "mux6:alu_control"
+Warning (10229): Verilog HDL Expression warning at mux3_18.v(16): truncated literal to match 2 bits
+Warning (10229): Verilog HDL Expression warning at mux3_18.v(18): truncated literal to match 2 bits
+Warning (10229): Verilog HDL Expression warning at mux3_18.v(20): truncated literal to match 2 bits
+Warning (10229): Verilog HDL Expression warning at mux3_18.v(22): truncated literal to match 2 bits
+Warning (12125): Using design file mux3_18.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: mux3_18
+Info (12128): Elaborating entity "mux3_18" for hierarchy "mux3_18:branch_mux"
+Warning (10240): Verilog HDL Always Construct warning at mux3_18.v(10): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "out[0]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[1]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[2]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[3]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[4]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[5]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[6]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[7]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[8]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[9]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[10]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[11]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[12]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[13]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[14]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[15]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[16]" at mux3_18.v(10)
+Info (10041): Inferred latch for "out[17]" at mux3_18.v(10)
+Warning (12125): Using design file mux18.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: mux18
+Info (12128): Elaborating entity "mux18" for hierarchy "mux18:somador_mux"
+Info (12128): Elaborating entity "mux_5" for hierarchy "mux_5:registers_bank_mux"
+Error (12006): Node instance "data_memory01" instantiates undefined entity "data_memory" File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/musa.v Line: 101
+Error (12006): Node instance "instruction_memory01" instantiates undefined entity "instruction_memory" File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/musa.v Line: 110
+Info (144001): Generated suppressed messages file C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 69 warnings
+    Error: Peak virtual memory: 450 megabytes
+    Error: Processing ended: Thu Dec 18 00:02:35 2014
+    Error: Elapsed time: 00:00:01
+    Error: Total CPU time (on all processors): 00:00:01
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/Matheus/Documents/t02-core-musa/rtl/output_files/musa.map.smsg.
+The suppressed messages can be found in C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg.
 
 

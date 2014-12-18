@@ -1,9 +1,9 @@
 module mux3_18 (
 
-	input [17:0] in0000,in0001,in0010,in1000,in0011,in0110,in0100
+	input [17:0] in0000,in0001,in0010,in1000,in0011,in0110,in0100,
 	input [2:0] ctrl,
 	
-	output [17:0] out
+	output reg [17:0] out
 );
 
 always @(*) begin
@@ -21,6 +21,9 @@ always @(*) begin
 		out <=in0110;
 	end else if(ctrl ==  2'b110) begin
 		out <=in0100;
+		
+	end
+	
 end
 
 endmodule

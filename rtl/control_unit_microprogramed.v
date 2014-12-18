@@ -32,269 +32,269 @@ always @(opcode) begin
 
             r_type:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b1;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b1;
+            write_reg <= 1'b1;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             addi:begin  //    TIPO I
 
-            read_reg = 1'b1;
-            write_reg = 1'b1;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b1;
-            fnction = 6'b100000;
-            control_function = 1'b1;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b1;
+            read_reg <= 1'b1;
+            write_reg <= 1'b1;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b1;
+            fnction <= 6'b100000;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b1;
 
 
             end
 
             subi:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b1;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b1;
-            fnction = 6'b100010;
-            control_function = 1'b1;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b1;
+            read_reg <= 1'b1;
+            write_reg <= 1'b1;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b1;
+            fnction <= 6'b100010;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b1;
 
             end
 
             andi:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b1;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b1;
-            fnction = 6'b100100;
-            control_function = 1'b1;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b1;
+            read_reg <= 1'b1;
+            write_reg <= 1'b1;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b1;
+            fnction <= 6'b100100;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b1;
 
             end
 
             ori:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b1;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b1;
-            fnction = 6'b100101;
-            control_function = 1'b1;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b1;
+            read_reg <= 1'b1;
+            write_reg <= 1'b1;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b1;
+            fnction <= 6'b100101;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b1;
 
             end
 
             lw:begin    
 
-            read_reg = 1'b1;
-            write_reg = 1'b1;
-            read_data = 1'b1;
-            write_data = 1'b0;
-            immediat = 1'b1;
-            fnction = 6'b100000;
-            control_function = 1'b1;
-            control_alu_data = 1'b1;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-            reg_control = 1'b1;
-		add_pc = 1'b0;
+            read_reg <= 1'b1;
+            write_reg <= 1'b1;
+            read_data <= 1'b1;
+            write_data <= 1'b0;
+            immediat <= 1'b1;
+            fnction <= 6'b100000;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b1;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+            reg_control <= 1'b1;
+				add_pc <= 1'b0;
 
             end
 
             sw:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b1;
-            immediat = 1'b1;
-            fnction = 6'b100000;
-            control_function = 1'b1;
-            control_alu_data = 1'b1;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b1;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b1;
+            immediat <= 1'b1;
+            fnction <= 6'b100000;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b1;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             call:begin    // TIPO J    to do *******
 
-            read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b010;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b1;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b0;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b010;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b1;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             ret:begin
 
-            read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b1;
-            push = 1'b0;
-		add_pc = 1'b1;
-            reg_control = 1'b0;
+            read_reg <= 1'b0;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b1;
+            push <= 1'b0;
+				add_pc <= 1'b1;
+            reg_control <= 1'b0;
 
             end
 
             jr:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b001;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b1;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b001;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             jpc:begin
 
-            read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b100;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b0;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b100;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             halt:begin   
 
-            read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b011;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b0;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b011;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             nop:begin
 
-            read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b0;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
             brfl:begin
 
-            read_reg = 1'b1;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b111111;
-            control_function = 1'b1;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-            brfl_control = 1'b1;
-		add_pc = 1'b0;
-            reg_control = 1'b0;
+            read_reg <= 1'b1;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b111111;
+            control_function <= 1'b1;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+            brfl_control <= 1'b1;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
 
             end
 
@@ -316,42 +316,13 @@ always @(posedge clk ) begin
 
         end else begin
 
-            count = count + 3'b001;
-		write_pc = 1'b0;
+            count <= count + 3'b001;
+				write_pc <= 1'b0;
 
         end
 end
 
-always @(negedge clk ) begin
 
-	if (count2 == 3'b100) begin
-
-            count <= 3'b000;
-		write_pc = 1'b0;
-		read_reg = 1'b0;
-            write_reg = 1'b0;
-            read_data = 1'b0;
-            write_data = 1'b0;
-            immediat = 1'b0;
-            fnction = 6'b000000;
-            control_function = 1'b0;
-            control_alu_data = 1'b0;
-            branch = 3'b000;
-            rtrn = 1'b0;
-            pop = 1'b0;
-            push = 1'b0;
-		opcode_reg = 6'b000000;
-		count2 = 3'b000;
-		add_pc = 1'b0;
-            brfl_control = 1'b0;
-            reg_control = 1'b0;
-
-	end else begin
-	
-	count2 = count2 + 3'b001;
-
-	end
-end
 
 
 endmodule
