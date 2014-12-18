@@ -1,0 +1,11 @@
+ADDi $t9,$t10,10
+ADDi $t1,$t10,1
+ADDi $t2,$t10,1
+ADDi $t5,$t10,145
+ADDi $t7,$t10,1
+ADD $t4,$t2,$t1
+ADD $t1,$t2,$t10  
+ADD $t2,$t4,$t10
+SUB $t9,$t9,$t7
+CMP $t9,$t0
+BRFL $t0,5

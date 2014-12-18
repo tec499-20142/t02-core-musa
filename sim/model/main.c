@@ -13,7 +13,7 @@
 //       bit 1: equals
 //       bit 0: overflow
 const int overflow = 0, equals = 1, above = 2;
-int  pc=0, registers[32], mem[1000], stk[32], ptr = 0;
+int  pc=0, registers[32], mem[1000], stk[32], ptr = 0, flag_int;
 bool flags[3];
 
 
@@ -115,6 +115,7 @@ void decode_i_type(unsigned int instruction_opcode, unsigned int instruction)
     {
         printf("Instruction Mnemonic: BRFL\n");
         printf("TBD");
+
     }
     //addi - RD = RS1 + Sext(imm)
     else if(instruction_opcode == 0x08)
@@ -233,7 +234,17 @@ void decode_r_type(unsigned int instruction_opcode, unsigned int instruction)
         //fixme
         printf("Instruction Mnemonic: CMP\n");
         registers[rd] = registers[rs1] - registers[rs2];
-
+        check_overflow(registers[rs1], registers[rs2]);
+        if(registers[rs1] == registers[rs2])
+        {
+            flags[equals] = 1;
+            flag_int = 2;
+        }
+        else if(registers[rs1] > registers[rs2])
+        {
+            flags[above] = 1;
+            flag_int = 4;
+        }
     }
     //jr PC = RS1
     else if(function == 0x18)

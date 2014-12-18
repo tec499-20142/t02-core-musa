@@ -1,5 +1,5 @@
 
-arquivo = open('code.txt' , 'r')  #decode-test
+arquivo = open('fibonachi.txt' , 'r')  #decode-test
 arquivo2 = open('bin.txt' , 'w')
 arquivo3 = open('memory.txt' , 'w')
 
@@ -9,7 +9,7 @@ j_type = {'HALT':'000010', 'NOP':'000001', 'CALL':'000011','RET':'000111','JPC':
 
 
 func = {'ADD':'100000','SUB':'100010','MUL':'011000','DIV':'011010','AND':'100100','OR':'100101','NOT':'100111','CMP':'011011'}
-registers = {"$t0":'00000', "$t1":'00001', "$t2":'00010', "$t3":'00011', "$t4":'00100', "$t5":'00101', "$t6":'00110', "$t7":'00111', "$t8":'01000', "$t9":'01001' }
+registers = {"$t0":'00000', "$t1":'00001', "$t2":'00010', "$t3":'00011', "$t4":'00100', "$t5":'00101', "$t6":'00110', "$t7":'00111', "$t8":'01000', "$t9":'01001', "$t10":'01010' }
 
 
 def start(linha):
@@ -117,6 +117,7 @@ count = 0
 for linha in arquivo:
     if linha != '\n':
         instrucao = start(linha)
+        print instrucao
         arquivo2.writelines(instrucao + '\n' )
         arquivo3.writelines(str(count) + '   :    ' + instrucao +';' + '\n' )
         print linha
