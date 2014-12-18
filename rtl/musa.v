@@ -6,7 +6,7 @@ module musa
 
 input clk,
 
-	input clk_50,    // Clock
+	//input clk_50,    // Clock
 	input rst_n,  // Asynchronous reset active low
 	// Input key
 	input seletor,
@@ -46,7 +46,7 @@ wire [4:0] w_rs, w_rt, w_rd, w_rd_mux_out;
 
 wire [7:0] w_data_address, w_memo_address_in;
 
-reg [31:0] reg_instruction;
+wire [31:0] reg_instruction;
 
 reg [2:0] flag_reg;
 
@@ -272,7 +272,7 @@ lcd_mem_read
 	.read_in(read_in),				// Read trigger key[3]
 	
 	// Data memory
-	.mem_data_in(mem_data), 	// Data memory output
+	.mem_data_in(w_datamem_out), 	// Data memory output
 	.addr_out(mem_addr),	// Data memory address
 	.data_mem_rd_en_out(data_mem_rd_en_out),			// Data memory read enable
 

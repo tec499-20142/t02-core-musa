@@ -1,8 +1,8 @@
 --abs_divider DEN_REPRESENTATION="SIGNED" LPM_PIPELINE=0 MAXIMIZE_SPEED=5 NUM_REPRESENTATION="SIGNED" SKIP_BITS=0 WIDTH_D=32 WIDTH_N=32 denominator numerator quotient remainder
---VERSION_BEGIN 13.1 cbx_cycloneii 2013:10:23:18:05:48:SJ cbx_lpm_abs 2013:10:23:18:05:48:SJ cbx_lpm_add_sub 2013:10:23:18:05:48:SJ cbx_lpm_divide 2013:10:23:18:05:48:SJ cbx_mgl 2013:10:23:18:06:54:SJ cbx_stratix 2013:10:23:18:05:48:SJ cbx_stratixii 2013:10:23:18:05:48:SJ cbx_util_mgl 2013:10:23:18:05:48:SJ  VERSION_END
+--VERSION_BEGIN 9.0 cbx_cycloneii 2008:05:19:10:57:37:SJ cbx_lpm_abs 2008:05:19:10:51:43:SJ cbx_lpm_add_sub 2008:12:09:22:11:50:SJ cbx_lpm_divide 2008:05:21:18:11:28:SJ cbx_mgl 2009:01:29:16:12:07:SJ cbx_stratix 2008:09:18:16:08:35:SJ cbx_stratixii 2008:11:14:16:08:42:SJ cbx_util_mgl 2008:11:21:14:58:47:SJ  VERSION_END
 
 
--- Copyright (C) 1991-2013 Altera Corporation
+-- Copyright (C) 1991-2009 Altera Corporation
 --  Your use of Altera Corporation's design tools, logic functions 
 --  and other software and tools, and its AMPP partner logic 
 --  functions, and any output files from any of the foregoing 
@@ -17,9 +17,9 @@
 --  applicable agreement for further details.
 
 
-FUNCTION alt_u_div_t8f (denominator[31..0], numerator[31..0])
+FUNCTION alt_u_div_k5f (denominator[31..0], numerator[31..0])
 RETURNS ( quotient[31..0], remainder[31..0]);
-FUNCTION lpm_abs_9v9 (data[31..0])
+FUNCTION lpm_abs_0s9 (data[31..0])
 RETURNS ( overflow, result[31..0]);
 
 --synthesis_resources = lut 683 
@@ -31,9 +31,9 @@ SUBDESIGN abs_divider_4dg
 	remainder[31..0]	:	output;
 ) 
 VARIABLE 
-	divider : alt_u_div_t8f;
-	my_abs_den : lpm_abs_9v9;
-	my_abs_num : lpm_abs_9v9;
+	divider : alt_u_div_k5f;
+	my_abs_den : lpm_abs_0s9;
+	my_abs_num : lpm_abs_0s9;
 	compl_add_quot_result_int[32..0]	:	WIRE;
 	compl_add_quot_cin	:	WIRE;
 	compl_add_quot_dataa[31..0]	:	WIRE;

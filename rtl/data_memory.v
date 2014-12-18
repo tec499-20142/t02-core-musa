@@ -42,6 +42,7 @@ module data_memory (
 	data,
 	wren,
 	q);
+	
 
 	input	[7:0]  address;
 	input	  clock;
