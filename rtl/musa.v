@@ -54,7 +54,6 @@ assign w_rd = reg_instruction[15:11];
 control_unit_microprogramed cum01(
 
 	.clk(clk),
-	.rst_n(rst_n),
 	.opcode(w_opcode),
 
 	.read_reg(w_read_reg),     				  // Ativa leitura no banco de registradores
@@ -197,7 +196,7 @@ mux6 alu_control (
 	.in1(w_fnction), 					// function uque sai da UC
 	.ctrl(w_control_function),			// Sinal de controle da UC
 
-	.out(w_op2)	// saida do multiplexador do function para a entrada do function da ula
+	.out(w_fnction_alu)	// saida do multiplexador do function para a entrada do function da ula
 
 	);
 
@@ -210,7 +209,7 @@ mux3_18 branch_mux (
 	.in1000(w_brfl_address),  			// BRFL caso a flag seja  verdadeira
 	.in0011(w_pc_out),					//HALT
 	.in0100(w_jump_jpc), 				// endereço do PC
-	.cntl(w_branch_control),       		//sinal da UC
+	.ctrl(w_branch_control),       		//sinal da UC
 
 	.out(w_pc_in)               // write pc
 );

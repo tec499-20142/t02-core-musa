@@ -3,7 +3,7 @@ module mux35 (
 	input[34:0] in0,in1,
 	input ctrl,
 
-	output [34:0] out
+	output reg [34:0] out
 );
 
 always @(*) begin
