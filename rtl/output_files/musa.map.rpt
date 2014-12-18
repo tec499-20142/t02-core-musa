@@ -1,5 +1,5 @@
 Analysis & Synthesis report for musa
-Thu Dec 18 00:02:35 2014
+Thu Dec 18 00:19:35 2014
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Dec 18 00:02:35 2014          ;
+; Analysis & Synthesis Status        ; Failed - Thu Dec 18 00:19:35 2014          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; musa                                       ;
@@ -158,7 +158,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Dec 18 00:02:34 2014
+    Info: Processing started: Thu Dec 18 00:19:34 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file mux_5.v
@@ -169,8 +169,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file control
     Info (12023): Found entity 1: control_unit_microprogramed
 Info (12021): Found 1 design units, including 1 entities, in source file musa.v
     Info (12023): Found entity 1: musa
-Warning (12019): Can't analyze file -- file data_memory.v is missing
-Warning (12019): Can't analyze file -- file instruction_memory.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file stack.v
     Info (12023): Found entity 1: stack
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
@@ -178,50 +176,12 @@ Info (12021): Found 1 design units, including 1 entities, in source file alu.v
 Info (12021): Found 1 design units, including 1 entities, in source file registers_bank.v
     Info (12023): Found entity 1: registers_bank
 Warning (12019): Can't analyze file -- file instruction_memory.vhd is missing
-Warning (10236): Verilog HDL Implicit Net warning at musa.v(74): created implicit net for "w_reg_control"
 Info (12127): Elaborating entity "musa" for the top level hierarchy
 Warning (10858): Verilog HDL warning at musa.v(23): object flag_reg used but never assigned
-Warning (10230): Verilog HDL assignment warning at musa.v(39): truncated value with size 19 to match size of target (18)
 Warning (10030): Net "flag_reg" at musa.v(23) has no driver or initial value, using a default initial value '0'
 Info (12128): Elaborating entity "control_unit_microprogramed" for hierarchy "control_unit_microprogramed:cum01"
-Warning (10036): Verilog HDL or VHDL warning at control_unit_microprogramed.v(12): object "count2" assigned a value but never read
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "read_reg", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "write_reg", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "read_data", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "write_data", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "immediat", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "fnction", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "control_function", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "control_alu_data", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "branch", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "rtrn", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "pop", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "push", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "add_pc", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "reg_control", which holds its previous value in one or more paths through the always construct
-Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(27): inferring latch(es) for variable "brfl_control", which holds its previous value in one or more paths through the always construct
-Info (10041): Inferred latch for "brfl_control" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "reg_control" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "add_pc" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "push" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "pop" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "rtrn" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "branch[0]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "branch[1]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "branch[2]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "control_alu_data" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "control_function" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "fnction[0]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "fnction[1]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "fnction[2]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "fnction[3]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "fnction[4]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "fnction[5]" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "immediat" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "write_data" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "read_data" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "write_reg" at control_unit_microprogramed.v(27)
-Info (10041): Inferred latch for "read_reg" at control_unit_microprogramed.v(27)
+Warning (10240): Verilog HDL Always Construct warning at control_unit_microprogramed.v(26): inferring latch(es) for variable "brfl_control", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "brfl_control" at control_unit_microprogramed.v(26)
 Info (12128): Elaborating entity "alu" for hierarchy "alu:alu01"
 Warning (10235): Verilog HDL Always Construct warning at alu.v(37): variable "op1" is read inside the Always Construct but isn't in the Always Construct's Event Control
 Warning (10235): Verilog HDL Always Construct warning at alu.v(37): variable "op2" is read inside the Always Construct but isn't in the Always Construct's Event Control
@@ -474,9 +434,9 @@ Info (12128): Elaborating entity "mux_5" for hierarchy "mux_5:registers_bank_mux
 Error (12006): Node instance "data_memory01" instantiates undefined entity "data_memory" File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/musa.v Line: 101
 Error (12006): Node instance "instruction_memory01" instantiates undefined entity "instruction_memory" File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/musa.v Line: 110
 Info (144001): Generated suppressed messages file C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 69 warnings
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 50 warnings
     Error: Peak virtual memory: 450 megabytes
-    Error: Processing ended: Thu Dec 18 00:02:35 2014
+    Error: Processing ended: Thu Dec 18 00:19:35 2014
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 

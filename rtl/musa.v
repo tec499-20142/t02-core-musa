@@ -4,7 +4,7 @@ wire [5:0] w_opcode, w_fnction, w_ula_function,w_fnction_alu;
 wire [2:0] w_branch, count, w_flag_in, w_flag_out;
 
 wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
-w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result;
+w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result, w_reg_control;
 
 wire [3:0] w_branch_control;
 
@@ -36,7 +36,7 @@ assign w_opcode = reg_instruction [31:26];
 
 assign w_ula_function = reg_instruction [5:0];
 
-assign w_brfl_adress = reg_instruction [20:2];
+assign w_brfl_adress = reg_instruction [17:0];
 
 assign w_brfl_result = w_brfl & w_alu_out[0];
 
@@ -64,12 +64,12 @@ control_unit_microprogramed cum01(
 	.immediat(w_immediat),					// Sinal de controle para o multiplexador da entrada da ULA
 	.control_function(w_control_function),	// Sinal de controle do multiplexador do function da ULA
 	.control_alu_data(w_control_alu_data),	// Sinal de controle do multiplexador da saida da ula
-	.rtrn(w_rtrn),							//Sinald e controle ???
-	.pop(w_pop),							// Sinal de controle para a pilha
-	.push(w_push),							// Sinal de controle para a pilha
+	.rtrn(w_rtrn),								//Sinald e controle ???
+	.pop(w_pop),								// Sinal de controle para a pilha
+	.push(w_push),								// Sinal de controle para a pilha
 	.write_pc(w_write_pc),					// Sinal que habilita a escrita no PC
 	.branch(w_branch),						// Sinal de controle para o multiplexador de desv
-	.fnction(w_fnction),					// Function para a ULA
+	.fnction(w_fnction),						// Function para a ULA
 	.brfl_control(w_brfl),					// Sinal de controle para o BRFL
 	.reg_control(w_reg_control),			//Sinal que controla o multiplexador da entrada de endereços no banco de registradores
 	.add_pc(w_add_pc) 						// Sinal de controle para o multiplexador do somador do pc

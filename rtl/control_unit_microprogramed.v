@@ -9,7 +9,7 @@ output reg read_reg, write_reg, read_data, write_data, immediat,
 output reg [2:0] branch;
 output reg[5:0] fnction;
 reg [5:0] opcode_reg;
-reg [2:0] count, count2;
+reg [2:0] count;
 
 
 parameter ifh = 3'b000, id = 3'b001, ex = 3'b010, mem = 3'b011 , wb =3'b100; // Estagios
@@ -22,7 +22,6 @@ parameter jr =  6'b011000, jpc = 6'b001001, brfl = 6'b010001, halt = 6'b000010, 
 
 initial begin
   count <= 3'b001;
-  count2 <= 3'b000;
 end 
 always @(opcode) begin 
 
@@ -300,7 +299,25 @@ always @(opcode) begin
 
 
 
-            default : /* default */;
+            default : begin
+					
+				read_reg <= 1'b0;
+            write_reg <= 1'b0;
+            read_data <= 1'b0;
+            write_data <= 1'b0;
+            immediat <= 1'b0;
+            fnction <= 6'b000000;
+            control_function <= 1'b0;
+            control_alu_data <= 1'b0;
+            branch <= 3'b000;
+            rtrn <= 1'b0;
+            pop <= 1'b0;
+            push <= 1'b0;
+            brfl_control <= 1'b0;
+				add_pc <= 1'b0;
+            reg_control <= 1'b0;
+				
+				end
         endcase
 
     

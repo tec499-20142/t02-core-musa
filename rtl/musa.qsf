@@ -58,8 +58,6 @@ set_global_assignment -name VERILOG_FILE mux_5.v
 set_global_assignment -name VERILOG_FILE somador_jpc.v
 set_global_assignment -name VERILOG_FILE control_unit_microprogramed.v
 set_global_assignment -name VERILOG_FILE musa.v
-set_global_assignment -name VERILOG_FILE data_memory.v
-set_global_assignment -name VERILOG_FILE instruction_memory.v
 set_global_assignment -name VERILOG_FILE stack.v
 set_global_assignment -name VERILOG_FILE alu.v
 set_global_assignment -name VERILOG_FILE registers_bank.v
