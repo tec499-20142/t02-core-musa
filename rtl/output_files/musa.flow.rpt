@@ -1,6 +1,6 @@
 Flow report for musa
-Wed Dec 17 01:30:29 2014
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Wed Dec 17 21:38:11 2014
+Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -40,8 +40,8 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Flow Failed - Wed Dec 17 01:30:29 2014     ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Flow Status                        ; Flow Failed - Wed Dec 17 21:38:11 2014     ;
+; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; musa                                       ;
 ; Family                             ; Cyclone III                                ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/17/2014 01:30:29 ;
+; Start date & time ; 12/17/2014 21:38:10 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; musa                ;
 +-------------------+---------------------+
@@ -75,19 +75,16 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 158515246429953.141878702903376       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 59870816411.141886309000540           ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --             ;
 ; IP_TOOL_NAME                        ; ROM: 1-PORT                           ; --            ; --          ; --             ;
-; IP_TOOL_NAME                        ; RAM: 1-PORT                           ; --            ; --          ; --             ;
-; IP_TOOL_VERSION                     ; 13.1                                  ; --            ; --          ; --             ;
 ; IP_TOOL_VERSION                     ; 13.1                                  ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 100                                   ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; -40                                   ; --            ; --          ; --             ;
 ; MISC_FILE                           ; instruction_memory.bsf                ; --            ; --          ; --             ;
-; MISC_FILE                           ; instruction_memory_bb.v               ; --            ; --          ; --             ;
-; MISC_FILE                           ; data_memory.bsf                       ; --            ; --          ; --             ;
-; MISC_FILE                           ; data_memory_bb.v                      ; --            ; --          ; --             ;
+; MISC_FILE                           ; instruction_memory_inst.vhd           ; --            ; --          ; --             ;
+; MISC_FILE                           ; instruction_memory.cmp                ; --            ; --          ; --             ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                  ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
@@ -103,8 +100,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:00     ; 1.0                     ; 450 MB              ; 00:00:01                           ;
-; Total                ; 00:00:00     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:03     ; 1.0                     ; 361 MB              ; 00:00:02                           ;
+; Total                ; 00:00:03     ; --                      ; --                  ; 00:00:02                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -113,7 +110,7 @@ applicable agreement for further details.
 +----------------------+------------------+-----------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +----------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis ; VICTOR-PC        ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis ; Castro-PC        ; Windows 7 ; 6.2        ; i686           ;
 +----------------------+------------------+-----------+------------+----------------+
 
 

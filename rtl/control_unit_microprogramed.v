@@ -6,10 +6,10 @@ input [5:0] opcode;
 
 output reg read_reg, write_reg, read_data, write_data, immediat,
  control_function, control_alu_data, rtrn, pop, push, write_pc, brfl_control, add_pc, reg_control;
-output reg [2:0] branch, count;//aten��o
+output reg [2:0] branch;
 output reg[5:0] fnction;
 reg [5:0] opcode_reg;
-reg [2:0] count2;
+reg [2:0] count, count2;
 
 
 parameter ifh = 3'b000, id = 3'b001, ex = 3'b010, mem = 3'b011 , wb =3'b100; // Estagios

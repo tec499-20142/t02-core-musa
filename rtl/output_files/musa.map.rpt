@@ -1,6 +1,6 @@
 Analysis & Synthesis report for musa
-Wed Dec 17 01:30:29 2014
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Wed Dec 17 21:38:11 2014
+Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -37,8 +37,8 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Dec 17 01:30:29 2014          ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Analysis & Synthesis Status        ; Failed - Wed Dec 17 21:38:11 2014          ;
+; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; musa                                       ;
 ; Top-level Entity Name              ; musa                                       ;
 ; Family                             ; Cyclone III                                ;
@@ -141,57 +141,64 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 6      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
 
 
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 64-Bit Analysis & Synthesis
+Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Dec 17 01:30:29 2014
+    Info: Processing started: Wed Dec 17 21:38:08 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off core-musa -c musa
-Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 1 design units, including 1 entities, in source file somador_jpc.v
-    Info (12023): Found entity 1: somador_jpc
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Warning (12019): Can't analyze file -- file somador_jpc.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit_microprogramed.v
     Info (12023): Found entity 1: control_unit_microprogramed
 Info (12021): Found 1 design units, including 1 entities, in source file musa.v
     Info (12023): Found entity 1: musa
 Info (12021): Found 1 design units, including 1 entities, in source file control_unit.v
     Info (12023): Found entity 1: control_unit
-Info (12021): Found 1 design units, including 1 entities, in source file data_memory.v
-    Info (12023): Found entity 1: data_memory
-Info (12021): Found 1 design units, including 1 entities, in source file instruction_memory.v
-    Info (12023): Found entity 1: instruction_memory
+Warning (12019): Can't analyze file -- file data_memory.v is missing
+Warning (12019): Can't analyze file -- file instruction_memory.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file stack.v
     Info (12023): Found entity 1: stack
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu
+Warning (10263): Verilog HDL Event Control warning at registers_bank.v(16): event expression contains "|" or "||"
 Info (12021): Found 1 design units, including 1 entities, in source file registers_bank.v
     Info (12023): Found entity 1: registers_bank
-Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(36): object "out_data" on left-hand side of assignment must have a variable data type File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/registers_bank.v Line: 36
-Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(37): object "out_dataB" on left-hand side of assignment must have a variable data type File: C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/registers_bank.v Line: 37
-Info (144001): Generated suppressed messages file C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 450 megabytes
-    Error: Processing ended: Wed Dec 17 01:30:29 2014
-    Error: Elapsed time: 00:00:00
-    Error: Total CPU time (on all processors): 00:00:01
+Warning (12019): Can't analyze file -- file instruction_memory.vhd is missing
+Warning (10236): Verilog HDL Implicit Net warning at musa.v(70): created implicit net for "w_reg_control"
+Error (10161): Verilog HDL error at registers_bank.v(18): object "enable_write" is not declared File: C:/Users/Matheus/Documents/t02-core-musa/rtl/registers_bank.v Line: 18
+Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(22): object "data_1" on left-hand side of assignment must have a variable data type File: C:/Users/Matheus/Documents/t02-core-musa/rtl/registers_bank.v Line: 22
+Error (10137): Verilog HDL Procedural Assignment error at registers_bank.v(23): object "data_2" on left-hand side of assignment must have a variable data type File: C:/Users/Matheus/Documents/t02-core-musa/rtl/registers_bank.v Line: 23
+Info (144001): Generated suppressed messages file C:/Users/Matheus/Documents/t02-core-musa/rtl/output_files/musa.map.smsg
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 3 errors, 6 warnings
+    Error: Peak virtual memory: 361 megabytes
+    Error: Processing ended: Wed Dec 17 21:38:11 2014
+    Error: Elapsed time: 00:00:03
+    Error: Total CPU time (on all processors): 00:00:02
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/VICTOR/Documents/GitHub/t02-core-musa/rtl/output_files/musa.map.smsg.
+The suppressed messages can be found in C:/Users/Matheus/Documents/t02-core-musa/rtl/output_files/musa.map.smsg.
 
 

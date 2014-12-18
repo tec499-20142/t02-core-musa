@@ -4,8 +4,7 @@ wire [5:0] w_opcode, w_fnction, w_ula_function,w_fnction_alu;
 wire [2:0] w_branch, count, w_flag_in, w_flag_out;
 
 wire w_read_reg, w_write_reg, w_read_data, w_write_data, w_immediat,
-w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result, w_write_data
-;
+w_control_function, w_control_alu_data, w_rtrn, w_pop, w_push, w_write_pc, w_add_pc, w_brfl, w_brfl_result;
 
 wire [3:0] w_branch_control;
 
@@ -79,7 +78,7 @@ control_unit_microprogramed cum01(
 	.op1(w_op1),	// Primeiro operando 
 	.op2(w_op2),	 // Segundo operando
 	.func(w_fnction_alu),   //Function
-	 flags_in(w_flag_in),   //Entrada de Flags
+	.flags_in(w_flag_in),   //Entrada de Flags
 
 	.result(w_alu_out), // Resultado 31:0 dado 
 	.flags_out(w_flag_out)   //Saida de Flags
@@ -230,6 +229,6 @@ mux_5 registers_bank_mux(
 	.ctrl(w_reg_control),  		//Sinald e controle da UC
 
 	.out(w_rd_mux_out) 		 // Entrada do somador
-	)
+);
 
 endmodule
