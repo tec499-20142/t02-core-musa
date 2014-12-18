@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="musa">
+		<CBX_INST_ENTRY INSTANCE_NAME="|musa|data_memory:data_memory01|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_61i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|musa|instruction_memory:instruction_memory01|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_hka1.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
