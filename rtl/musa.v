@@ -12,7 +12,7 @@ wire [31:0] w_reg_alumux, w_op1,w_op2, w_datamem_out, w_register_in, w_extend_mu
 
 wire [15:0] w_immediat16;
 
-wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_adress, w_jump_immediat, w_jump_reg, w_jump_jpc;
+wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_address, w_jump_immediat, w_jump_reg, w_jump_jpc;
 
 wire [4:0] w_rs, w_rt, w_rd, w_rd_mux_out;
 
@@ -36,7 +36,7 @@ assign w_opcode = reg_instruction [31:26];
 
 assign w_ula_function = reg_instruction [5:0];
 
-assign w_brfl_adress = reg_instruction [17:0];
+assign w_brfl_address = reg_instruction [17:0];
 
 assign w_brfl_result = w_brfl & w_alu_out[0];
 
@@ -207,7 +207,7 @@ mux3_18 branch_mux (
 	.in0000(w_somador_out),				 //saida do somador do pc
 	.in0001(w_jump_reg),    			//saida do banco de registradores
 	.in0010(w_jump_immediat),  			//immediato da instrução
-	.in1000(w_brfl_adress),  			// BRFL caso a flag seja  verdadeira
+	.in1000(w_brfl_address),  			// BRFL caso a flag seja  verdadeira
 	.in0011(w_pc_out),					//HALT
 	.in0100(w_jump_jpc), 				// endereço do PC
 	.cntl(w_branch_control),       		//sinal da UC
