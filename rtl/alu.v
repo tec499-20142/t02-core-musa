@@ -1,7 +1,7 @@
 // Esta ula possui capacidade de trabalhar com operandos negativos,
 // portanto sao destinados 1 bit pro sinal e 31 bits para dados.
 // Dessa forma, a ALU do nosso processador possui a capacidade de
-// trabalhar com dados de -2147483648 ate +2147483648.
+// trabalhar com dados de -2147483648 ate +2147483647.
 module alu(
 	input signed [31:0] op1,
 	input signed [31:0] op2,
@@ -30,7 +30,7 @@ end
 
 // Sempre que uma funcao for designada para este bloco, sera avaliado
 // o que foi recebido, para assim, processar a requisiao.
-always @ (func) begin
+always @ (*) begin
 
 	// Analiza a funcao recebida a aplica o calculo requisitado
 	case(func)
@@ -62,7 +62,7 @@ always @ (func) begin
 			flags_out[1] = 1'b1;
 	end else
 		if ( (func == 6'b100000 || func == 6'b011000)
-		&& (result < -2147483648 || result > 2147483648) ) begin
+		&& (result < -2147483648 || result > 2147483647) ) begin
 			// overflow
 			flags_out[0] = 1'b1;
 	end  else
