@@ -1,0 +1,15 @@
+ADD $t0,$t0,$t0
+SUB $t0,$t0,$t0
+MUL $t0,$t0,$t0
+DIV $t0,$t0,$t0
+AND $t0,$t0,$t0
+OR $t0,$t0,$t0
+NOT $t0,$t0,$t0
+CMP $t0,$t0,$t0
+ADDi $t0,$t0,0
+SUBi $t0,$t0,0
+ANDi $t0,$t0,0
+ORi $t0,$t0,0
+LW $t0,$t0,0
+SW $t0,$t0,0
+
