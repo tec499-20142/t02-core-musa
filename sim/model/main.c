@@ -81,6 +81,15 @@ bool check_overflow(int op1, int op2)
     return 0;
 }
 
+void clear_registers()
+{
+    int i = 0;
+    for(i = 0; i < 32; i++)
+    {
+        registers[i] = 0;
+    }
+}
+
 //Function responsible to reproduce the results of the i-type instructions
 void decode_i_type(unsigned int instruction_opcode, unsigned int instruction)
 {
@@ -114,7 +123,12 @@ void decode_i_type(unsigned int instruction_opcode, unsigned int instruction)
     else if(instruction_opcode == 0x11)
     {
         printf("Instruction Mnemonic: BRFL\n");
-        printf("TBD");
+        printf("int_flag %x; const: %x\n", flag_int, registers[rs1]);
+        if(flag_int == registers[rs1])
+        {
+            printf("Flag condition attended\n");
+            pc = imm - 1;
+        }
 
     }
     //addi - RD = RS1 + Sext(imm)
@@ -341,6 +355,8 @@ void main (int argc, char *argv[])
     int  size_instruction,i;
     printf("Parametro: %s\n", argv[1]);
     instruction = malloc( 1048576 );
+
+    clear_registers();
 
     //#include "execute_instructions.c"
 //	registers[1] = 2;
