@@ -114,8 +114,7 @@
 %% Document main content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introdução}
-Este documento tem como objetivo a especificação dos caso
-s de uso do projeto Core Musa (concepção de um processador simples de propósito geral). O documento detalha cada caso de uso indicando os atores, os eventos (ações) e as condições de cada caso, além dos diagramas de casos de uso.
+Este documento tem como objetivo a especificação dos casos de uso do projeto Core Musa (concepção de um processador simples de propósito geral). O documento detalha cada caso de uso indicando os atores, os eventos (ações) e as condições de cada caso, além dos diagramas de casos de uso.
 
   \subsection{Objetivo}
   
@@ -248,7 +247,7 @@ s de uso do projeto Core Musa (concepção de um processador simples de propósi
 
   \postconditions
     \begin{itemize}
-     \item Ter como saida o valor resultante.
+     \item Ter como saida o Valor resultante e a  \textit{Flag}, caso ocorra.
     \end{itemize}
   
   \ucdiagram{./pictures/use/case/NewUla.png}
@@ -312,7 +311,7 @@ s de uso do projeto Core Musa (concepção de um processador simples de propósi
     \item O modulo BR identifica os endereços e apresenta as saidas;
   \end{mainflow}  
 
-\usecase{Imediatos do tipo aritmético, lógico e de escrita ou leitura na memória de dados}
+\usecase{Imediatos do tipo aritmético e lógico}
    O sistema tem a capacidade de enviar valores imediatos para ULA.
   
   \actors
@@ -337,12 +336,8 @@ s de uso do projeto Core Musa (concepção de um processador simples de propósi
   \begin{mainflow}    \item Realização da ação referente ao \textit{Function} recebido;
     \item Valor imediato recebido é estendido;
     \item \textit{Flags} são disparadas, caso seja necessário;
-    \item calculo do endereço na memória de dados; 
     \item Apresentação do resultado;
-    \item Escrita ou leitura no BD;
-  \end{mainflow}
-  
-  
+  \end{mainflow}  
  
 
 % Optional bibliography section
