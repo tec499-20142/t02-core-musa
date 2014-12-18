@@ -12,6 +12,13 @@ module registers_bank(
  
 // 32 registradores de proposito geral
 reg [31:0] registers[31:0];
+reg [4:0] i;
+
+initial begin
+ 	for (i = 0; i < 32; i = i + 1) begin
+  	  	registers[i] = 32'b0000000000000000000000;
+  	end
+end
 
 always @ (write_reg or read_reg) begin
 	
