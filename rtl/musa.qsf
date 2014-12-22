@@ -101,3 +101,4 @@ set_global_assignment -name QIP_FILE data_memory.qip
 set_global_assignment -name VERILOG_FILE mux_5.v
 set_global_assignment -name VERILOG_FILE somador_jpc.v
 set_global_assignment -name VERILOG_FILE mux_lcd.v
+set_global_assignment -name QIP_FILE instruction_memory.qip

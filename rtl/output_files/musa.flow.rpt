@@ -1,5 +1,5 @@
 Flow report for musa
-Thu Dec 18 17:42:58 2014
+Fri Dec 19 16:56:41 2014
 Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------+
 ; Flow Summary                                                                 ;
 +------------------------------------+-----------------------------------------+
-; Flow Status                        ; Successful - Thu Dec 18 17:42:57 2014   ;
+; Flow Status                        ; Successful - Fri Dec 19 16:56:41 2014   ;
 ; Quartus II Version                 ; 9.0 Build 132 02/25/2009 SJ Web Edition ;
 ; Revision Name                      ; musa                                    ;
 ; Top-level Entity Name              ; musa                                    ;
@@ -46,13 +46,13 @@ applicable agreement for further details.
 ; Device                             ; EP2C35F672C6                            ;
 ; Timing Models                      ; Final                                   ;
 ; Met timing requirements            ; No                                      ;
-; Total logic elements               ; 5,021 / 33,216 ( 15 % )                 ;
-;     Total combinational functions  ; 5,021 / 33,216 ( 15 % )                 ;
+; Total logic elements               ; 4,375 / 33,216 ( 13 % )                 ;
+;     Total combinational functions  ; 4,375 / 33,216 ( 13 % )                 ;
 ;     Dedicated logic registers      ; 63 / 33,216 ( < 1 % )                   ;
 ; Total registers                    ; 63                                      ;
 ; Total pins                         ; 18 / 475 ( 4 % )                        ;
 ; Total virtual pins                 ; 0                                       ;
-; Total memory bits                  ; 40,960 / 483,840 ( 8 % )                ;
+; Total memory bits                  ; 8,256 / 483,840 ( 2 % )                 ;
 ; Embedded Multiplier 9-bit elements ; 6 / 70 ( 9 % )                          ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                           ;
 +------------------------------------+-----------------------------------------+
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/18/2014 17:39:45 ;
+; Start date & time ; 12/19/2014 16:53:31 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; musa                ;
 +-------------------+---------------------+
@@ -74,16 +74,19 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                              ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 105425941268.141893158300972                                       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 105425941268.141901520903900                                       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                                        ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                                          ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                                               ; --            ; --          ; eda_simulation ;
 ; IP_TOOL_NAME                        ; RAM: 1-PORT                                                        ; --            ; --          ; --             ;
+; IP_TOOL_NAME                        ; ROM: 1-PORT                                                        ; --            ; --          ; --             ;
 ; IP_TOOL_VERSION                     ; 13.1                                                               ; --            ; --          ; --             ;
+; IP_TOOL_VERSION                     ; 9.0                                                                ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                                 ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                  ; --            ; --          ; --             ;
 ; MISC_FILE                           ; C:/Documents and Settings/Aluno/Desktop/t02-core-musa/rtl/musa.dpf ; --            ; --          ; --             ;
 ; MISC_FILE                           ; data_memory_bb.v                                                   ; --            ; --          ; --             ;
+; MISC_FILE                           ; instruction_memory_bb.v                                            ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; 16764057                                                           ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                              ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                                                             ; --            ; --          ; Top            ;
@@ -96,12 +99,12 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:36     ; 1.0                     ; 198 MB              ; 00:00:35                           ;
-; Fitter                  ; 00:01:09     ; 1.0                     ; 250 MB              ; 00:01:09                           ;
-; Assembler               ; 00:00:08     ; 1.0                     ; 220 MB              ; 00:00:07                           ;
-; Classic Timing Analyzer ; 00:00:04     ; 1.0                     ; 154 MB              ; 00:00:04                           ;
-; EDA Netlist Writer      ; 00:00:08     ; 1.0                     ; 173 MB              ; 00:00:08                           ;
-; Total                   ; 00:02:05     ; --                      ; --                  ; 00:02:03                           ;
+; Analysis & Synthesis    ; 00:00:41     ; 1.0                     ; 196 MB              ; 00:00:40                           ;
+; Fitter                  ; 00:01:03     ; 1.0                     ; 246 MB              ; 00:01:02                           ;
+; Assembler               ; 00:00:07     ; 1.0                     ; 219 MB              ; 00:00:07                           ;
+; Classic Timing Analyzer ; 00:00:03     ; 1.0                     ; 150 MB              ; 00:00:03                           ;
+; EDA Netlist Writer      ; 00:00:07     ; 1.0                     ; 166 MB              ; 00:00:07                           ;
+; Total                   ; 00:02:01     ; --                      ; --                  ; 00:01:59                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -5,9 +5,9 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 2.446 ns
+Actual Time    : 1.615 ns
 From           : seletor
-To             : data_memory:data_memory01|altsyncram:altsyncram_component|altsyncram_tth1:auto_generated|ram_block1a0~porta_address_reg6
+To             : data_memory:data_memory01|altsyncram:altsyncram_component|altsyncram_tth1:auto_generated|ram_block1a0~porta_address_reg3
 From Clock     : --
 To Clock       : clk
 Failed Paths   : 0
@@ -15,9 +15,9 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 8.237 ns
-From           : lcd_mem_read:lcd_mem_read_u0|LCD_Read_FSM:LCD_Read_FSM_u0|mLCD_DATA[7]
-To             : lcd_data_out[7]
+Actual Time    : 9.412 ns
+From           : lcd_mem_read:lcd_mem_read_u0|LCD_Read_FSM:LCD_Read_FSM_u0|mLCD_DATA[3]
+To             : lcd_data_out[3]
 From Clock     : clk
 To Clock       : --
 Failed Paths   : 0
@@ -25,7 +25,7 @@ Failed Paths   : 0
 Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
-Actual Time    : 10.490 ns
+Actual Time    : 9.359 ns
 From           : read_in
 To             : data_mem_rd_en_out
 From Clock     : --
@@ -35,9 +35,9 @@ Failed Paths   : 0
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : -1.217 ns
+Actual Time    : -0.752 ns
 From           : seletor
-To             : data_memory:data_memory01|altsyncram:altsyncram_component|altsyncram_tth1:auto_generated|ram_block1a10~porta_address_reg4
+To             : data_memory:data_memory01|altsyncram:altsyncram_component|altsyncram_tth1:auto_generated|ram_block1a10~porta_address_reg0
 From Clock     : --
 To Clock       : clk
 Failed Paths   : 0
@@ -45,9 +45,9 @@ Failed Paths   : 0
 Type           : Clock Setup: 'clk'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 3.85 MHz ( period = 259.586 ns )
-From           : instruction_memory:instruction_memory01|altsyncram:altsyncram_component|altsyncram_8ha1:auto_generated|q_a[28]
-To             : alu:alu01|result[0]
+Actual Time    : 3.78 MHz ( period = 264.886 ns )
+From           : instruction_memory:instruction_memory01|altsyncram:altsyncram_component|altsyncram_lea1:auto_generated|q_a[30]
+To             : alu:alu01|result[5]
 From Clock     : clk
 To Clock       : clk
 Failed Paths   : 0
@@ -66,11 +66,11 @@ Type           : Clock Hold: 'clk'
 Slack          : Not operational: Clock Skew > Data Delay
 Required Time  : None
 Actual Time    : N/A
-From           : instruction_memory:instruction_memory01|altsyncram:altsyncram_component|altsyncram_8ha1:auto_generated|q_a[8]
-To             : mux3_18:branch_mux|out[8]
+From           : program_counter:pc01|read_adress_out[0]
+To             : mux3_18:branch_mux|out[0]
 From Clock     : clk
 To Clock       : clk
-Failed Paths   : 8295
+Failed Paths   : 8348
 
 Type           : Total number of failed paths
 Slack          : 
@@ -80,7 +80,7 @@ From           :
 To             : 
 From Clock     : 
 To Clock       : 
-Failed Paths   : 8295
+Failed Paths   : 8348
 
 --------------------------------------------------------------------------------------
 

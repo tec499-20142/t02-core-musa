@@ -44,13 +44,13 @@ wire [17:0] w_pc_in, w_pc_out, w_somador_out, w_somador_in, w_stack_out, w_brfl_
 
 wire [4:0] w_rs, w_rt, w_rd, w_rd_mux_out;
 
-wire [7:0] w_data_address, w_memo_address_in;
+wire [17:0] w_data_address, w_memo_address_in;
 
 wire [31:0] reg_instruction;
 
 reg [2:0] flag_reg;
 
-assign w_data_address = w_alu_out[7:0];
+assign w_data_address = w_alu_out[17:0];
 
 assign w_flag_in = flag_reg [2:0];
 
@@ -77,6 +77,8 @@ assign w_rs = reg_instruction[25:21] ;
 assign w_rt = reg_instruction[20:16] ;
 
 assign w_rd = reg_instruction[15:11];
+
+wire w_armengue = w_pc_out[7:0];
 
 //Unidade de Controle
 control_unit_microprogramed cum01(
@@ -130,7 +132,7 @@ data_memory data_memory01 (
 //Memoria de instruções
 instruction_memory instruction_memory01 (
 	
-	.address(w_pc_out),
+	.address(w_armengue),
 	.clock(clk),
 
 	.q(reg_instruction)

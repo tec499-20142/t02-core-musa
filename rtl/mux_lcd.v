@@ -1,9 +1,9 @@
 module mux_lcd (
 
-	input [7:0] in0,in1,
+	input [17:0] in0,in1,
 	input ctrl,
 	
-	output reg [7:0] out
+	output reg [17:0] out
 );
 
 always @(*) begin

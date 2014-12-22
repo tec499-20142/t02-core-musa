@@ -17,7 +17,7 @@ reg [4:0] i;
 
 
 always @ (write_reg or read_reg) begin
-	
+	registers[0]=0;
 	if (write_reg) begin
 		registers[RD] = write_data;
 	end else

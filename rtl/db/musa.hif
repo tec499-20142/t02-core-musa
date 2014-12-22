@@ -19,6 +19,52 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
+musa
+# storage
+db|musa.(0).cnf
+db|musa.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+musa.v
+76f592d9d08bacb9730d9e8f4ea080
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+ADDR_WIDTH
+8
+PARAMETER_SIGNED_DEC
+DEF
+DATA_WIDTH
+32
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
 control_unit_microprogramed
 # storage
 db|musa.(1).cnf
@@ -199,6 +245,42 @@ alu:alu01
 }
 # macro_sequence
 
+# end
+# entity
+data_memory
+# storage
+db|musa.(3).cnf
+db|musa.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+data_memory.v
+6ed548b7e95f199d6c18fb4f283b3f19
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+data_memory:data_memory01
+}
+# macro_sequence
+ALTERA_RESERVED_QISALTERA_RESERVED_QIS
 # end
 # entity
 altsyncram
@@ -478,24 +560,24 @@ address_b
 2
 }
 # include_file {
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_decode.inc
-bd0e2f5e01c1bd360461dceb53d48
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altrom.inc
-d4e3a69a331d3a99d3281790d99a1ebd
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altdpram.inc
-99d442b5b66c88db4daf94d99c6e4e77
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altram.inc
-e66a83eccf6717bed97c99d891ad085
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|stratix_ram_block.inc
-2263a3bdfffeb150af977ee13902f70
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|aglobal90.inc
 99832fdf63412df51d7531202d74e75
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altqpram.inc
-74e08939f96a7ea8e7a4d59a5b01fe7
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|stratix_ram_block.inc
+2263a3bdfffeb150af977ee13902f70
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|a_rdenreg.inc
 60d229340bc3c24acb0a137b4849830
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altrom.inc
+d4e3a69a331d3a99d3281790d99a1ebd
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_mux.inc
 c22bfd353214c01495b560fc34e47d79
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_decode.inc
+bd0e2f5e01c1bd360461dceb53d48
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altram.inc
+e66a83eccf6717bed97c99d891ad085
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altdpram.inc
+99d442b5b66c88db4daf94d99c6e4e77
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altqpram.inc
+74e08939f96a7ea8e7a4d59a5b01fe7
 }
 # hierarchies {
 data_memory:data_memory01|altsyncram:altsyncram_component
@@ -515,7 +597,7 @@ ON
 # case_sensitive
 # source_file
 instruction_memory.v
-2d1752f8b3fff8cab343f9d3be3b82
+3f2edb2d138733909c101bf5b8b6b754
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -537,7 +619,7 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 instruction_memory:instruction_memory01
 }
 # macro_sequence
-ALTERA_RESERVED_QISALTERA_RESERVED_QIS
+
 # end
 # entity
 altsyncram
@@ -583,11 +665,11 @@ WIDTH_A
 PARAMETER_SIGNED_DEC
 USR
 WIDTHAD_A
-10
+8
 PARAMETER_SIGNED_DEC
 USR
 NUMWORDS_A
-1024
+256
 PARAMETER_SIGNED_DEC
 USR
 OUTDATA_REG_A
@@ -747,7 +829,7 @@ Cyclone II
 PARAMETER_UNKNOWN
 USR
 CBXI_PARAMETER
-altsyncram_8ha1
+altsyncram_lea1
 PARAMETER_UNKNOWN
 USR
 }
@@ -817,27 +899,172 @@ address_b
 2
 }
 # include_file {
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_decode.inc
-bd0e2f5e01c1bd360461dceb53d48
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altrom.inc
-d4e3a69a331d3a99d3281790d99a1ebd
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altdpram.inc
-99d442b5b66c88db4daf94d99c6e4e77
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altram.inc
-e66a83eccf6717bed97c99d891ad085
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|stratix_ram_block.inc
-2263a3bdfffeb150af977ee13902f70
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|aglobal90.inc
 99832fdf63412df51d7531202d74e75
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altqpram.inc
-74e08939f96a7ea8e7a4d59a5b01fe7
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|stratix_ram_block.inc
+2263a3bdfffeb150af977ee13902f70
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|a_rdenreg.inc
 60d229340bc3c24acb0a137b4849830
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altrom.inc
+d4e3a69a331d3a99d3281790d99a1ebd
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_mux.inc
 c22bfd353214c01495b560fc34e47d79
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_decode.inc
+bd0e2f5e01c1bd360461dceb53d48
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altram.inc
+e66a83eccf6717bed97c99d891ad085
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altdpram.inc
+99d442b5b66c88db4daf94d99c6e4e77
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altqpram.inc
+74e08939f96a7ea8e7a4d59a5b01fe7
 }
 # hierarchies {
 instruction_memory:instruction_memory01|altsyncram:altsyncram_component
+}
+# macro_sequence
+
+# end
+# entity
+altsyncram_lea1
+# storage
+db|musa.(8).cnf
+db|musa.(8).cnf
+# case_insensitive
+# source_file
+db|altsyncram_lea1.tdf
+f6312a5f9bdc14e363aed77827945e
+7
+# used_port {
+q_a9
+-1
+3
+q_a8
+-1
+3
+q_a7
+-1
+3
+q_a6
+-1
+3
+q_a5
+-1
+3
+q_a4
+-1
+3
+q_a31
+-1
+3
+q_a30
+-1
+3
+q_a3
+-1
+3
+q_a29
+-1
+3
+q_a28
+-1
+3
+q_a27
+-1
+3
+q_a26
+-1
+3
+q_a25
+-1
+3
+q_a24
+-1
+3
+q_a23
+-1
+3
+q_a22
+-1
+3
+q_a21
+-1
+3
+q_a20
+-1
+3
+q_a2
+-1
+3
+q_a19
+-1
+3
+q_a18
+-1
+3
+q_a17
+-1
+3
+q_a16
+-1
+3
+q_a15
+-1
+3
+q_a14
+-1
+3
+q_a13
+-1
+3
+q_a12
+-1
+3
+q_a11
+-1
+3
+q_a10
+-1
+3
+q_a1
+-1
+3
+q_a0
+-1
+3
+clock0
+-1
+3
+address_a7
+-1
+3
+address_a6
+-1
+3
+address_a5
+-1
+3
+address_a4
+-1
+3
+address_a3
+-1
+3
+address_a2
+-1
+3
+address_a1
+-1
+3
+address_a0
+-1
+3
+}
+# memory_file {
+instruction_memory.mif
+1385b5e378cf4f91f0ccbae7ce4065b3
+}
+# hierarchies {
+instruction_memory:instruction_memory01|altsyncram:altsyncram_component|altsyncram_lea1:auto_generated
 }
 # macro_sequence
 
@@ -874,6 +1101,42 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 }
 # hierarchies {
 sign_extend:sign_extend01
+}
+# macro_sequence
+
+# end
+# entity
+program_counter
+# storage
+db|musa.(11).cnf
+db|musa.(11).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+program_counter.v
+42fb80484a9d178ba6d327dad49a2332
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+program_counter:pc01
 }
 # macro_sequence
 
@@ -1431,7 +1694,7 @@ ON
 # case_sensitive
 # source_file
 mux_lcd.v
-6d495d56c555424d97593547e529
+682a837171091c41a57f1dcd656f5c4
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -1450,161 +1713,7 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-mux_lcd:comb_120
-}
-# macro_sequence
-
-# end
-# entity
-data_memory
-# storage
-db|musa.(3).cnf
-db|musa.(3).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-data_memory.v
-6ed548b7e95f199d6c18fb4f283b3f19
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-data_memory:data_memory01
-}
-# macro_sequence
-ALTERA_RESERVED_QISALTERA_RESERVED_QIS
-# end
-# entity
-program_counter
-# storage
-db|musa.(11).cnf
-db|musa.(11).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-program_counter.v
-42fb80484a9d178ba6d327dad49a2332
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-program_counter:pc01
-}
-# macro_sequence
-
-# end
-# entity
-musa
-# storage
-db|musa.(0).cnf
-db|musa.(0).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-musa.v
-b4f7a3b78e8be9f2c4675dd790fcf38d
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-ADDR_WIDTH
-8
-PARAMETER_SIGNED_DEC
-DEF
-DATA_WIDTH
-32
-PARAMETER_SIGNED_DEC
-DEF
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
-registers_bank
-# storage
-db|musa.(9).cnf
-db|musa.(9).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-registers_bank.v
-dc514e5b7515b2cfdf1bc82f297322ca
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-registers_bank:rb01
+mux_lcd:comb_131
 }
 # macro_sequence
 
@@ -2018,10 +2127,10 @@ dataa0
 # include_file {
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|lpm_add_sub.inc
 7d9a33dd39f13aa690c3d0edd88351
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|aglobal90.inc
-99832fdf63412df51d7531202d74e75
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|multcore.inc
 13b7e8bee916e23c5f79837e9c670
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|aglobal90.inc
+99832fdf63412df51d7531202d74e75
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|altshift.inc
 70fa13aee7d6d160ef20b2de32813a
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|bypassff.inc
@@ -2788,10 +2897,10 @@ denom0
 3
 }
 # include_file {
-..|..|..|..|..|altera|90|quartus|libraries|megafunctions|sign_div_unsign.inc
-c1e17922387cb5d0c88d7fb673544bb4
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|aglobal90.inc
 99832fdf63412df51d7531202d74e75
+..|..|..|..|..|altera|90|quartus|libraries|megafunctions|sign_div_unsign.inc
+c1e17922387cb5d0c88d7fb673544bb4
 ..|..|..|..|..|altera|90|quartus|libraries|megafunctions|abs_divider.inc
 cdfefd53e136b3a8e541899b82db37d
 }
@@ -4170,6 +4279,42 @@ data0
 
 # end
 # entity
+registers_bank
+# storage
+db|musa.(9).cnf
+db|musa.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+registers_bank.v
+d08f9e50e9dca1655b99c047d640c
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+registers_bank:rb01
+}
+# macro_sequence
+
+# end
+# entity
 altsyncram_tth1
 # storage
 db|musa.(5).cnf
@@ -4405,161 +4550,10 @@ address_a0
 }
 # memory_file {
 data_memory.mif
-8653c5b2575ef6c891cab2108ed112dc
+36d0a92116f1abc76ca697a48678b58
 }
 # hierarchies {
 data_memory:data_memory01|altsyncram:altsyncram_component|altsyncram_tth1:auto_generated
-}
-# macro_sequence
-
-# end
-# entity
-altsyncram_8ha1
-# storage
-db|musa.(8).cnf
-db|musa.(8).cnf
-# case_insensitive
-# source_file
-db|altsyncram_8ha1.tdf
-8dc21226292dc92aaf74faed5328cd3
-7
-# used_port {
-q_a9
--1
-3
-q_a8
--1
-3
-q_a7
--1
-3
-q_a6
--1
-3
-q_a5
--1
-3
-q_a4
--1
-3
-q_a31
--1
-3
-q_a30
--1
-3
-q_a3
--1
-3
-q_a29
--1
-3
-q_a28
--1
-3
-q_a27
--1
-3
-q_a26
--1
-3
-q_a25
--1
-3
-q_a24
--1
-3
-q_a23
--1
-3
-q_a22
--1
-3
-q_a21
--1
-3
-q_a20
--1
-3
-q_a2
--1
-3
-q_a19
--1
-3
-q_a18
--1
-3
-q_a17
--1
-3
-q_a16
--1
-3
-q_a15
--1
-3
-q_a14
--1
-3
-q_a13
--1
-3
-q_a12
--1
-3
-q_a11
--1
-3
-q_a10
--1
-3
-q_a1
--1
-3
-q_a0
--1
-3
-clock0
--1
-3
-address_a9
--1
-3
-address_a8
--1
-3
-address_a7
--1
-3
-address_a6
--1
-3
-address_a5
--1
-3
-address_a4
--1
-3
-address_a3
--1
-3
-address_a2
--1
-3
-address_a1
--1
-3
-address_a0
--1
-3
-}
-# memory_file {
-instruction_memory.mif
-caa9dbf5648e282b7eedec126f1f812
-}
-# hierarchies {
-instruction_memory:instruction_memory01|altsyncram:altsyncram_component|altsyncram_8ha1:auto_generated
 }
 # macro_sequence
 
